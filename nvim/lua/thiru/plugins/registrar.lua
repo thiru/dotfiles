@@ -7,9 +7,6 @@ function setup(use)
   -- Git commands in nvim
   use 'tpope/vim-fugitive'
 
-  -- Fugitive-companion to interact with github
-  use 'tpope/vim-rhubarb'
-
   -- Add git related info in the signs columns and popups
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
 
@@ -34,20 +31,8 @@ function setup(use)
   -- Autocompletion
   use { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' } }
 
-  -- Snippet Engine and Snippet Expansion
-  use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }
-
-  -- Theme inspired by Atom
-  use 'mjlbach/onedark.nvim'
-
   -- Fancier statusline
   use 'nvim-lualine/lualine.nvim'
-
-  -- Add indentation guides even on blank lines
-  use 'lukas-reineke/indent-blankline.nvim'
-
-  -- Detect tabstop and shiftwidth automatically
-  use 'tpope/vim-sleuth'
 
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }

@@ -3,7 +3,6 @@ local doc = 'Plugin-specific settings.'
 function setup()
   comment()
   lualine()
-  indent_blankline()
   gitsigns()
   telescope()
   treesitter()
@@ -20,18 +19,9 @@ function lualine()
   require('lualine').setup {
     options = {
       icons_enabled = false,
-      theme = 'onedark',
       component_separators = '|',
       section_separators = '',
     },
-  }
-end
-
--- See `:help indent_blankline.txt`
-function indent_blankline()
-  require('indent_blankline').setup {
-    char = '┊',
-    show_trailing_blankline_indent = false,
   }
 end
 
@@ -69,7 +59,7 @@ end
 function treesitter()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript' },
+    ensure_installed = { 'c', 'lua', 'python', 'rust' },
 
     highlight = { enable = true },
     indent = { enable = true },
@@ -185,7 +175,7 @@ function lsp()
   require('mason').setup()
 
   -- Enable the following language servers
-  local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'sumneko_lua' }
+  local servers = { 'clangd', 'rust_analyzer', 'pyright', 'sumneko_lua' }
 
   -- Ensure the servers above are installed
   require('mason-lspconfig').setup {
@@ -230,14 +220,8 @@ end
 
 function nvim_cmp()
   local cmp = require 'cmp'
-  local luasnip = require 'luasnip'
 
   cmp.setup {
-    snippet = {
-      expand = function(args)
-        luasnip.lsp_expand(args.body)
-      end,
-    },
     mapping = cmp.mapping.preset.insert {
       ['<C-d>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -249,8 +233,6 @@ function nvim_cmp()
       ['<Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
-        elseif luasnip.expand_or_jumpable() then
-          luasnip.expand_or_jump()
         else
           fallback()
         end
@@ -258,8 +240,6 @@ function nvim_cmp()
       ['<S-Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
-        elseif luasnip.jumpable(-1) then
-          luasnip.jump(-1)
         else
           fallback()
         end
@@ -267,7 +247,6 @@ function nvim_cmp()
     },
     sources = {
       { name = 'nvim_lsp' },
-      { name = 'luasnip' },
     },
   }
 end
