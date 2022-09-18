@@ -4,6 +4,9 @@ function setup(use)
   -- Package manager (seems to be the most popular one written in Lua)
   use 'wbthomason/packer.nvim'
 
+  -- Preferred, light colour scheme
+  use 'cormacrelf/vim-colors-github'
+
   -- Git commands in nvim
   use 'tpope/vim-fugitive'
 

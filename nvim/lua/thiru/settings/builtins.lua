@@ -27,12 +27,18 @@ function setup()
   vim.o.updatetime = 250
   vim.wo.signcolumn = 'yes'
 
-  vim.o.termguicolors = true
+  set_colour_scheme()
 
   -- Set completeopt to have a better completion experience
   vim.o.completeopt = 'menuone,noselect'
 
   highlight_on_yank()
+end
+
+function set_colour_scheme()
+  vim.o.termguicolors = true
+  vim.cmd('colorscheme github')
+  vim.o.background = 'light'
 end
 
 -- See `:help vim.highlight.on_yank()`
