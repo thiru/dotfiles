@@ -1,47 +1,88 @@
-local doc = [[
-  Global/builtin settings (not based on any plugins).
-  See `:help vim.o`.
-]]
+local doc = 'Global/builtin settings (not based on any plugins).'
 
 function setup()
-  -- Set highlight on search
-  vim.o.hlsearch = false
+  -- Disable backup and recovery files
+  vim.opt.backup = false
+  vim.opt.writebackup = false
+  vim.opt.swapfile = false
 
-  -- Make line numbers default
-  vim.wo.number = true
+  -- Preserve indentation even when line is wrapped
+  vim.opt.breakindent = true
 
-  -- Enable mouse mode
-  vim.o.mouse = 'a'
+  -- Always use system clipboard (for yanking, etc.)
+  vim.opt.clipboard = 'unnamedplus'
 
-  -- Enable break indent
-  vim.o.breakindent = true
+  -- Show vertical column
+  vim.opt.colorcolumn = '80'
+
+  -- Highlight current line
+  vim.opt.cursorline = true
+
+  -- Highlight current column
+  vim.opt.cursorcolumn = true
+
+  -- Disable folding by default
+  vim.opt.foldenable = false
+  vim.opt.foldlevelstart = 99
+  vim.opt.foldlevel = 99
+
+  -- Highlight search terms and immediately while typing
+  vim.opt.hlsearch = true
+  vim.opt.incsearch = true
+
+  -- Case-insensitive searching UNLESS /C or capital in search
+  vim.opt.ignorecase = true
+  vim.opt.smartcase = true
+
+  -- Characters to show in place of whitespace characters
+  vim.opt.listchars = 'eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣'
+
+  -- Enable mouse in all modes
+  vim.opt.mouse = 'a'
+
+  -- Show relative line numbers, except on the current line show absolute
+  vim.opt.number = true
+  vim.opt.relativenumber = true
+
+  -- Always show the sign column to prevent horizontal jumping
+  vim.opt.signcolumn = 'yes'
+
+  -- Tabbing
+  do
+    -- Always use spaces as TAB
+    vim.opt.expandtab = true
+
+    -- Use 2 spaces as TAB
+    vim.opt.shiftwidth = 2
+
+    -- Display a TAB character as two spaces
+    vim.opt.tabstop = 2
+  end
 
   -- Save undo history
-  vim.o.undofile = true
+  vim.opt.undofile = true
 
-  -- Case insensitive searching UNLESS /C or capital in search
-  vim.o.ignorecase = true
-  vim.o.smartcase = true
+  -- Show completion menu even if only one match and don't auto-select
+  vim.opt.completeopt = 'menuone,noselect'
 
-  -- Decrease update time
-  vim.o.updatetime = 250
-  vim.wo.signcolumn = 'yes'
-
-  set_colour_scheme()
-
-  -- Set completeopt to have a better completion experience
-  vim.o.completeopt = 'menuone,noselect'
+  -- Match on longest string first, then full string, etc.
+  vim.opt.wildmode = 'list:longest,full'
 
   highlight_on_yank()
+
+  set_colour_scheme()
 end
 
 function set_colour_scheme()
-  vim.o.termguicolors = true
+  -- Enable 24-bit colour mode
+  vim.opt.termguicolors = true
+
+  -- Preferred, light colour scheme
   vim.cmd('colorscheme github')
-  vim.o.background = 'light'
+  vim.opt.background = 'light'
 end
 
--- See `:help vim.highlight.on_yank()`
+-- Make it easier to see exactly what was yanked
 function highlight_on_yank()
   local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
   vim.api.nvim_create_autocmd('TextYankPost', {
@@ -55,6 +96,5 @@ end
 
 return {
   doc = doc,
-  highlight_on_yank = highlight_on_yank,
   setup = setup
 }

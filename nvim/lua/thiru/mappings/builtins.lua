@@ -2,7 +2,7 @@ local doc = 'Key mappings for Neovim builtins (i.e. without plugins).'
 
 function setup()
   vim.g.mapleader = ' '
-  vim.g.maplocalleader = ' '
+  vim.g.maplocalleader = ','
 
   -- Keymaps for better default experience
   -- See `:help vim.keymap.set()`
