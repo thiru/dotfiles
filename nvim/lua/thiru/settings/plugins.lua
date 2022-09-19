@@ -1,21 +1,11 @@
 local doc = 'Plugin-specific settings.'
 
-function setup()
-  comment()
-  lualine()
-  gitsigns()
-  telescope()
-  treesitter()
-  lsp()
-  nvim_cmp()
-end
-
-function comment()
+local function comment()
   require('Comment').setup()
 end
 
 -- See `:help lualine.txt`
-function lualine()
+local function lualine()
   require('lualine').setup {
     options = {
       icons_enabled = false,
@@ -27,7 +17,7 @@ function lualine()
 end
 
 -- See `:help gitsigns.txt`
-function gitsigns()
+local function gitsigns()
   require('gitsigns').setup {
     signs = {
       add = { text = '+' },
@@ -40,7 +30,7 @@ function gitsigns()
 end
 
 -- See `:help telescope` and `:help telescope.setup()`
-function telescope()
+local function telescope()
   require('telescope').setup {
     defaults = {
       mappings = {
@@ -57,7 +47,7 @@ function telescope()
 end
 
 -- See `:help nvim-treesitter`
-function treesitter()
+local function treesitter()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
     ensure_installed = { 'c', 'lua', 'python', 'rust' },
@@ -119,7 +109,7 @@ function treesitter()
   }
 end
 
-function lsp()
+local function lsp()
   --  This function gets run when an LSP connects to a particular buffer.
   local on_attach = function(_, bufnr)
     print('attach in lsp settings')
@@ -219,7 +209,7 @@ function lsp()
   }
 end
 
-function nvim_cmp()
+local function nvim_cmp()
   local cmp = require 'cmp'
 
   cmp.setup {
@@ -250,6 +240,16 @@ function nvim_cmp()
       { name = 'nvim_lsp' },
     },
   }
+end
+
+local function setup()
+  comment()
+  lualine()
+  gitsigns()
+  telescope()
+  treesitter()
+  lsp()
+  nvim_cmp()
 end
 
 return {

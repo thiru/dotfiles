@@ -1,6 +1,6 @@
 local doc = 'Plugin registration.'
 
-function setup(use)
+local function setup(use)
   -- Package manager (seems to be the most popular one written in Lua)
   use 'wbthomason/packer.nvim'
 

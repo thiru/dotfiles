@@ -1,6 +1,27 @@
 local doc = 'Global/builtin settings (not based on any plugins).'
 
-function setup()
+local function set_colour_scheme()
+  -- Enable 24-bit colour mode
+  vim.opt.termguicolors = true
+
+  -- Preferred, light colour scheme
+  vim.cmd('colorscheme github')
+  vim.opt.background = 'light'
+end
+
+-- Make it easier to see exactly what was yanked
+local function highlight_on_yank()
+  local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+  vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+      vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = '*',
+  })
+end
+
+local function setup()
   -- Disable backup and recovery files
   vim.opt.backup = false
   vim.opt.writebackup = false
@@ -71,27 +92,6 @@ function setup()
   highlight_on_yank()
 
   set_colour_scheme()
-end
-
-function set_colour_scheme()
-  -- Enable 24-bit colour mode
-  vim.opt.termguicolors = true
-
-  -- Preferred, light colour scheme
-  vim.cmd('colorscheme github')
-  vim.opt.background = 'light'
-end
-
--- Make it easier to see exactly what was yanked
-function highlight_on_yank()
-  local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-  vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function()
-      vim.highlight.on_yank()
-    end,
-    group = highlight_group,
-    pattern = '*',
-  })
 end
 
 return {

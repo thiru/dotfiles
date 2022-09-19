@@ -12,7 +12,16 @@ local restart_notice = [[
 ===============================================================================
 ]]
 
-function setup(register_plugins)
+local function is_packer_installed()
+  return u.is_path_present(packer_install_dir)
+end
+
+local function install_packer()
+  vim.fn.execute('!git clone --depth 1 https://github.com/wbthomason/packer.nvim ' .. packer_install_dir)
+  vim.cmd('packadd packer.nvim')
+end
+
+local function setup(register_plugins)
   local is_new_install = not is_packer_installed()
 
   if is_new_install then
@@ -29,15 +38,6 @@ function setup(register_plugins)
   end
 
   return is_new_install
-end
-
-function is_packer_installed()
-  return u.is_path_present(packer_install_dir)
-end
-
-function install_packer()
-  vim.fn.execute('!git clone --depth 1 https://github.com/wbthomason/packer.nvim ' .. packer_install_dir)
-  vim.cmd('packadd packer.nvim')
 end
 
 return {

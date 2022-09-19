@@ -1,11 +1,7 @@
 local doc = 'Key mappings for Neovim builtin actions.'
 
-function setup()
-  telescope()
-end
-
 -- See `:help telescope.builtin`
-function telescope()
+local function telescope()
   vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
   vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
   vim.keymap.set('n', '<leader>/', function()
@@ -21,6 +17,10 @@ function telescope()
   vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
   vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
   vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+end
+
+local function setup()
+  telescope()
 end
 
 return {

@@ -1,6 +1,6 @@
 local doc = 'Key mappings for Neovim builtins (i.e. without plugins).'
 
-function setup()
+local function setup()
   vim.g.mapleader = ' '
   vim.g.maplocalleader = ','
 
