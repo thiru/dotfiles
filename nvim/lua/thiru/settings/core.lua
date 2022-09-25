@@ -1,12 +1,16 @@
 local doc = 'Global/builtin settings (not based on any plugins).'
 
+local plain_term = require('thiru.plain-term')
+
 local function set_colour_scheme()
   -- Enable 24-bit colour mode
   vim.opt.termguicolors = true
 
-  -- Preferred, light colour scheme
-  vim.cmd('colorscheme github')
-  vim.opt.background = 'light'
+  if not plain_term.is_enabled() then
+    -- Preferred, light colour scheme
+    vim.cmd('colorscheme github')
+    vim.opt.background = 'light'
+  end
 end
 
 -- Make it easier to see exactly what was yanked
@@ -66,7 +70,11 @@ local function setup()
   vim.opt.relativenumber = true
 
   -- Always show the sign column to prevent horizontal jumping
-  vim.opt.signcolumn = 'yes'
+  if plain_term.is_enabled() then
+    vim.opt.signcolumn = 'no'
+  else
+    vim.opt.signcolumn = 'yes'
+  end
 
   -- Tabbing
   do

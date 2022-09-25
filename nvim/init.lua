@@ -5,6 +5,7 @@ require('thiru.mappings.core').setup()
 require('thiru.mappings.plugins').setup()
 require('thiru.settings.core').setup()
 require('thiru.settings.plugins').setup()
+require('thiru.plain-term').setup()
 
 return {
   doc = doc

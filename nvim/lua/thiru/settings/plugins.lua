@@ -1,5 +1,7 @@
 local doc = 'Plugin-specific settings.'
 
+local plain_term = require('thiru.plain-term')
+
 local function comment()
   require('Comment').setup()
 end
@@ -243,13 +245,17 @@ local function nvim_cmp()
 end
 
 local function setup()
-  comment()
-  lualine()
-  gitsigns()
-  telescope()
   treesitter()
-  lsp()
-  nvim_cmp()
+
+  -- These plugins don't get loaded in plain term mode
+  if not plain_term.is_enabled() then
+    comment()
+    lualine()
+    gitsigns()
+    telescope()
+    lsp()
+    nvim_cmp()
+  end
 end
 
 return {
