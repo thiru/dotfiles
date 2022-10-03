@@ -14,31 +14,31 @@ local function setup(use)
 
   -- Don't load these plugins since they wouldn't be used in plain term mode anyway
   if not plain_term.is_enabled() then
-    -- Preferred, light colour scheme
+    -- Colour scheme
     use 'cormacrelf/vim-colors-github'
 
-    -- Git commands in nvim
-    use 'tpope/vim-fugitive'
-
-    -- Add git related info in the signs columns and popups
-    use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
-
-    -- "gc" to comment visual regions/lines
+    -- Commenting - "gc" to comment visual regions/lines
     use 'numToStr/Comment.nvim'
 
-    -- Collection of configurations for built-in LSP client
-    use 'neovim/nvim-lspconfig'
-
-    -- Manage external editor tooling i.e LSP servers
-    use 'williamboman/mason.nvim'
-
-    -- Automatically install language servers to stdpath
-    use 'williamboman/mason-lspconfig.nvim'
-
-    -- Autocompletion
+    -- Completion engine
     use { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' } }
 
-    -- Fancier statusline
+    -- Git commands in vim
+    use 'tpope/vim-fugitive'
+
+    -- Git info in the signs columns and popups
+    use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+
+    -- LSP - collection of configurations for built-in LSP client
+    use 'neovim/nvim-lspconfig'
+
+    -- LSP - install language servers to stdpath automatically
+    use 'williamboman/mason-lspconfig.nvim'
+
+    -- LSP - manage external editor tooling i.e LSP servers
+    use 'williamboman/mason.nvim'
+
+    -- Status line
     use 'nvim-lualine/lualine.nvim'
 
     -- Fuzzy Finder (files, lsp, etc)
