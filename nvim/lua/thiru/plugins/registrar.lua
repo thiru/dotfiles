@@ -44,6 +44,9 @@ local function setup(use)
     -- Git log/diff at cursor
     use 'rhysd/git-messenger.vim'
 
+    -- Lisp - parenthesis balancing
+    use { 'eraserhd/parinfer-rust', run = 'cargo build --release'}
+
     -- LSP - collection of configurations for built-in LSP client
     use 'neovim/nvim-lspconfig'
 
