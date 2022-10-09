@@ -292,6 +292,7 @@ local function nvim_cmp()
       end, { 'i', 's' }),
     }),
     sources = {
+      { name = 'conjure' },
       { name = 'nvim_lsp' },
       { name = 'path' },
       { name = 'buffer' },

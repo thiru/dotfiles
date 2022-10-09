@@ -20,6 +20,9 @@ local function setup(use)
     -- Buffer (tab) bar
     use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 
+    -- Clojure repl, etc.
+    use 'Olical/conjure'
+
     -- Commenting - "gc" to comment visual regions/lines
     use 'numToStr/Comment.nvim'
 
