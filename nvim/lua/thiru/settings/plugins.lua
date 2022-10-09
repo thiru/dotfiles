@@ -265,6 +265,7 @@ local function win_resizer()
 end
 
 local function setup()
+  hop()
   treesitter()
 
   -- These plugins don't get loaded in plain term mode
@@ -273,7 +274,6 @@ local function setup()
     comment()
     colourizer()
     gitsigns()
-    hop()
     lsp()
     lualine()
     nvim_cmp()
