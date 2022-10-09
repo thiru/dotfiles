@@ -68,11 +68,25 @@ local function telescope()
   pcall(require('telescope').load_extension, 'fzf')
 end
 
--- See `:help nvim-treesitter`
 local function treesitter()
   require('nvim-treesitter.configs').setup {
-    -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'clojure', 'lua', 'python', 'rust' },
+    ensure_installed = {
+      'bash',
+      'c',
+      'clojure',
+      'css',
+      'dockerfile',
+      'fennel',
+      'gitignore',
+      'html',
+      'java',
+      'json',
+      'lua',
+      'make',
+      'markdown',
+      'python',
+      'rust'
+    },
 
     highlight = { enable = true },
     indent = { enable = true },
