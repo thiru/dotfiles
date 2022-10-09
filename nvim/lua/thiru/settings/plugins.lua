@@ -72,7 +72,7 @@ end
 local function treesitter()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'lua', 'python', 'rust' },
+    ensure_installed = { 'c', 'clojure', 'lua', 'python', 'rust' },
 
     highlight = { enable = true },
     indent = { enable = true },
