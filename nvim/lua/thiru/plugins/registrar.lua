@@ -12,6 +12,9 @@ local function setup(use)
   -- Additional textobjects for treesitter
   use 'nvim-treesitter/nvim-treesitter-textobjects'
 
+  -- Hop
+  use 'phaazon/hop.nvim'
+
   -- Don't load these plugins since they wouldn't be used in plain term mode anyway
   if not plain_term.is_enabled() then
     -- Buffer (tab) bar
@@ -40,9 +43,6 @@ local function setup(use)
 
     -- Git log/diff at cursor
     use 'rhysd/git-messenger.vim'
-
-    -- Hop
-    use 'phaazon/hop.nvim'
 
     -- LSP - collection of configurations for built-in LSP client
     use 'neovim/nvim-lspconfig'
