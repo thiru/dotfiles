@@ -6,16 +6,16 @@ local function bufferline()
   require("bufferline").setup({})
 end
 
-local function comment()
-  require('Comment').setup()
-end
-
 local function colourizer()
   require('colorizer').setup({
     'css';
     'javascript';
     html = { mode = 'foreground' }
   })
+end
+
+local function comment()
+  require('Comment').setup()
 end
 
 -- See `:help lualine.txt`
@@ -315,8 +315,8 @@ local function setup()
   -- These plugins don't get loaded in plain term mode
   if not plain_term.is_enabled() then
     bufferline()
-    comment()
     colourizer()
+    comment()
     gitsigns()
     lsp()
     lualine()
