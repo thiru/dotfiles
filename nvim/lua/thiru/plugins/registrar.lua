@@ -23,8 +23,10 @@ local function setup(use)
     -- Commenting - "gc" to comment visual regions/lines
     use 'numToStr/Comment.nvim'
 
-    -- Completion engine
+    -- Completion engines
     use { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' } }
+    use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
+    use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }
 
     -- Colour scheme
     use 'cormacrelf/vim-colors-github'

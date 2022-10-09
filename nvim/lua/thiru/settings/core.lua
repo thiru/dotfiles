@@ -96,7 +96,7 @@ local function setup()
   vim.opt.undofile = true
 
   -- Show completion menu even if only one match and don't auto-select
-  vim.opt.completeopt = 'menuone,noselect'
+  vim.opt.completeopt = 'menu,menuone,noselect'
 
   -- Match on longest string first, then full string, etc.
   vim.opt.wildmode = 'list:longest,full'

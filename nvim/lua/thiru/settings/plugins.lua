@@ -191,6 +191,7 @@ local function lsp()
 
   -- nvim-cmp supports additional completion capabilities
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  capabilities.textDocument.completion.completionItem.snippetSupport = false
 
   -- Setup mason so it can manage external tooling
   require('mason').setup()
@@ -262,13 +263,15 @@ local function neo_scroll()
 end
 
 local function nvim_cmp()
-  local cmp = require 'cmp'
+  local cmp = require('cmp')
 
-  cmp.setup {
-    mapping = cmp.mapping.preset.insert {
-      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+  cmp.setup({
+    snippet = {},
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
       ['<CR>'] = cmp.mapping.confirm {
         behavior = cmp.ConfirmBehavior.Replace,
         select = true,
@@ -287,11 +290,13 @@ local function nvim_cmp()
           fallback()
         end
       end, { 'i', 's' }),
-    },
+    }),
     sources = {
       { name = 'nvim_lsp' },
+      { name = 'path' },
+      { name = 'buffer' },
     },
-  }
+  })
 end
 
 local function win_resizer()
