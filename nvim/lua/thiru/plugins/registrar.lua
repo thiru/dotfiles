@@ -38,6 +38,9 @@ local function setup(use)
     -- Git info in the signs columns and popups
     use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
 
+    -- Git log/diff at cursor
+    use 'rhysd/git-messenger.vim'
+
     -- Hop
     use 'phaazon/hop.nvim'
 
