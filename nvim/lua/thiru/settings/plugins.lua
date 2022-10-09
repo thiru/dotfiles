@@ -194,15 +194,31 @@ local function lsp()
   require('mason').setup()
 
   -- Enable the following language servers
-  local servers = { 'clangd', 'rust_analyzer', 'pyright', 'sumneko_lua' }
+  local servers = {
+    'bashls',
+    'clangd',
+    'clojure_lsp',
+    'cmake',
+    'cssls',
+    'dockerls',
+    'html',
+    'jdtls',
+    'jsonls',
+    'marksman',
+    'pyright',
+    'quick_lint_js',
+    'rust_analyzer',
+    'sqlls',
+    'sumneko_lua'
+  }
 
   -- Ensure the servers above are installed
   require('mason-lspconfig').setup {
     ensure_installed = servers,
   }
 
-  for _, lsp in ipairs(servers) do
-    require('lspconfig')[lsp].setup {
+  for _, lsp_name in ipairs(servers) do
+    require('lspconfig')[lsp_name].setup {
       on_attach = on_attach,
       capabilities = capabilities,
     }
