@@ -237,6 +237,12 @@ local function lsp()
   }
 end
 
+local function neo_scroll()
+  require('neoscroll').setup({
+    mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>', 'zt', 'zz', 'zb'},
+  })
+end
+
 local function nvim_cmp()
   local cmp = require 'cmp'
 
@@ -290,6 +296,7 @@ local function setup()
     gitsigns()
     lsp()
     lualine()
+    neo_scroll()
     nvim_cmp()
     nvim_tree()
     telescope()
