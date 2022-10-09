@@ -13,9 +13,9 @@ local function is_enabled()
   return vim.g.plain_term == true
 end
 
--- Show relative numbers when not within/editing the terminal - e.g. normal mode
-local function relativenumber_autocmds()
+local function plain_term()
   vim.api.nvim_create_autocmd('TermEnter', {
+    desc = 'Hide relative numbers when _within_ virtual terminal',
     pattern = '*',
     group = augroup,
     callback = function()
@@ -24,18 +24,16 @@ local function relativenumber_autocmds()
   })
 
   vim.api.nvim_create_autocmd('TermLeave', {
+    desc = 'Show relative numbers when leaving virtual terminal',
     pattern = '*',
     group = augroup,
     callback = function()
       vim.opt.relativenumber = true
     end
   })
-end
-
-local function plain_term()
-  relativenumber_autocmds()
 
   vim.api.nvim_create_autocmd('TermClose', {
+    desc = 'Close Neovim when terminal is exited',
     pattern = '*',
     group = augroup,
     command = ':q'
