@@ -171,7 +171,9 @@ local function lsp()
     nmap('gr', require('telescope.builtin').lsp_references)
 
     -- See `:help K` for why this keymap
-    nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+    if not vim.opt.diff:get() then
+      nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+    end
     nmap('<leader>k', vim.lsp.buf.signature_help, 'Signature Documentation')
 
     -- Lesser used LSP functionality
