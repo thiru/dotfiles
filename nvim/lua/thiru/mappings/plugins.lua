@@ -1,5 +1,18 @@
 local doc = 'Key mappings for Neovim builtin actions.'
 
+local function hop()
+  vim.keymap.set('n', 's', ':HopWord<CR>', { desc = 'Hop to any word in buffer' })
+end
+
+local function nvim_tree()
+  vim.keymap.set('n', '<leader>ff', ':NvimTreeToggle<CR>', { desc = 'File Tree - Toggle visibility' })
+  vim.keymap.set('n', '<leader>fo', ':NvimTreeFindFile<CR>', { desc = 'File Tree - Focus opened file in tree' })
+end
+
+local function tag_bar()
+  vim.keymap.set('n', '<leader>t', ':TagbarToggle<CR>', { desc = '' })
+end
+
 -- See `:help telescope.builtin`
 local function telescope()
   local builtin = require('telescope.builtin')
@@ -22,6 +35,7 @@ local function telescope()
   vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
   vim.keymap.set('n', '<leader>sh', builtin.command_history, { desc = '[S]earch [C]ommand [H]istory' })
   vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps (normal mode)' })
+  vim.keymap.set('n', '<leader>sm', builtin.marks, { desc = '[S]earch [M]arks' })
   vim.keymap.set('n', '<leader>so', builtin.oldfiles, { desc = '[S]earch [O]ld files' })
   vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
   vim.keymap.set('n', '<leader>st', builtin.current_buffer_fuzzy_find, { desc = '[S]earch [T]ext in current buffer' })
@@ -29,6 +43,9 @@ local function telescope()
 end
 
 local function setup()
+  hop()
+  nvim_tree()
+  tag_bar()
   telescope()
 end
 

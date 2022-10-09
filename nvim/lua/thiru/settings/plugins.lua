@@ -2,8 +2,20 @@ local doc = 'Plugin-specific settings.'
 
 local plain_term = require('thiru.plain-term')
 
+local function bufferline()
+  require("bufferline").setup({})
+end
+
 local function comment()
   require('Comment').setup()
+end
+
+local function colourizer()
+  require('colorizer').setup({
+    'css';
+    'javascript';
+    html = { mode = 'foreground' }
+  })
 end
 
 -- See `:help lualine.txt`
@@ -29,6 +41,14 @@ local function gitsigns()
       changedelete = { text = '~' },
     },
   }
+end
+
+local function hop()
+  require('hop').setup()
+end
+
+local function nvim_tree()
+  require("nvim-tree").setup()
 end
 
 -- See `:help telescope` and `:help telescope.setup()`
@@ -135,8 +155,6 @@ local function lsp()
     nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
     nmap('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
     nmap('gr', require('telescope.builtin').lsp_references)
-    nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-    nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
     -- See `:help K` for why this keymap
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -144,12 +162,6 @@ local function lsp()
 
     -- Lesser used LSP functionality
     nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-    nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-    nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-    nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-    nmap('<leader>wl', function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, '[W]orkspace [L]ist Folders')
 
     -- Create a command `:Format` local to the LSP buffer
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
@@ -244,17 +256,30 @@ local function nvim_cmp()
   }
 end
 
+local function win_resizer()
+  -- The default key-chord is <C-E> which is too useful for me to have overridden
+  vim.g.winresizer_start_key = '<leader>wr'
+
+  -- Amount of columns to resize vertically by
+  vim.g.winresizer_vert_resize = 5
+end
+
 local function setup()
   treesitter()
 
   -- These plugins don't get loaded in plain term mode
   if not plain_term.is_enabled() then
+    bufferline()
     comment()
-    lualine()
+    colourizer()
     gitsigns()
-    telescope()
+    hop()
     lsp()
+    lualine()
     nvim_cmp()
+    nvim_tree()
+    telescope()
+    win_resizer()
   end
 end
 

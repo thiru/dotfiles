@@ -14,8 +14,8 @@ local function setup(use)
 
   -- Don't load these plugins since they wouldn't be used in plain term mode anyway
   if not plain_term.is_enabled() then
-    -- Colour scheme
-    use 'cormacrelf/vim-colors-github'
+    -- Buffer (tab) bar
+    use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 
     -- Commenting - "gc" to comment visual regions/lines
     use 'numToStr/Comment.nvim'
@@ -23,11 +23,23 @@ local function setup(use)
     -- Completion engine
     use { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' } }
 
+    -- Colour scheme
+    use 'cormacrelf/vim-colors-github'
+
+    -- Colourizer
+    use 'norcalli/nvim-colorizer.lua'
+
+    -- File tree explorer
+    use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
+
     -- Git commands in vim
     use 'tpope/vim-fugitive'
 
     -- Git info in the signs columns and popups
     use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+
+    -- Hop
+    use 'phaazon/hop.nvim'
 
     -- LSP - collection of configurations for built-in LSP client
     use 'neovim/nvim-lspconfig'
@@ -38,6 +50,9 @@ local function setup(use)
     -- LSP - manage external editor tooling i.e LSP servers
     use 'williamboman/mason.nvim'
 
+    -- Match start/end markers better via %
+    use 'andymass/vim-matchup'
+
     -- Status line
     use 'nvim-lualine/lualine.nvim'
 
@@ -46,6 +61,15 @@ local function setup(use)
 
     -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable "make" == 1 }
+
+    -- Tag bar
+    use { 'preservim/tagbar' }
+
+    -- Whitespace cleaner
+    use 'ntpeters/vim-better-whitespace'
+
+    -- Window resizer
+    use  'simeji/winresizer'
   end
 end
 

@@ -17,6 +17,11 @@ local function config()
 end
 
 local function buffers()
+  -- Close buffer without also closing splits
+  vim.keymap.set('n', '<leader>d', ':bprevious|bdelete #<CR>', { desc = 'Close buffer (without closing splits)' })
+  vim.keymap.set('n', '<leader>D', ':bprevious|bdelete! #<CR>', { desc = 'Close buffer (without closing splits and ignore modifications)' })
+
+  -- Previous/next buffer
   keymap('n', '<C-j>', ':bp<CR>', { desc = 'Previous buffer', silent = true })
   keymap('n', '<C-k>', ':bn<CR>', { desc = 'Next buffer', silent = true })
 end
@@ -77,7 +82,7 @@ local function text_navigation()
   keymap('n', '<leader>l', '$', { desc = 'Go to end of line' })
 
   -- Matching bracket
-  keymap('n','<TAB>', '%', { desc = 'Go to matching bracket, etc.' })
+  keymap('n','<TAB>', '%', { desc = 'Go to matching bracket, etc.', remap = true })
 
   -- Navigate by screen lines, not logical lines (i.e. when lines are wrapped)
   keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -87,7 +92,7 @@ local function text_navigation()
   keymap('n', '<leader>ho', ':nohlsearch<CR>', { desc = 'Search highlight off' })
 
   -- Toggle word wrap
-  keymap('n', '<leader>ww', ':set wrap!<CR>', { desc = '' })
+  keymap('n', '<leader>ww', ':set wrap!<CR>', { desc = 'Toggle word wrap' })
 end
 
 local function yanking()
