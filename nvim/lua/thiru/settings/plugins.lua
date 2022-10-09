@@ -18,6 +18,18 @@ local function comment()
   require('Comment').setup()
 end
 
+local function conjure()
+  vim.g['conjure#mapping#doc_word'] = '<localleader>k'
+  vim.g['conjure#log#botright'] = true
+
+  -- Don't auto-start Babashka REPL
+  vim.g['conjure#client#clojure#nrepl#connection#auto_repl#enabled'] = false
+
+  -- This starts a Fennl REPL with stdio (so no need for Aniseed). The main
+  -- issue I had with Aniseed is that requiring local files wasn't working.
+  vim.g['conjure#filetype#fennel'] = "conjure.client.fennel.stdio"
+end
+
 -- See `:help lualine.txt`
 local function lualine()
   require('lualine').setup {
@@ -317,6 +329,7 @@ local function setup()
     bufferline()
     colourizer()
     comment()
+    conjure()
     gitsigns()
     lsp()
     lualine()
