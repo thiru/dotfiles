@@ -42,7 +42,7 @@ local function setup()
   vim.opt.clipboard = 'unnamedplus'
 
   -- Show vertical column
-  vim.opt.colorcolumn = '80'
+  vim.opt.colorcolumn = '100'
 
   -- Highlight current line
   vim.opt.cursorline = true
