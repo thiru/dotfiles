@@ -19,7 +19,7 @@ local function comment()
 end
 
 local function conjure()
-  vim.g['conjure#mapping#doc_word'] = '<localleader>k'
+  vim.g['conjure#mapping#doc_word'] = {'<localleader>k'}
   vim.g['conjure#log#botright'] = true
 
   -- Don't auto-start Babashka REPL
