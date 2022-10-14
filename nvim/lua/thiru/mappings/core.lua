@@ -27,9 +27,11 @@ local function buffers()
 end
 
 local function diagnostics()
-  keymap('n', '[d', vim.diagnostic.goto_prev)
-  keymap('n', ']d', vim.diagnostic.goto_next)
-  keymap('n', '<leader>e', vim.diagnostic.open_float)
+  keymap('n', '<leader>k', vim.diagnostic.goto_prev)
+  keymap('n', '<leader>j', vim.diagnostic.goto_next)
+  keymap('n', '<leader>ef', vim.diagnostic.open_float)
+  keymap('n', '<leader>ld', function() vim.diagnostic.disable(0) end,
+         { desc = 'Disable diagnostics in current buffer' })
 end
 
 local function files()
@@ -77,9 +79,6 @@ local function text_navigation()
     keymap('n', '<S-J>', ']czz', { desc = 'Go to next change and centre (diff mode)' })
     keymap('n', '<S-K>', '[czz', { desc = 'Go to previous change and centre (diff mode)' })
   end
-
-  -- End of line
-  keymap('n', '<leader>l', '$', { desc = 'Go to end of line' })
 
   -- Matching bracket
   keymap('n','<TAB>', '%', { desc = 'Go to matching bracket, etc.', remap = true })
