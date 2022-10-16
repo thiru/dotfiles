@@ -32,7 +32,7 @@ local function setup(use)
     use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }
 
     -- Colour scheme
-    use 'cormacrelf/vim-colors-github'
+    use 'projekt0n/github-nvim-theme'
 
     -- Colourizer
     use 'norcalli/nvim-colorizer.lua'

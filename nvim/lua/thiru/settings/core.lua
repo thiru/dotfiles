@@ -5,12 +5,6 @@ local plain_term = require('thiru.plain-term')
 local function set_colour_scheme()
   -- Enable 24-bit colour mode
   vim.opt.termguicolors = true
-
-  if not plain_term.is_enabled() then
-    -- Preferred, light colour scheme
-    vim.cmd('colorscheme github')
-    vim.opt.background = 'light'
-  end
 end
 
 -- Make it easier to see exactly what was yanked

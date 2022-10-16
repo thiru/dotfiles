@@ -6,6 +6,13 @@ local function bufferline()
   require("bufferline").setup({})
 end
 
+local function colour_scheme()
+  require("github-theme").setup({
+    theme_style = "light",
+    sidebars = {'tagbar'}
+  })
+end
+
 local function colourizer()
   require('colorizer').setup({
     'css';
@@ -327,6 +334,7 @@ local function setup()
   -- These plugins don't get loaded in plain term mode
   if not plain_term.is_enabled() then
     bufferline()
+    colour_scheme()
     colourizer()
     comment()
     conjure()
