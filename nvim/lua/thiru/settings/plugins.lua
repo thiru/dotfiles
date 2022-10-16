@@ -8,8 +8,13 @@ end
 
 local function colour_scheme()
   require("github-theme").setup({
-    theme_style = "light",
-    sidebars = {'tagbar'}
+    overrides = function()
+      return {
+        CursorColumn = {bg = "#F2F8FF"}
+      }
+    end,
+    sidebars = {'tagbar'},
+    theme_style = "light"
   })
 end
 
