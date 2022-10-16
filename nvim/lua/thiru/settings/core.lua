@@ -95,6 +95,11 @@ local function setup()
   -- Match on longest string first, then full string, etc.
   vim.opt.wildmode = 'list:longest,full'
 
+  -- Don't want diagnostics when viewing diffs
+  if vim.opt.diff:get() then
+    vim.diagnostic.disable()
+  end
+
   highlight_on_yank()
 
   set_colour_scheme()
