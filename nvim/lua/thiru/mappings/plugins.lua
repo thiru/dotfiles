@@ -13,7 +13,6 @@ local function tag_bar()
   vim.keymap.set('n', '<leader>t', ':TagbarToggle<CR>', { desc = '' })
 end
 
--- See `:help telescope.builtin`
 local function telescope()
   local builtin = require('telescope.builtin')
   local themes = require('telescope.themes')

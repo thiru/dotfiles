@@ -88,8 +88,8 @@ local function telescope()
     },
   }
 
-  -- Enable telescope fzf native, if installed
-  pcall(require('telescope').load_extension, 'fzf')
+  -- Enable telescope fzy native, if installed
+  pcall(require('telescope').load_extension, 'fzy_native')
 end
 
 local function treesitter()
