@@ -2,11 +2,6 @@ local doc = 'Global/builtin settings (not based on any plugins).'
 
 local plain_term = require('thiru.plain-term')
 
-local function set_colour_scheme()
-  -- Enable 24-bit colour mode
-  vim.opt.termguicolors = true
-end
-
 -- Make it easier to see exactly what was yanked
 local function highlight_on_yank()
   local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -95,14 +90,14 @@ local function setup()
   -- Match on longest string first, then full string, etc.
   vim.opt.wildmode = 'list:longest,full'
 
+  vim.opt.termguicolors = true
+
   -- Don't want diagnostics when viewing diffs
   if vim.opt.diff:get() then
     vim.diagnostic.disable()
   end
 
   highlight_on_yank()
-
-  set_colour_scheme()
 end
 
 return {
