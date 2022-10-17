@@ -53,6 +53,8 @@ local function setup(use)
     use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
     use { 'nvim-telescope/telescope-fzy-native.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
     use { 'nvim-telescope/telescope-symbols.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
+    -- This has some external dependencies like fd and plocate:
+    use { 'cljoly/telescope-repo.nvim', requires = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary' } }
 
     -- Lisp - parenthesis balancing
     use { 'eraserhd/parinfer-rust', run = 'cargo build --release'}
