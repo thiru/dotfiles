@@ -10,6 +10,7 @@ local function colour_scheme()
   local light_blue = '#F2F8FF'
 
   require("github-theme").setup({
+    keyword_style = 'NONE',
     overrides = function()
       return {
         CursorColumn = {bg = light_blue},
