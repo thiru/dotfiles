@@ -334,6 +334,7 @@ end
 local function setup()
   hop()
   treesitter()
+  win_resizer()
 
   -- These plugins don't get loaded in plain term mode
   if not plain_term.is_enabled() then
@@ -348,7 +349,6 @@ local function setup()
     nvim_cmp()
     nvim_tree()
     telescope()
-    win_resizer()
   end
 end
 
