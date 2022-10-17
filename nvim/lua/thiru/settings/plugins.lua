@@ -13,6 +13,7 @@ local function colour_scheme()
     keyword_style = 'NONE',
     overrides = function()
       return {
+        ColorColumn = {bg = '#F9F9F9'},
         CursorColumn = {bg = light_blue},
         CursorLine = {bg = light_blue}
       }
