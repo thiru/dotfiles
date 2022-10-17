@@ -82,16 +82,15 @@ end
 
 -- See `:help telescope` and `:help telescope.setup()`
 local function telescope()
-  require('telescope').setup {
+  require('telescope').setup({
     defaults = {
-      mappings = {
-        i = {
-          ['<C-u>'] = false,
-          ['<C-d>'] = false,
-        },
-      },
     },
-  }
+    pickers = {
+      find_files = {
+        find_command = { 'fd', '--follow', '--type', 'f' }
+      }
+    }
+  })
 
   -- Enable telescope fzy native, if installed
   pcall(require('telescope').load_extension, 'fzy_native')
