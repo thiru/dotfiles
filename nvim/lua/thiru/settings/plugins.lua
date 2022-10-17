@@ -7,10 +7,13 @@ local function bufferline()
 end
 
 local function colour_scheme()
+  local light_blue = '#F2F8FF'
+
   require("github-theme").setup({
     overrides = function()
       return {
-        CursorColumn = {bg = "#F2F8FF"}
+        CursorColumn = {bg = light_blue},
+        CursorLine = {bg = light_blue}
       }
     end,
     sidebars = {'tagbar'},
