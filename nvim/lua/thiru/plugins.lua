@@ -49,6 +49,11 @@ local function setup(use)
     -- Git log/diff at cursor
     use 'rhysd/git-messenger.vim'
 
+    -- Fuzzy Finder (files, lsp, etc)
+    use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
+    use { 'nvim-telescope/telescope-fzy-native.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
+    use { 'nvim-telescope/telescope-symbols.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
+
     -- Lisp - parenthesis balancing
     use { 'eraserhd/parinfer-rust', run = 'cargo build --release'}
 
@@ -67,11 +72,6 @@ local function setup(use)
     -- Status line
     use 'nvim-lualine/lualine.nvim'
 
-    -- Fuzzy Finder (files, lsp, etc)
-    use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
-    use { 'nvim-telescope/telescope-fzy-native.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
-    use { 'nvim-telescope/telescope-symbols.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
-
     -- Tag bar
     use { 'preservim/tagbar' }
 
@@ -85,6 +85,5 @@ end
 
 return {
   doc = doc,
-  register_plugins = register_plugins,
   setup = setup
 }
