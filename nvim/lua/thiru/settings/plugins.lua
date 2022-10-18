@@ -2,6 +2,10 @@ local doc = 'Plugin-specific settings.'
 
 local plain_term = require('thiru.plain-term')
 
+local function alpha()
+  require('alpha').setup(require('alpha.themes.startify').config)
+end
+
 local function bufferline()
   require("bufferline").setup({})
 end
@@ -348,6 +352,7 @@ local function setup()
 
   -- These plugins don't get loaded in plain term mode
   if not plain_term.is_enabled() then
+    alpha()
     bufferline()
     colour_scheme()
     colourizer()
