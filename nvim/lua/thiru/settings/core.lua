@@ -69,6 +69,10 @@ local function setup()
     vim.opt.signcolumn = 'yes'
   end
 
+  -- Reduce timeout for mapped sequence
+  -- This is also used by which-key to determine when it pops up
+  vim.opt.timeoutlen = 500
+
   -- Tabbing
   do
     -- Always use spaces as TAB

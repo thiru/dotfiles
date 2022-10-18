@@ -89,6 +89,9 @@ local function load_when_not_plain_term_mode(use)
   -- Whitespace cleaner
   use 'ntpeters/vim-better-whitespace'
 
+  -- Which key
+  use 'folke/which-key.nvim'
+
   -- Window resizer
   use  'simeji/winresizer'
 end

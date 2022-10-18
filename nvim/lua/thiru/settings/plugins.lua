@@ -347,6 +347,10 @@ local function nvim_cmp()
   })
 end
 
+local function which_key()
+  require("which-key").setup({})
+end
+
 local function win_resizer()
   -- The default key-chord is <C-E> which is too useful for me to have overridden
   vim.g.winresizer_start_key = '<leader>wr'
@@ -374,6 +378,7 @@ local function setup()
     nvim_cmp()
     nvim_tree()
     telescope()
+    which_key()
   end
 end
 
