@@ -83,6 +83,9 @@ local function load_when_not_plain_term_mode(use)
   -- Tag bar
   use { 'preservim/tagbar' }
 
+  -- Utils
+  use { 'nvim-lua/plenary.nvim' }
+
   -- Whitespace cleaner
   use 'ntpeters/vim-better-whitespace'
 
