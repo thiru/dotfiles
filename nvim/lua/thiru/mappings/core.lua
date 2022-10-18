@@ -60,6 +60,9 @@ local function misc()
   -- Execute current line in shell
   keymap('n','<leader>x', ":exec '!'.getline('.')<CR>", { desc = 'Execute current line in shell' })
 
+  -- Reload config
+  keymap('n', '<leader>vs', ':source $MYVIMRC<CR>', { desc = 'Reload (source) vim config' })
+
   -- Quit
   keymap({ 'n', 'v' }, '<leader>q', ':qall<CR>', { desc = 'Exit Vim (unless unsaved changes)' })
   keymap({ 'n', 'v' }, '<leader>Q', ':qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
