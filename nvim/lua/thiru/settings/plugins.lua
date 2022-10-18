@@ -90,6 +90,11 @@ local function hop()
   require('hop').setup()
 end
 
+local function neovide()
+  vim.g.neovide_transparency = 0.95
+  vim.g.transparency = 0.95
+end
+
 local function nvim_tree()
   require("nvim-tree").setup()
 end
@@ -361,6 +366,7 @@ end
 
 local function setup()
   hop()
+  neovide()
   treesitter()
   win_resizer()
 
