@@ -11,20 +11,26 @@ local function bufferline()
 end
 
 local function colour_scheme()
-  local light_blue = '#F2F8FF'
-
-  require("github-theme").setup({
-    keyword_style = 'NONE',
-    overrides = function()
-      return {
-        ColorColumn = {bg = '#F9F9F9'},
-        CursorColumn = {bg = light_blue},
-        CursorLine = {bg = light_blue}
-      }
-    end,
-    sidebars = {'tagbar'},
-    theme_style = "light"
-  })
+  if plain_term.is_enabled() then
+    require("tokyonight").setup({
+      transparent = true
+    })
+    vim.cmd('colorscheme tokyonight')
+  else
+    local light_blue = '#F2F8FF'
+    require("github-theme").setup({
+      keyword_style = 'NONE',
+      overrides = function()
+        return {
+          ColorColumn = {bg = '#F9F9F9'},
+          CursorColumn = {bg = light_blue},
+          CursorLine = {bg = light_blue}
+        }
+      end,
+      sidebars = {'tagbar'},
+      theme_style = "light"
+    })
+  end
 end
 
 local function colourizer()
@@ -91,8 +97,13 @@ local function hop()
 end
 
 local function neovide()
-  vim.g.neovide_transparency = 0.95
-  vim.g.transparency = 0.95
+  if plain_term.is_enabled() then
+    vim.g.neovide_transparency = 0.90
+    vim.g.transparency = 0.90
+  else
+    vim.g.neovide_transparency = 0.95
+    vim.g.transparency = 0.95
+  end
 end
 
 local function nvim_tree()
@@ -365,6 +376,7 @@ local function win_resizer()
 end
 
 local function setup()
+  colour_scheme()
   hop()
   neovide()
   treesitter()
@@ -374,7 +386,6 @@ local function setup()
   if not plain_term.is_enabled() then
     alpha()
     bufferline()
-    colour_scheme()
     colourizer()
     comment()
     conjure()
@@ -389,6 +400,7 @@ local function setup()
 end
 
 return {
+  colour_scheme = colour_scheme,
   doc = doc,
   setup = setup
 }

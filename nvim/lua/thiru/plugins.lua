@@ -40,6 +40,7 @@ local function load_when_not_plain_term_mode(use)
 
   -- Colour scheme
   use 'projekt0n/github-nvim-theme'
+  use 'folke/tokyonight.nvim'
 
   -- Colourizer
   use 'norcalli/nvim-colorizer.lua'
