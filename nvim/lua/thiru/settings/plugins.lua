@@ -51,14 +51,24 @@ local function conjure()
   vim.g['conjure#filetype#fennel'] = "conjure.client.fennel.stdio"
 end
 
--- See `:help lualine.txt`
 local function lualine()
+  local cwd = function()
+    return vim.fn.getcwd()
+  end
   require('lualine').setup {
     options = {
-      icons_enabled = false,
+      icons_enabled = true,
       theme = 'onelight',
       component_separators = '|',
       section_separators = '',
+    },
+    sections = {
+      lualine_a = {'mode'},
+      lualine_b = {'branch', 'diagnostics'},
+      lualine_c = {cwd},
+      lualine_x = {'filename', 'filesize'},
+      lualine_y = {'progress'},
+      lualine_z = {'location'}
     },
   }
 end
