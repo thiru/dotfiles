@@ -97,6 +97,8 @@ local function hop()
 end
 
 local function neovide()
+  vim.opt.guifont = {"Fira Mono", ":h15"}
+
   if plain_term.is_enabled() then
     vim.g.neovide_transparency = 0.80
   else
