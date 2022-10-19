@@ -57,6 +57,9 @@ local function load_when_not_plain_term_mode(use)
   -- Git log/diff at cursor
   use 'rhysd/git-messenger.vim'
 
+  -- GUI font resize
+  use 'ktunprasert/gui-font-resize.nvim'
+
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
   use { 'nvim-telescope/telescope-fzy-native.nvim', requires = { 'nvim-telescope/telescope.nvim' } }

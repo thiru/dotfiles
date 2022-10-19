@@ -92,6 +92,10 @@ local function gitsigns()
   }
 end
 
+local function gui_font_resize()
+  require("gui-font-resize").setup()
+end
+
 local function hop()
   require('hop').setup()
 end
@@ -367,6 +371,7 @@ end
 
 local function setup()
   colour_scheme()
+  gui_font_resize()
   hop()
   treesitter()
   win_resizer()
