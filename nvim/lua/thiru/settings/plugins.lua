@@ -96,16 +96,6 @@ local function hop()
   require('hop').setup()
 end
 
-local function neovide()
-  vim.opt.guifont = {"Fira Mono", ":h15"}
-
-  if plain_term.is_enabled() then
-    vim.g.neovide_transparency = 0.80
-  else
-    vim.g.neovide_transparency = 0.95
-  end
-end
-
 local function nvim_tree()
   require("nvim-tree").setup()
 end
@@ -378,7 +368,6 @@ end
 local function setup()
   colour_scheme()
   hop()
-  neovide()
   treesitter()
   win_resizer()
 

@@ -10,6 +10,7 @@ require('thiru.settings.core').setup()
 require('thiru.settings.plugins').setup()
 require('thiru.line-endings').setup()
 require('thiru.plain-term').setup()
+require('thiru.gui').setup()
 
 return {
   doc = doc
