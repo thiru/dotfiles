@@ -98,11 +98,9 @@ end
 
 local function neovide()
   if plain_term.is_enabled() then
-    vim.g.neovide_transparency = 0.90
-    vim.g.transparency = 0.90
+    vim.g.neovide_transparency = 0.80
   else
     vim.g.neovide_transparency = 0.95
-    vim.g.transparency = 0.95
   end
 end
 
