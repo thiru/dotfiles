@@ -39,17 +39,6 @@ local function plain_term()
     command = ':q'
   })
 
-  vim.api.nvim_create_autocmd('VimEnter', {
-    desc = [[
-      Hack to work around bug where Neovim doesn't take the full size of the
-      Alacritty window when used as the startup command:
-      https://github.com/neovim/neovim/issues/11330#issuecomment-723667383
-    ]],
-    pattern = '*',
-    group = augroup,
-    command = 'silent exec "!kill -s SIGWINCH $PPID"'
-  })
-
   vim.opt.background = 'dark'
   vim.opt.bufhidden = 'hide'
   vim.opt.cursorcolumn = false
