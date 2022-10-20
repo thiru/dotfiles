@@ -17,10 +17,6 @@ local function config()
 end
 
 local function buffers()
-  -- Close buffer without also closing splits
-  vim.keymap.set('n', '<leader>d', ':bprevious|bdelete #<CR>', { desc = 'Close buffer (without closing splits)' })
-  vim.keymap.set('n', '<leader>D', ':bprevious|bdelete! #<CR>', { desc = 'Close buffer (without closing splits and ignore modifications)' })
-
   -- Previous/next buffer
   keymap('n', '<C-j>', ':bp<CR>', { desc = 'Previous buffer', silent = true })
   keymap('n', '<C-k>', ':bn<CR>', { desc = 'Next buffer', silent = true })

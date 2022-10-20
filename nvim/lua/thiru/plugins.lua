@@ -27,6 +27,9 @@ local function load_when_not_plain_term_mode(use)
   -- Buffer (tab) bar
   use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 
+  -- Buffer closer (without disrupting windows)
+  use 'moll/vim-bbye'
+
   -- Clojure repl, etc.
   use 'Olical/conjure'
 

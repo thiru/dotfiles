@@ -1,5 +1,11 @@
 local doc = 'Key mappings for Neovim builtin actions.'
 
+local function bbye()
+  -- Close buffer without also closing splits
+  vim.keymap.set('n', '<leader>d', ':Bwipeout<CR>', { desc = 'Close buffer' })
+  vim.keymap.set('n', '<leader>D', ':Bwipeout!<CR>', { desc = 'Close buffer (even if modified)' })
+end
+
 local function gui_font_resize()
   vim.keymap.set("n", "<C-=>", "<cmd>:GUIFontSizeUp<CR>")
   vim.keymap.set("n", "<C-->", "<cmd>:GUIFontSizeDown<CR>")
@@ -47,6 +53,7 @@ local function telescope()
 end
 
 local function setup()
+  bbye()
   gui_font_resize()
   hop()
   nvim_tree()
