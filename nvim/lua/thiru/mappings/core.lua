@@ -84,7 +84,7 @@ local function text_navigation()
   end
 
   -- Matching bracket
-  keymap('n','<TAB>', '%', { desc = 'Go to matching bracket, etc.', remap = true })
+  keymap({'n', 'v'}, '<TAB>', '%', { desc = 'Go to matching bracket, etc.', remap = true })
 
   -- Navigate by screen lines, not logical lines (i.e. when lines are wrapped)
   keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
