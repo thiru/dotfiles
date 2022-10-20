@@ -7,7 +7,11 @@ local function alpha()
 end
 
 local function bufferline()
-  require("bufferline").setup({})
+  require("bufferline").setup({
+    options = {
+      show_buffer_icons = false
+    }
+  })
 end
 
 local function colour_scheme()
