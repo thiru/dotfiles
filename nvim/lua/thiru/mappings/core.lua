@@ -107,6 +107,7 @@ local function yanking()
 
   -- Paste from clipboard
   keymap('i', '<C-v>', '<C-r>*', { desc = 'Paste from system clipboard' })
+  keymap('t', '<A-v>', '<C-\\><C-n>pi', { desc = 'Paste from system clipboard' })
 end
 
 local function setup()
