@@ -82,6 +82,9 @@ local function load_when_not_plain_term_mode(use)
   -- LSP - manage external editor tooling i.e LSP servers
   use 'williamboman/mason.nvim'
 
+  -- Markdown auto-lists
+  use 'gaoDean/autolist.nvim'
+
   -- Match start/end markers better via %
   use 'andymass/vim-matchup'
 

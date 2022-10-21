@@ -6,6 +6,10 @@ local function alpha()
   require('alpha').setup(require('alpha.themes.startify').config)
 end
 
+local function auto_list()
+  require('autolist').setup({})
+end
+
 local function bufferline()
   require("bufferline").setup({
     options = {
@@ -397,6 +401,7 @@ local function setup()
   -- These plugins don't get loaded in plain term mode
   if not plain_term.is_enabled() then
     alpha()
+    auto_list()
     bufferline()
     colourizer()
     comment()
