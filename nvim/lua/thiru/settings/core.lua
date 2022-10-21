@@ -14,6 +14,18 @@ local function highlight_on_yank()
   })
 end
 
+local function open_help_in_vertical_split()
+  vim.api.nvim_create_autocmd('BufEnter', {
+    callback = function()
+      if vim.bo.buftype == 'help' then
+        vim.cmd('wincmd L')
+      end
+    end,
+    group = vim.api.nvim_create_augroup('HelpVerticalSplit', { clear = true }),
+    pattern = '*.txt'
+  })
+end
+
 local function setup()
   -- Disable backup and recovery files
   vim.opt.backup = false
@@ -102,6 +114,7 @@ local function setup()
   end
 
   highlight_on_yank()
+  open_help_in_vertical_split()
 end
 
 return {
