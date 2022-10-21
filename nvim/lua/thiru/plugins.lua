@@ -40,6 +40,7 @@ local function load_when_not_plain_term_mode(use)
   use { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' } }
   use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
   use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }
+  use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }
 
   -- Colour scheme
   use 'projekt0n/github-nvim-theme'
