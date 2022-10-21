@@ -284,6 +284,10 @@ local function nvim_cmp()
   })
 end
 
+local function rooter()
+  vim.g.rooter_patterns = {'.git', '.stfolder'}
+end
+
 local function treesitter()
   require('nvim-treesitter.configs').setup {
     ensure_installed = {
@@ -392,6 +396,7 @@ local function setup()
     lualine()
     nvim_cmp()
     nvim_tree()
+    rooter()
     telescope()
     which_key()
   end

@@ -84,6 +84,9 @@ local function load_when_not_plain_term_mode(use)
   -- Match start/end markers better via %
   use 'andymass/vim-matchup'
 
+  -- Root dir auto-changer
+  use 'airblade/vim-rooter'
+
   -- Status line
   use 'nvim-lualine/lualine.nvim'
 
