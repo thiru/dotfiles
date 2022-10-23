@@ -21,14 +21,10 @@ local function plain_term()
     command = ':q'
   })
 
-  vim.opt.background = 'dark'
-  vim.opt.bufhidden = 'hide'
   vim.opt.cursorcolumn = false
   vim.opt.cursorline = false
   vim.opt.laststatus = 0
   vim.opt.number = false
-  vim.opt.showmode = true
-  vim.opt.showtabline = 0
   vim.cmd('terminal')
   vim.cmd('startinsert')
 end
