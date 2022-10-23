@@ -18,26 +18,35 @@ local function bufferline()
   })
 end
 
+local function colour_scheme_terminal()
+  require("tokyonight").setup({
+    transparent = true
+  })
+  vim.cmd('colorscheme tokyonight')
+end
+
+local function colour_scheme_default()
+  local light_blue = '#F2F8FF'
+  require("github-theme").setup({
+    keyword_style = 'NONE',
+    overrides = function()
+      return {
+        ColorColumn = {bg = '#F9F9F9'},
+        CursorColumn = {bg = light_blue},
+        CursorLine = {bg = light_blue}
+      }
+    end,
+    sidebars = {'tagbar'},
+    theme_style = "light",
+    transparent = false,
+  })
+end
+
 local function colour_scheme()
   if plain_term.is_enabled() then
-    require("tokyonight").setup({
-      transparent = true
-    })
-    vim.cmd('colorscheme tokyonight')
+    colour_scheme_terminal()
   else
-    local light_blue = '#F2F8FF'
-    require("github-theme").setup({
-      keyword_style = 'NONE',
-      overrides = function()
-        return {
-          ColorColumn = {bg = '#F9F9F9'},
-          CursorColumn = {bg = light_blue},
-          CursorLine = {bg = light_blue}
-        }
-      end,
-      sidebars = {'tagbar'},
-      theme_style = "light"
-    })
+    colour_scheme_default()
   end
 end
 
@@ -419,6 +428,8 @@ end
 
 return {
   colour_scheme = colour_scheme,
+  colour_scheme_default = colour_scheme_default,
+  colour_scheme_terminal = colour_scheme_terminal,
   doc = doc,
   setup = setup
 }

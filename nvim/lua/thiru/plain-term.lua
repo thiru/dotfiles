@@ -24,6 +24,7 @@ local function plain_term()
   vim.opt.cursorcolumn = false
   vim.opt.laststatus = 0
   vim.opt.number = false
+  vim.opt.signcolumn = 'no'
   vim.cmd('terminal')
   vim.cmd('startinsert')
 end

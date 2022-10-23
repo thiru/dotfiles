@@ -1,26 +1,10 @@
 local doc = 'Plugin registration.'
 
 local bootstrap = require('thiru.bootstrap')
-local plain_term = require('thiru.plain-term')
 
-local function always_load(use)
+local function plugins(use)
   -- Package manager (seems to be the most popular one written in Lua)
   use 'wbthomason/packer.nvim'
-
-  -- Hop
-  use 'phaazon/hop.nvim'
-
-  -- Treesitter (highlight, edit, and navigate code)
-  use 'nvim-treesitter/nvim-treesitter'
-
-  -- Treesitter - additional textobjects
-  use 'nvim-treesitter/nvim-treesitter-textobjects'
-end
-
-local function load_when_not_plain_term_mode(use)
-  if plain_term.is_enabled() then
-    return
-  end
 
   -- Alpha (greeter)
   use { 'goolord/alpha-nvim', requires = { 'kyazdani42/nvim-web-devicons' } }
@@ -71,6 +55,9 @@ local function load_when_not_plain_term_mode(use)
   use { 'nvim-telescope/telescope-symbols.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
   use { 'cljoly/telescope-repo.nvim', requires = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' } }
 
+  -- Hop
+  use 'phaazon/hop.nvim'
+
   -- Lisp - parenthesis balancing
   use { 'eraserhd/parinfer-rust', run = 'cargo build --release'}
 
@@ -98,6 +85,12 @@ local function load_when_not_plain_term_mode(use)
   -- Tag bar
   use { 'preservim/tagbar' }
 
+  -- Treesitter (highlight, edit, and navigate code)
+  use 'nvim-treesitter/nvim-treesitter'
+
+  -- Treesitter - additional textobjects
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
+
   -- Utils
   use { 'nvim-lua/plenary.nvim' }
 
@@ -112,10 +105,7 @@ local function load_when_not_plain_term_mode(use)
 end
 
 local function setup()
-  bootstrap.setup(function(use)
-    always_load(use)
-    load_when_not_plain_term_mode(use)
-  end)
+  bootstrap.setup(plugins)
 end
 
 return {

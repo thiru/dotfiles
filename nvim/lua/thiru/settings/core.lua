@@ -1,7 +1,5 @@
 local doc = 'Global/builtin settings (not based on any plugins).'
 
-local plain_term = require('thiru.plain-term')
-
 -- Make it easier to see exactly what was yanked
 local function highlight_on_yank()
   local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -75,11 +73,7 @@ local function setup()
   vim.opt.relativenumber = true
 
   -- Always show the sign column to prevent horizontal jumping
-  if plain_term.is_enabled() then
-    vim.opt.signcolumn = 'no'
-  else
-    vim.opt.signcolumn = 'yes'
-  end
+  vim.opt.signcolumn = 'yes'
 
   -- Reduce timeout for mapped sequence
   -- This is also used by which-key to determine when it pops up
