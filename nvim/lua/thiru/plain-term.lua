@@ -22,7 +22,6 @@ local function plain_term()
   })
 
   vim.opt.cursorcolumn = false
-  vim.opt.cursorline = false
   vim.opt.laststatus = 0
   vim.opt.number = false
   vim.cmd('terminal')
