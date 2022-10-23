@@ -14,24 +14,6 @@ local function is_enabled()
 end
 
 local function plain_term()
-  vim.api.nvim_create_autocmd('TermEnter', {
-    desc = 'Hide relative numbers when _within_ virtual terminal',
-    pattern = '*',
-    group = augroup,
-    callback = function()
-      vim.opt.relativenumber = false
-    end
-  })
-
-  vim.api.nvim_create_autocmd('TermLeave', {
-    desc = 'Show relative numbers when leaving virtual terminal',
-    pattern = '*',
-    group = augroup,
-    callback = function()
-      vim.opt.relativenumber = true
-    end
-  })
-
   vim.api.nvim_create_autocmd('TermClose', {
     desc = 'Close Neovim when terminal is exited',
     pattern = '*',
@@ -45,7 +27,6 @@ local function plain_term()
   vim.opt.cursorline = false
   vim.opt.laststatus = 0
   vim.opt.number = false
-  vim.opt.relativenumber = false
   vim.opt.showmode = true
   vim.opt.showtabline = 0
   vim.cmd('terminal')
