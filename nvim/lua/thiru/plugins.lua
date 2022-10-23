@@ -1,5 +1,6 @@
 local doc = 'Plugin registration.'
 
+local bootstrap = require('thiru.bootstrap')
 local plain_term = require('thiru.plain-term')
 
 local function always_load(use)
@@ -110,9 +111,11 @@ local function load_when_not_plain_term_mode(use)
   use  'simeji/winresizer'
 end
 
-local function setup(use)
-  always_load(use)
-  load_when_not_plain_term_mode(use)
+local function setup()
+  bootstrap.setup(function(use)
+    always_load(use)
+    load_when_not_plain_term_mode(use)
+  end)
 end
 
 return {
