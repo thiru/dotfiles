@@ -6,12 +6,6 @@ local function bbye()
   vim.keymap.set('n', '<leader>D', ':Bwipeout!<CR>', { desc = 'Close buffer (even if modified)' })
 end
 
-local function gui_font_resize()
-  vim.keymap.set("n", "<C-=>", "<cmd>:GUIFontSizeUp<CR>")
-  vim.keymap.set("n", "<C-->", "<cmd>:GUIFontSizeDown<CR>")
-  vim.keymap.set("n", "<C-0>", "<cmd>:GUIFontSizeSet 15<CR>")
-end
-
 local function hop()
   vim.keymap.set('n', 's', ':HopWord<CR>', { desc = 'Hop to any word in buffer' })
 end
@@ -54,7 +48,6 @@ end
 
 local function setup()
   bbye()
-  gui_font_resize()
   hop()
   nvim_tree()
   tag_bar()
