@@ -7,7 +7,8 @@ require('thiru.settings.core').setup()
 require('thiru.settings.plugins').setup()
 require('thiru.line-endings').setup()
 require('thiru.plain-term').setup()
-require('thiru.gui').setup()
+require('thiru.gui.settings').setup()
+require('thiru.gui.neovide').setup()
 
 return {
   doc = doc
