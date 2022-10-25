@@ -1,5 +1,9 @@
 local doc = 'Key mappings for Neovim builtin actions.'
 
+local function alpha()
+  vim.keymap.set('n', '<leader>a', ':Alpha<CR>', { desc = 'Launch Alpha greeter' })
+end
+
 local function bbye()
   -- Close buffer without also closing splits
   vim.keymap.set('n', '<leader>d', ':Bwipeout<CR>', { desc = 'Close buffer' })
@@ -47,6 +51,7 @@ local function telescope()
 end
 
 local function setup()
+  alpha()
   bbye()
   hop()
   nvim_tree()

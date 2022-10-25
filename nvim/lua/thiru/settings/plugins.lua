@@ -378,10 +378,10 @@ local function treesitter()
       swap = {
         enable = true,
         swap_next = {
-          ['<leader>a'] = '@parameter.inner',
+          ['<localleader>a'] = '@parameter.inner',
         },
         swap_previous = {
-          ['<leader>A'] = '@parameter.inner',
+          ['<localleader>A'] = '@parameter.inner',
         },
       },
     },
