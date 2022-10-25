@@ -13,6 +13,7 @@ end
 local function bufferline()
   require("bufferline").setup({
     options = {
+      always_show_bufferline = false,
       show_buffer_icons = false
     }
   })
