@@ -1,7 +1,5 @@
 local doc = 'Plugin-specific settings.'
 
-local plain_term = require('thiru.plain-term')
-
 local function alpha()
   require('alpha').setup(require('alpha.themes.startify').config)
 end
@@ -19,14 +17,15 @@ local function bufferline()
   })
 end
 
-local function colour_scheme_terminal()
+local function colour_scheme_dark()
   require("tokyonight").setup({
     transparent = true
   })
   vim.cmd('colorscheme tokyonight')
+  vim.opt.background = 'dark'
 end
 
-local function colour_scheme_default()
+local function colour_scheme_light()
   local light_blue = '#F2F8FF'
   require("github-theme").setup({
     keyword_style = 'NONE',
@@ -43,12 +42,18 @@ local function colour_scheme_default()
   })
 end
 
-local function colour_scheme()
-  if plain_term.is_enabled() then
-    colour_scheme_terminal()
-  else
-    colour_scheme_default()
-  end
+local function color_scheme_user_cmds()
+  vim.api.nvim_create_user_command(
+    'ColourSchemeDark',
+    colour_scheme_dark,
+    {bang = true, desc = 'Set colour scheme to preferred (terminal) dark theme'}
+  )
+
+  vim.api.nvim_create_user_command(
+    'ColourSchemeLight',
+    colour_scheme_light,
+    {bang = true, desc = 'Set colour scheme to preferred light theme'}
+  )
 end
 
 local function colourizer()
@@ -402,35 +407,32 @@ local function win_resizer()
 end
 
 local function setup()
-  colour_scheme()
+  alpha()
+  auto_list()
+  bufferline()
+  colour_scheme_light()
+  color_scheme_user_cmds()
+  colourizer()
+  comment()
+  conjure()
+  gitsigns()
   gui_font_resize()
   hop()
+  lsp()
+  lualine()
+  nvim_cmp()
+  nvim_tree()
+  rooter()
+  telescope()
   treesitter()
+  which_key()
   win_resizer()
-
-  -- These plugins don't get loaded in plain term mode
-  if not plain_term.is_enabled() then
-    alpha()
-    auto_list()
-    bufferline()
-    colourizer()
-    comment()
-    conjure()
-    gitsigns()
-    lsp()
-    lualine()
-    nvim_cmp()
-    nvim_tree()
-    rooter()
-    telescope()
-    which_key()
-  end
 end
 
 return {
-  colour_scheme = colour_scheme,
-  colour_scheme_default = colour_scheme_default,
-  colour_scheme_terminal = colour_scheme_terminal,
+  colour_scheme_light = colour_scheme_light,
+  colour_scheme_dark = colour_scheme_dark,
   doc = doc,
+  lualine = lualine,
   setup = setup
 }
