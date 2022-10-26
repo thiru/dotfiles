@@ -94,9 +94,6 @@ local function plugins(use)
   -- Utils
   use { 'nvim-lua/plenary.nvim' }
 
-  -- Whitespace cleaner
-  use 'ntpeters/vim-better-whitespace'
-
   -- Which key
   use 'folke/which-key.nvim'
 
