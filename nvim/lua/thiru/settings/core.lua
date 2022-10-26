@@ -63,7 +63,7 @@ local function setup()
   vim.opt.smartcase = true
 
   -- Characters to show in place of whitespace characters
-  vim.opt.listchars = 'eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣'
+  vim.opt.listchars = 'tab:-→,trail:█,extends:>,precedes:<'
 
   -- Enable mouse in all modes
   vim.opt.mouse = 'a'
