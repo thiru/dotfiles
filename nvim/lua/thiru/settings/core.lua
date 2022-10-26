@@ -24,6 +24,37 @@ local function open_help_in_vertical_split()
   })
 end
 
+local function show_hide_listchars()
+  local group = vim.api.nvim_create_augroup('show-listchars', {clear = true})
+
+  local maybe_show_listchars = function()
+    if vim.bo.buftype ~= 'terminal' and not vim.opt.diff:get() then
+      vim.wo.list = true
+    end
+  end
+
+  vim.api.nvim_create_autocmd('WinEnter', {
+    desc = 'Show whitespace chars for appropriate buffers',
+    pattern = '*',
+    group = group,
+    callback = maybe_show_listchars
+  })
+
+  vim.api.nvim_create_autocmd('InsertEnter', {
+    desc = 'Hide whitespace (listchars) while editing',
+    pattern = '*',
+    group = group,
+    command = ':set nolist'
+  })
+
+  vim.api.nvim_create_autocmd('InsertLeave', {
+    desc = 'Show whitespace chars for appropriate buffers',
+    pattern = '*',
+    group = group,
+    callback = maybe_show_listchars
+  })
+end
+
 local function setup()
   -- Disable backup and recovery files
   vim.opt.backup = false
@@ -109,6 +140,7 @@ local function setup()
 
   highlight_on_yank()
   open_help_in_vertical_split()
+  show_hide_listchars()
 end
 
 return {
