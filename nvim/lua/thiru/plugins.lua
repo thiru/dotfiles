@@ -35,7 +35,10 @@ local function plugins(use)
   use 'norcalli/nvim-colorizer.lua'
 
   -- File tree explorer
-  use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
+  use { 'nvim-neo-tree/neo-tree.nvim',
+        requires = { 'MunifTanjim/nui.nvim',
+                     'nvim-lua/plenary.nvim',
+                     'nvim-tree/nvim-web-devicons' } }
 
   -- Git commands in vim
   use 'tpope/vim-fugitive'

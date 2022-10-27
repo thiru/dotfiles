@@ -14,9 +14,8 @@ local function hop()
   vim.keymap.set('n', 's', ':HopWord<CR>', { desc = 'Hop to any word in buffer' })
 end
 
-local function nvim_tree()
-  vim.keymap.set('n', '<leader>ff', ':NvimTreeToggle<CR>', { desc = 'File Tree - Toggle visibility' })
-  vim.keymap.set('n', '<leader>fo', ':NvimTreeFindFile<CR>', { desc = 'File Tree - Focus opened file in tree' })
+local function neo_tree()
+  vim.keymap.set('n', '<leader>ff', ':Neotree toggle reveal<CR>', { desc = 'File Tree - Toggle visibility' })
 end
 
 local function tag_bar()
@@ -54,7 +53,7 @@ local function setup()
   alpha()
   bbye()
   hop()
-  nvim_tree()
+  neo_tree()
   tag_bar()
   telescope()
 end

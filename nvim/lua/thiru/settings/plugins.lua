@@ -123,8 +123,13 @@ local function hop()
   require('hop').setup()
 end
 
-local function nvim_tree()
-  require("nvim-tree").setup()
+local function neo_tree()
+  require('neo-tree').setup({
+    filesystem = {
+      follow_current_file = true,
+      use_libuv_file_watcher = true
+    }
+  })
 end
 
 local function telescope()
@@ -421,7 +426,7 @@ local function setup()
   lsp()
   lualine()
   nvim_cmp()
-  nvim_tree()
+  neo_tree()
   rooter()
   telescope()
   treesitter()

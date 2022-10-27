@@ -61,10 +61,6 @@ local function setup()
   vim.opt.writebackup = false
   vim.opt.swapfile = false
 
-  -- disable netrw (strongly suggested by nvim-tree plugin)
-  vim.g.loaded = 1
-  vim.g.loaded_netrwPlugin = 1
-
   -- Preserve indentation even when line is wrapped
   vim.opt.breakindent = true
 
