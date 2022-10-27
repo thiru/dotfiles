@@ -28,7 +28,10 @@ local function show_hide_listchars()
   local group = vim.api.nvim_create_augroup('show-listchars', {clear = true})
 
   local maybe_show_listchars = function()
-    if vim.bo.buftype ~= 'terminal' and not vim.opt.diff:get() then
+    if not vim.opt.diff:get()
+       and vim.bo.buftype ~= 'nofile'
+       and vim.bo.buftype ~= 'terminal'
+    then
       vim.wo.list = true
     end
   end
