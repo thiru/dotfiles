@@ -93,6 +93,12 @@ local function text_navigation()
   keymap('n', '<leader>ww', ':set wrap!<CR>', { desc = 'Toggle word wrap' })
 end
 
+local function windows()
+  keymap('i', '<C-;>', '<ESC><C-w>', { desc = 'Initiate window prefix key (from insert mode)' })
+  keymap({'n', 'v'}, '<C-;>', '<C-w>', { desc = 'Initiate window prefix key (from normal/visual mode)' })
+  keymap('t', '<C-;>', '<C-\\><C-n><C-w>', { desc = 'Initiate window prefix key (from terminal mode)' })
+end
+
 local function yanking()
   -- Copy everything to the clipboard
   keymap('n', '<leader>ya', ':%y+<CR>', { desc = 'Copy everything to system clipboard' })
@@ -115,6 +121,7 @@ local function setup()
   misc()
   terminal()
   text_navigation()
+  windows()
   yanking()
 end
 
