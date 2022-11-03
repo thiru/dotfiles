@@ -49,6 +49,10 @@ local function files()
 end
 
 local function misc()
+  -- Swap colon and semicolon
+  keymap({'n', 'v'}, ';', ':')
+  keymap({'n', 'v'}, ':', ';')
+
   -- Command-line up/down
   keymap('c', '<C-j>', '<Down>', { desc = 'Next command (cmd-line mode)' })
   keymap('c', '<C-k>', '<Up>', { desc = 'Previous command (cmd-line mode)' })
