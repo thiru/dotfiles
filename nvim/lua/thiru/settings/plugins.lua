@@ -69,6 +69,11 @@ local function comment()
 end
 
 local function conjure()
+  -- Don't auto-start REPL in diff mode
+  if vim.opt.diff:get() then
+    vim.g['conjure#client_on_load'] = false
+  end
+
   vim.g['conjure#mapping#doc_word'] = {'<localleader>k'}
   vim.g['conjure#log#botright'] = true
 
