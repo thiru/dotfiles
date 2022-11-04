@@ -1,7 +1,9 @@
 local doc = 'Plugin-specific settings.'
 
 local function alpha()
-  require('alpha').setup(require('alpha.themes.startify').config)
+  if not vim.opt.diff:get() then
+    require('alpha').setup(require('alpha.themes.startify').config)
+  end
 end
 
 local function auto_list()
@@ -112,15 +114,17 @@ end
 
 -- See `:help gitsigns.txt`
 local function gitsigns()
-  require('gitsigns').setup {
-    signs = {
-      add = { text = '+' },
-      change = { text = '~' },
-      delete = { text = '_' },
-      topdelete = { text = '‾' },
-      changedelete = { text = '~' },
-    },
-  }
+  if not vim.opt.diff:get() then
+    require('gitsigns').setup {
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      },
+    }
+  end
 end
 
 local function gui_font_resize()
@@ -168,6 +172,10 @@ local function telescope()
 end
 
 local function lsp()
+  if vim.opt.diff:get() then
+    return
+  end
+
   --  This function gets run when an LSP connects to a particular buffer.
   local on_attach = function(_, bufnr)
     print('attach in lsp settings')
@@ -279,6 +287,10 @@ local function lsp()
 end
 
 local function nvim_cmp()
+  if vim.opt.diff:get() then
+    return
+  end
+
   local cmp = require('cmp')
   local luasnip = require('luasnip')
 
