@@ -431,6 +431,10 @@ local function win_resizer()
   vim.g.winresizer_vert_resize = 5
 end
 
+local function win_separator()
+  require('colorful-winsep').setup()
+end
+
 local function setup()
   alpha()
   auto_list()
@@ -452,6 +456,7 @@ local function setup()
   treesitter()
   which_key()
   win_resizer()
+  win_separator()
 end
 
 return {
