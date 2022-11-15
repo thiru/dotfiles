@@ -63,6 +63,12 @@ local function setup()
   if is_enabled() then
     plain_term()
   end
+
+  vim.api.nvim_create_user_command(
+    'PlainTerm',
+    plain_term,
+    {bang = true,
+     desc = 'Start plain terminal mode'})
 end
 
 return {
