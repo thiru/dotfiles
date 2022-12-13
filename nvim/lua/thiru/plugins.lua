@@ -30,6 +30,7 @@ local function plugins(use)
   -- Colour scheme
   use 'projekt0n/github-nvim-theme'
   use 'folke/tokyonight.nvim'
+  use 'cormacrelf/vim-colors-github' -- only used for viewing diffs
 
   -- Colourizer
   use 'norcalli/nvim-colorizer.lua'
