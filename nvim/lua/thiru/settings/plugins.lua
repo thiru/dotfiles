@@ -140,6 +140,12 @@ local function neo_tree()
     filesystem = {
       follow_current_file = true,
       use_libuv_file_watcher = true
+    },
+    window = {
+      mappings = {
+        ['<CR>'] = 'open',
+        ['o'] = 'open'
+      }
     }
   })
 end
