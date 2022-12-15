@@ -103,9 +103,6 @@ local function plugins(use)
 
   -- Window resizer
   use  'simeji/winresizer'
-
-  -- Window separator
-  use "nvim-zh/colorful-winsep.nvim"
 end
 
 local function setup()
