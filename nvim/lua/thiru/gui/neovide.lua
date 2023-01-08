@@ -1,14 +1,25 @@
 local doc = 'Neovide-specific configs'
 
-local transparency_default = 0.9
+local plain_term = require('thiru.plain-term')
+
+local transparency_default = 0.95
 local transparency_step = 0.05
+local term_trans_override = 0.85
 
 local function transparency_print()
   print('Neovide transparency = ' .. vim.g.neovide_transparency)
 end
 
+local function set_default_transparency()
+  if plain_term.is_enabled() then
+    vim.g.neovide_transparency = term_trans_override
+  else
+    vim.g.neovide_transparency = transparency_default
+  end
+end
+
 local function transparency_reset()
-  vim.g.neovide_transparency = transparency_default
+  set_default_transparency()
   transparency_print()
 end
 
@@ -27,7 +38,7 @@ local function setup()
     return
   end
 
-  vim.g.neovide_transparency = transparency_default
+  set_default_transparency()
 
   vim.api.nvim_create_user_command(
     'NeovideTransparencyInc',
