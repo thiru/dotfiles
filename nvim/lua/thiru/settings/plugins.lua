@@ -27,9 +27,9 @@ local function colour_scheme_dark()
   vim.opt.background = 'dark'
 end
 
--- Prefer github-theme since it leverages TreeSitter. However this doesn't support highlighting
--- individual character differences in a line. So, when in diff mode we use github theme (which
--- doesn't support TreeSitter)
+-- Prefer the 'github-theme' since it leverages TreeSitter. However this theme doesn't support
+-- highlighting individual character differences in a line. So, when in diff mode we use the
+-- 'github' theme instead (which doesn't support TreeSitter).
 local function colour_scheme_light()
   if vim.opt.diff:get() then
     vim.cmd('colorscheme github')
