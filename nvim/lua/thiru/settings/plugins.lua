@@ -27,29 +27,10 @@ local function colour_scheme_dark()
   vim.opt.background = 'dark'
 end
 
--- Prefer the 'github-theme' since it leverages TreeSitter. However this theme doesn't support
--- highlighting individual character differences in a line. So, when in diff mode we use the
--- 'github' theme instead (which doesn't support TreeSitter).
 local function colour_scheme_light()
-  if vim.opt.diff:get() then
-    vim.cmd('colorscheme github')
-    vim.opt.background = 'light'
-  else
-    local light_blue = '#F2F8FF'
-    require("github-theme").setup({
-      keyword_style = 'NONE',
-      overrides = function()
-        return {
-          ColorColumn = {bg = '#F9F9F9'},
-          CursorColumn = {bg = light_blue},
-          CursorLine = {bg = light_blue}
-        }
-      end,
-      sidebars = {'tagbar'},
-      theme_style = "light",
-      transparent = false,
-    })
-  end
+  vim.cmd('colorscheme github')
+  vim.opt.background = 'light'
+  vim.cmd('highlight CursorColumn guibg=#F2F8FF')
 end
 
 -- Prefer light theme unless we're in a TTY/console with a limited colour palette
