@@ -129,10 +129,6 @@ local function gui_font_resize()
   require("gui-font-resize").setup()
 end
 
-local function hop()
-  require('hop').setup()
-end
-
 local function neo_tree()
   require('neo-tree').setup({
     filesystem = {
@@ -438,7 +434,6 @@ local function setup()
   conjure()
   gitsigns()
   gui_font_resize()
-  hop()
   lsp()
   lualine()
   nvim_cmp()

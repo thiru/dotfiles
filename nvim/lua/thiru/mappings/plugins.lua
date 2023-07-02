@@ -10,10 +10,6 @@ local function bbye()
   vim.keymap.set('n', '<leader>D', ':Bwipeout!<CR>', { desc = 'Close buffer (even if modified)' })
 end
 
-local function hop()
-  vim.keymap.set('n', 's', ':HopWord<CR>', { desc = 'Hop to any word in buffer' })
-end
-
 local function neo_tree()
   vim.keymap.set('n', '<leader>ff', ':Neotree toggle reveal<CR>', { desc = 'File Tree - Toggle visibility' })
 end
@@ -52,7 +48,6 @@ end
 local function setup()
   alpha()
   bbye()
-  hop()
   neo_tree()
   tag_bar()
   telescope()

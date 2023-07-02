@@ -53,8 +53,54 @@ local plugins = {
   { 'nvim-telescope/telescope-symbols.nvim', dependencies = { 'nvim-telescope/telescope.nvim' } },
   { 'cljoly/telescope-repo.nvim', dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' } },
 
-  -- Hop
-  'phaazon/hop.nvim',
+  -- Flash - easy motions
+  {
+    'folke/flash.nvim',
+    event = "VeryLazy",
+    opts = {},
+    keys = {
+      {
+        "s",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump()
+        end,
+        desc = "Flash",
+      },
+      {
+        "S",
+        mode = { "n", "o", "x" },
+        function()
+          require("flash").treesitter()
+        end,
+        desc = "Flash Treesitter",
+      },
+      {
+        "r",
+        mode = "o",
+        function()
+          require("flash").remote()
+        end,
+        desc = "Remote Flash",
+      },
+      {
+        "R",
+        mode = { "o", "x" },
+        function()
+          require("flash").treesitter_search()
+        end,
+        desc = "Flash Treesitter Search",
+      },
+      {
+        "<c-s>",
+        mode = { "c" },
+        function()
+          require("flash").toggle()
+        end,
+        desc = "Toggle Flash Search",
+      },
+    },
+  },
 
   -- Lisp - parenthesis balancing
   { 'eraserhd/parinfer-rust', init = function() vim.fn.execute('!cargo build --release') end},
