@@ -1,5 +1,6 @@
 local doc = 'Config starting point.'
 
+require('thiru.bootstrap').setup()
 require('thiru.plugins').setup()
 require('thiru.mappings.core').setup()
 require('thiru.mappings.plugins').setup()

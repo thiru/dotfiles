@@ -427,14 +427,6 @@ local function which_key()
   require("which-key").setup({})
 end
 
-local function win_resizer()
-  -- The default key-chord is <C-E> which is too useful for me to have overridden
-  vim.g.winresizer_start_key = '<leader>wr'
-
-  -- Amount of columns to resize vertically by
-  vim.g.winresizer_vert_resize = 5
-end
-
 local function setup()
   alpha()
   auto_list()
@@ -455,7 +447,6 @@ local function setup()
   telescope()
   treesitter()
   which_key()
-  win_resizer()
 end
 
 return {
