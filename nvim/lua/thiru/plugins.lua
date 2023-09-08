@@ -5,7 +5,7 @@ local plugins = {
   { 'goolord/alpha-nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
 
   -- Buffer (tab) bar
-  {'akinsho/bufferline.nvim', tag = "v2.*", dependencies = 'nvim-tree/nvim-web-devicons'},
+  {'akinsho/bufferline.nvim', tag = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
 
   -- Buffer closer (without disrupting windows)
   'moll/vim-bbye',
