@@ -38,6 +38,10 @@ local function setup()
     return
   end
 
+  -- HACK: Neovide exits terminal mode when mouse is moved
+  -- See: https://github.com/neovide/neovide/issues/1838
+  vim.keymap.set("t", "<MouseMove>", "<NOP>")
+
   set_default_transparency()
 
   vim.api.nvim_create_user_command(
