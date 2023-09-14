@@ -4,7 +4,7 @@ local plain_term = require('thiru.plain-term')
 
 local transparency_default = 0.95
 local transparency_step = 0.05
-local term_trans_override = 0.85
+local term_trans_override = 0.95
 
 local function transparency_print()
   print('Neovide transparency = ' .. vim.g.neovide_transparency)

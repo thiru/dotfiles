@@ -28,8 +28,7 @@ local function plugins(use)
   use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }
 
   -- Colour scheme
-  use 'cormacrelf/vim-colors-github'
-  use 'folke/tokyonight.nvim'
+  use 'sainnhe/edge'
 
   -- Colourizer
   use 'norcalli/nvim-colorizer.lua'

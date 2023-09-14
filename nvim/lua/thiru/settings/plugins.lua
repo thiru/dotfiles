@@ -20,17 +20,19 @@ local function bufferline()
 end
 
 local function colour_scheme_dark()
-  require("tokyonight").setup({
-    transparent = true
-  })
-  vim.cmd('colorscheme tokyonight')
+  vim.g.edge_style = 'aura'
+  vim.g.edge_better_performance = 1
+  vim.g.edge_enable_italic = 1
   vim.opt.background = 'dark'
+  vim.cmd('colorscheme edge')
 end
 
 local function colour_scheme_light()
-  vim.cmd('colorscheme github')
+  vim.g.edge_style = 'aura'
+  vim.g.edge_better_performance = 1
+  vim.g.edge_enable_italic = 1
   vim.opt.background = 'light'
-  vim.cmd('highlight CursorColumn guibg=#F2F8FF')
+  vim.cmd('colorscheme edge')
 end
 
 -- Prefer light theme unless we're in a TTY/console with a limited colour palette
@@ -95,7 +97,7 @@ local function lualine()
   require('lualine').setup {
     options = {
       icons_enabled = true,
-      theme = 'onelight',
+      theme = 'edge',
       component_separators = '|',
       section_separators = '',
     },
