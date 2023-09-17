@@ -11,7 +11,7 @@ local function bbye()
 end
 
 local function hop()
-  vim.keymap.set('n', 's', ':HopWord<CR>', { desc = 'Hop to any word in buffer' })
+  vim.keymap.set('n', '<leader><leader>', ':HopWord<CR>', { desc = 'Hop to any word in buffer' })
 end
 
 local function neo_tree()
