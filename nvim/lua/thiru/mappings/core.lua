@@ -44,8 +44,8 @@ local function files()
 
   -- Save file
   keymap('n', '<leader>fs', ':w<CR>', { desc = 'Save current file' })
-  keymap('n', '<C-s>', ':w<CR>', { desc = 'Save current file' })
-  keymap('i', '<C-s>', '<C-o>:w<CR>', { desc = 'Save current file' })
+  keymap('n', '<C-s>', ':w<CR>', { desc = 'Save current file', silent = true })
+  keymap('i', '<C-s>', '<C-o>:w<CR>', { desc = 'Save current file', silent = true })
 end
 
 local function misc()
@@ -91,7 +91,7 @@ local function text_navigation()
   keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
   -- Search highlight off
-  keymap('n', '<leader>ho', ':nohlsearch<CR>', { desc = 'Search highlight off' })
+  keymap('n', '<leader>ho', ':nohlsearch<CR>', { desc = 'Search highlight off', silent = true })
 
   -- Toggle word wrap
   keymap('n', '<leader>ww', ':set wrap!<CR>', { desc = 'Toggle word wrap' })
