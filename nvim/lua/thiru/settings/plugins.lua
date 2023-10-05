@@ -388,8 +388,11 @@ local function treesitter()
       'lua',
       'make',
       'markdown',
+      'markdown_inline',
       'python',
-      'rust'
+      'regex',
+      'rust',
+      'vim'
     },
 
     highlight = { enable = true },
