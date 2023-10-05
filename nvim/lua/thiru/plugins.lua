@@ -78,6 +78,9 @@ local function plugins(use)
   -- Match start/end markers better via %
   use 'andymass/vim-matchup'
 
+  -- Nicer looking command-line and notifications/messages
+  use { 'folke/noice.nvim', requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" } }
+
   -- Root dir auto-changer
   use 'airblade/vim-rooter'
 
