@@ -18,6 +18,10 @@ local function neo_tree()
   vim.keymap.set('n', '<leader>ff', ':Neotree toggle reveal<CR>', { desc = 'File Tree - Toggle visibility' })
 end
 
+local function noice()
+  vim.keymap.set('n', '<C-n>', ':Noice dismiss<CR>', { desc = 'Dismiss all notifications', silent = true })
+end
+
 local function tag_bar()
   vim.keymap.set('n', '<leader>t', ':TagbarToggle<CR>', { desc = '' })
 end
@@ -54,6 +58,7 @@ local function setup()
   bbye()
   hop()
   neo_tree()
+  noice()
   tag_bar()
   telescope()
 end
