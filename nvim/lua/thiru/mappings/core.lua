@@ -66,6 +66,9 @@ local function misc()
   -- Quit
   keymap({ 'n', 'v' }, '<leader>q', ':qall<CR>', { desc = 'Exit Vim (unless unsaved changes)' })
   keymap({ 'n', 'v' }, '<leader>Q', ':qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
+
+  -- Suppress substitute
+  keymap({ 'n', 'v' }, 's', '<Nop>', { silent = true })
 end
 
 local function terminal()
