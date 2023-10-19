@@ -38,6 +38,9 @@ local function setup()
     return
   end
 
+  -- Start in home directory so it's easier to search entire directory tree
+  vim.cmd('cd ~')
+
   -- HACK: Neovide exits terminal mode when mouse is moved
   -- See: https://github.com/neovide/neovide/issues/1838
   vim.keymap.set("t", "<MouseMove>", "<NOP>")
