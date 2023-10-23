@@ -1,7 +1,13 @@
 local doc = 'Plugin-specific settings.'
 
+local g = require('thiru.globals')
+
+local function apply_quick_edit_mode()
+  vim.cmd('normal p')
+end
+
 local function alpha()
-  if not vim.opt.diff:get() then
+  if not vim.opt.diff:get() and not g.is_quick_edit_mode() then
     require('alpha').setup(require('alpha.themes.startify').config)
   end
 end
@@ -465,6 +471,10 @@ local function win_resizer()
 end
 
 local function setup()
+  if g.is_quick_edit_mode() then
+    apply_quick_edit_mode()
+  end
+
   alpha()
   auto_list()
   bufferline()

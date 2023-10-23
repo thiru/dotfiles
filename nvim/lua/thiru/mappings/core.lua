@@ -1,6 +1,7 @@
 local doc = 'Key mappings for Neovim builtins (i.e. without plugins).'
 
 local keymap = vim.keymap.set
+local g = require('thiru.globals')
 
 local function leaders()
   vim.g.mapleader = ' '
@@ -44,8 +45,14 @@ local function files()
 
   -- Save file
   keymap('n', '<leader>fs', ':w<CR>', { desc = 'Save current file' })
-  keymap('n', '<C-s>', ':w<CR>', { desc = 'Save current file', silent = true })
-  keymap('i', '<C-s>', '<cmd>write<CR>', { desc = 'Save current file', silent = true })
+
+  if g.is_quick_edit_mode() then
+    keymap('n', '<C-s>', ':%y+<CR>:qa!<CR>', { desc = 'Copy everything to system clipboard and quit', silent = true })
+    keymap('i', '<C-s>', '<ESC>:%y+<CR>:qa!<CR>', { desc = 'Save current file and quit', silent = true })
+  else
+    keymap('n', '<C-s>', ':w<CR>', { desc = 'Save current file', silent = true })
+    keymap('i', '<C-s>', '<cmd>write<CR>', { desc = 'Save current file', silent = true })
+  end
 end
 
 local function misc()
