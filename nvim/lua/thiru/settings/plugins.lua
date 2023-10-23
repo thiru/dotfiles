@@ -42,15 +42,6 @@ local function colour_scheme_light()
   vim.cmd('colorscheme edge')
 end
 
--- Prefer light theme unless we're in a TTY/console with a limited colour palette
-local function colour_scheme()
-  if os.getenv("TERM") == "linux" then
-    colour_scheme_dark()
-  else
-    colour_scheme_light()
-  end
-end
-
 local function color_scheme_user_cmds()
   vim.api.nvim_create_user_command(
     'ColourSchemeDark',
@@ -478,7 +469,7 @@ local function setup()
   alpha()
   auto_list()
   bufferline()
-  colour_scheme()
+  colour_scheme_light()
   color_scheme_user_cmds()
   colourizer()
   comment()
