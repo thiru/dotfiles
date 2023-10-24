@@ -43,13 +43,14 @@ local function files()
   keymap('n', '<leader>fc', ':e <C-r>+<CR>',
          { desc = 'Open file stored in system clipboard' })
 
-  -- Save file
-  keymap('n', '<leader>fs', ':w<CR>', { desc = 'Save current file' })
-
+  -- Copy all and exit
   if g.is_quick_edit_mode() then
+    keymap('n', 's', ':%y+<CR>:qa!<CR>', { desc = 'Save current file', silent = true })
     keymap('n', '<C-s>', ':%y+<CR>:qa!<CR>', { desc = 'Copy everything to system clipboard and quit', silent = true })
     keymap('i', '<C-s>', '<ESC>:%y+<CR>:qa!<CR>', { desc = 'Save current file and quit', silent = true })
+  -- Save file
   else
+    keymap('n', 's', ':w<CR>', { desc = 'Save current file', silent = true })
     keymap('n', '<C-s>', ':w<CR>', { desc = 'Save current file', silent = true })
     keymap('i', '<C-s>', '<cmd>write<CR>', { desc = 'Save current file', silent = true })
   end
@@ -73,9 +74,6 @@ local function misc()
   -- Quit
   keymap({ 'n', 'v' }, '<leader>q', ':qall<CR>', { desc = 'Exit Vim (unless unsaved changes)' })
   keymap({ 'n', 'v' }, '<leader>Q', ':qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
-
-  -- Suppress substitute
-  keymap({ 'n', 'v' }, 's', '<Nop>', { silent = true })
 end
 
 local function terminal()
