@@ -142,8 +142,16 @@ local function neo_tree()
     window = {
       mappings = {
         ['<CR>'] = 'open',
-        ['o'] = 'open'
+        ['o'] = 'open',
+        ['O'] = 'system_open'
       }
+    },
+    commands = {
+      system_open = function(state)
+        local node = state.tree:get_node()
+        local path = node:get_id()
+        vim.fn.jobstart({ "xdg-open", path }, { detach = true })
+      end,
     }
   })
 end
