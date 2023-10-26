@@ -143,15 +143,25 @@ local function neo_tree()
       mappings = {
         ['<CR>'] = 'open',
         ['o'] = 'open',
-        ['O'] = 'system_open'
+        ['O'] = 'alt_open',
       }
     },
     commands = {
-      system_open = function(state)
+      alt_open = function(state)
         local node = state.tree:get_node()
         local path = node:get_id()
-        vim.fn.jobstart({ "xdg-open", path }, { detach = true })
-      end,
+
+        if node.type == 'directory' then
+          local children = node:get_child_ids()
+          for _, cp in ipairs(children) do
+            if vim.fn.isdirectory(cp) == 0 then
+              vim.cmd('e ' .. cp)
+            end
+          end
+        else
+          vim.fn.jobstart({ "xdg-open", path }, { detach = true })
+        end
+      end
     }
   })
 end
