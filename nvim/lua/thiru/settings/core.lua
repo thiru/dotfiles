@@ -137,6 +137,9 @@ local function setup()
     vim.diagnostic.disable()
   end
 
+  -- Allow changing the window title
+  vim.opt.title = true
+
   highlight_on_yank()
   open_help_in_vertical_split()
   show_hide_listchars()
