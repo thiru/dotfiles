@@ -71,6 +71,8 @@ local function misc()
   -- Reload config
   keymap('n', '<leader>vs', ':source $MYVIMRC<CR>', { desc = 'Reload (source) vim config' })
 
+  keymap('n', '<leader>r', ':bufdo :Bdelete<CR>:cd<CR>:pwd<CR>', { desc = 'Close all and go to home dir', silent = true })
+
   -- Quit
   keymap({ 'n', 'v' }, '<leader>q', ':qall<CR>', { desc = 'Exit Vim (unless unsaved changes)' })
   keymap({ 'n', 'v' }, '<leader>Q', ':qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
