@@ -34,10 +34,10 @@ end
 local function files()
   -- CWD
   keymap('n', '<leader>cd', ':cd %:p:h<CR>:pwd<CR>',
-         { desc = 'Change working directory to that of the current file' })
+         { desc = 'Change working directory to that of the current file', silent = true })
 
   -- PWD
-  keymap('n', '<leader>wd', ':pwd<CR>', { desc = 'Print current working directory' })
+  keymap('n', '<leader>wd', ':pwd<CR>', { desc = 'Print current working directory', silent = true })
 
   -- Open file in clipboard
   keymap('n', '<leader>fc', ':e <C-r>+<CR>',
