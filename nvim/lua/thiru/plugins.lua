@@ -33,6 +33,9 @@ local function plugins(use)
   -- Colourizer
   use 'norcalli/nvim-colorizer.lua'
 
+  -- CSV syntax highlighting and querying
+  use 'mechatroner/rainbow_csv'
+
   -- File tree explorer
   use { 'nvim-neo-tree/neo-tree.nvim',
         requires = { 'MunifTanjim/nui.nvim',
