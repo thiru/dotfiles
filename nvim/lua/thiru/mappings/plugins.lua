@@ -49,7 +49,6 @@ local function telescope()
   vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps (normal mode)' })
   vim.keymap.set('n', '<leader>sm', builtin.marks, { desc = '[S]earch [M]arks' })
   vim.keymap.set('n', '<leader>so', builtin.oldfiles, { desc = '[S]earch [O]ld files' })
-  vim.keymap.set('n', '<leader>sr', ':Telescope repo list<CR>', { desc = '[S]earch [R]epos' })
   vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
 end
 

@@ -177,13 +177,6 @@ local function telescope()
       }
     },
     extensions = {
-      repo = {
-        list = {
-          fd_opts = { '--follow' },
-          file_ignore_patterns = { '/%.cache/', '/%.cargo/', '/%.gitlibs/', '/%.local/', '/%.vim/plugged/' },
-          pattern = [[^\.(git|stfolder)$]],
-        }
-      }
     },
     pickers = {
       find_files = {
@@ -194,9 +187,6 @@ local function telescope()
 
   -- Enable telescope fzy native, if installed
   pcall(require('telescope').load_extension, 'fzy_native')
-
-  -- Enable repo searcher
-  require('telescope').load_extension('repo')
 end
 
 local function lsp()
