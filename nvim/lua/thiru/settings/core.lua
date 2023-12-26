@@ -130,6 +130,9 @@ local function setup()
   -- Match on longest string first, then full string, etc.
   vim.opt.wildmode = 'list:longest,full'
 
+  -- Ignore case when completing file paths
+  vim.opt.wildignorecase = true
+
   vim.opt.termguicolors = true
 
   -- Don't want diagnostics when viewing diffs
