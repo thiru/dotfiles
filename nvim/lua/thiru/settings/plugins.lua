@@ -259,7 +259,8 @@ local function lsp()
     'pyright',
     'quick_lint_js',
     'rust_analyzer',
-    'sqlls'
+    'sqlls',
+    'tsserver',
   }
 
   -- Ensure the servers above are installed
@@ -267,12 +268,24 @@ local function lsp()
     ensure_installed = servers,
   }
 
+  local lspconfig = require('lspconfig')
+
   for _, lsp_name in ipairs(servers) do
-    require('lspconfig')[lsp_name].setup {
+    lspconfig[lsp_name].setup {
       on_attach = on_attach,
       capabilities = capabilities,
     }
   end
+
+  lspconfig.tsserver.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    init_options = {
+      preferences = {
+        disableSuggestions = true, -- Reduce noise
+      }
+    }
+  }
 
   -- Example custom configuration for lua
   --
@@ -281,7 +294,7 @@ local function lsp()
   table.insert(runtime_path, 'lua/?.lua')
   table.insert(runtime_path, 'lua/?/init.lua')
 
-  require('lspconfig').lua_ls.setup {
+  lspconfig.lua_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
@@ -393,6 +406,7 @@ local function treesitter()
       'gitignore',
       'html',
       'java',
+      'javascript',
       'json',
       'lua',
       'make',
@@ -402,6 +416,7 @@ local function treesitter()
       'regex',
       'rust',
       'sql',
+      'typescript',
       'vim'
     },
 
