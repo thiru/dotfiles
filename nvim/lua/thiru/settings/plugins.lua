@@ -386,6 +386,7 @@ local function treesitter()
       'bash',
       'c',
       'clojure',
+      'csv',
       'css',
       'dockerfile',
       'fennel',
@@ -400,6 +401,7 @@ local function treesitter()
       'python',
       'regex',
       'rust',
+      'sql',
       'vim'
     },
 
