@@ -28,7 +28,6 @@ end
 local function colour_scheme_dark()
   vim.g.edge_style = 'aura'
   vim.g.edge_better_performance = 1
-  vim.g.edge_enable_italic = 1
   vim.g.edge_transparent_background = 1
   vim.opt.background = 'dark'
   vim.cmd('colorscheme edge')
@@ -37,7 +36,6 @@ end
 local function colour_scheme_light()
   vim.g.edge_style = 'aura'
   vim.g.edge_better_performance = 1
-  vim.g.edge_enable_italic = 1
   vim.opt.background = 'light'
   vim.cmd('colorscheme edge')
 end
