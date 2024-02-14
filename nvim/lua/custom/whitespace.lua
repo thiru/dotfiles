@@ -19,7 +19,7 @@ local function strip_trailing_whitespace()
   vim.cmd(':%s/\\s\\+$//e')
 end
 
-local function setup()
+local function init()
   vim.api.nvim_create_user_command(
     'LineEndingsAsDos',
     line_endings_as_dos,
@@ -41,8 +41,8 @@ end
 
 return {
   doc = doc,
+  init = init,
   line_endings_as_dos = line_endings_as_dos,
   line_endings_as_unix = line_endings_as_unix,
-  setup = setup,
   strip_trailing_whitespace = strip_trailing_whitespace
 }

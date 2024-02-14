@@ -1,16 +1,17 @@
-local doc = 'Config starting point.'
+local common = require('custom.common')
+local plugin = require('custom.plugin-manager')
+local options = require('custom.options')
+local keymaps = require('custom.keymaps')
+local whitespace = require('custom.whitespace')
+local plain_term = require('custom.plain-term')
+local neovide = require('custom.neovide')
 
-require('thiru.plugins').setup()
-require('thiru.mappings.core').setup()
-require('thiru.mappings.plugins').setup()
-require('thiru.settings.core').setup()
-require('thiru.settings.plugins').setup()
-require('thiru.whitespace').setup()
-require('thiru.plain-term').setup()
-require('thiru.gui.settings').setup()
-require('thiru.gui.mappings').setup()
-require('thiru.gui.neovide').setup()
 
-return {
-  doc = doc
-}
+common.set_leader_keys()
+plugin.install_lazy_nvim()
+plugin.register_plugins()
+options.init()
+keymaps.init()
+whitespace.init()
+plain_term.init()
+neovide.init()

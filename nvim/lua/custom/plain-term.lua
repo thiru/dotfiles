@@ -7,30 +7,32 @@ local doc = [[
   ```
   ]]
 
-local plugin_settings = require('thiru.settings.plugins')
 
 local augroup = vim.api.nvim_create_augroup('plain-term', {clear = true})
+
 
 local function is_enabled()
   return vim.g.plain_term == true
 end
+
 
 local function set_term_opts()
   vim.opt.cursorcolumn = false
   vim.opt.laststatus = 0
   vim.opt.number = false
   vim.opt.signcolumn = 'no'
-  plugin_settings.colour_scheme_dark()
+  vim.cmd.colorscheme 'default'
 end
+
 
 local function unset_term_opts()
   vim.opt.cursorcolumn = true
   vim.opt.laststatus = 2
   vim.opt.number = true
   vim.opt.signcolumn = 'yes'
-  plugin_settings.colour_scheme_light()
-  plugin_settings.lualine()
+  vim.cmd.colorscheme 'catppuccin-latte'
 end
+
 
 local function plain_term()
   set_term_opts()
@@ -59,7 +61,8 @@ local function plain_term()
   })
 end
 
-local function setup()
+
+local function init()
   if is_enabled() then
     plain_term()
   end
@@ -71,9 +74,10 @@ local function setup()
      desc = 'Start plain terminal mode'})
 end
 
+
 return {
   doc = doc,
+  init = init,
   is_enabled = is_enabled,
   plain_term = plain_term,
-  setup = setup
 }

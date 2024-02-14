@@ -1,6 +1,6 @@
 local doc = 'Neovide-specific configs'
 
-local plain_term = require('thiru.plain-term')
+local plain_term = require('custom.plain-term')
 
 local transparency_default = 0.95
 local transparency_step = 0.05
@@ -33,14 +33,12 @@ local function transparency_inc()
   transparency_print()
 end
 
-local function setup()
+local function init()
   if not vim.g.neovide then
     return
   end
 
-  -- HACK: Neovide exits terminal mode when mouse is moved
-  -- See: https://github.com/neovide/neovide/issues/1838
-  vim.keymap.set("t", "<MouseMove>", "<NOP>")
+  vim.cmd('silent exe "cd ~"')
 
   set_default_transparency()
 
@@ -69,7 +67,7 @@ end
 
 return {
   doc = doc,
-  setup = setup,
+  init = init,
   transparency_dec = transparency_dec,
   transparency_default = transparency_default,
   transparency_inc = transparency_inc,
