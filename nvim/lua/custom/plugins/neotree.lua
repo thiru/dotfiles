@@ -5,6 +5,10 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons'
   },
+  cmd = 'Neotree',
+  keys = {
+    { '<leader>ff', ':Neotree toggle reveal<CR>', desc = 'File Tree - Toggle visibility' }
+  },
   config = function()
     require('neo-tree').setup({
       filesystem = {
@@ -36,7 +40,5 @@ return {
         end
       }
     })
-
-    vim.keymap.set('n', '<leader>ff', ':Neotree toggle reveal<CR>', { desc = 'File Tree - Toggle visibility' })
   end
 }
