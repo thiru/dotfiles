@@ -23,12 +23,12 @@ local function transparency_reset()
   transparency_print()
 end
 
-local function transparency_dec()
+local function transparency_inc()
   vim.g.neovide_transparency = math.min(vim.g.neovide_transparency + transparency_step, 1)
   transparency_print()
 end
 
-local function transparency_inc()
+local function transparency_dec()
   vim.g.neovide_transparency = math.max(vim.g.neovide_transparency - transparency_step, 0)
   transparency_print()
 end
@@ -43,15 +43,15 @@ local function init()
   set_default_transparency()
 
   vim.api.nvim_create_user_command(
-    'NeovideTransparencyInc',
-    transparency_inc,
-    {bang = true, desc = 'Increment Neovide transparency'}
-  )
-
-  vim.api.nvim_create_user_command(
     'NeovideTransparencyDec',
     transparency_dec,
     {bang = true, desc = 'Decrement Neovide transparency'}
+  )
+
+  vim.api.nvim_create_user_command(
+    'NeovideTransparencyInc',
+    transparency_inc,
+    {bang = true, desc = 'Increment Neovide transparency'}
   )
 
   vim.api.nvim_create_user_command(
@@ -68,9 +68,9 @@ end
 return {
   doc = doc,
   init = init,
-  transparency_dec = transparency_dec,
-  transparency_default = transparency_default,
   transparency_inc = transparency_inc,
+  transparency_default = transparency_default,
+  transparency_dec = transparency_dec,
   transparency_print = transparency_print,
   transparency_reset = transparency_reset,
 }
