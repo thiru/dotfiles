@@ -14,9 +14,5 @@ return {
 
     -- Don't auto-start Babashka REPL
     vim.g['conjure#client#clojure#nrepl#connection#auto_repl#enabled'] = false
-
-    -- This starts a Fennl REPL with stdio (so no need for Aniseed). The main
-    -- issue I had with Aniseed is that requiring local files wasn't working.
-    vim.g['conjure#filetype#fennel'] = "conjure.client.fennel.stdio"
   end
 }

@@ -16,7 +16,6 @@ return {
           'csv',
           'css',
           'dockerfile',
-          'fennel',
           'gitignore',
           'html',
           'java',
