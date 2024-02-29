@@ -1,6 +1,6 @@
 return {
   'preservim/tagbar',
   config = function()
-    vim.keymap.set('n', '<leader>t', ':TagbarToggle<CR>', { desc = '' })
+    vim.keymap.set('n', '<leader>ta', ':TagbarToggle<CR>', { desc = '' })
   end
 }
