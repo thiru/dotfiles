@@ -44,7 +44,6 @@ local function init()
          { desc = 'Open file stored in system clipboard' })
 
   -- Save file
-  vim.keymap.set('n', 's', ':w<CR>', { desc = 'Save current file', silent = true })
   vim.keymap.set('n', '<C-s>', ':w<CR>', { desc = 'Save current file', silent = true })
   vim.keymap.set('i', '<C-s>', '<cmd>write<CR>', { desc = 'Save current file', silent = true })
 
