@@ -33,6 +33,7 @@ local function maybe_show_listchars()
 
   local should_show_listchars = function()
     if not vim.opt.diff:get()
+       and vim.bo.buftype ~= 'help'
        and vim.bo.buftype ~= 'nofile'
        and vim.bo.buftype ~= 'terminal'
     then
