@@ -8,6 +8,7 @@ local neovide = require('custom.neovide')
 
 
 common.set_leader_keys()
+common.disable_netrw()
 plugin.install_lazy_nvim()
 plugin.register_plugins()
 options.init()
