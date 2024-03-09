@@ -1,7 +1,8 @@
 return {
   'catppuccin/nvim',
   name = 'catppuccin',
-  priority = 1000,
+  lazy = false, -- make sure to load this during startup
+  priority = 1000, -- make sure to load this before all the other start plugins
   config = function()
     require('catppuccin').setup({
       flavour = 'latte',
