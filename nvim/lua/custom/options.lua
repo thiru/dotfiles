@@ -104,8 +104,8 @@ local function init()
   -- Preserve indentation even when line is wrapped
   vim.o.breakindent = true
 
-  -- Save undo history
-  vim.o.undofile = true -- TODO: consider disabling
+  -- Don't save undo history to a file
+  vim.o.undofile = false
 
   -- Case-insensitive searching UNLESS \C or capital in search
   vim.o.ignorecase = true
