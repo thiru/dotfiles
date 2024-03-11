@@ -70,9 +70,6 @@ local function init()
   vim.o.writebackup = false
   vim.o.swapfile = false
 
-  -- Show vertical column
-  vim.o.colorcolumn = '100'
-
   -- Highlight current line
   vim.o.cursorline = true
 
