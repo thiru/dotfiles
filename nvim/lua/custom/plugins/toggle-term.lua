@@ -2,10 +2,8 @@ return {
   'akinsho/toggleterm.nvim',
   version = '*',
   config = function()
-    local toggleterm = require('toggleterm')
-    toggleterm.setup({
+    require('toggleterm').setup({
       direction = 'vertical',
-      open_mapping = [[<c-t>]],
       size = function(term)
         if term.direction == 'horizontal' then
           return 15
@@ -14,8 +12,9 @@ return {
         end
       end,
     })
-    vim.keymap.set('n', '<leader>tl', ':ToggleTermSendCurrentLine<CR>', { desc = 'Sent current line to terminal' })
-    vim.keymap.set('v', '<leader>tl', ':ToggleTermSendVisualLines<CR>', { desc = 'Sent visual lines to terminal' })
-    vim.keymap.set('v', '<leader>ts', ':ToggleTermSendVisualSelection<CR>', { desc = 'Sent visual selection to terminal' })
+    vim.keymap.set('n', '<C-t>', ':ToggleTerm dir=git_dir<CR>', { desc = 'Open toggle-term terminal'})
+    vim.keymap.set('n', '<leader>tl', ':ToggleTermSendCurrentLine<CR>', { desc = 'Send current line to terminal' })
+    vim.keymap.set('v', '<leader>tl', ':ToggleTermSendVisualLines<CR>', { desc = 'Send visual lines to terminal' })
+    vim.keymap.set('v', '<leader>ts', ':ToggleTermSendVisualSelection<CR>', { desc = 'Send visual selection to terminal' })
   end
 }
