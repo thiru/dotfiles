@@ -3,7 +3,7 @@ return {
   version = '*',
   config = function()
     require('toggleterm').setup({
-      direction = 'vertical',
+      direction = 'float',
       size = function(term)
         if term.direction == 'horizontal' then
           return 15
