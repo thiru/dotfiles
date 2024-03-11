@@ -76,9 +76,6 @@ local function init()
   -- Highlight current line
   vim.o.cursorline = true
 
-  -- Highlight current column
-  vim.o.cursorcolumn = true
-
   -- Minimal number of screen lines to keep above and below the cursor.
   vim.o.scrolloff = 10
 
