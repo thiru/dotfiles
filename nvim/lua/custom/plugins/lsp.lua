@@ -105,15 +105,7 @@ return {
       marksman = {},
       pyright = {},
       quick_lint_js = {},
-      rust_analyzer = {},
       sqlls = {},
-      tsserver = {
-        init_options = {
-          preferences = {
-            disableSuggestions = true, -- Reduce noise
-          }
-        }
-      },
       lua_ls = {
         Lua = {
           workspace = { checkThirdParty = false },
