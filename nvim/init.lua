@@ -1,4 +1,3 @@
-local common = require('custom.common')
 local plugin = require('custom.plugin-manager')
 local options = require('custom.options')
 local keymaps = require('custom.keymaps')
@@ -7,11 +6,9 @@ local plain_term = require('custom.plain-term')
 local neovide = require('custom.neovide')
 
 
-common.set_leader_keys()
-common.disable_netrw()
+options.init()
 plugin.install_lazy_nvim()
 plugin.register_plugins()
-options.init()
 keymaps.init()
 whitespace.init()
 plain_term.init()

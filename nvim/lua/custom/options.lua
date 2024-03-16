@@ -1,6 +1,16 @@
 local doc = 'Set global options.'
 
 
+local font_size_default = 15
+
+
+-- [[ Pretty-print lua values including tables. ]]
+function _G.pp(...)
+    local objects = vim.tbl_map(vim.inspect, { ... })
+    print(unpack(objects))
+end
+
+
 -- [[ Make it easier to see exactly what was yanked. ]]
 local function highlight_on_yank()
   local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -65,6 +75,14 @@ end
 
 
 local function init()
+  -- NOTE: This must happen before plugins are required (otherwise the wrong leader will be used)
+  vim.g.mapleader = ' '
+  vim.g.maplocalleader = ','
+
+  -- NOTE: recommended by file tree plugin
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+
   -- Disable backup and recovery files
   vim.o.backup = false
   vim.o.writebackup = false
@@ -147,5 +165,6 @@ end
 
 return {
   doc = doc,
+  font_size_default = font_size_default,
   init = init,
 }
