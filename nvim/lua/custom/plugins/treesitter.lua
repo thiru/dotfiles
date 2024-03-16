@@ -27,9 +27,7 @@ return {
           'markdown_inline',
           'python',
           'regex',
-          'rust',
           'sql',
-          'typescript',
           'vim',
           'vimdoc'
         },
