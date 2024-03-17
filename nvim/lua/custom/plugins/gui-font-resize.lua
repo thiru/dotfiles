@@ -3,7 +3,7 @@ local options = require('custom.options')
 return {
   'ktunprasert/gui-font-resize.nvim',
   config = function()
-    vim.opt.guifont = {'Fira Mono', ':h' .. options.font_size_default}
+    vim.opt.guifont = {'JetBrainsMono Nerd Font Mono', ':h' .. options.font_size_default}
     require("gui-font-resize").setup()
     vim.keymap.set({'i', 'n', 't', 'v'},
                    '<C-=>',
