@@ -4,6 +4,7 @@ curr_shell=`ps -p $$ | tail -1 | awk '{print $NF}'`
 
 alias dn='dotnet'
 alias g='git'
+alias nv='neovide'
 alias rename-vim='vidir'
 
 if command -v exa &> /dev/null; then
