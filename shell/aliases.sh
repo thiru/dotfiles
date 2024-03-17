@@ -21,7 +21,7 @@ alias sc='systemctl'
 
 if command -v nvim &> /dev/null; then
   alias v='nvim'
-  alias vt='nvim --cmd "let g:term_mode = \"plain\""'
+  alias vt='nvim --cmd "lua vim.g.plain_term = true"'
 else
   alias v='vim'
 fi
