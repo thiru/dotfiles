@@ -9,6 +9,9 @@ local function common_config()
   config.enable_scroll_bar = true
   config.font = wezterm.font('JetBrainsMono Nerd Font Mono')
   config.hide_tab_bar_if_only_one_tab = true
+  config.keys = {
+    { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
+  }
   config.window_background_opacity = 0.9
 end
 
