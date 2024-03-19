@@ -17,20 +17,20 @@ end
 
 
 local function set_term_opts()
-  vim.opt.cursorcolumn = false
-  vim.opt.laststatus = 0
   vim.opt.number = false
+  vim.opt.relativenumber = false
   vim.opt.signcolumn = 'no'
-  vim.cmd.colorscheme 'default'
+  vim.cmd.colorscheme 'catppuccin-mocha'
+  vim.opt.laststatus = 0
 end
 
 
 local function unset_term_opts()
-  vim.opt.cursorcolumn = true
-  vim.opt.laststatus = 2
   vim.opt.number = true
+  vim.opt.relativenumber = true
   vim.opt.signcolumn = 'yes'
   vim.cmd.colorscheme 'catppuccin-latte'
+  vim.opt.laststatus = 2
 end
 
 
@@ -39,26 +39,13 @@ local function plain_term()
   vim.cmd('terminal')
   vim.cmd('startinsert')
 
-  -- TODO: check if terminal is also last window before closing
+  --[[ TODO: check if terminal is also last window before closing
   vim.api.nvim_create_autocmd('TermClose', {
     desc = 'Close Neovim when terminal is exited',
     pattern = '*',
     group = augroup,
     command = ':q'
-  })
-
-  vim.api.nvim_create_autocmd('BufEnter', {
-    desc = 'Switch between plain-term and regular mode',
-    pattern = '*',
-    group = augroup,
-    callback = function()
-      if vim.bo.buftype == 'terminal' then
-        set_term_opts()
-      elseif vim.bo.buftype == '' or vim.bo.buftype == nil then
-        unset_term_opts()
-      end
-    end
-  })
+  }) ]]
 end
 
 
