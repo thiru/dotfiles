@@ -21,6 +21,12 @@ local function init()
   vim.keymap.set('n', '<C-j>', ':bp<CR>', { desc = 'Previous buffer', silent = true })
   vim.keymap.set('n', '<C-k>', ':bn<CR>', { desc = 'Next buffer', silent = true })
 
+  vim.keymap.set('n', '<C-TAB>', ':bn<CR>', { desc = 'Previous buffer', silent = true })
+  vim.keymap.set('n', '<C-S-TAB>', ':bp<CR>', { desc = 'Next buffer', silent = true })
+
+  vim.keymap.set('t', '<C-TAB>', '<CMD>bn<CR>', { desc = 'Previous buffer (term)', silent = true })
+  vim.keymap.set('t', '<C-S-TAB>', '<CMD>bp<CR>', { desc = 'Next buffer (term)', silent = true })
+
   -- Remap for dealing with word wrap
   vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
   vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -54,8 +60,10 @@ local function init()
   -- Execute current line in shell
   vim.keymap.set('n','<leader>x', ":exec '!'.getline('.')<CR>", { desc = 'Execute current line in shell' })
 
-  -- Terminal ESC
+  -- Terminal - ESC
   vim.keymap.set('t', '<C-space>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+  -- Terminal - in new buffer
+  vim.keymap.set('t', '<C-t>', '<CMD>enew<CR><CMD>terminal<CR><CMD>startinsert<CR>', { desc = 'Exit terminal mode' })
 
 
   -- Centre screen on find next/previous
