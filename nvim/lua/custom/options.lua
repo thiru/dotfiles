@@ -158,6 +158,10 @@ local function init()
     vim.diagnostic.disable()
   end
 
+  if vim.fn.has('win64') then
+    vim.opt.shell = 'cmd.exe /s /k clink_x64.exe inject -q'
+  end
+
   highlight_on_yank()
   open_help_in_vertical_split()
   maybe_show_listchars()
