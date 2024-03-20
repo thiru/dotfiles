@@ -27,6 +27,23 @@ local function init()
   vim.keymap.set('t', '<C-TAB>', '<CMD>bn<CR>', { desc = 'Previous buffer (term)', silent = true })
   vim.keymap.set('t', '<C-S-TAB>', '<CMD>bp<CR>', { desc = 'Next buffer (term)', silent = true })
 
+  -- Direct buffer access
+  for i=1,9 do
+    vim.keymap.set('n', '<C-' .. i .. '>',
+      function()
+        local all_buffers = vim.api.nvim_list_bufs()
+        for k,v in ipairs(all_buffers) do
+          if not vim.api.nvim_buf_is_loaded(v) then
+            all_buffers[k] = nil
+          end
+        end
+        if all_buffers[i] ~= nil then
+          vim.cmd(all_buffers[i] .. 'b')
+        end
+      end,
+      {desc = 'Go to openened buffer by index', silent=true})
+  end
+
   -- Remap for dealing with word wrap
   vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
   vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
