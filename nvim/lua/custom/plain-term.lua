@@ -17,6 +17,8 @@ end
 
 
 local function set_term_opts()
+  vim.opt.cursorline = false
+  vim.opt.scrolloff = 0
   vim.opt.number = false
   vim.opt.relativenumber = false
   vim.opt.signcolumn = 'no'
@@ -25,27 +27,20 @@ local function set_term_opts()
 end
 
 
-local function unset_term_opts()
-  vim.opt.number = true
-  vim.opt.relativenumber = true
-  vim.opt.signcolumn = 'yes'
-  vim.cmd.colorscheme 'catppuccin-latte'
-  vim.opt.laststatus = 2
-end
-
-
 local function plain_term()
   set_term_opts()
   vim.cmd('terminal')
   vim.cmd('startinsert')
 
-  --[[ TODO: check if terminal is also last window before closing
   vim.api.nvim_create_autocmd('TermClose', {
-    desc = 'Close Neovim when terminal is exited',
-    pattern = '*',
+    callback = function()
+      if #vim.api.nvim_list_bufs() <= 1 then
+        vim.cmd(':qa!')
+      end
+    end,
     group = augroup,
-    command = ':q'
-  }) ]]
+    pattern = '*',
+  })
 end
 
 
