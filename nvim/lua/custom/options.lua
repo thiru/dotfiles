@@ -1,7 +1,10 @@
 local doc = 'Set global options.'
 
 
-local font_size_default = 13
+-- [[ Detect if we're running Windows. ]]
+function _G.is_windows()
+  return vim.fn.has('win64') ~= 0
+end
 
 
 -- [[ Pretty-print lua values including tables. ]]
@@ -9,6 +12,9 @@ function _G.pp(...)
     local objects = vim.tbl_map(vim.inspect, { ... })
     print(unpack(objects))
 end
+
+
+local font_size_default = is_windows() and 13 or 15
 
 
 -- [[ Make it easier to see exactly what was yanked. ]]
@@ -158,7 +164,7 @@ local function init()
     vim.diagnostic.disable()
   end
 
-  if vim.fn.has('win64') ~= 0 then
+  if is_windows() then
     vim.opt.shell = 'cmd.exe /s /k clink_x64.exe inject -q'
   end
 
