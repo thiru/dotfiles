@@ -34,8 +34,17 @@ local function plain_term()
 
   vim.api.nvim_create_autocmd('TermClose', {
     callback = function()
-      if #vim.api.nvim_list_bufs() <= 1 then
-        vim.cmd(':qa!')
+      -- HACK: Bypass the 'Process exited' message:
+      vim.api.nvim_input('<CR>')
+
+      -- If we've come into another terminal ensure we're in insert mode
+      if vim.fn.mode() == 't' then
+        vim.api.nvim_input('i')
+      end
+
+      -- Account for the initial empty buffer as well I guess
+      if #vim.api.nvim_list_bufs() <= 2 then
+        vim.cmd(':q')
       end
     end,
     group = augroup,
