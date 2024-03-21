@@ -158,7 +158,7 @@ local function init()
     vim.diagnostic.disable()
   end
 
-  if vim.fn.has('win64') then
+  if vim.fn.has('win64') ~= 0 then
     vim.opt.shell = 'cmd.exe /s /k clink_x64.exe inject -q'
   end
 
