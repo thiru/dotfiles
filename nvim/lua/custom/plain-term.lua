@@ -42,8 +42,11 @@ local function plain_term()
         vim.api.nvim_input('i')
       end
 
+      -- HACK: Not sure why there is a difference between OS' here:
+      local min_bufs_to_exit = is_windows() and 1 or 2
+
       -- Account for the initial empty buffer as well I guess
-      if #vim.api.nvim_list_bufs() <= 2 then
+      if #vim.api.nvim_list_bufs() <= min_bufs_to_exit then
         vim.cmd(':q')
       end
     end,
