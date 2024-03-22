@@ -14,7 +14,7 @@ function _G.pp(...)
 end
 
 
-local font_size_default = is_windows() and 13 or 15
+local font_size_default = is_windows() and 12 or 15
 
 
 -- [[ Make it easier to see exactly what was yanked. ]]
