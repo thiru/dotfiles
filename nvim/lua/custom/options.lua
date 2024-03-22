@@ -156,6 +156,9 @@ local function init()
   vim.o.shiftwidth = 2
   vim.o.tabstop = 2
 
+  -- NOTE: Needed in order so Markdown files respect tab width
+  vim.g.markdown_recommended_style = 0
+
   -- Allow changing the window title
   vim.o.title = true
 
