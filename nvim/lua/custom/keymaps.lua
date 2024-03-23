@@ -29,7 +29,9 @@ local function init()
 
   -- Direct buffer access
   for i=1,9 do
-    vim.keymap.set('n', '<C-' .. i .. '>',
+    vim.keymap.set(
+      {'i', 'n', 't', 'v'},
+      '<C-' .. i .. '>',
       function()
         local all_buffers = vim.fn.getbufinfo({buflisted = 1})
         if i <= #all_buffers then
