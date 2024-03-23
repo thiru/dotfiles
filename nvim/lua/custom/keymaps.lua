@@ -31,14 +31,9 @@ local function init()
   for i=1,9 do
     vim.keymap.set('n', '<C-' .. i .. '>',
       function()
-        local all_buffers = vim.api.nvim_list_bufs()
-        for k,v in ipairs(all_buffers) do
-          if not vim.api.nvim_buf_is_loaded(v) then
-            all_buffers[k] = nil
-          end
-        end
-        if all_buffers[i] ~= nil then
-          vim.cmd(all_buffers[i] .. 'b')
+        local all_buffers = vim.fn.getbufinfo({buflisted = 1})
+        if i <= #all_buffers then
+          vim.cmd(all_buffers[i].bufnr .. 'buffer')
         end
       end,
       {desc = 'Go to openened buffer by index', silent=true})
