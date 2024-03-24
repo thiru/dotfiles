@@ -8,6 +8,8 @@ else
   export EDITOR="vim"
 fi
 
+export VISUAL=neovide
+
 # Custom, machine-specific environment variables
 if [ -f "$HOME/.config/env-vars" ]; then
   source $HOME/.config/env-vars
