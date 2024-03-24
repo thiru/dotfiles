@@ -11,6 +11,7 @@ return {
         max_height = 23
       }
     })
-    vim.keymap.set('n', '<leader>o', ':Oil --float .<CR>', { desc = 'Open Oil in floating window' })
+    vim.keymap.set('n', '<leader>o', ':Oil --float .<CR>', { desc = 'Open Oil in floating window (at CWD)' })
+    vim.keymap.set('n', '<leader>O', ':Oil --float %:p:h<CR>', { desc = 'Open Oil in floating window (at parent dir of current file)' })
   end
 }
