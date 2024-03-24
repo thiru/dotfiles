@@ -32,6 +32,9 @@ if [ -d ~/graalvm ]; then
   export GRAALVM_HOME=$HOME/graalvm
 fi
 
+# NNN
+export NNN_OPTS="e"
+
 # FZF
 
 # Use `fd` command instead of `find` when searching files with FZF:
