@@ -85,10 +85,6 @@ local function init()
   vim.g.mapleader = ' '
   vim.g.maplocalleader = ','
 
-  -- NOTE: recommended by file tree plugin
-  vim.g.loaded_netrw = 1
-  vim.g.loaded_netrwPlugin = 1
-
   -- Disable backup and recovery files
   vim.o.backup = false
   vim.o.writebackup = false
