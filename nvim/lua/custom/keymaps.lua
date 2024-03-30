@@ -14,7 +14,7 @@ local function init()
   vim.keymap.set({'n', 'v'}, ':', ';')
 
   -- Open init.lua
-  vim.keymap.set('n', '<leader>ve', ':e $MYVIMRC<CR>',
+  vim.keymap.set('n', '<leader>ve', ':e $MYVIMRC<CR>:cd %:p:h<CR>:pwd<CR>',
     { desc = 'Open main Neovim config (init.lua)', silent = true })
 
   -- Previous/next buffer
