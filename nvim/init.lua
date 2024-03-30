@@ -7,9 +7,9 @@ local neovide = require('custom.neovide')
 
 
 options.init()
-plugin.install_lazy_nvim()
-plugin.register_plugins()
 keymaps.init()
 whitespace.init()
 plain_term.init()
 neovide.init()
+plugin.install_lazy_nvim()
+plugin.register_plugins()
