@@ -22,8 +22,8 @@ end
 local function register_plugins()
   require('lazy').setup({
     -- Auto-load plugins in the specified folder:
-    { import = 'custom.plugins' },
-  }, {})
+    { import = 'custom.plugins' }},
+    { change_detection = {enabled = false} })
 end
 
 
