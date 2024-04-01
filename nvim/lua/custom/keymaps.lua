@@ -117,6 +117,12 @@ local function init()
 
   -- Toggle cursor column
   vim.keymap.set('n', '<leader>|', function() vim.o.cursorcolumn = not vim.o.cursorcolumn end, {desc = 'Toggle cursor column'})
+
+  -- Window resizing
+  vim.keymap.set('n', '<C-Left>', ':vertical resize -1<CR>', {desc = 'Decrease window size vertically', silent=true})
+  vim.keymap.set('n', '<C-Right>', ':vertical resize +1<CR>', {desc = 'Increase window size vertically', silent=true})
+  vim.keymap.set('n', '<C-Up>', ':resize -1<CR>', {desc = 'Decrease window size horizontally', silent=true})
+  vim.keymap.set('n', '<C-Down>', ':resize +1<CR>', {desc = 'Increase window size horizontally', silent=true})
 end
 
 
