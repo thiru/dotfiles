@@ -107,13 +107,9 @@ return {
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
       bashls = {},
-      clangd = {},
-      clojure_lsp = {},
-      cmake = {},
       cssls = {},
       dockerls = {},
       html = {},
-      jdtls = {},
       jsonls = {},
       lua_ls = {
         settings = {
@@ -127,11 +123,21 @@ return {
         },
       },
       marksman = {},
-      pyright = {},
-      quick_lint_js = {},
-      sqlls = {},
       tsserver = {},
     }
+
+    -- Don't load these servers on Windows
+    if not is_windows() then
+      servers = vim.tbl_extend('error', servers, {
+        clangd = {},
+        clojure_lsp = {},
+        cmake = {},
+        jdtls = {},
+        pyright = {},
+        quick_lint_js = {},
+        sqlls = {},
+      })
+    end
 
     -- Ensure the servers and tools above are installed
     --  To check the current status of installed tools and/or manually install

@@ -1,10 +1,10 @@
+require('custom.utils')
 local plugin = require('custom.plugin-manager')
 local options = require('custom.options')
 local keymaps = require('custom.keymaps')
 local whitespace = require('custom.whitespace')
 local plain_term = require('custom.plain-term')
 local neovide = require('custom.neovide')
-
 
 options.init()
 keymaps.init()

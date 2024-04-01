@@ -1,5 +1,8 @@
 return {
   'Olical/conjure',
+  enabled = function()
+    return not is_windows()
+  end,
   config = function()
     -- Don't auto-start REPL in diff mode
     if vim.opt.diff:get() then
