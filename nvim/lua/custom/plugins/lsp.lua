@@ -1,5 +1,8 @@
 return {
   'neovim/nvim-lspconfig',
+  enabled = function()
+    return not vim.opt.diff:get()
+  end,
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for neovim
     'williamboman/mason.nvim',

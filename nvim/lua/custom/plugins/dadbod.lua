@@ -1,5 +1,8 @@
 return {
   'kristijanhusak/vim-dadbod-ui',
+  enabled = function()
+    return not vim.opt.diff:get()
+  end,
   dependencies = {
     { 'tpope/vim-dadbod', lazy = true },
     { 'kristijanhusak/vim-dadbod-completion',

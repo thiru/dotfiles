@@ -2,6 +2,9 @@
 
 return {
   'lewis6991/gitsigns.nvim',
+  enabled = function()
+    return not vim.opt.diff:get()
+  end,
   opts = {
     signs = {
       add = { text = '+' },

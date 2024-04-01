@@ -1,5 +1,8 @@
 return {
   'akinsho/toggleterm.nvim',
+  enabled = function()
+    return not vim.opt.diff:get()
+  end,
   version = '*',
   config = function()
     require('toggleterm').setup({
