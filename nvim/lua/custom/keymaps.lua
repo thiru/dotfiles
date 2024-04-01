@@ -116,7 +116,7 @@ local function init()
   vim.keymap.set('t', '<C-S-v>', '<C-\\><C-n>pi', { desc = 'Paste from system clipboard (from terminal mode)' })
 
   -- Toggle cursor column
-  vim.keymap.set('n', '<leader>hc', function() vim.o.cursorcolumn = not vim.o.cursorcolumn end, {desc = 'Toggle cursor column'})
+  vim.keymap.set('n', '<leader>|', function() vim.o.cursorcolumn = not vim.o.cursorcolumn end, {desc = 'Toggle cursor column'})
 end
 
 
