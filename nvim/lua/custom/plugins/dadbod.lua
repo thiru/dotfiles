@@ -16,6 +16,8 @@ return {
     'DBUIFindBuffer',
   },
   keys = {
+    {'<leader>a', 'ggVG<Plug>(DBUI_ExecuteQuery)', mode = 'n', ft = 'sql', desc = 'Execute SQL query (buffer)'},
+    {'<leader><CR>', '<Plug>(DBUI_ExecuteQuery)', mode = 'v', ft = 'sql', desc = 'Execute SQL query (selected)'},
     {'<leader><CR>',
       function()
         -- HACK: If we're on the last line with no new lines below then `Vip` fails and aborts the rest of the command
@@ -27,8 +29,7 @@ return {
 
         vim.api.nvim_input(':<Plug>(DBUI_ExecuteQuery)')
       end,
-      mode = 'n', ft = 'sql', desc = 'Execute SQL query (paragraph)'},
-    {'<leader><CR>', '<Plug>(DBUI_ExecuteQuery)', mode = 'v', ft = 'sql', desc = 'Execute SQL query (selected)'}
+      mode = 'n', ft = 'sql', desc = 'Execute SQL query (paragraph)'}
   },
   config = function()
     vim.g.db_ui_execute_on_save = 0
