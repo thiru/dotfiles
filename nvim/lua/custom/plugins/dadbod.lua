@@ -54,6 +54,7 @@ return {
       },
       callback = function()
         vim.schedule(db_completion)
+        vim.opt.previewheight = 15
       end,
     })
   end,
