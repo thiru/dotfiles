@@ -94,6 +94,7 @@ local function init()
   -- Highlight search terms and immediately while typing
   vim.o.hlsearch = true
   vim.o.incsearch = true
+  vim.o.wrapscan = false
 
   -- Show relative line numbers, except on the current line show absolute
   vim.wo.number = true
