@@ -57,7 +57,7 @@ local function init()
          { desc = 'Change working directory to that of the current file', silent = true })
 
   -- PWD
-  vim.keymap.set('n', '<leader>wd', ':pwd<CR>', { desc = 'Print current working directory', silent = true })
+  vim.keymap.set('n', '<leader>wd', function() vim.notify(vim.fn.getcwd()) end, { desc = 'Print current working directory', silent = true })
 
   -- Open file in clipboard
   vim.keymap.set('n', '<leader>fc', ':e <C-r>+<CR>',
