@@ -24,6 +24,13 @@ local function set_term_opts()
   vim.opt.signcolumn = 'no'
   vim.cmd.colorscheme 'catppuccin-mocha'
   vim.opt.laststatus = 0
+  local bufferline_setup_spec = {
+    options = vim.tbl_extend(
+      'error',
+      {mode = 'tabs'},
+      require('custom.plugins.bufferline').opts.options)
+  }
+  require('bufferline').setup(bufferline_setup_spec)
 end
 
 

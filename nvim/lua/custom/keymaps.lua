@@ -21,24 +21,50 @@ local function init()
   vim.keymap.set('n', '<C-j>', ':bp<CR>', { desc = 'Previous buffer', silent = true })
   vim.keymap.set('n', '<C-k>', ':bn<CR>', { desc = 'Next buffer', silent = true })
 
-  vim.keymap.set('n', '<C-TAB>', ':bn<CR>', { desc = 'Previous buffer', silent = true })
-  vim.keymap.set('n', '<C-S-TAB>', ':bp<CR>', { desc = 'Next buffer', silent = true })
+  -- Previous/next tab
+  vim.keymap.set('n', '<C-S-TAB>', '<CMD>tabprevious<CR>', { desc = 'Next tab', silent = true })
+  vim.keymap.set('n', '<C-TAB>', '<CMD>tabnext<CR>', { desc = 'Previous tab', silent = true })
 
-  vim.keymap.set('t', '<C-TAB>', '<CMD>bn<CR>', { desc = 'Previous buffer (term)', silent = true })
-  vim.keymap.set('t', '<C-S-TAB>', '<CMD>bp<CR>', { desc = 'Next buffer (term)', silent = true })
+  vim.keymap.set('t', '<C-S-TAB>', '<CMD>tabprevious<CR>', { desc = 'Next tab (term)', silent = true })
+  vim.keymap.set('t', '<C-TAB>', '<CMD>tabnext<CR>', { desc = 'Previous tab (term)', silent = true })
 
-  -- Direct buffer access
+  -- New tab (empty buffer)
+  vim.keymap.set('n', '<C-t>', '<CMD>tabnew<CR>', { desc = 'Open new tab' })
+  -- New tab (new terminal also)
+  vim.keymap.set('t', '<C-t>', '<CMD>tabnew<CR><CMD>terminal<CR><CMD>startinsert<CR>', { desc = 'Open terminal in new tab' })
+
+  -- Direct buffer/tab access
+  local function goto_buffer(bufnr)
+    local all_buffers = vim.fn.getbufinfo({buflisted = 1})
+    if bufnr <= #all_buffers then
+      vim.cmd(all_buffers[bufnr].bufnr .. 'buffer')
+    end
+  end
+
+  local function goto_tabnr(tabnr, all_tabs)
+    if tabnr <= #all_tabs then
+      if vim.fn.mode() == 't' then
+        local keys = vim.api.nvim_replace_termcodes('<C-\\><C-n>' .. all_tabs[tabnr].tabnr .. 'gt<CR>i', true, true, true)
+        vim.api.nvim_feedkeys(keys, 'n', false)
+      else
+        vim.cmd('normal ' .. all_tabs[tabnr].tabnr .. 'gt')
+      end
+    end
+  end
+
   for i=1,9 do
     vim.keymap.set(
       {'i', 'n', 't', 'v'},
       '<C-' .. i .. '>',
       function()
-        local all_buffers = vim.fn.getbufinfo({buflisted = 1})
-        if i <= #all_buffers then
-          vim.cmd(all_buffers[i].bufnr .. 'buffer')
+        local all_tabs = vim.fn.gettabinfo()
+        if #all_tabs <= 1 then
+          goto_buffer(i)
+        else
+          goto_tabnr(i, all_tabs)
         end
       end,
-      {desc = 'Go to openened buffer by index', silent=true})
+      {desc = 'Go to openened buffer/tab by index', silent=true})
   end
 
   -- Remap for dealing with word wrap
@@ -76,8 +102,6 @@ local function init()
 
   -- Terminal - ESC
   vim.keymap.set('t', '<C-space>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-  -- Terminal - in new buffer
-  vim.keymap.set('t', '<C-t>', '<CMD>enew<CR><CMD>terminal<CR><CMD>startinsert<CR>', { desc = 'Exit terminal mode' })
 
 
   -- Centre screen on find next/previous
