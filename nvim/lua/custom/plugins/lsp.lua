@@ -126,13 +126,7 @@ return {
         },
       },
       marksman = {},
-      tsserver = {
-        init_options = {
-          preferences = {
-            disableSuggestions = true
-          }
-        }
-      },
+      tsserver = {},
     }
 
     -- Don't load these servers on Windows
