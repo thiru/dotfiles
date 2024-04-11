@@ -17,19 +17,6 @@ local function highlight_on_yank()
 end
 
 
-local function open_help_in_vertical_split()
-  vim.api.nvim_create_autocmd('BufEnter', {
-    callback = function()
-      if vim.bo.buftype == 'help' then
-        vim.cmd('wincmd L')
-      end
-    end,
-    group = vim.api.nvim_create_augroup('HelpVerticalSplit', { clear = true }),
-    pattern = '*.txt'
-  })
-end
-
-
 -- [[ Show/hide whitespace chars in certain situations. ]]
 local function maybe_show_listchars()
   local group = vim.api.nvim_create_augroup('maybe-show-listchars', {clear = true})
@@ -156,7 +143,6 @@ local function init()
   end
 
   highlight_on_yank()
-  open_help_in_vertical_split()
   maybe_show_listchars()
 end
 
