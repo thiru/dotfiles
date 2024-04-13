@@ -9,9 +9,8 @@ local function init()
   vim.keymap.set({ 'n', 'v' }, '<leader>q', ':qall<CR>', { desc = 'Exit Vim (unless unsaved changes)' })
   vim.keymap.set({ 'n', 'v' }, '<leader>Q', ':qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
 
-  -- Swap colon and semicolon
-  vim.keymap.set({'n', 'v'}, ';', ':')
-  vim.keymap.set({'n', 'v'}, ':', ';')
+  -- Open command mode
+  vim.keymap.set({ 'n', 'v' }, '<leader>;', ':', { desc = 'Open the command mode' })
 
   -- Open init.lua
   vim.keymap.set('n', '<leader>ve', ':e $MYVIMRC<CR>:cd %:p:h<CR>:pwd<CR>',
