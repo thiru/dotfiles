@@ -73,9 +73,8 @@ local function init()
   -- Diagnostic keymaps
   vim.keymap.set('n', '<leader>k', vim.diagnostic.goto_prev)
   vim.keymap.set('n', '<leader>j', vim.diagnostic.goto_next)
-  vim.keymap.set('n', '<leader>ef', vim.diagnostic.open_float)
-  vim.keymap.set('n', '<leader>ld', function() vim.diagnostic.disable(0) end,
-         { desc = 'Disable diagnostics in current buffer' })
+  vim.keymap.set('n', '<leader>ed', function() vim.diagnostic.disable(0) end,
+                 {desc = 'Disable diagnostics in current buffer'})
 
   -- CWD
   vim.keymap.set('n', '<leader>cd', ':cd %:p:h<CR>:pwd<CR>',
