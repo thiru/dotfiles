@@ -12,6 +12,9 @@ local function init()
   -- Open command mode
   vim.keymap.set({ 'n', 'v' }, '<leader>;', ':', { desc = 'Open the command mode' })
 
+  -- Open command mode for Lua
+  vim.keymap.set({ 'n', 'v' }, '<leader>l', ':lua ', { desc = 'Open the command mode for Lua' })
+
   -- Open init.lua
   vim.keymap.set('n', '<leader>ve', ':e $MYVIMRC<CR>:cd %:p:h<CR>:pwd<CR>',
     { desc = 'Open main Neovim config (init.lua)', silent = true })
