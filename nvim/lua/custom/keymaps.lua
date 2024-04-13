@@ -104,7 +104,6 @@ local function init()
   -- Terminal - ESC
   vim.keymap.set('t', '<C-space>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
-
   -- Centre screen on find next/previous
   vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Go to next match and centre screen' })
   vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Go to previous match and centre screen' })
@@ -142,6 +141,16 @@ local function init()
 
   -- Toggle cursor column
   vim.keymap.set('n', '<leader>|', function() vim.o.cursorcolumn = not vim.o.cursorcolumn end, {desc = 'Toggle cursor column'})
+
+  -- Window navigation
+  vim.keymap.set({'i', 't'}, '<A-h>', '<C-\\><C-N><C-w>hi')
+  vim.keymap.set({'i', 't'}, '<A-j>', '<C-\\><C-N><C-w>ji')
+  vim.keymap.set({'i', 't'}, '<A-k>', '<C-\\><C-N><C-w>ki')
+  vim.keymap.set({'i', 't'}, '<A-l>', '<C-\\><C-N><C-w>li')
+  vim.keymap.set({'n', 'v'}, '<A-h>', '<C-w>h')
+  vim.keymap.set({'n', 'v'}, '<A-j>', '<C-w>j')
+  vim.keymap.set({'n', 'v'}, '<A-k>', '<C-w>k')
+  vim.keymap.set({'n', 'v'}, '<A-l>', '<C-w>l')
 
   -- Window resizing
   vim.keymap.set('n', '<C-Left>', ':vertical resize -1<CR>', {desc = 'Decrease window size vertically', silent=true})
