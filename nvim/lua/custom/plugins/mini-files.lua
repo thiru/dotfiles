@@ -2,7 +2,7 @@ return {
   "echasnovski/mini.files",
   opts = {
     windows = {
-      preview = false,
+      preview = true,
     },
     options = {
       use_as_default_explorer = true,
