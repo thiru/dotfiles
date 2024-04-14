@@ -39,7 +39,7 @@ local function init()
   end
 
   vim.cmd('silent exe "cd ~"')
-
+  vim.g.neovide_hide_mouse_when_typing = true
   set_default_transparency()
 
   vim.api.nvim_create_user_command(
