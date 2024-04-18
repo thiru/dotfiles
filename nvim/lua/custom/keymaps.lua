@@ -19,14 +19,29 @@ local function init()
   vim.keymap.set('n', '<leader>ve', ':e $MYVIMRC<CR>:cd %:p:h<CR>:pwd<CR>',
     { desc = 'Open main Neovim config (init.lua)', silent = true })
 
-  -- Previous/next buffer
-  vim.keymap.set('n', '<C-j>', ':bp<CR>', { desc = 'Previous buffer', silent = true })
-  vim.keymap.set('n', '<C-k>', ':bn<CR>', { desc = 'Next buffer', silent = true })
+  -- Previous/next buffer/tab
+  vim.keymap.set('n', '<C-j>',
+    function()
+      if #vim.fn.gettabinfo() <= 1 then
+        vim.cmd.bprevious()
+      else
+        vim.cmd.tabprevious()
+      end
+    end,
+    {desc = 'Previous buffer/tab', silent = true})
+  vim.keymap.set('n', '<C-k>',
+    function()
+      if #vim.fn.gettabinfo() <= 1 then
+        vim.cmd.bnext()
+      else
+        vim.cmd.tabnext()
+      end
+    end,
+    {desc = 'Next buffer/tab', silent = true})
 
   -- Previous/next tab
   vim.keymap.set('n', '<C-S-TAB>', '<CMD>tabprevious<CR>', { desc = 'Next tab', silent = true })
   vim.keymap.set('n', '<C-TAB>', '<CMD>tabnext<CR>', { desc = 'Previous tab', silent = true })
-
   vim.keymap.set('t', '<C-S-TAB>', '<CMD>tabprevious<CR>', { desc = 'Next tab (term)', silent = true })
   vim.keymap.set('t', '<C-TAB>', '<CMD>tabnext<CR>', { desc = 'Previous tab (term)', silent = true })
 
