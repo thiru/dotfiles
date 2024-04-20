@@ -45,15 +45,16 @@ return {
     },
     sections = {
       lualine_a = {'mode'},
-      lualine_b = {'branch'},
-      lualine_c = {'diagnostics'},
-      lualine_x = {
+      lualine_b = {
         get_cwd,
         get_file_path,
-        'filesize',
-        'encoding',
-        'fileformat',
       },
+      lualine_c = {
+        'fileformat',
+        'encoding',
+        'filesize',
+      },
+      lualine_x = {'diagnostics', 'branch'},
       lualine_y = {'progress'},
       lualine_z = {'location'}
     },
