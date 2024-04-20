@@ -11,16 +11,23 @@ return {
     sections = {
       lualine_a = {'mode'},
       lualine_b = {'branch'},
-      lualine_c = {
+      lualine_c = {'diagnostics'},
+      lualine_x = {
         function()
           local abs_path = vim.api.nvim_buf_get_name(0)
           local cwd = vim.fn.getcwd()
-          return string.sub(abs_path, #cwd + 2)
+          local rel_path = string.sub(abs_path, #cwd + 2)
+          local home_dir = os.getenv('HOME') or ''
+          if vim.startswith(cwd, home_dir) then
+            cwd = '~' .. string.sub(cwd, #home_dir + 1)
+          end
+          cwd = ' ' .. cwd
+          if #rel_path > 0 then
+            return cwd .. " < " .. rel_path
+          else
+            return cwd
+          end
         end,
-      },
-      lualine_x = {
-        function() return vim.fn.getcwd() end,
-        'diagnostics',
         'filesize',
         'encoding',
         'fileformat',
