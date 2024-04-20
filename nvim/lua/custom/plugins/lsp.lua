@@ -136,6 +136,7 @@ return {
         clojure_lsp = {},
         cmake = {},
         jdtls = {},
+        jsonlint = {},
         pyright = {},
         quick_lint_js = {},
         sqlls = {},
