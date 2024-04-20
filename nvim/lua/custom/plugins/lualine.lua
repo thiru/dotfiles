@@ -17,7 +17,7 @@ return {
           local abs_path = vim.api.nvim_buf_get_name(0)
           local cwd = vim.fn.getcwd()
           local rel_path = string.sub(abs_path, #cwd + 2)
-          local home_dir = os.getenv('HOME') or ''
+          local home_dir = vim.loop.os_homedir() or ''
           if vim.startswith(cwd, home_dir) then
             cwd = '~' .. string.sub(cwd, #home_dir + 1)
           end
