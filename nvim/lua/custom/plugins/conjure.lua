@@ -1,7 +1,7 @@
 return {
   'Olical/conjure',
   enabled = function()
-    return (not vim.opt.diff:get()) and (not is_windows())
+    return not vim.opt.diff:get()
   end,
   config = function()
     vim.g['conjure#mapping#doc_word'] = {'<localleader>k'}

@@ -111,6 +111,7 @@ return {
     local servers = {
       bashls = {},
       cssls = {},
+      clojure_lsp = {},
       dockerls = {},
       html = {},
       jsonls = {},
@@ -133,7 +134,6 @@ return {
     if not is_windows() then
       servers = vim.tbl_extend('error', servers, {
         clangd = {},
-        clojure_lsp = {},
         cmake = {},
         jdtls = {},
         jsonlint = {},
