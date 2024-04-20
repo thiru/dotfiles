@@ -1,11 +1,14 @@
 return {
   "echasnovski/mini.files",
   opts = {
-    windows = {
-      preview = true,
+    mappings = {
+      go_in_plus = '<CR>',
     },
     options = {
       use_as_default_explorer = true,
+    },
+    windows = {
+      preview = true,
     },
   },
   keys = {
