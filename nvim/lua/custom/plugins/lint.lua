@@ -1,5 +1,8 @@
 return {
   'mfussenegger/nvim-lint',
+  enabled = function()
+    return not vim.opt.diff:get()
+  end,
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
     local lint = require('lint')
