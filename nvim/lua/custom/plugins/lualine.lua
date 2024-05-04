@@ -8,10 +8,10 @@ local function replace_home_with_tilde(path)
 end
 
 local function get_cwd()
-  return ' ' .. replace_home_with_tilde(vim.fn.getcwd())
+  return ' ' .. replace_home_with_tilde(vim.fn.getcwd()) .. '/'
 end
 
-local function get_file_path()
+local function get_file_parent_and_name()
   local abs_path = vim.api.nvim_buf_get_name(0) or ''
 
   if #abs_path == 0 then
@@ -19,7 +19,7 @@ local function get_file_path()
   end
 
   local cwd = vim.fn.getcwd()
-  local final_path = ' '
+  local final_path = ''
 
   if not vim.startswith(abs_path, cwd) then
     final_path = final_path .. abs_path
@@ -27,14 +27,28 @@ local function get_file_path()
     final_path = final_path .. string.sub(abs_path, #cwd + 2)
   end
 
-  return replace_home_with_tilde(final_path)
+  local parent_dir = ''
+  for dir in vim.fs.parents(final_path) do
+    parent_dir = dir
+    break
+  end
+
+  if #parent_dir == 0 or parent_dir == '.' then
+    local filename = string.sub(final_path, #parent_dir)
+    return filename
+  end
+
+  local filename = string.sub(final_path, #parent_dir + math.min(#parent_dir, 2))
+  parent_dir = replace_home_with_tilde(parent_dir) .. '/'
+
+  return parent_dir .. ' | ' .. filename
 end
 
 return {
   'nvim-lualine/lualine.nvim',
   helpers = {
     get_cwd = get_cwd,
-    get_file_path = get_file_path,
+    get_file_parent_and_name = get_file_parent_and_name,
     replace_home_with_tilde = replace_home_with_tilde,
   },
   opts = {
@@ -47,16 +61,16 @@ return {
       lualine_a = {'mode'},
       lualine_b = {
         get_cwd,
-        get_file_path,
+        get_file_parent_and_name,
       },
-      lualine_c = {
+      lualine_c = {},
+      lualine_x = {
         'fileformat',
         'encoding',
         'filesize',
       },
-      lualine_x = {'diagnostics', 'branch'},
-      lualine_y = {'progress'},
-      lualine_z = {'location'}
+      lualine_y = {'diagnostics', 'branch'},
+      lualine_z = {'progress', 'location'}
     },
   }
 }
