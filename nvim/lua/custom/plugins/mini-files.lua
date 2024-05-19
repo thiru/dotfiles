@@ -2,7 +2,9 @@ return {
   "echasnovski/mini.files",
   opts = {
     mappings = {
+      go_in = '<C-l>',
       go_in_plus = '<CR>',
+      go_out = '<C-h>'
     },
     options = {
       use_as_default_explorer = true,
