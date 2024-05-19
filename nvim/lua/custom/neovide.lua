@@ -60,9 +60,9 @@ local function init()
     {bang = true, desc = 'Reset Neovide transparency to default setting'}
   )
 
-  vim.keymap.set({'i', 'n', 't', 'v'}, "<A-=>", "<cmd>:NeovideTransparencyInc<CR>")
-  vim.keymap.set({'i', 'n', 't', 'v'}, "<A-->", "<cmd>:NeovideTransparencyDec<CR>")
-  vim.keymap.set({'i', 'n', 't', 'v'}, "<A-0>", "<cmd>:NeovideTransparencyReset<CR>")
+  vim.keymap.set({'i', 'n', 't', 'v'}, '<A-=>', '<cmd>:NeovideTransparencyInc<CR>')
+  vim.keymap.set({'i', 'n', 't', 'v'}, '<A-->', '<cmd>:NeovideTransparencyDec<CR>')
+  vim.keymap.set({'i', 'n', 't', 'v'}, '<A-0>', '<cmd>:NeovideTransparencyReset<CR>')
 end
 
 return {

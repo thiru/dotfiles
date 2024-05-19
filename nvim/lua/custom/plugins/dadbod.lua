@@ -37,21 +37,21 @@ return {
     vim.g.db_ui_use_nvim_notify = 1
 
     local function db_completion()
-      require("cmp").setup.buffer { sources = { { name = "vim-dadbod-completion" } } }
+      require('cmp').setup.buffer { sources = { { name = 'vim-dadbod-completion' } } }
     end
 
-    vim.api.nvim_create_autocmd("FileType", {
+    vim.api.nvim_create_autocmd('FileType', {
       pattern = {
-        "sql",
+        'sql',
       },
       command = [[setlocal omnifunc=vim_dadbod_completion#omni]],
     })
 
-    vim.api.nvim_create_autocmd("FileType", {
+    vim.api.nvim_create_autocmd('FileType', {
       pattern = {
-        "sql",
-        "mysql",
-        "plsql",
+        'sql',
+        'mysql',
+        'plsql',
       },
       callback = function()
         vim.schedule(db_completion)

@@ -85,8 +85,8 @@ local function init()
   end
 
   -- Remap for dealing with word wrap
-  vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-  vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+  vim.keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', { expr = true, silent = true })
+  vim.keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', { expr = true, silent = true })
 
   -- Diagnostic keymaps
   vim.keymap.set('n', '<leader>k', vim.diagnostic.goto_prev)
@@ -114,7 +114,7 @@ local function init()
   vim.keymap.set('c', '<C-k>', '<Up>', { desc = 'Previous command (cmd-line mode)' })
 
   -- Execute current line in shell
-  vim.keymap.set('n','<leader>x', ":exec '!'.getline('.')<CR>", { desc = 'Execute current line in shell' })
+  vim.keymap.set('n','<leader>x', ':exec "!".getline(".")<CR>', { desc = 'Execute current line in shell' })
 
   -- Terminal - ESC
   vim.keymap.set('t', '<C-space>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
@@ -136,8 +136,8 @@ local function init()
   vim.keymap.set({'n', 'v'}, '<TAB>', '%', { desc = 'Go to matching bracket, etc.', remap = true })
 
   -- Navigate by screen lines, not logical lines (i.e. when lines are wrapped)
-  vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-  vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+  vim.keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', { expr = true, silent = true })
+  vim.keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', { expr = true, silent = true })
 
   -- Search highlight off
   vim.keymap.set('n', '<leader>ho', ':nohlsearch<CR>', { desc = 'Search highlight off', silent = true })
