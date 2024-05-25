@@ -51,6 +51,8 @@ return {
       callback = function(args)
         local buf_id = args.data.buf_id
         vim.keymap.set('n', 'g.', toggle_dotfiles, { buffer = buf_id, desc = 'Toggle Hidden Files' })
+        vim.keymap.set('n', '<C-j>', 'j', { buffer = buf_id, desc = 'Move down' })
+        vim.keymap.set('n', '<C-k>', 'k', { buffer = buf_id, desc = 'Move up' })
       end,
     })
   end
