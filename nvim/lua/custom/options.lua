@@ -87,8 +87,8 @@ local function init()
   vim.wo.number = true
   vim.wo.relativenumber = true
 
-  -- Enable mouse in all modes
-  vim.o.mouse = 'a'
+  -- Enable mouse in normal & visual modes only
+  vim.o.mouse = 'nv'
 
   -- Don't show the mode since it's already in the status line
   vim.o.showmode = false
