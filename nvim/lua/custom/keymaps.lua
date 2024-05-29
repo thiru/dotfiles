@@ -119,6 +119,9 @@ local function init()
   -- Terminal - ESC
   vim.keymap.set('t', '<C-space>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+  vim.keymap.set('t', '<LeftMouse>', '<Nop>', { desc = 'Disable mouse left-click' })
+  vim.keymap.set('t', '<2-LeftMouse>', '<Nop>', { desc = 'Disable mouse double left-click' })
+
   -- Terminal - new
   vim.keymap.set('n', '<leader>t', ':term<CR>i',{ desc = 'Launch terminal' })
 
