@@ -34,6 +34,19 @@ local function set_term_opts()
 end
 
 
+local function is_term_open()
+  local listed_buffers = vim.fn.getbufinfo({buflisted = 1})
+
+  for _, v in pairs(listed_buffers) do
+    if v.variables.terminal_job_id ~= nil then
+      return true
+    end
+  end
+
+  return false
+end
+
+
 local function plain_term()
   set_term_opts()
   vim.cmd('terminal')
@@ -46,8 +59,8 @@ local function plain_term()
         vim.api.nvim_input('i')
       end
 
-      -- Account for the initial empty buffer as well I guess
-      if #vim.api.nvim_list_bufs() <= 1 then
+      -- Exit if no there are no more terminals open
+      if not is_term_open() then
         vim.cmd(':q')
       end
     end,
@@ -74,5 +87,6 @@ return {
   doc = doc,
   init = init,
   is_enabled = is_enabled,
+  is_term_open = is_term_open,
   plain_term = plain_term,
 }
