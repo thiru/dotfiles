@@ -1,5 +1,6 @@
 return {
   'stevearc/aerial.nvim',
+  cond = not vim.opt.diff:get() and not require('custom.plain-term').is_enabled(),
   dependencies = {
      'nvim-treesitter/nvim-treesitter',
      'nvim-tree/nvim-web-devicons'

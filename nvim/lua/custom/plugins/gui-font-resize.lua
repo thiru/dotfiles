@@ -2,9 +2,6 @@ local options = require('custom.options')
 
 return {
   'ktunprasert/gui-font-resize.nvim',
-  enabled = function()
-    return vim.fn.has('gui_running') == 1
-  end,
   config = function()
     vim.opt.guifont = {'JetBrainsMono Nerd Font Mono', ':h' .. options.font_size_default}
     require('gui-font-resize').setup()

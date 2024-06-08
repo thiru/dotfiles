@@ -1,5 +1,6 @@
 return {
   'echasnovski/mini.surround',
+  cond = not vim.opt.diff:get() and not require('custom.plain-term').is_enabled(),
   version = '*',
   opts = {
     mappings = {

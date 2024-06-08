@@ -2,6 +2,7 @@
 
 return {
   'nvim-telescope/telescope.nvim',
+  cond = not vim.opt.diff:get() and not require('custom.plain-term').is_enabled(),
   event = 'VimEnter',
   branch = '0.1.x',
   dependencies = {

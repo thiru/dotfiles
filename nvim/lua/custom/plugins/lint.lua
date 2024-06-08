@@ -1,8 +1,6 @@
 return {
   'mfussenegger/nvim-lint',
-  enabled = function()
-    return not vim.opt.diff:get()
-  end,
+  cond = not vim.opt.diff:get() and not require('custom.plain-term').is_enabled(),
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
     local lint = require('lint')

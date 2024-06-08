@@ -1,8 +1,6 @@
 return {
   'hrsh7th/nvim-cmp',
-  enabled = function()
-    return not vim.opt.diff:get()
-  end,
+  cond = not vim.opt.diff:get() and not require('custom.plain-term').is_enabled(),
   event = 'InsertEnter',
   dependencies = {
     -- Snippet Engine & its associated nvim-cmp source

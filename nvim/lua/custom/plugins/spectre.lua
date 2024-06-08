@@ -1,8 +1,6 @@
 return {
   'nvim-pack/nvim-spectre',
-  enabled = function()
-    return not vim.opt.diff:get()
-  end,
+  cond = not vim.opt.diff:get() and not require('custom.plain-term').is_enabled(),
   dependencies = {
     'nvim-lua/plenary.nvim'
   },

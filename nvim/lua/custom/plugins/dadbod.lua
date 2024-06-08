@@ -1,8 +1,6 @@
 return {
   'kristijanhusak/vim-dadbod-ui',
-  enabled = function()
-    return not vim.opt.diff:get()
-  end,
+  cond = not vim.opt.diff:get() and not require('custom.plain-term').is_enabled(),
   dependencies = {
     { 'tpope/vim-dadbod', lazy = true },
     { 'kristijanhusak/vim-dadbod-completion',

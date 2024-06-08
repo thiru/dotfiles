@@ -1,8 +1,6 @@
 return {
   'airblade/vim-rooter',
-  enabled = function()
-    return not vim.opt.diff:get()
-  end,
+  cond = not vim.opt.diff:get() and not require('custom.plain-term').is_enabled(),
   config = function()
     vim.g.rooter_patterns = {'.git', '.stfolder'}
   end
