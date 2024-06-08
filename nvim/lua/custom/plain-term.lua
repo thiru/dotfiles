@@ -41,9 +41,6 @@ local function plain_term()
 
   vim.api.nvim_create_autocmd('TermClose', {
     callback = function()
-      -- HACK: Bypass the 'Process exited' message:
-      vim.api.nvim_input('<CR>')
-
       -- If we've come into another terminal ensure we're in insert mode
       if vim.fn.mode() == 't' then
         vim.api.nvim_input('i')
