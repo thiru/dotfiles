@@ -1,11 +1,11 @@
-local plugin_dir = vim.loop.os_homedir() .. '/code/neodba.nvim'
+local plugin_dir = vim.uv.os_homedir() .. '/code/neodba.nvim'
 
 local ft = 'sql'
 
 return {
   'neodba',
   enabled = function()
-    return vim.loop.fs_stat(plugin_dir)
+    return vim.uv.fs_stat(plugin_dir)
   end,
   config = true,
   dir = plugin_dir,

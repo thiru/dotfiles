@@ -1,5 +1,5 @@
 local function replace_home_with_tilde(path)
-  local home_dir = vim.loop.os_homedir() or ''
+  local home_dir = vim.uv.os_homedir() or ''
   if vim.startswith(path, home_dir) then
     return '~' .. string.sub(path, #home_dir + 1)
   else

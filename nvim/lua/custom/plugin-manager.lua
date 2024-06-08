@@ -4,7 +4,7 @@ local doc = 'Plugin manager install, setup and 3rd-party plugin registration.'
 -- [[ Install `lazy.nvim` plugin manager if not yet installed. ]]
 local function install_lazy_nvim()
   local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-  if not vim.loop.fs_stat(lazypath) then
+  if not vim.uv.fs_stat(lazypath) then
     vim.fn.system {
       'git',
       'clone',
