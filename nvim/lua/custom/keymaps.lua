@@ -45,6 +45,8 @@ local function init()
   vim.keymap.set('n', '<C-TAB>', '<CMD>tabnext<CR>', { desc = 'Previous tab', silent = true })
   vim.keymap.set('t', '<C-S-TAB>', '<CMD>tabprevious<CR>', { desc = 'Next tab (term)', silent = true })
   vim.keymap.set('t', '<C-TAB>', '<CMD>tabnext<CR>', { desc = 'Previous tab (term)', silent = true })
+  vim.keymap.set({'n', 't'}, '<C-S-j>', '<CMD>tabprevious<CR>', { desc = 'Next tab', silent = true })
+  vim.keymap.set({'n', 't'}, '<C-S-k>', '<CMD>tabnext<CR>', { desc = 'Previous tab', silent = true })
 
   -- New tab (empty buffer)
   vim.keymap.set('n', '<C-t>', '<CMD>tabnew<CR>', { desc = 'Open new tab' })
