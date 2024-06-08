@@ -8,8 +8,24 @@ local function init()
   vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
   -- Quit
-  vim.keymap.set({ 'n', 'v' }, '<leader>q', ':qall<CR>', { desc = 'Exit Vim (unless unsaved changes)' })
-  vim.keymap.set({ 'n', 'v' }, '<leader>Q', ':qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
+  if plain_term.is_enabled() then
+    vim.keymap.set({ 'n', 'v' },
+      '<leader>q',
+      function()
+        if plain_term.is_term_open() then
+          local choice = vim.fn.confirm('Quit even though terminals are open?', '&Cancel\n&Quit')
+          if choice == 2 then
+            vim.cmd(':qall')
+          end
+        else
+          vim.cmd(':qall')
+        end
+      end,
+      { desc = 'Exit Vim (unless unsaved changes)' })
+  else
+    vim.keymap.set({ 'n', 'v' }, '<leader>q', ':qall<CR>', { desc = 'Exit Vim (unless unsaved changes)' })
+    vim.keymap.set({ 'n', 'v' }, '<leader>Q', ':qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
+  end
 
   -- Open command mode for Lua
   vim.keymap.set({ 'n', 'v' }, '<leader>l', ':lua ', { desc = 'Open the command mode for Lua' })
