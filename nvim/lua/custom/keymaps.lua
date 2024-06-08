@@ -9,11 +9,8 @@ local function init()
   vim.keymap.set({ 'n', 'v' }, '<leader>q', ':qall<CR>', { desc = 'Exit Vim (unless unsaved changes)' })
   vim.keymap.set({ 'n', 'v' }, '<leader>Q', ':qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
 
-  -- Open command mode
-  vim.keymap.set({ 'n', 'v' }, '<leader>;', ':', { desc = 'Open the command mode' })
-
   -- Open command mode for Lua
-  vim.keymap.set({ 'n', 'v' }, '<leader>:', ':lua ', { desc = 'Open the command mode for Lua' })
+  vim.keymap.set({ 'n', 'v' }, '<leader>l', ':lua ', { desc = 'Open the command mode for Lua' })
 
   -- Open init.lua
   vim.keymap.set('n', '<leader>ve', ':e $MYVIMRC<CR>:cd %:p:h<CR>:pwd<CR>',
