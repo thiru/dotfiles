@@ -1,5 +1,7 @@
 local doc = 'Define key mappings.'
 
+local plain_term = require('custom.plain-term')
+
 
 local function init()
   -- Disable a single spacebar key-press since we use it as the leader key
@@ -17,24 +19,26 @@ local function init()
     { desc = 'Open main Neovim config (init.lua)', silent = true })
 
   -- Previous/next buffer/tab
-  vim.keymap.set('n', '<C-j>',
-    function()
-      if #vim.fn.gettabinfo() <= 1 then
-        vim.cmd.bprevious()
-      else
-        vim.cmd.tabprevious()
-      end
-    end,
-    {desc = 'Previous buffer/tab', silent = true})
-  vim.keymap.set('n', '<C-k>',
-    function()
-      if #vim.fn.gettabinfo() <= 1 then
-        vim.cmd.bnext()
-      else
-        vim.cmd.tabnext()
-      end
-    end,
-    {desc = 'Next buffer/tab', silent = true})
+  if not plain_term.is_enabled() then -- disable in plain_term mode to avoid confusion
+    vim.keymap.set('n', '<C-j>',
+      function()
+        if #vim.fn.gettabinfo() <= 1 then
+          vim.cmd.bprevious()
+        else
+          vim.cmd.tabprevious()
+        end
+      end,
+      {desc = 'Previous buffer/tab', silent = true})
+    vim.keymap.set('n', '<C-k>',
+      function()
+        if #vim.fn.gettabinfo() <= 1 then
+          vim.cmd.bnext()
+        else
+          vim.cmd.tabnext()
+        end
+      end,
+      {desc = 'Next buffer/tab', silent = true})
+  end
 
   -- Previous/next tab
   vim.keymap.set('n', '<C-S-TAB>', '<CMD>tabprevious<CR>', { desc = 'Next tab', silent = true })
