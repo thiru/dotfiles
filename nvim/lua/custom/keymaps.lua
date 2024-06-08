@@ -123,9 +123,6 @@ local function init()
   vim.keymap.set('t', '<LeftMouse>', '<Nop>', { desc = 'Disable mouse left-click' })
   vim.keymap.set('t', '<2-LeftMouse>', '<Nop>', { desc = 'Disable mouse double left-click' })
 
-  -- Terminal - new
-  vim.keymap.set('n', '<leader>t', ':term<CR>i',{ desc = 'Launch terminal' })
-
   -- Centre screen on find next/previous
   vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Go to next match and centre screen' })
   vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Go to previous match and centre screen' })
