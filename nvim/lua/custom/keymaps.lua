@@ -65,7 +65,14 @@ local function init()
   vim.keymap.set({'n', 't'}, '<C-S-k>', '<CMD>tabnext<CR>', { desc = 'Previous tab', silent = true })
 
   -- New tab with terminal
-  vim.keymap.set({'n', 't'}, '<C-t>', '<CMD>tabnew<CR><CMD>terminal<CR><CMD>startinsert<CR>', { desc = 'Open terminal in new tab' })
+  vim.keymap.set({'n', 't'}, '<C-t>', '<CMD>tabnew<CR><CMD>terminal<CR><CMD>startinsert<CR>',
+    { desc = 'Open terminal in new tab' })
+  -- New vertical split with terminal
+  vim.keymap.set({'n', 't'}, '<C-S-t>', '<C-\\><C-N><C-w>v<C-w><C-w><CMD>terminal<CR><CMD>startinsert<CR>',
+    { desc = 'Open terminal in new vertical split' })
+  -- New horizontal split with terminal
+  vim.keymap.set({'n', 't'}, '<C-S-h>', '<C-\\><C-N><C-w>s<C-w><C-w><CMD>terminal<CR><CMD>startinsert<CR>',
+    { desc = 'Open terminal in new horizontal split' })
 
   -- Direct buffer/tab access
   local function goto_buffer(bufnr)
