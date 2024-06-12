@@ -1,6 +1,6 @@
 return {
   'folke/todo-comments.nvim',
-  cond = not vim.opt.diff:get() and not require('custom.plain-term').is_enabled(),
+  cond = not vim.opt.diff:get() and not nvtmux_auto_started(),
   event = 'VimEnter',
   dependencies = { 'nvim-lua/plenary.nvim' },
   opts = {

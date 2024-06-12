@@ -1,6 +1,6 @@
 return {
   'Olical/conjure',
-  cond = not vim.opt.diff:get() and not require('custom.plain-term').is_enabled(),
+  cond = not vim.opt.diff:get() and not nvtmux_auto_started(),
   config = function()
     vim.g['conjure#mapping#doc_word'] = {'<localleader>k'}
     vim.g['conjure#log#botright'] = true

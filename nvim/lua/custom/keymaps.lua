@@ -1,31 +1,12 @@
 local doc = 'Define key mappings.'
 
-local plain_term = require('custom.plain-term')
-
-
 local function init()
   -- Disable a single spacebar key-press since we use it as the leader key
   vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
   -- Quit
-  if plain_term.is_enabled() then
-    vim.keymap.set({ 'n', 'v' },
-      '<leader>q',
-      function()
-        if plain_term.is_term_open() then
-          local choice = vim.fn.confirm('Quit even though terminals are open?', '&Cancel\n&Quit')
-          if choice == 2 then
-            vim.cmd(':qall')
-          end
-        else
-          vim.cmd(':qall')
-        end
-      end,
-      { desc = 'Exit Vim (unless unsaved changes)' })
-  else
-    vim.keymap.set({ 'n', 'v' }, '<leader>q', ':qall<CR>', { desc = 'Exit Vim (unless unsaved changes)' })
-    vim.keymap.set({ 'n', 'v' }, '<leader>Q', ':qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
-  end
+  vim.keymap.set({ 'n', 'v' }, '<leader>q', ':qall<CR>', { desc = 'Exit Vim (unless unsaved changes)' })
+  vim.keymap.set({ 'n', 'v' }, '<leader>Q', ':qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
 
   -- Open command mode for Lua
   vim.keymap.set({ 'n', 'v' }, '<leader>l', ':lua ', { desc = 'Open the command mode for Lua' })
@@ -34,79 +15,9 @@ local function init()
   vim.keymap.set('n', '<leader>ve', ':e $MYVIMRC<CR>:cd %:p:h<CR>:pwd<CR>',
     { desc = 'Open main Neovim config (init.lua)', silent = true })
 
-  -- Previous/next buffer/tab
-  if not plain_term.is_enabled() then -- disable in plain_term mode to avoid confusion
-    vim.keymap.set('n', '<C-j>',
-      function()
-        if #vim.fn.gettabinfo() <= 1 then
-          vim.cmd.bprevious()
-        else
-          vim.cmd.tabprevious()
-        end
-      end,
-      {desc = 'Previous buffer/tab', silent = true})
-    vim.keymap.set('n', '<C-k>',
-      function()
-        if #vim.fn.gettabinfo() <= 1 then
-          vim.cmd.bnext()
-        else
-          vim.cmd.tabnext()
-        end
-      end,
-      {desc = 'Next buffer/tab', silent = true})
-  end
-
-  -- Previous/next tab
-  vim.keymap.set('n', '<C-S-TAB>', '<CMD>tabprevious<CR>', { desc = 'Next tab', silent = true })
-  vim.keymap.set('n', '<C-TAB>', '<CMD>tabnext<CR>', { desc = 'Previous tab', silent = true })
-  vim.keymap.set('t', '<C-S-TAB>', '<CMD>tabprevious<CR>', { desc = 'Next tab (term)', silent = true })
-  vim.keymap.set('t', '<C-TAB>', '<CMD>tabnext<CR>', { desc = 'Previous tab (term)', silent = true })
-  vim.keymap.set({'n', 't'}, '<C-S-j>', '<CMD>tabprevious<CR>', { desc = 'Next tab', silent = true })
-  vim.keymap.set({'n', 't'}, '<C-S-k>', '<CMD>tabnext<CR>', { desc = 'Previous tab', silent = true })
-
-  -- New tab with terminal
-  vim.keymap.set({'n', 't'}, '<C-t>', '<CMD>tabnew<CR><CMD>terminal<CR><CMD>startinsert<CR>',
-    { desc = 'Open terminal in new tab' })
-  -- New vertical split with terminal
-  vim.keymap.set({'n', 't'}, '<C-S-t>', '<C-\\><C-N><C-w>v<C-w><C-w><CMD>terminal<CR><CMD>startinsert<CR>',
-    { desc = 'Open terminal in new vertical split' })
-  -- New horizontal split with terminal
-  vim.keymap.set({'n', 't'}, '<C-S-h>', '<C-\\><C-N><C-w>s<C-w><C-w><CMD>terminal<CR><CMD>startinsert<CR>',
-    { desc = 'Open terminal in new horizontal split' })
-
-  -- Direct buffer/tab access
-  local function goto_buffer(bufnr)
-    local all_buffers = vim.fn.getbufinfo({buflisted = 1})
-    if bufnr <= #all_buffers then
-      vim.cmd(all_buffers[bufnr].bufnr .. 'buffer')
-    end
-  end
-
-  local function goto_tabnr(tabnr, all_tabs)
-    if tabnr <= #all_tabs then
-      if vim.fn.mode() == 't' then
-        local keys = vim.api.nvim_replace_termcodes('<C-\\><C-n>' .. all_tabs[tabnr].tabnr .. 'gt<CR>i', true, true, true)
-        vim.api.nvim_feedkeys(keys, 'n', false)
-      else
-        vim.cmd('normal ' .. all_tabs[tabnr].tabnr .. 'gt')
-      end
-    end
-  end
-
-  for i=1,9 do
-    vim.keymap.set(
-      {'i', 'n', 't', 'v'},
-      '<C-' .. i .. '>',
-      function()
-        local all_tabs = vim.fn.gettabinfo()
-        if #all_tabs <= 1 then
-          goto_buffer(i)
-        else
-          goto_tabnr(i, all_tabs)
-        end
-      end,
-      {desc = 'Go to openened buffer/tab by index', silent=true})
-  end
+  -- Previous/next buffer
+  vim.keymap.set('n', '<C-j>', ':bp', {desc = 'Previous buffer', silent = true})
+  vim.keymap.set('n', '<C-k>', ':bn', {desc = 'Next buffer/tab', silent = true})
 
   -- Remap for dealing with word wrap
   vim.keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', { expr = true, silent = true })
@@ -139,9 +50,6 @@ local function init()
 
   -- Execute current line in shell
   vim.keymap.set('n','<leader>x', ':exec "!".getline(".")<CR>', { desc = 'Execute current line in shell' })
-
-  -- Terminal - ESC
-  vim.keymap.set('t', '<C-space>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
   vim.keymap.set('t', '<LeftMouse>', '<Nop>', { desc = 'Disable mouse left-click' })
   vim.keymap.set('t', '<2-LeftMouse>', '<Nop>', { desc = 'Disable mouse double left-click' })
@@ -179,7 +87,6 @@ local function init()
   -- Paste from clipboard
   vim.keymap.set({'c', 'i'}, '<C-v>', '<C-r>+', { desc = 'Paste from system clipboard (from command/insert mode)' })
   vim.keymap.set('n', '<C-v>', 'p', { desc = 'Paste from system clipboard (from normal mode)' })
-  vim.keymap.set('t', '<C-S-v>', '<C-\\><C-n>pi', { desc = 'Paste from system clipboard (from terminal mode)' })
 
   -- Toggle cursor column
   vim.keymap.set('n', '<leader>|', function() vim.o.cursorcolumn = not vim.o.cursorcolumn end, {desc = 'Toggle cursor column'})

@@ -46,6 +46,7 @@ end
 
 return {
   'nvim-lualine/lualine.nvim',
+  cond = not nvtmux_auto_started(),
   helpers = {
     get_cwd = get_cwd,
     get_file_parent_and_name = get_file_parent_and_name,

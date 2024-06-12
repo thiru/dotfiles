@@ -8,8 +8,13 @@ end
 
 -- [[ Pretty-print lua values including tables. ]]
 function _G.pp(...)
-    local objects = vim.tbl_map(vim.inspect, { ... })
-    print(unpack(objects))
+  local objects = vim.tbl_map(vim.inspect, { ... })
+  print(unpack(objects))
+end
+
+
+function _G.nvtmux_auto_started()
+  return vim.g.nvtmux_auto_start == true
 end
 
 return {

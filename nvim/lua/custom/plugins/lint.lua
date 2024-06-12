@@ -1,6 +1,6 @@
 return {
   'mfussenegger/nvim-lint',
-  cond = not vim.opt.diff:get() and not require('custom.plain-term').is_enabled(),
+  cond = not vim.opt.diff:get() and not nvtmux_auto_started(),
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
     local lint = require('lint')

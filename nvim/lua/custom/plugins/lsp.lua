@@ -1,6 +1,6 @@
 return {
   'neovim/nvim-lspconfig',
-  cond = not vim.opt.diff:get() and not require('custom.plain-term').is_enabled(),
+  cond = not vim.opt.diff:get() and not nvtmux_auto_started(),
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for neovim
     'williamboman/mason.nvim',

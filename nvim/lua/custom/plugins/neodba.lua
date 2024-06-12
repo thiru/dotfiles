@@ -4,7 +4,7 @@ local ft = 'sql'
 
 return {
   'neodba',
-  cond = vim.uv.fs_stat(plugin_dir) and (not vim.opt.diff:get() and not require('custom.plain-term').is_enabled()),
+  cond = vim.uv.fs_stat(plugin_dir) and (not vim.opt.diff:get() and not nvtmux_auto_started()),
   config = true,
   dir = plugin_dir,
   ft = ft,

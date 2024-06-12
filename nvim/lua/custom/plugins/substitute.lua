@@ -1,6 +1,6 @@
 return {
   'gbprod/substitute.nvim',
-  cond = not require('custom.plain-term').is_enabled(),
+  cond = not nvtmux_auto_started(),
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
     local substitute = require('substitute')

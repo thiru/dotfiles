@@ -1,9 +1,9 @@
-require('custom.utils')
+require('custom.utils') -- NOTE: contains functions injected into globals
+
 local plugin = require('custom.plugin-manager')
 local options = require('custom.options')
 local keymaps = require('custom.keymaps')
 local whitespace = require('custom.whitespace')
-local plain_term = require('custom.plain-term')
 local neovide = require('custom.neovide')
 
 options.init()
@@ -12,4 +12,3 @@ whitespace.init()
 neovide.init()
 plugin.install_lazy_nvim()
 plugin.register_plugins()
-plain_term.init()

@@ -1,6 +1,6 @@
 return {
   'NeogitOrg/neogit',
-  cond = not vim.opt.diff:get() and not require('custom.plain-term').is_enabled(),
+  cond = not vim.opt.diff:get() and not nvtmux_auto_started(),
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope.nvim', -- optional
