@@ -23,7 +23,5 @@ return {
         enabled = false
       },
     })
-
-    vim.keymap.set('n', '<C-n>', ':Noice dismiss<CR>', { desc = 'Dismiss all notifications', silent = true })
   end
 }
