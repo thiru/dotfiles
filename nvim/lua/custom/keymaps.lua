@@ -5,8 +5,8 @@ local function init()
   vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
   -- Quit
-  vim.keymap.set({ 'n', 'v' }, '<leader>q', ':qall<CR>', { desc = 'Exit Vim (unless unsaved changes)' })
-  vim.keymap.set({ 'n', 'v' }, '<leader>Q', ':qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
+  vim.keymap.set({ 'n', 'v' }, '<leader>q', '<CMD>qall<CR>', { desc = 'Exit Vim (unless unsaved changes)' })
+  vim.keymap.set({ 'n', 'v' }, '<leader>Q', '<CMD>qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
 
   -- Open command mode for Lua
   vim.keymap.set({ 'n', 'v' }, '<leader>l', ':lua ', { desc = 'Open the command mode for Lua' })
@@ -16,8 +16,8 @@ local function init()
     { desc = 'Open main Neovim config (init.lua)', silent = true })
 
   -- Previous/next buffer
-  vim.keymap.set('n', '<C-j>', ':bp', {desc = 'Previous buffer', silent = true})
-  vim.keymap.set('n', '<C-k>', ':bn', {desc = 'Next buffer/tab', silent = true})
+  vim.keymap.set('n', '<C-j>', '<CMD>bp<CR>', {desc = 'Previous buffer', silent = true})
+  vim.keymap.set('n', '<C-k>', '<CMD>bn<CR>', {desc = 'Next buffer/tab', silent = true})
 
   -- Remap for dealing with word wrap
   vim.keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', { expr = true, silent = true })
@@ -41,7 +41,7 @@ local function init()
          { desc = 'Open file stored in system clipboard' })
 
   -- Save file
-  vim.keymap.set('n', '<C-s>', ':w<CR>', { desc = 'Save current file', silent = true })
+  vim.keymap.set('n', '<C-s>', '<CMD>w<CR>', { desc = 'Save current file', silent = true })
   vim.keymap.set('i', '<C-s>', '<cmd>write<CR>', { desc = 'Save current file', silent = true })
 
   -- Command-line up/down
@@ -72,13 +72,13 @@ local function init()
   vim.keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', { expr = true, silent = true })
 
   -- Search highlight off
-  vim.keymap.set('n', '<leader>ho', ':nohlsearch<CR>', { desc = 'Search highlight off', silent = true })
+  vim.keymap.set('n', '<leader>ho', '<CMD>nohlsearch<CR>', { desc = 'Search highlight off', silent = true })
 
   -- Toggle word wrap
-  vim.keymap.set('n', '<leader>ww', ':set wrap!<CR>', { desc = 'Toggle word wrap' })
+  vim.keymap.set('n', '<leader>ww', '<CMD>set wrap!<CR>', { desc = 'Toggle word wrap' })
 
   -- Copy everything to the clipboard
-  vim.keymap.set('n', '<leader>ya', ':%y+<CR>', { desc = 'Copy everything to system clipboard' })
+  vim.keymap.set('n', '<leader>ya', '<CMD>y+<CR>', { desc = 'Copy everything to system clipboard' })
 
   -- Copy current file path to clipboard
   vim.keymap.set('n', '<leader>yf', ':let @+ = expand("%")<CR>',
@@ -102,10 +102,10 @@ local function init()
   vim.keymap.set({'n', 'v'}, '<A-l>', '<C-w>l')
 
   -- Window resizing
-  vim.keymap.set('n', '<C-Left>', ':vertical resize -1<CR>', {desc = 'Decrease window size vertically', silent=true})
-  vim.keymap.set('n', '<C-Right>', ':vertical resize +1<CR>', {desc = 'Increase window size vertically', silent=true})
-  vim.keymap.set('n', '<C-Up>', ':resize -1<CR>', {desc = 'Decrease window size horizontally', silent=true})
-  vim.keymap.set('n', '<C-Down>', ':resize +1<CR>', {desc = 'Increase window size horizontally', silent=true})
+  vim.keymap.set('n', '<C-Left>', '<CMD>vertical resize -1<CR>', {desc = 'Decrease window size vertically', silent=true})
+  vim.keymap.set('n', '<C-Right>', '<CMD>vertical resize +1<CR>', {desc = 'Increase window size vertically', silent=true})
+  vim.keymap.set('n', '<C-Up>', '<CMD>resize -1<CR>', {desc = 'Decrease window size horizontally', silent=true})
+  vim.keymap.set('n', '<C-Down>', '<CMD>resize +1<CR>', {desc = 'Increase window size horizontally', silent=true})
 end
 
 
