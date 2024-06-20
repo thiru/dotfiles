@@ -16,8 +16,10 @@ local function init()
     { desc = 'Open main Neovim config (init.lua)', silent = true })
 
   -- Previous/next buffer
-  vim.keymap.set('n', '<C-j>', '<CMD>bp<CR>', {desc = 'Previous buffer', silent = true})
-  vim.keymap.set('n', '<C-k>', '<CMD>bn<CR>', {desc = 'Next buffer/tab', silent = true})
+  if not nvtmux_auto_started() then
+    vim.keymap.set('n', '<C-j>', '<CMD>bp<CR>', {desc = 'Previous buffer', silent = true})
+    vim.keymap.set('n', '<C-k>', '<CMD>bn<CR>', {desc = 'Next buffer/tab', silent = true})
+  end
 
   -- Remap for dealing with word wrap
   vim.keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', { expr = true, silent = true })
