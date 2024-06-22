@@ -134,7 +134,7 @@ local function init()
 
   -- Disable diagnostics when viewing diffs
   if vim.opt.diff:get() then
-    vim.diagnostic.disable()
+    vim.diagnostic.enable(false)
   end
 
   if is_windows() then
