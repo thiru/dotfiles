@@ -8,6 +8,7 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope-symbols.nvim',
+    'Zane-/cder.nvim',
     -- Fuzzy Finder Algorithm which requires local dependencies to be built.
     -- Only load if `make` is available. Make sure you have the system
     -- requirements installed.
@@ -30,6 +31,10 @@ return {
         }
       },
       extensions = {
+        cder = {
+          dir_command = {'fd', '--type=d', '--follow', '.', vim.uv.os_homedir()},
+          pager_command = 'less -RS',
+        }
       },
       pickers = {
         find_files = {
@@ -39,6 +44,7 @@ return {
     })
 
     pcall(require('telescope').load_extension, 'fzf')
+    pcall(require('telescope').load_extension, 'cder')
 
     local builtin = require('telescope.builtin')
     local themes = require('telescope.themes')
@@ -54,7 +60,8 @@ return {
 
     vim.keymap.set('n', '<leader>sc', builtin.commands, { desc = '[S]earch [C]ommands' })
     vim.keymap.set('n', '<leader>se', builtin.symbols, { desc = '[S]earch [E]mojis' })
-    vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+    vim.keymap.set('n', '<leader>sd', '<CMD>Telescope cder<CR>', { desc = '[S]earch and change to [D]irectory' })
+    vim.keymap.set('n', '<leader>sD', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
     vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
     vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [V]im help' })
