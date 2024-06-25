@@ -15,7 +15,15 @@ return {
     -- used for completion, annotations and signatures of Neovim apis
     { 'folke/lazydev.nvim',
       ft = 'lua',
-      opts = {} },
+      opts = {
+        library = {
+          -- See the configuration section for more details
+          -- Load luvit types when the `vim.uv` word is found
+          { path = "luvit-meta/library", words = { "vim%.uv" } },
+        },
+      }
+    },
+    { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
   },
   config = function()
     --  This function gets run when an LSP attaches to a particular buffer.
