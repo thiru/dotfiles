@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Creates a directory and changes to it
 # (forgot where I got this from)

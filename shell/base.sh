@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # This script contains shell-agnostic configs
 
@@ -12,7 +12,7 @@ export VISUAL=neovide
 
 # Custom, machine-specific environment variables
 if [ -f "$HOME/.config/env-vars" ]; then
-  source $HOME/.config/env-vars
+  source "$HOME/.config/env-vars"
 fi
 
 # Opt into Wayland support for Firefox (otherwise xwayland will be used)
@@ -25,7 +25,7 @@ PATH="$PATH:$HOME/.cargo/bin"
 PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/software-configs/scripts/linux:$HOME/software-configs/scripts/clojure/src/scripts"
 
 # Work scripts
-if [ -d $HOME/code/work/configs/bin ]; then
+if [ -d "$HOME/code/work/configs/bin" ]; then
   PATH="$PATH:$HOME/code/work/configs/bin"
 fi
 
@@ -45,12 +45,6 @@ export FZF_DEFAULT_COMMAND='fd --type f --follow'
 export FZF_DEFAULT_OPTS='--no-height --no-reverse'
 # Preview window (uses highlight package)
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always {}'"
-
-# Forgit (https://github.com/wfxr/forgit)
-if [ -f "/usr/share/zsh/plugins/forgit-git/forgit.plugin.zsh" ]; then
-  source "/usr/share/zsh/plugins/forgit-git/forgit.plugin.zsh"
-  FORGIT_COPY_CMD='xclip -selection clipboard'
-fi
 
 # Set a larger font for (non-virtual) TTYs
 if [ "$TERM" = "linux" ]; then
