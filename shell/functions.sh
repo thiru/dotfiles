@@ -28,6 +28,7 @@ function up
 
 # Go to directory via `fzf` and `fd`
 cdfzf() {
+  cd "$HOME"
   local dir
   dir=$(fd --follow --type directory | fzf --no-multi) &&
   cd "$dir"
