@@ -1,7 +1,6 @@
 return {
-  -- 'nvtmux', -- for dev
-  -- dir = vim.uv.os_homedir() .. '/code/nvtmux.nvim', -- for dev
   'thiru/nvtmux.nvim',
+  dev = true,
   opts = {
     colorscheme = 'catppuccin-mocha'
   }

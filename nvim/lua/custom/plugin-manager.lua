@@ -23,7 +23,13 @@ local function register_plugins()
   require('lazy').setup({
     -- Auto-load plugins in the specified folder:
     { import = 'custom.plugins' }},
-    { change_detection = {enabled = false} })
+    {
+      dev = {
+        path = '~/code',
+        fallback = true
+      },
+      change_detection = {enabled = false}
+    })
 end
 
 
