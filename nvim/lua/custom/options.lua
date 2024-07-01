@@ -137,10 +137,6 @@ local function init()
     vim.diagnostic.enable(false)
   end
 
-  if is_windows() then
-    vim.opt.shell = 'cmd.exe /s /k clink_x64.exe inject -q'
-  end
-
   highlight_on_yank()
   maybe_show_listchars()
 end
