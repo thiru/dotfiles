@@ -21,6 +21,21 @@ return {
     },
   },
   config = function()
+    local cder_opts
+    if is_windows() then
+      cder_opts = {
+        dir_command = {'fd', '--type=d', '--follow', '.', vim.uv.os_homedir()},
+        command_executer = {'cmd', '/c', 'dir'},
+        previewer_command = '',
+        pager_command = 'more',
+      }
+    else
+      cder_opts = {
+        dir_command = {'fd', '--type=d', '--follow', '.', vim.uv.os_homedir()},
+        pager_command = 'less -RS',
+      }
+    end
+
     require('telescope').setup({
       defaults = {
         mappings = {
@@ -31,10 +46,7 @@ return {
         }
       },
       extensions = {
-        cder = {
-          dir_command = {'fd', '--type=d', '--follow', '.', vim.uv.os_homedir()},
-          pager_command = 'less -RS',
-        }
+        cder = cder_opts,
       },
       pickers = {
         find_files = {
