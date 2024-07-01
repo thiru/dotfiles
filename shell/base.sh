@@ -21,6 +21,11 @@ export MOZ_ENABLE_WAYLAND=1
 # Cargo binaries
 PATH="$PATH:$HOME/.cargo/bin"
 
+# Zsh plugin for nix-shell
+if [ -d "/usr/share/zsh/plugins/zsh-nix-shell" ]; then
+  source "/usr/share/zsh/plugins/zsh-nix-shell/nix-shell.plugin.zsh"
+fi
+
 # Local binaries and scripts
 PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/software-configs/scripts/linux:$HOME/software-configs/scripts/clojure/src/scripts"
 
