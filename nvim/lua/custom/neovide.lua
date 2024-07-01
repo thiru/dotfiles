@@ -3,6 +3,9 @@ local doc = 'Neovide-specific configs'
 local transparency_default = 1.0
 local transparency_step = 0.05
 local term_trans_override = 0.95
+if is_windows() then
+  term_trans_override = 1.0
+end
 
 local function transparency_print()
   print('Neovide transparency = ' .. vim.g.neovide_transparency)
