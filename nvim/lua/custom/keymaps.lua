@@ -15,12 +15,6 @@ local function init()
   vim.keymap.set('n', '<leader>ve', ':e $MYVIMRC<CR>:cd %:p:h<CR>:pwd<CR>',
     { desc = 'Open main Neovim config (init.lua)', silent = true })
 
-  -- Previous/next buffer
-  if not nvtmux_auto_started() then
-    vim.keymap.set('n', '<C-j>', '<CMD>bp<CR>', {desc = 'Previous buffer', silent = true})
-    vim.keymap.set('n', '<C-k>', '<CMD>bn<CR>', {desc = 'Next buffer/tab', silent = true})
-  end
-
   -- Remap for dealing with word wrap
   vim.keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', { expr = true, silent = true })
   vim.keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', { expr = true, silent = true })
@@ -93,7 +87,13 @@ local function init()
   -- Toggle cursor column
   vim.keymap.set('n', '<leader>|', function() vim.o.cursorcolumn = not vim.o.cursorcolumn end, {desc = 'Toggle cursor column'})
 
-  -- Window navigation
+  -- Buffer nav - previous/next
+  if not nvtmux_auto_started() then
+    vim.keymap.set('n', '<C-j>', '<CMD>bp<CR>', {desc = 'Previous buffer', silent = true})
+    vim.keymap.set('n', '<C-k>', '<CMD>bn<CR>', {desc = 'Next buffer/tab', silent = true})
+  end
+
+  -- Window nav - left/down/up/right
   vim.keymap.set({'i', 't'}, '<A-h>', '<C-\\><C-N><C-w>hi')
   vim.keymap.set({'i', 't'}, '<A-j>', '<C-\\><C-N><C-w>ji')
   vim.keymap.set({'i', 't'}, '<A-k>', '<C-\\><C-N><C-w>ki')
