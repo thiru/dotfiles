@@ -1,4 +1,4 @@
-local top_margin = (vim.fn.winheight(0) / 2) - 10
+local top_margin = (vim.fn.winheight(0) / 2) - 5
 
 return {
   'folke/which-key.nvim',
