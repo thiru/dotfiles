@@ -64,6 +64,9 @@ local function init()
   vim.o.writebackup = false
   vim.o.swapfile = false
 
+  vim.o.splitbelow = true
+  vim.o.splitright = true
+
   -- Highlight current line
   vim.o.cursorline = true
 
