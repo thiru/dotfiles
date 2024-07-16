@@ -64,8 +64,10 @@ local function init()
   vim.o.writebackup = false
   vim.o.swapfile = false
 
-  vim.o.splitbelow = true
+  -- Default to creating vertical splits to the right
   vim.o.splitright = true
+  -- Default to creating horizontal splits below
+  vim.o.splitbelow = true
 
   -- Highlight current line
   vim.o.cursorline = true
