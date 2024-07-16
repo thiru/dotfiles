@@ -31,7 +31,9 @@ return {
     },
   },
   config = function(_, opts)
-    require('mini.files').setup(opts)
+    local mini_files = require('mini.files')
+
+    mini_files.setup(opts)
 
     local show_dotfiles = true
     local filter_show = function()
@@ -44,7 +46,7 @@ return {
     local toggle_dotfiles = function()
       show_dotfiles = not show_dotfiles
       local new_filter = show_dotfiles and filter_show or filter_hide
-      require('mini.files').refresh({ content = { filter = new_filter } })
+      mini_files.refresh({ content = { filter = new_filter } })
     end
 
     vim.api.nvim_create_autocmd('User', {
@@ -52,6 +54,7 @@ return {
       callback = function(args)
         local buf_id = args.data.buf_id
         vim.keymap.set('n', 'g.', toggle_dotfiles, { buffer = buf_id, desc = 'Toggle Hidden Files' })
+        vim.keymap.set('n', '<C-c>', mini_files.close, { buffer = buf_id, desc = 'Close' })
         vim.keymap.set('n', '<C-j>', 'j', { buffer = buf_id, desc = 'Move down' })
         vim.keymap.set('n', '<C-k>', 'k', { buffer = buf_id, desc = 'Move up' })
       end,
