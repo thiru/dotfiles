@@ -4,6 +4,9 @@ return {
   dev = true,
   depedencies = {'nvim-telescope/telescope.nvim'},
   config = function()
-    vim.keymap.set('n', '<C-a>s', '<CMD>Telescope ssh<CR>', {desc = 'Open an [S]SH connection'})
-  end
+    require('ssh').setup({})
+  end,
+  keys = {
+    {'<C-a>s', '<CMD>Telescope ssh<CR>', desc = 'Open an [S]SH connection'},
+  },
 }
