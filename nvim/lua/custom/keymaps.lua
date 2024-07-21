@@ -41,6 +41,9 @@ local function init()
   vim.keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', { expr = true, silent = true })
   vim.keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', { expr = true, silent = true })
 
+  -- Show messages
+  vim.keymap.set('n', '<C-m>', '<CMD>messages<CR>', {desc = 'Show messages'})
+
   -- Diagnostic keymaps
   vim.keymap.set('n', '<leader>k', vim.diagnostic.goto_prev)
   vim.keymap.set('n', '<leader>j', vim.diagnostic.goto_next)
