@@ -10,6 +10,9 @@ fi
 
 export VISUAL=neovide
 
+# Allow nix store to be a symlink
+export NIX_IGNORE_SYMLINK_STORE=1
+
 # Custom, machine-specific environment variables
 if [ -f "$HOME/.config/env-vars" ]; then
   source "$HOME/.config/env-vars"
