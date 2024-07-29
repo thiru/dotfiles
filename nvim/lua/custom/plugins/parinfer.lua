@@ -1,5 +1,5 @@
 return {
-  'gpanders/nvim-parinfer',
+  'eraserhd/parinfer-rust',
   cond = not vim.opt.diff:get() and not nvtmux_auto_started(),
-  ft = {'clojure', 'edn'},
+  build = 'cargo build --release'
 }
