@@ -5,10 +5,9 @@ return {
     layout = {
       align = 'center',
     },
-    modes = {
-      defer = {
-        ['<C-a>'] = false, -- for nvtmux
-      }
+    triggers = {
+      { "<auto>", mode = "nixsotc" },
+      { '<C-a>' } -- for nvtmux
     }
   }
 }
