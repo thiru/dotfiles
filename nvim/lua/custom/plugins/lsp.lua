@@ -120,7 +120,6 @@ return {
       bashls = {},
       cssls = {},
       clojure_lsp = {},
-      dockerls = {},
       html = {},
       jsonls = {},
       lua_ls = {
