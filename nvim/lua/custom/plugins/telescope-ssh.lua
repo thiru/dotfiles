@@ -4,7 +4,9 @@ return {
   dev = true,
   depedencies = {'nvim-telescope/telescope.nvim'},
   config = function()
-    require('ssh').setup({})
+    require('ssh').setup({
+      auto_reconnect = not is_windows()
+    })
   end,
   keys = {
     {'<C-a>s', '<CMD>Telescope ssh<CR>', desc = 'Open an [S]SH connection'},
