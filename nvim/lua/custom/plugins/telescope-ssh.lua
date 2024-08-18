@@ -5,7 +5,9 @@ return {
   depedencies = {'nvim-telescope/telescope.nvim'},
   config = function()
     require('ssh').setup({
-      auto_reconnect = not is_windows()
+      auto_reconnect = {
+        when = 'always'
+      }
     })
   end,
   keys = {
