@@ -13,6 +13,6 @@ return {
     },
   },
   keys = {
-    {'<C-a>s', '<CMD>Ssh<CR>', desc = 'Open an [S]SH connection'},
+    {'<C-a>s', '<CMD>SshPicker<CR>', desc = 'Launch [S]SH connection picker'},
   },
 }
