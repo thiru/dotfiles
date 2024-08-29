@@ -2,7 +2,9 @@ return {
   'thiru/nvtmux.nvim',
   cond = not vim.opt.diff:get() and nvtmux_auto_started(),
   dev = true,
-  depedencies = {'nvim-telescope/telescope.nvim'},
+  depedencies = {
+    'gcmt/taboo.vim',
+    'nvim-telescope/telescope.nvim'},
   lazy = false,
   opts = {
     colorscheme = 'catppuccin-mocha',
