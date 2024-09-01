@@ -5,7 +5,6 @@ return {
   depedencies = {
     'gcmt/taboo.vim',
     'nvim-telescope/telescope.nvim'},
-  lazy = false,
   opts = {
     colorscheme = 'catppuccin-mocha',
     ssh = {
@@ -13,8 +12,5 @@ return {
         when = 'always'
       }
     },
-  },
-  keys = {
-    {'<C-a>s', '<CMD>SshPicker<CR>', desc = 'Launch [S]SH connection picker'},
   },
 }
