@@ -9,7 +9,7 @@ return {
     colorscheme = 'catppuccin-mocha',
     ssh = {
       auto_reconnect = {
-        when = 'always'
+        when = is_windows() and 'always' or 'on_error'
       }
     },
   },
