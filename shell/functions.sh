@@ -28,10 +28,10 @@ function up
 
 # Go to directory via `fzf` and `fd`
 cdfzf() {
-  cd "$HOME"
   local dir
-  dir=$(fd --follow --type directory | fzf --no-multi) &&
-  cd "$dir"
+  dir=$(fd --follow --type directory . "$HOME" | fzf --no-multi) &&
+  cd "$dir" || exit
+  reset
 }
 
 # Go to directory via `lf`

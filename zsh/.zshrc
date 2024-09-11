@@ -171,7 +171,7 @@ if [ -d "$HOME/.fzf/shell" ]; then
 fi
 
 # Go to directory via `fzf` and `fd`
-bindkey -s '^g' 'cdfzf\r\n'
+bindkey -s '^g' 'cdfzf'
 
 # Go to directory via `lf`
 bindkey -s '^o' 'cdlf\r\n'
