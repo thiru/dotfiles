@@ -173,12 +173,6 @@ fi
 # Go to directory via `fzf` and `fd`
 bindkey -s '^g' 'cdfzf'
 
-# Go to directory via `lf`
-bindkey -s '^o' 'cdlf\r\n'
-
-# Go to directory and open file (if applicable)
-bindkey -s '^f' 'cdopen\r\n'
-
 # Work config:
 if [ -f $HOME/code/work/bpk-aws ]; then
   source $HOME/code/work/bpk-aws

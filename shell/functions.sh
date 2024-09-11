@@ -34,23 +34,3 @@ cdfzf() {
   reset
 }
 
-# Go to directory via `lf`
-cdlf () {
-  tmp="$(mktemp)"
-  lf -last-dir-path="$tmp" "$@"
-  if [ -f "$tmp" ]; then
-    dir="$(cat "$tmp")"
-    rm -f "$tmp"
-    [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-  fi
-}
-
-# Go to directory and open file (if applicable)
-cdopen() {
-  local dir_or_file=$(fd --follow | fzf --no-multi)
-  dir_or_file=$(realpath -s "$dir_or_file")
-  cd "$dir_or_file" # even if this is a file Zsh will cd to the parent dir
-  if [ -f "$dir_or_file" ]; then
-    $EDITOR $dir_or_file
-  fi
-}
