@@ -134,7 +134,6 @@ return {
         },
       },
       marksman = {},
-      tsserver = {},
     }
 
     -- Don't load these servers on Windows
@@ -147,6 +146,7 @@ return {
         pyright = {},
         quick_lint_js = {},
         sqlls = {},
+        ts_ls = {},
       })
     end
 
