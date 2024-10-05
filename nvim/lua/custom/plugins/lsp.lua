@@ -141,6 +141,7 @@ return {
       servers = vim.tbl_extend('error', servers, {
         clangd = {},
         cmake = {},
+        gopls = {},
         jdtls = {},
         jsonlint = {},
         pyright = {},
