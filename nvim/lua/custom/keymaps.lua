@@ -23,11 +23,6 @@ local function init()
   vim.keymap.set({ 'n', 'v' }, '<leader>q', '<CMD>qall<CR>', { desc = 'Exit Vim (unless unsaved changes)' })
   vim.keymap.set({ 'n', 'v' }, '<leader>Q', '<CMD>qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
 
-  -- Command mode quick open
-  vim.keymap.set({'n', 'v'}, '<C-;>', ':', {desc = 'Quick open command mode'})
-  vim.keymap.set('i', '<C-;>', '<ESC>:', {desc = 'Quick open command mode'})
-  vim.keymap.set('t', '<C-;>', '<C-\\><C-n>:', {desc = 'Quick open command mode'})
-
   -- Open command mode for Lua
   vim.keymap.set({ 'n', 'v' }, '<leader>l', ':lua ', { desc = 'Open the command mode for Lua' })
 
