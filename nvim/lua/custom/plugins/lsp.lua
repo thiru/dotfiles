@@ -5,7 +5,12 @@ return {
     -- Automatically install LSPs and related tools to stdpath for neovim
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    {
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
+      opts = {
+        run_on_start = false
+      }
+    },
 
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
