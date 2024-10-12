@@ -14,8 +14,8 @@ export VISUAL=neovide
 export NIX_IGNORE_SYMLINK_STORE=1
 
 # Custom, machine-specific environment variables
-if [ -f "$HOME/.config/env-vars" ]; then
-  source "$HOME/.config/env-vars"
+if [ -f "$HOME/.env" ]; then
+  source "$HOME/.env"
 fi
 
 # Opt into Wayland support for Firefox (otherwise xwayland will be used)
