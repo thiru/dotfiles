@@ -95,7 +95,7 @@ local function init()
   vim.keymap.set('n', '<leader>ww', '<CMD>set wrap!<CR>', { desc = 'Toggle word wrap' })
 
   -- Copy everything to the clipboard
-  vim.keymap.set('n', '<leader>ya', '<CMD>y+<CR>', { desc = 'Copy everything to system clipboard' })
+  vim.keymap.set('n', '<leader>ya', '<CMD>%y+<CR>', { desc = 'Copy everything to system clipboard' })
 
   -- Copy current file path to clipboard
   vim.keymap.set('n', '<leader>yf', ':let @+ = expand("%")<CR>',
