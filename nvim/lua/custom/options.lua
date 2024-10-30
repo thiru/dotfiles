@@ -16,17 +16,6 @@ local function highlight_on_yank()
   })
 end
 
-local function notify_search_wrapped()
-  vim.api.nvim_create_autocmd('SearchWrapped', {
-    desc = 'todo',
-    pattern = '*',
-    group = vim.api.nvim_create_augroup('NotifySearchWrapped', {clear = true}),
-    callback = function()
-      vim.notify('search wrapped', vim.log.levels.INFO)
-    end
-  })
-end
-
 -- [[ Show/hide whitespace chars in certain situations. ]]
 local function maybe_show_listchars()
   local group = vim.api.nvim_create_augroup('maybe-show-listchars', {clear = true})
@@ -155,7 +144,6 @@ local function init()
   end
 
   highlight_on_yank()
-  notify_search_wrapped()
   maybe_show_listchars()
 end
 
