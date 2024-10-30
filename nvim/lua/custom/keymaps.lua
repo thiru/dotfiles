@@ -105,6 +105,9 @@ local function init()
   vim.keymap.set({'c', 'i'}, '<C-v>', '<C-r>+', { desc = 'Paste from system clipboard (command/insert mode)' })
   vim.keymap.set('n', '<C-v>', 'p', { desc = 'Paste from system clipboard (normal mode)' })
 
+  -- Enter visual block mode (need this in nested vim where ctrl-q doesn't work)
+  vim.keymap.set({'n', 't'}, '<C-S-v>', '<C-v>', {desc = 'Enter visual block mode', noremap = true})
+
   -- Toggle cursor column
   vim.keymap.set('n', '<leader>|', function() vim.o.cursorcolumn = not vim.o.cursorcolumn end, {desc = 'Toggle cursor column'})
 
