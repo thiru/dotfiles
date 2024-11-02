@@ -37,6 +37,12 @@ set_window_title_on_cd() {
 }
 add-zsh-hook chpwd set_window_title_on_cd
 
+if command -v carapace &> /dev/null; then
+  export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+  zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+  source <(carapace _carapace)
+fi
+
 # AWS CLI completion:
 if [ -f '/usr/bin/aws_completer' ]; then
   complete -C '/usr/bin/aws_completer' aws
