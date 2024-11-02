@@ -179,9 +179,4 @@ fi
 # Go to directory via `fzf` and `fd`
 bindkey -s '^g' 'cdfzf'
 
-# Work config:
-if [ -f $HOME/code/work/bpk-aws ]; then
-  source $HOME/code/work/bpk-aws
-fi
-
 eval "$(starship init zsh)"

@@ -32,18 +32,10 @@ fi
 # Local binaries and scripts
 PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/software-configs/scripts/linux:$HOME/software-configs/scripts/clojure/src/scripts"
 
-# Work scripts
-if [ -d "$HOME/code/work/configs/bin" ]; then
-  PATH="$PATH:$HOME/code/work/configs/bin"
-fi
-
 # GraalVM home
 if [ -d ~/graalvm ]; then
   export GRAALVM_HOME=$HOME/graalvm
 fi
-
-# NNN
-export NNN_OPTS="e"
 
 # FZF
 
