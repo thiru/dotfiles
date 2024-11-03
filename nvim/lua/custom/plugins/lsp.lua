@@ -151,7 +151,6 @@ return {
         jsonlint = {},
         pyright = {},
         quick_lint_js = {},
-        sqlls = {},
         ts_ls = {},
       })
     end
