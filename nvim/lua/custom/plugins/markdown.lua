@@ -1,15 +1,8 @@
 return {
-  "OXY2DEV/markview.nvim",
+  'MeanderingProgrammer/render-markdown.nvim',
   cond = not vim.opt.diff:get() and not nvtmux_auto_started(),
-  lazy = false, -- Recommended
-  dependencies = {
-    "nvim-treesitter/nvim-treesitter",
-    "nvim-tree/nvim-web-devicons"
-  },
-  opts = {
-    list_items = {
-      indent_size = 2,
-      shift_width = 2,
-    }
-  }
+  dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+  ---@module 'render-markdown'
+  ---@type render.md.UserConfig
+  opts = {},
 }
