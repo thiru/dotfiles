@@ -35,6 +35,31 @@ function _G.has_glibc_version(min_major, min_minor)
 end
 
 
+-- [[ Get visually selected text in current line ]]
+function _G.get_visual_selection()
+  local orig_cur_pos = vim.fn.getpos('.')
+
+  -- We need to escape visual mode as the '< and '> marks apply to the *last* visual mode selection
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), 'x', true)
+
+  vim.fn.setpos('.', orig_cur_pos)
+
+  local start_pos = vim.fn.getpos("'<")
+  local end_pos = vim.fn.getpos("'>")
+
+  local start_line = start_pos[2] - 1
+  local end_line = end_pos[2] - 1
+  local start_col = start_pos[3] - 1
+  local end_col = end_pos[3]
+
+  local sel_lines = vim.api.nvim_buf_get_text(0, start_line, start_col, end_line, end_col, {})
+
+  local sel_text_joined = vim.trim(table.concat(sel_lines, ' '))
+
+  return sel_text_joined
+end
+
+
 function _G.nvtmux_auto_started()
   return vim.g.nvtmux_auto_start == true
 end
