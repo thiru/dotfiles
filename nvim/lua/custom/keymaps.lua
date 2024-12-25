@@ -23,9 +23,6 @@ local function init()
   vim.keymap.set({ 'n', 'v' }, '<leader>q', '<CMD>qall<CR>', { desc = 'Exit Vim (unless unsaved changes)' })
   vim.keymap.set({ 'n', 'v' }, '<leader>Q', '<CMD>qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
 
-  -- Open command mode for Lua
-  vim.keymap.set({ 'n', 'v' }, '<leader>l', ':lua ', { desc = 'Open the command mode for Lua' })
-
   -- Open init.lua
   vim.keymap.set('n', '<leader>ve', ':e $MYVIMRC<CR>:cd %:p:h<CR>:pwd<CR>',
     { desc = 'Open main Neovim config (init.lua)', silent = true })
@@ -65,8 +62,26 @@ local function init()
   vim.keymap.set('c', '<C-j>', '<Down>', { desc = 'Next command (cmd-line mode)' })
   vim.keymap.set('c', '<C-k>', '<Up>', { desc = 'Previous command (cmd-line mode)' })
 
-  -- Execute current line in shell
-  vim.keymap.set('n','<leader>x', ':exec "!".getline(".")<CR>', { desc = 'Execute current line in shell' })
+  -- Execute/print current line or buffer
+  vim.keymap.set('n', '<leader>L', ':.lua<CR>', { desc = 'Execute current line' })
+  vim.keymap.set('v', '<leader>L', ':lua<CR>', { desc = 'Execute current line' })
+  vim.keymap.set('n', '<leader><leader>l', '<CMD>source %<CR>', { desc = 'Execute current buffer' })
+  vim.keymap.set('n', '<leader>l',
+    function()
+      local to_execute = vim.fn.getline('.')
+      if to_execute ~= nil then
+        loadstring('vim.print(' .. to_execute .. ')')()
+      end
+    end,
+    { desc = 'Execute and print current line' })
+  vim.keymap.set('v', '<leader>l',
+    function()
+      local to_execute = selected_text()
+      if to_execute ~= nil then
+        loadstring('vim.print(' .. to_execute .. ')')()
+      end
+    end,
+    { desc = 'Execute and print current line' })
 
   vim.keymap.set('t', '<LeftMouse>', '<Nop>', { desc = 'Disable mouse left-click' })
   vim.keymap.set('t', '<2-LeftMouse>', '<Nop>', { desc = 'Disable mouse double left-click' })
