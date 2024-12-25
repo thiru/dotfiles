@@ -17,6 +17,10 @@ end
 function _G.has_glibc_version(min_major, min_minor)
   -- print('Requiring glibc: ' .. min_major .. '.' .. min_minor) -- DEBUG
   local handle = io.popen('ldd --version')
+  if handle == nil then
+    return false
+  end
+
   local result = handle:read('*a')
   handle:close()
 
