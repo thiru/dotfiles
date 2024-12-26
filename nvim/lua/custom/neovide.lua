@@ -1,9 +1,10 @@
+local u = require('custom.utils')
 local doc = 'Neovide-specific configs'
 
 local transparency_default = 1.0
 local transparency_step = 0.05
 local term_trans_override = 0.95
-if is_windows() then
+if u.is_windows() then
   term_trans_override = 1.0
 end
 
@@ -12,7 +13,7 @@ local function transparency_print()
 end
 
 local function set_default_transparency()
-  if nvtmux_auto_started() then
+  if u.nvtmux_auto_started() then
     vim.g.neovide_transparency = term_trans_override
   else
     vim.g.neovide_transparency = transparency_default

@@ -1,6 +1,8 @@
+local u = require('custom.utils')
+
 return {
   'saghen/blink.cmp',
-  cond = not vim.opt.diff:get() and not nvtmux_auto_started(),
+  cond = not vim.opt.diff:get() and not u.nvtmux_auto_started(),
   lazy = false, -- lazy loading handled internally
   -- use a release tag to download pre-built binaries
   version = 'v0.*',

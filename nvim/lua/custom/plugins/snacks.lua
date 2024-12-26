@@ -1,17 +1,19 @@
+local u = require('custom.utils')
+
 return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
   ---@type snacks.Config
   opts = {
-    bigfile = { enabled = not nvtmux_auto_started() },
-    dashboard = { enabled = not nvtmux_auto_started() },
+    bigfile = { enabled = not u.nvtmux_auto_started() },
+    dashboard = { enabled = not u.nvtmux_auto_started() },
     notifier = {
       enabled = true,
       timeout = 2000,
     },
-    quickfile = { enabled = not nvtmux_auto_started() },
-    statuscolumn = { enabled = not nvtmux_auto_started() },
+    quickfile = { enabled = not u.nvtmux_auto_started() },
+    statuscolumn = { enabled = not u.nvtmux_auto_started() },
     styles = {
       notification = {
         wo = { wrap = true } -- Wrap notifications

@@ -1,3 +1,5 @@
+local u = require('custom.utils')
+
 local function replace_home_with_tilde(path)
   local home_dir = vim.uv.os_homedir() or ''
   if vim.startswith(path, home_dir) then
@@ -46,7 +48,7 @@ end
 
 return {
   'nvim-lualine/lualine.nvim',
-  cond = not nvtmux_auto_started(),
+  cond = not u.nvtmux_auto_started(),
   helpers = {
     get_cwd = get_cwd,
     get_file_parent_and_name = get_file_parent_and_name,

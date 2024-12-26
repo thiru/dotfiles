@@ -1,5 +1,3 @@
-require('custom.utils') -- NOTE: contains functions injected into globals
-
 local plugin = require('custom.plugin-manager')
 local options = require('custom.options')
 local keymaps = require('custom.keymaps')

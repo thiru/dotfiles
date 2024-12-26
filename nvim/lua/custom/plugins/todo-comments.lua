@@ -1,6 +1,8 @@
+local u = require('custom.utils')
+
 return {
   'folke/todo-comments.nvim',
-  cond = not vim.opt.diff:get() and not nvtmux_auto_started(),
+  cond = not vim.opt.diff:get() and not u.nvtmux_auto_started(),
   event = 'VimEnter',
   dependencies = { 'nvim-lua/plenary.nvim' },
   opts = {

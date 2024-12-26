@@ -1,4 +1,4 @@
--- Fuzzy Finder (files, lsp, etc)
+local u = require('custom.utils')
 
 return {
   'nvim-telescope/telescope.nvim',
@@ -22,7 +22,7 @@ return {
   },
   config = function()
     local cder_opts
-    if is_windows() then
+    if u.is_windows() then
       cder_opts = {
         dir_command = {'fd', '--type=d', '--follow', '.', vim.uv.os_homedir()},
         command_executer = {'cmd', '/c', 'dir'},

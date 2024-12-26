@@ -1,8 +1,8 @@
--- Highlight, edit, and navigate code
+local u = require('custom.utils')
 
 return {
   'nvim-treesitter/nvim-treesitter',
-  cond = not vim.opt.diff:get() and not nvtmux_auto_started(),
+  cond = not vim.opt.diff:get() and not u.nvtmux_auto_started(),
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
   },

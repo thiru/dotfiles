@@ -1,6 +1,8 @@
+local u = require('custom.utils')
+
 return {
   'neovim/nvim-lspconfig',
-  cond = not vim.opt.diff:get() and not nvtmux_auto_started(),
+  cond = not vim.opt.diff:get() and not u.nvtmux_auto_started(),
   dependencies = {
     'saghen/blink.cmp',
     -- Automatically install LSPs and related tools to stdpath for neovim
@@ -142,7 +144,7 @@ return {
     }
 
     -- Don't load these servers on Windows
-    if not is_windows() then
+    if not u.is_windows() then
       servers = vim.tbl_extend('error', servers, {
         clangd = {},
         cmake = {},

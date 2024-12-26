@@ -1,6 +1,8 @@
+local u = require('custom.utils')
+
 return {
   'thiru/nvtmux.nvim',
-  cond = not vim.opt.diff:get() and nvtmux_auto_started(),
+  cond = not vim.opt.diff:get() and u.nvtmux_auto_started(),
   dev = true,
   depedencies = {
     'gcmt/taboo.vim',
@@ -9,7 +11,7 @@ return {
     colorscheme = 'catppuccin-mocha',
     ssh = {
       auto_reconnect = {
-        when = is_windows() and 'always' or 'on_error'
+        when = u.is_windows() and 'always' or 'on_error'
       }
     },
   },

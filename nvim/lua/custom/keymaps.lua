@@ -1,3 +1,4 @@
+local u = require('custom.utils')
 local doc = 'Define key mappings.'
 
 local function go_to_tab(num)
@@ -66,22 +67,17 @@ local function init()
   vim.keymap.set('n', '<leader>L', ':.lua<CR>', { desc = 'Execute current line' })
   vim.keymap.set('v', '<leader>L', ':lua<CR>', { desc = 'Execute current line' })
   vim.keymap.set('n', '<leader><leader>l', '<CMD>source %<CR>', { desc = 'Execute current buffer' })
-  vim.keymap.set('n', '<leader>l',
+  vim.keymap.set({'n', 'v'}, '<leader>l',
     function()
-      local to_execute = vim.fn.getline('.')
-      if to_execute ~= nil then
-        loadstring('vim.print(' .. to_execute .. ')')()
+      local to_execute = u.get_selected_text_or_current_line()
+      if #to_execute > 0 then
+        local worked, ret = pcall(function() loadstring('vim.print(' .. to_execute .. ')')() end)
+        if not worked then
+          print(ret)
+        end
       end
     end,
-    { desc = 'Execute and print current line' })
-  vim.keymap.set('v', '<leader>l',
-    function()
-      local to_execute = selected_text()
-      if to_execute ~= nil then
-        loadstring('vim.print(' .. to_execute .. ')')()
-      end
-    end,
-    { desc = 'Execute and print current line' })
+    { desc = 'Execute and print selected text or current line' })
 
   vim.keymap.set('t', '<LeftMouse>', '<Nop>', { desc = 'Disable mouse left-click' })
   vim.keymap.set('t', '<2-LeftMouse>', '<Nop>', { desc = 'Disable mouse double left-click' })
@@ -127,12 +123,12 @@ local function init()
   vim.keymap.set('n', '<leader>|', function() vim.o.cursorcolumn = not vim.o.cursorcolumn end, {desc = 'Toggle cursor column'})
 
   -- Buffer nav - previous/next
-  if not nvtmux_auto_started() then
+  if not u.nvtmux_auto_started() then
     vim.keymap.set('n', '<C-j>', '<CMD>bp<CR>', {desc = 'Previous buffer', silent = true})
     vim.keymap.set('n', '<C-k>', '<CMD>bn<CR>', {desc = 'Next buffer/tab', silent = true})
   end
 
-  if not nvtmux_auto_started() then -- nvtmux already has these bindings
+  if not u.nvtmux_auto_started() then -- nvtmux already has these bindings
     -- Tab nav - new
     vim.keymap.set('n', '<C-t>', '<CMD>tabnew<CR>', {desc = 'New tab'})
 
