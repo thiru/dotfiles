@@ -5,7 +5,8 @@ return {
     mappings = {
       go_in = '<C-l>',
       go_in_plus = '<CR>',
-      go_out = '<C-h>'
+      go_out = '<C-h>',
+      synchronize = '<C-s>',
     },
     options = {
       use_as_default_explorer = true,
