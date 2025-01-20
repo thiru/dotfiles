@@ -18,6 +18,12 @@ return {
       additional_vim_regex_highlighting = { 'ruby' },
     },
     indent = { enable = true, disable = { 'ruby' } },
+    -- Disabling textobject selection as they will conflict with the superior mini.ai plugin
+    textobjects = {
+      select = {
+        enable = false
+      }
+    },
     ensure_installed = {
       'bash',
       'c',
