@@ -10,9 +10,8 @@ return {
   opts = {
     colorscheme = 'catppuccin-mocha',
     ssh = {
-      auto_reconnect = {
-        when = u.is_windows() and 'always' or 'on_error'
-      }
+      auto_reconnect = true,
+      auto_rename_buf = true,
     },
   },
 }
