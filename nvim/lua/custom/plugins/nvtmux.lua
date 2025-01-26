@@ -12,6 +12,7 @@ return {
     ssh = {
       auto_reconnect = true,
       auto_rename_buf = true,
+      cache_passwords = true
     },
   },
 }
