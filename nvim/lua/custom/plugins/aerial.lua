@@ -5,7 +5,6 @@ return {
   cond = not vim.opt.diff:get() and not u.nvtmux_auto_started(),
   dependencies = {
      'nvim-treesitter/nvim-treesitter',
-     'nvim-tree/nvim-web-devicons'
   },
   opts = {
     on_attach = function(bufnr)
