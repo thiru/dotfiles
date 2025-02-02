@@ -9,10 +9,5 @@ return {
     'nvim-telescope/telescope.nvim'},
   opts = {
     colorscheme = 'catppuccin-mocha',
-    ssh = {
-      auto_reconnect = true,
-      auto_rename_buf = true,
-      cache_passwords = true
-    },
   },
 }
