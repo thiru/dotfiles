@@ -40,6 +40,7 @@ return {
     { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
     { "<leader>,",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
     { "<leader>d",  function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+    { "<leader>D",  function() Snacks.bufdelete({force=true}) end, desc = "Delete Buffer (even if modified)" },
     { "<leader>nh", function() Snacks.notifier.show_history() end, desc = "Notification History" },
     { "<leader>nd", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
     { "<leader>fr", function() Snacks.rename.rename_file() end, desc = "Rename File" },
