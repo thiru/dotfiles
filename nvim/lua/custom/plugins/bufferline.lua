@@ -5,7 +5,7 @@ return {
   cond = not u.nvtmux_auto_started(),
   opts = {
     options = {
-      always_show_bufferline = false,
+      always_show_bufferline = true,
     }
   }
 }
