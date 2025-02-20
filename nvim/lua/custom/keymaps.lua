@@ -126,6 +126,9 @@ local function init()
     -- Tab nav - new
     vim.keymap.set('n', '<C-t>', '<CMD>tabnew<CR>', {desc = 'New tab'})
 
+    -- Tab nav - close
+    vim.keymap.set('n', '<leader>td', '<CMD>tabclose<CR>', {desc = 'Close tab'})
+
     -- Tab nav - last accessed
     vim.keymap.set({'n', 'i'}, '<C-`>', '<CMD>:tabnext #<CR>', {desc = 'Go to last accessed tab', silent = true})
 
