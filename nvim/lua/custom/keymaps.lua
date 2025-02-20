@@ -122,12 +122,6 @@ local function init()
   -- Toggle cursor column
   vim.keymap.set('n', '<leader>|', function() vim.o.cursorcolumn = not vim.o.cursorcolumn end, {desc = 'Toggle cursor column'})
 
-  -- Buffer nav - previous/next
-  if not u.nvtmux_auto_started() then
-    vim.keymap.set('n', '<C-j>', '<CMD>bp<CR>', {desc = 'Previous buffer', silent = true})
-    vim.keymap.set('n', '<C-k>', '<CMD>bn<CR>', {desc = 'Next buffer/tab', silent = true})
-  end
-
   if not u.nvtmux_auto_started() then -- nvtmux already has these bindings
     -- Tab nav - new
     vim.keymap.set('n', '<C-t>', '<CMD>tabnew<CR>', {desc = 'New tab'})
