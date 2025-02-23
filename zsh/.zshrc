@@ -177,6 +177,6 @@ if [ -d "$HOME/.fzf/shell" ]; then
 fi
 
 # Go to directory via `fzf` and `fd`
-bindkey -s '^g' 'cdfzf'
+bindkey -s '^g' 'cdfzf\r\n'
 
 eval "$(starship init zsh)"
