@@ -10,6 +10,11 @@ fi
 
 export VISUAL=neovide
 
+# Use Neovim as manpage viewer
+if command -v nvim &> /dev/null; then
+  export MANPAGER='nvim +Man!'
+fi
+
 # Allow nix store to be a symlink
 export NIX_IGNORE_SYMLINK_STORE=1
 
