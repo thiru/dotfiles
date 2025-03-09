@@ -24,6 +24,7 @@ return {
         },
       }
     },
+    image = {},
     notifier = {
       enabled = true,
       timeout = 2000,
