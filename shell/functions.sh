@@ -30,7 +30,6 @@ function up
 cdfzf() {
   local dir
   dir=$(fd --follow --type directory . "$HOME" | fzf --no-multi) &&
-  cd "$dir" || exit
-  reset
+  cd "$dir" || echo 'aborted'
 }
 
