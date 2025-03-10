@@ -42,6 +42,11 @@ if [ -d ~/graalvm ]; then
   export GRAALVM_HOME=$HOME/graalvm
 fi
 
+# NVM
+if [ -f /usr/share/nvm/init-nvm.sh ]; then
+  source /usr/share/nvm/init-nvm.sh
+fi
+
 # FZF
 
 # Use `fd` command instead of `find` when searching files with FZF:
