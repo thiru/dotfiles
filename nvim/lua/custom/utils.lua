@@ -62,4 +62,9 @@ function M.nvtmux_auto_started()
   return vim.g.nvtmux_auto_start == true
 end
 
+--- Check if we're being called as a Kitty scrollback buffer
+function M.is_kitty_scrollback()
+  return vim.g.kitty_scrollback == true
+end
+
 return M

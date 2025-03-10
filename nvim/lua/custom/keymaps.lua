@@ -21,7 +21,11 @@ local function init()
   vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
   -- Quit
-  vim.keymap.set({ 'n', 'v' }, '<leader>q', '<CMD>qall<CR>', { desc = 'Exit Vim (unless unsaved changes)' })
+  if u.is_kitty_scrollback() then
+    vim.keymap.set({ 'n', 'v' }, '<leader>q', '<CMD>qall!<CR>', { desc = 'Exit Vim' })
+  else
+    vim.keymap.set({ 'n', 'v' }, '<leader>q', '<CMD>qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
+  end
   vim.keymap.set({ 'n', 'v' }, '<leader>Q', '<CMD>qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
 
   -- Open init.lua

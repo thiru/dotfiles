@@ -2,7 +2,7 @@ local u = require('custom.utils')
 
 return {
   'akinsho/bufferline.nvim',
-  cond = not u.nvtmux_auto_started(),
+  cond = not u.nvtmux_auto_started() and not u.is_kitty_scrollback(),
   dependencies = {
     'nvim-tree/nvim-web-devicons',
   },
