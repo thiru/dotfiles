@@ -20,6 +20,9 @@ local function init()
   -- Disable a single spacebar key-press since we use it as the leader key
   vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
+  -- Escape insert mode
+  vim.keymap.set('i', '<C-d>', '<Esc>', {desc='Escape insert mode', silent=true})
+
   -- Quit
   if u.is_kitty_scrollback() then
     vim.keymap.set({ 'n', 'v' }, '<leader>q', '<CMD>qall!<CR>', { desc = 'Exit Vim' })
