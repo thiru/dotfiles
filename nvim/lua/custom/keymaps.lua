@@ -24,11 +24,7 @@ local function init()
   vim.keymap.set('i', '<C-d>', '<Esc>', {desc='Escape insert mode', silent=true})
 
   -- Quit
-  if u.is_kitty_scrollback() then
-    vim.keymap.set({ 'n', 'v' }, '<leader>q', '<CMD>qall!<CR>', { desc = 'Exit Vim' })
-  else
-    vim.keymap.set({ 'n', 'v' }, '<leader>q', '<CMD>qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
-  end
+  vim.keymap.set({ 'n', 'v' }, '<leader>q', '<CMD>qall<CR>', { desc = 'Exit Vim' })
   vim.keymap.set({ 'n', 'v' }, '<leader>Q', '<CMD>qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
 
   -- Open init.lua
