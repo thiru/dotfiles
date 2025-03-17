@@ -9,21 +9,6 @@ return {
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = not u.nvtmux_auto_started() },
-    dashboard = {
-      enabled = not u.nvtmux_auto_started(),
-      preset = {
-        keys = {
-          { icon = " ", key = "d", desc = "Directory Picker", action = ":ene | :Telescope cder" },
-          { icon = " ", key = "n", desc = "File | New", action = ":ene | startinsert" },
-          { icon = " ", key = "f", desc = "File | Picker", action = ":lua Snacks.dashboard.pick('files')" },
-          { icon = " ", key = "r", desc = "File | Recent", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-          { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
-          { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-          { icon = "? ", key = "h", desc = "Help", action = ":lua require('telescope.builtin').help_tags()" },
-          { icon = " ", key = "q", desc = "Quit", action = ":qa" },
-        },
-      }
-    },
     image = {},
     notifier = {
       enabled = true,
