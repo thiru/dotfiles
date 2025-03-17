@@ -17,11 +17,6 @@ return {
     quickfile = { enabled = not u.nvtmux_auto_started() },
     picker = {},
     statuscolumn = { enabled = not u.nvtmux_auto_started() },
-    styles = {
-      notification = {
-        wo = { wrap = true } -- Wrap notifications
-      }
-    }
   },
   keys = {
     { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
