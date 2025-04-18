@@ -7,7 +7,7 @@ local function common_config()
   config.set_environment_variables = {}
 
   config.enable_scroll_bar = true
-  config.font = wezterm.font('JetBrainsMono Nerd Font Mono')
+  config.font = wezterm.font('Maple Mono NF')
   config.hide_tab_bar_if_only_one_tab = true
   config.keys = {
     { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },

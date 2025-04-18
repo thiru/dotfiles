@@ -59,7 +59,7 @@ local function init()
   vim.g.maplocalleader = ','
 
   -- Set font for GUI front-ends (like Neovide)
-  vim.opt.guifont = {'JetBrainsMono Nerd Font Mono', ':h' .. font_size_default}
+  vim.opt.guifont = {'Maple Mono NF', ':h' .. font_size_default}
 
   -- Disable backup and recovery files
   vim.o.backup = false
