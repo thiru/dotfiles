@@ -143,7 +143,7 @@ bindsym $mod+Ctrl+v exec $term nvim
 bindsym $mod+o exec fzf_open.clj
 
 # Open Sway config
-bindsym $mod+slash exec neovide --no-tabs $HOME/.config/sway/config -- -c 'call feedkeys(" s/bindsym ")'
+bindsym $mod+slash exec neovide $HOME/.config/sway/config
 
 # Kill focused window
 bindsym $mod+q kill
