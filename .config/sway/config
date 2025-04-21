@@ -88,17 +88,11 @@ exec swayidle -w \
 # Idle inhibitor (i.e. when playing audio and active window is full-screen)
 exec --no-startup-id idle_mon.clj
 
-# Notifcation daemon
-exec dunst
-
 # ydotool daemon
 exec ydotoold
 
 # Day/night gamma adjustment
 exec --no-startup-id gammastep
-
-# Sov (workspace overview)
-exec rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov -t 500
 
 
 
@@ -272,9 +266,6 @@ bindsym $mod+Shift+0 move container to workspace number 10
 # Move workspace to relative monitor
 bindsym $mod+greater move workspace to output right
 bindsym $mod+less move workspace to output left
-
-# Workspace overview
-bindsym $mod+w exec "echo 2 > /tmp/sovpipe"
 
 ### Layout stuff
 ### -----------------------------------------------------------------------------------------------
