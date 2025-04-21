@@ -35,7 +35,7 @@ if [ -d "/usr/share/zsh/plugins/zsh-nix-shell" ]; then
 fi
 
 # Local binaries and scripts
-PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/software-configs/scripts/linux:$HOME/software-configs/scripts/clojure/src/scripts"
+PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/scripts:$HOME/scripts/clojure/src/scripts"
 
 # GraalVM home
 if [ -d ~/graalvm ]; then
