@@ -69,12 +69,12 @@
     },
     "disk": {
         "interval": 30,
-        "format": "  {free}",
+        "format": " {free}",
         "path": "/"
     },
     "disk#data": {
         "interval": 30,
-        "format": "  {free}",
+        "format": " {free}",
         "path": "/data"
     },
     "temperature": {
