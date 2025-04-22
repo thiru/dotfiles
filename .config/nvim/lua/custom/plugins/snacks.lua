@@ -38,7 +38,7 @@ return {
     { "<leader>sc", function() Snacks.picker.commands() end, desc = "Search Commands" },
     { "<leader>sd", function() Snacks.picker.diagnostics_buffer() end, desc = "Search Buffer Diagnostics" },
     { "<leader>sD", function() Snacks.picker.diagnostics() end, desc = "Search All Diagnostics" },
-    { "<leader>sf", function() Snacks.picker.files({follow = true}) end, desc = "Search Files" },
+    { "<leader>sf", function() Snacks.picker.files({follow = true, hidden = true}) end, desc = "Search Files" },
     { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
     { "<leader>sh", function() Snacks.picker.help() end, desc = "Search Help" },
     { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Search Keymaps" },
