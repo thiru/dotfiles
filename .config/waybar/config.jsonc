@@ -148,7 +148,7 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/clock": {
-      "exec": "date +'%a %b %d | %I:%M'",
+      "exec": "date +'%a %b %_d %_I:%M %p'",
       "format": "{}",
       "interval": 30,
       "on-click": "gsimplecal",
