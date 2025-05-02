@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Copy file to clipboard
+
+if [ $XDG_SESSION_TYPE = "wayland" ]; then
+  cat "$1" | wl-copy
+else
+  xclip -sel clip "$1"
+fi

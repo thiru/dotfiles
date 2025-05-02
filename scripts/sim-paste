@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# ctrl-v
+
+ydotool key 29:1 47:1 47:0 29:0

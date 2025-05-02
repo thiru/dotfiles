@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Play random files in this directory tree using MPV.
+
+fd --follow --type f | shuf | mpv --shuffle --no-audio-display --playlist=-

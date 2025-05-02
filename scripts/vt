@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Opens file in a new tab in the parent Neovim instance (e.g. when running the Neovim terminal)
+
+abs_path=$(
+  cd "$(dirname "$1")" || exit 1  # Go to the file's directory
+  echo "$(pwd -P)/$(basename "$1")"  # Print absolute path
+)
+
+nvim --server $NVIM --remote-tab "$abs_path"

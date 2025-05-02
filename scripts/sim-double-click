@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Simulate mouse left double-click
+
+ydotool click --repeat 2 0xC0

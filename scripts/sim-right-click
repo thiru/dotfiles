@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Simulate mouse right click
+
+ydotool click 0xC1
