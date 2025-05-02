@@ -1,4 +1,5 @@
 .clj-kondo
+.config/hypr/env.sh
 .cpcache/
 .lsp
 .nrepl-port
