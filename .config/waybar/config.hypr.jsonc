@@ -168,7 +168,7 @@
     },
     "custom/power-menu": {
         "format": "   ",
-        "on-click": "~/bin/power-menu.sh",
+        "on-click": "~/scripts/power-menu.sh",
         "tooltip": false
     }
 }
