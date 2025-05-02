@@ -104,25 +104,23 @@
 
 (when (empty? sinks)
   (let [msg "No sinks found. Try running `pactl list sinks` yourself."]
-    (println "msg")
-    (sh/sh "notify-send" "Audio"
-           msg
-           "--urgency=low"
-           "--icon=audio-volume-medium"
-           "--expire-time=2000"
-           (str "--replace-id=" (u/gen-replace-id))))
+    (println msg)
+    (u/notify-send "Audio"
+                   :body msg
+                   :expire-time 2000
+                   :icon "audio-volume-medium"
+                   :replace-id (u/gen-replace-id)))
   (when (u/bb-cli?)
     (System/exit 1)))
 
 (when (= 1 (count sinks))
   (let [msg (str "Only one output device found: " (:name (first sinks)))]
     (println msg)
-    (sh/sh "notify-send" "Audio"
-           msg
-           "--urgency=low"
-           "--icon=audio-volume-medium"
-           "--expire-time=2000"
-           (str "--replace-id=" (u/gen-replace-id))))
+    (u/notify-send "Audio"
+                   :body msg
+                   :expire-time 2000
+                   :icon "audio-volume-muted"
+                   :replace-id (u/gen-replace-id)))
   (when (u/bb-cli?)
     (System/exit 0)))
 
@@ -137,20 +135,18 @@
   (sh/sh "change_audio_sink.clj" (:index next-sink)))
 
 (when (not (zero? (:exit set-sink-cmd-res)))
-  (sh/sh "notify-send" "Audio"
-         "Failed to switch to next audio sink"
-         "--urgency=low"
-         "--icon=audio-volume-muted"
-         "--expire-time=2000"
-         (str "--replace-id=" (u/gen-replace-id)))
+  (u/notify-send "Audio"
+                 :body "Failed to switch to next audio sink"
+                 :expire-time 2000
+                 :icon "audio-volume-medium"
+                 :replace-id (u/gen-replace-id))
   (when (u/bb-cli?)
     (System/exit (:exit set-sink-cmd-res))))
 
-(sh/sh "notify-send" "Audio"
-       (str "Switched to " (:description next-sink))
-       "--urgency=low"
-       "--icon=audio-volume-medium"
-       "--expire-time=2000"
-       (str "--replace-id=" (u/gen-replace-id)))
+(u/notify-send "Audio"
+               :body (str "Switched to " (:description next-sink))
+               :expire-time 2000
+               :icon "audio-volume-medium"
+               :replace-id (u/gen-replace-id))
 
 nil

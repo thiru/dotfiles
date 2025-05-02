@@ -89,7 +89,9 @@
   []
   (-> *file*
       (hash)
-      (Math/abs)))
+      (Math/abs)
+      ;; NOTE: seems like the number can't be too large otherwise it's not recognised
+      (mod 100)))
 
 
 
