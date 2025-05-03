@@ -9,21 +9,6 @@
     // "modules-center": ["sway/window"],
     "modules-right": ["idle_inhibitor", "custom/uptime", "cpu", "temperature", "memory", "disk", "disk#data", "network", "backlight", "pulseaudio", "battery", "battery#bat2", "tray", "custom/clock", "custom/power-menu"],
     // Modules configuration
-    // "sway/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
