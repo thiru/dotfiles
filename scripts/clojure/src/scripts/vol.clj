@@ -4,10 +4,11 @@
   "Adjust volume using pactl."
   (:require
             [clojure.java.shell :refer [sh]]
+            [scripts.results :as r]
             [scripts.utils :as u]))
 
 
-(def usage "Usage: vol.clj up [percentage]|down [percentage]|(un)mute")
+(def usage "Usage: vol.clj <up [percentage]|down [percentage]|mute|unmute>")
 
 (def default-percentage
   "The default percentage to increase or decrease the volume by"
@@ -73,36 +74,61 @@
                    :vol curr-vol))
     is-muted))
 
+(defn parse-cli-args
+  [args]
+  {:cmd (first args)
+   :percent-int (if (second args)
+                  (parse-percentage (second args))
+                  default-percentage)})
+
+(defn validate-cli-args
+  [cli-args]
+  (if (zero? (:percent-int cli-args))
+    (r/r :error "Percent must be a positive integer" cli-args)
+    cli-args))
+
+(defn run-command
+  [cli-args]
+  (case (:cmd cli-args)
+    ("-h" "--help")
+    (do
+      (println usage)
+      (r/r :success))
+
+    "up"
+    (increase-volume (:percent-int cli-args))
+
+    "down"
+    (decrease-volume (:percent-int cli-args))
+
+    ("mute" "unmute")
+    (mute-toggle)
+
+    (nil "")
+    (r/r :error "No sub-command provided. See help.")
+
+    (r/r :error (str "Unexpected sub-command: " (:cmd cli-args)))))
+
+(defn handle-exit
+  [result]
+  (when (r/failed? result)
+    (u/println-stderr (:message result))
+    (u/notify-send "Volume Error"
+                   :body (:message result)
+                   :expire-time 3000
+                   :icon "error"
+                   :replace-id (u/gen-replace-id)
+                   :urgency "low")
+    (System/exit 1)))
+
 (defn -main [& args]
-  (let [[cmd percent-str] args
-        percent-int (if percent-str
-                      (parse-percentage percent-str)
-                      default-percentage)]
-    (if (zero? percent-int)
-      (do
-        (u/println-stderr "percent must be a positive integer but was:" percent-str)
-        (System/exit 1))
-      (case cmd
-        ("-h" "--help")
-        (println usage)
-
-        "up"
-        (increase-volume percent-int)
-
-        "down"
-        (decrease-volume percent-int)
-
-        ("mute" "unmute")
-        (mute-toggle)
-
-        (nil "")
-        (do
-          (println usage)
-          (System/exit 1))
-
-        (do
-          (u/println-stderr "unexpected input:" (first args))
-          (System/exit 1))))))
+  (try
+    (handle-exit
+      (r/while-success-> (parse-cli-args args)
+                         (validate-cli-args)
+                         (run-command)))
+    (catch Exception ex
+      (handle-exit (r/r :fatal (.toString ex))))))
 
 (when (u/bb-cli?)
   (apply -main *command-line-args*))
