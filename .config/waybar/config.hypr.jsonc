@@ -7,7 +7,7 @@
     // Choose the order of the modules
     "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/submap", "sway/scratchpad", "custom/media"],
     // "modules-center": ["hyprland/window"],
-    "modules-right": ["idle_inhibitor", "custom/uptime", "cpu", "custom/cpu-freq", "temperature", "memory", "disk", "disk#data", "network", "backlight", "pulseaudio", "battery", "battery#bat2", "tray", "custom/clock", "custom/power-menu"],
+    "modules-right": ["idle_inhibitor", "custom/uptime", "cpu", "custom/cpu-freq", "temperature", "memory", "disk", "disk#data", "backlight", "pulseaudio", "battery", "battery#bat2", "network", "tray", "custom/clock", "custom/power-menu"],
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -89,13 +89,12 @@
         "bat": "BAT2"
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": " {essid} ({signalStrength}%)",
-        "format-ethernet": " {ipaddr}",
-        "tooltip-format": " {ifname} via {gwaddr}/{cidr}",
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": "",
+        "tooltip-format-ethernet": " {ifname} | {gwaddr} | ↑ {bandwidthUpBytes} ↓ {bandwidthDownBytes}",
+        "tooltip-format-wifi": " {ifname} | {gwaddr} | {essid} @ {frequency}GHz | ↑ {bandwidthUpBytes} ↓ {bandwidthDownBytes}",
         "format-linked": " {ifname} (No IP)",
-        "format-disconnected": "⚠ Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-disconnected": "󰚦 "
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
