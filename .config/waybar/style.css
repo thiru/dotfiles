@@ -1,5 +1,4 @@
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
     border-radius: 0.25em;
     font-family: "Maple Mono NF", FontAwesome6Free, "Roboto Mono Medium", Helvetica, Arial, sans-serif;
     font-size: 18px;
@@ -14,19 +13,6 @@ window#waybar {
 
 window#waybar.hidden {
     opacity: 0.2;
-}
-
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
-window#waybar.termite {
-    background-color: #3F3F3F;
 }
 
 window#waybar.chromium {
@@ -79,7 +65,6 @@ button:hover {
 
 #custom-cpu-freq,
 #custom-uptime,
-#custom-vpn,
 #clock,
 #battery,
 #cpu,
@@ -94,16 +79,11 @@ button:hover {
 #tray,
 #mode,
 #idle_inhibitor,
-#scratchpad,
-#mpd {
+#scratchpad {
   background-color: #dfe3e3;
   padding: 0.2em 0.5em;
   margin: 0.4em 0.2em;
   color: #333;
-}
-
-#custom-vpn.on {
-  color: blue;
 }
 
 #window,
@@ -205,22 +185,6 @@ label:focus {
 #idle_inhibitor.activated {
     background-color: #ecf0f1;
     color: #2d3436;
-}
-
-#mpd {
-    color: #2a5c45;
-}
-
-#mpd.disconnected {
-    background-color: #f53c3c;
-}
-
-#mpd.stopped {
-    background-color: #90b1b1;
-}
-
-#mpd.paused {
-    background-color: #51a37a;
 }
 
 #language {
