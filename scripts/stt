@@ -1,17 +1,20 @@
 #!/bin/sh
 
-# Various helper scripts to transcribe an audio file to captions.
+# Helpers to transcribe an audio file to captions.
 
 if [ $# -lt 1 ]; then
-  echo "Usage: stt <SUB-COMMAND> [<ARGS>]"
+  echo "Usage: stt [download <URL>|whisper|transcribe]"
   exit 1
 fi
 
 CMD=$1
-SRC_WAV_FILE="audio.wav"
-DEST_WAV_FILE="audio-clean.wav"
+WAV_FILE="audio.wav"
+VTT_FILE="audio.vtt"
 
-if [ $CMD = "download" ]; then
+if [ "$CMD" = "whisper" ]; then
+  echo "Entering Whisper Nix shell..."
+  nix shell nixpkgs#openai-whisper --offline --no-update-lock-file
+elif [ "$CMD" = "download" ]; then
   if [ $# -lt 2 ]; then
     echo "Usage: stt download <URL>"
     exit 1
@@ -19,21 +22,23 @@ if [ $CMD = "download" ]; then
 
   URL=$2
 
-  echo "Downloading file" $URL
-  yt-dlp --extract-audio --audio-format wav --output "$SRC_WAV_FILE" "$URL"
-elif [ $CMD = "whisper-shell" ]; then
-  echo "Entering Whisper Nix shell..."
-  nix shell nixpkgs#openai-whisper --offline --no-update-lock-file
-elif [ $CMD = "transcribe" ]; then
+  echo "Downloading file: $URL"
+  yt-dlp --extract-audio --audio-format wav --output "$WAV_FILE" "$URL"
+elif [ "$CMD" = "transcribe" ]; then
   echo "Converting audio to Whisper-friendly format..."
-  ffmpeg -i "$SRC_WAV_FILE" -ar 16000 -ac 1 -c:a pcm_s16le "$DEST_WAV_FILE"
+  ffmpeg -i "$WAV_FILE" -ar 16000 -ac 1 -c:a pcm_s16le audio16k.wav && mv audio16k.wav "$WAV_FILE"
 
   echo "Transcribing audio with Whisper..."
-  whisper --language en --model base --word_timestamps True --max_line_count 1 --max_words_per_line 1 --output_format vtt "$DEST_WAV_FILE"
+  whisper --language en --model base --word_timestamps True --max_line_count 1 --max_words_per_line 1 --output_format vtt "$WAV_FILE"
 
-  # echo "Stitching captions with Recap..."
-  # recap restitch output.vtt | recap -i linger | recap -i fixup > final.vtt
+  echo "Stitching captions with Recap..."
+  recap restitch $VTT_FILE | recap -i linger | recap -i fixup > final.vtt
+
+  echo "Removing temp files..."
+  rm "$WAV_FILE" "$VTT_FILE"
+
+  echo "All done!"
 else
-  echo "Unknown sub-command: " $CMD
+  echo "Unknown sub-command: " "$CMD"
   exit 1
 fi
