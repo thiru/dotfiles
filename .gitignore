@@ -1,6 +1,7 @@
 .clj-kondo
 .config/hypr/env.sh
 .cpcache/
+.~lock.*
 .lsp
 .nrepl-port
 .rebel_readline_history
