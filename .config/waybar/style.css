@@ -218,3 +218,10 @@ label:focus {
 #scratchpad.empty {
     background-color: transparent;
 }
+
+#submap {
+    color: #000000;
+    background-color: orange;
+    font-weight: bold;
+    padding: 0 0.5rem;
+}
