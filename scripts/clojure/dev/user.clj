@@ -7,13 +7,16 @@
                                  :unused-referred-var {:level :off}}}}
   (:require
             [clojure.java.io :as io]
-            [clojure.reflect :as r]
+            [clojure.pprint :refer :all]
+            [clojure.repl :refer :all]
+            [clojure.reflect :as reflect]
             [clojure.spec.alpha :as s]
             [clojure.string :as str]
             [puget.printer :as puget]
             [rebel-readline.main :as rebel]
             [scripts.brightness :as brightness]
             [scripts.power :as power]
+            [scripts.results :as r]
             [scripts.utils :as u]
             [scripts.vol :as vol]
             [utils.nrepl :as nrepl]

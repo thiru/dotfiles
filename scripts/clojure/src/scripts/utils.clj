@@ -93,6 +93,35 @@
       ;; NOTE: seems like the number can't be too large otherwise it's not recognised
       (mod 100)))
 
+(defn notify-send-error
+  [title result]
+  (notify-send title
+               :body (str (:message result)
+                          (when (:details result)
+                            (str "\n\n"
+                                 (with-out-str
+                                   (pp/pprint (:details result))))))
+               :expire-time 5000
+               :icon "error"
+               :replace-id (gen-replace-id)
+               :urgency "low"))
+
+(defmacro safe-run-exit
+  "Safely run the given expression, ensuring any errors or exceptions are caught and displayed."
+  [notify-title expr]
+  `(try
+     (let [result# ~expr]
+       (when (r/failed? result#)
+         (println-stderr result#)
+         (notify-send-error ~notify-title result#)
+         (System/exit 1)))
+     (catch Exception ex
+       (println-stderr (.toString ex))
+       (notify-send-error
+         ~notify-title
+         (r/r :fatal "Exception!" {:details ex}))
+       (System/exit 1))))
+
 
 
 (comment
