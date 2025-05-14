@@ -13,7 +13,7 @@
        "index, including changing the sink of any active programs.\n\n"
        "You can see available audio sinks by running:\n"
        "$ pactl list sinks\n\n"
-       "Usage: change_audio_sink.clj <SINK INDEX>\n"))
+       "Usage: change-audio-sink.clj <SINK INDEX>\n"))
 
 ;; Validation
 ;; ----------------------------------------------------------------------------

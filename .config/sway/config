@@ -89,7 +89,7 @@ exec swayidle -w \
        resume 'swaymsg "output * power on"'
 
 # Idle inhibitor (i.e. when playing audio and active window is full-screen)
-exec --no-startup-id idle_mon.clj
+exec --no-startup-id idle-mon.clj
 
 # ydotool daemon
 exec ydotoold
@@ -143,7 +143,7 @@ bindsym $mod+v exec neovide
 bindsym $mod+Ctrl+v exec $term nvim
 
 # Open file via fzf
-bindsym $mod+o exec fzf_open.clj
+bindsym $mod+o exec fzf-open.clj
 
 # Open Sway config
 bindsym $mod+slash exec neovide $HOME/.config/sway/config
@@ -161,7 +161,7 @@ bindsym $mod+d exec notify-send "`date`"
 bindsym $mod+Ctrl+s exec screensaver-vid.sh
 
 # Audio device (sink/output) cycle
-bindsym $mod+a exec ~/scripts/clojure/src/scripts/next_audio_sink.clj
+bindsym $mod+a exec ~/scripts/clojure/src/scripts/next-audio-sink.clj
 
 # Power menu
 bindsym $mod+p exec ~/scripts/power-menu.sh

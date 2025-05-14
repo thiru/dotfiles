@@ -132,7 +132,7 @@
     (nth sinks (inc (:idx active-sink)) (first sinks))))
 
 (def set-sink-cmd-res
-  (sh/sh "change_audio_sink.clj" (:index next-sink)))
+  (sh/sh "change-audio-sink.clj" (:index next-sink)))
 
 (when (not (zero? (:exit set-sink-cmd-res)))
   (u/notify-send "Audio"

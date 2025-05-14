@@ -12,7 +12,7 @@
     [scripts.utils :as u]))
 
 
-(def usage "Usage: idle_mon.clj")
+(def usage "Usage: idle-mon.clj")
 
 (def poll-interval-secs 30)
 
@@ -42,7 +42,7 @@
     (if (and (audio-playing?) (full-screen?))
       (sh "systemd-inhibit"
           "--what=idle"
-          "--who=idle_mon.clj"
+          "--who=idle-mon.clj"
           "--why=audio-playing"
           "sleep" (str poll-interval-secs))
       (Thread/sleep (* poll-interval-secs 1000)))))

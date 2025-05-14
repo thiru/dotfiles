@@ -9,7 +9,7 @@
             [scripts.results :as r]
             [scripts.utils :as u]))
 
-(def usage "Usage: bing_wallpaper.clj <DOWNLOAD PATH>")
+(def usage "Usage: bing-wallpaper.clj <DOWNLOAD PATH>")
 
 (def region 'en-CA')
 (def api-url (format "https://bing.biturl.top/?resolution=UHD&format=json&index=0&mkt=%s" region))

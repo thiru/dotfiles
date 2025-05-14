@@ -8,7 +8,7 @@
             [scripts.results :as r]
             [scripts.utils :as u]))
 
-(def usage "Usage: hypr_win_lr.clj [l|r]")
+(def usage "Usage: hypr-win-lr.clj [l|r]")
 
 (defn get-active-window []
   (let [cmd-res (sh "hyprctl" "-j" "activewindow")]
