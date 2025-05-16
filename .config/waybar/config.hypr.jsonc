@@ -51,7 +51,8 @@
     "disk": {
         "interval": 30,
         "format": " {free}",
-        "path": "/"
+        "path": "/",
+        "on-click": "thunar $HOME"
     },
     "disk#data": {
         "interval": 30,
