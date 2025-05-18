@@ -1,10 +1,9 @@
 #!/usr/bin/env bb
 
-;;; Print unique file extensions in the current directory tree.
-
-(ns script
-  (:require [clojure.java.io :as io]
-            [clojure.string :as str]))
+(ns scripts.unique-files
+     "Print unique file extensions in the current directory tree."
+     (:require [clojure.java.io :as io]
+               [clojure.string :as str]))
 
 (->> (io/file ".")
      file-seq
