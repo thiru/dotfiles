@@ -1,9 +1,8 @@
-.clj-kondo
 .config/hypr/env.sh
 .cpcache/
 .~lock.*
 .lsp
 .nrepl-port
 .rebel_readline_history
-bin/clojure/.clj-kondo/**
-!bin/clojure/.clj-kondo/config.edn
+**/.clj-kondo/**
+!**/.clj-kondo/config.edn

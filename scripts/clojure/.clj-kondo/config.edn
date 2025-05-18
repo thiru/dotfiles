@@ -1,0 +1,3 @@
+{:linters {:not-empty? {:level :off}
+           :unused-namespace {:exclude [scripts.utils]}}
+ :lint-as {scripts.results/while-success-> clojure.core/some->}}
