@@ -116,7 +116,7 @@
          (notify-send-error ~notify-title result#)
          (System/exit 1)))
      (catch Exception ex
-       (println-stderr (.toString ex))
+       (println-stderr ex)
        (notify-send-error
          ~notify-title
          (r/r :fatal "Exception!" {:details ex}))
