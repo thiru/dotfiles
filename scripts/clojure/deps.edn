@@ -9,5 +9,6 @@
         :jvm-opts ["-XX:-OmitStackTraceInFastThrow"]}}
  :paths ["src"]
  :deps
- {org.clojure/clojure {:mvn/version "1.11.1"}
-  babashka/process {:mvn/version "0.5.21"}}}
+ {org.clojure/clojure {:mvn/version "1.12.0"}
+  org.babashka/sci {:mvn/version "0.9.45"}
+  babashka/process {:mvn/version "0.6.23"}}}
