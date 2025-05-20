@@ -14,3 +14,6 @@ pacman --needed -S \
   xdg-desktop-portal-hyprland \
   xorg-xwayland \
   ydotool
+
+yay --needed -S \
+  walker-bin
