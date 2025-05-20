@@ -147,12 +147,12 @@
     },
     "custom/launcher": {
         "format": "  ",
-        "on-click": "kupfer",
+        "on-click": "walker --modules applications",
         "tooltip": false
     },
     "custom/power-menu": {
         "format": "   ",
-        "on-click": "~/scripts/power-menu.sh",
+        "on-click": "walker --modules power",
         "tooltip": false
     }
 }
