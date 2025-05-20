@@ -3,14 +3,14 @@
 pacman --needed -S \
   brightnessctl \
   grim \
+  hypridle \
+  hyprland \
+  hyprsunset \
   qt5-wayland \
   qt6-wayland \
   slurp \
-  hypridle \
-  hyprland \
   waybar \
   wf-recorder \
-  ydotool \
+  xdg-desktop-portal-hyprland \
   xorg-xwayland \
-  xdg-desktop-portal-hyprland
-
+  ydotool
