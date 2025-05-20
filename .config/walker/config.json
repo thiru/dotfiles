@@ -50,6 +50,12 @@
           "label": "Logout"
         }
       ]
+    },
+    {
+      "name": "script-search",
+      "placeholder": "Script Search",
+      "src": "find-cmd.clj walker ~/scripts ~/scripts/clojure/src/scripts",
+      "parser": "json"
     }
   ]
 }

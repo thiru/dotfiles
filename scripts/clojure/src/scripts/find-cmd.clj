@@ -5,6 +5,7 @@
   "Find a command/script with a help description."
   (:require [babashka.fs :as fs]
             [babashka.process :as bp]
+            [cheshire.core :as json]
             [clojure.java.shell :refer [sh]]
             [clojure.spec.alpha :as s]
             [clojure.string :as str]
@@ -13,7 +14,10 @@
             [scripts.utils :as u]
             [scripts.specin :refer [apply-specs s< s>]]))
 
-(def usage "Usage: find-cmd.clj [PATHS]")
+(def usage "Usage: find-cmd.clj <fzf|walker> [PATHS]")
+
+(def terminal-cmd "neovide -- --cmd 'lua vim.g.nvtmux_auto_start = true' --cmd \"lua vim.defer_fn(function() vim.api.nvim_chan_send(vim.b.terminal_job_id, '%s') end, 700)\"")
+; (def terminal-cmd "kitty --hold %s") ; A simpler alternative
 
 (s/def ::java-file #(instance? java.io.File %))
 (s/def ::file-type string?)
@@ -183,23 +187,62 @@
       (r/r :success (str "Successfully ran script: " script))
       (r/r :error (str "Script failed: " (:out cmd-res))))))
 
+(defn script-infos->walker-entries
+  "Convert the script metadata maps to a format expected by the walker launcher."
+  {:args (s< :script-infos (s/coll-of ::script-info))
+   :ret  (s> (s/coll-of string?))}
+  [script-infos]
+  (mapv #(let [help (:help %)
+               help (if (str/blank? help)
+                      "..."
+                      help)
+               file-name (-> % :java-file (fs/file-name))]
+           (assoc {}
+                  :exec (format terminal-cmd file-name)
+                  :label (format "%s | %s" file-name help)))
+        script-infos))
+
+(defn print-walker-entries
+  "TODO"
+  [entries]
+  (println (json/generate-string entries))
+  (r/r :success "walker entries printed"))
+
 (defn run-cmd
   "Run this command."
   {:args (s< :args (s/coll-of string?))
    :ret  (s> ::r/result)}
   [args]
-  (let [paths (or args ["."])]
-    (case (first args)
+  (let [sub-cmd (first args)
+        paths (or (rest args) ["."])]
+    (case sub-cmd
       ("-h" "--help")
       (r/r :success usage)
 
+      ("walker")
+      (r/while-success-> (get-scripts paths)
+                         found-scripts?
+                         read-help
+                         script-infos->walker-entries
+                         print-walker-entries)
+
+      ("fzf")
       (r/while-success-> (get-scripts paths)
                          found-scripts?
                          read-help
                          script-infos->fzf-input
                          run-fzf
                          get-selected-script
-                         run-selected-script))))
+                         run-selected-script)
+
+      (nil "")
+      (do
+        (println usage)
+        (System/exit 1))
+
+      (do
+        (u/println-stderr "Unexpected input:" sub-cmd)
+        (System/exit 1)))))
 
 (defn -main [& args]
   (u/safe-run-exit "Find Command" (run-cmd args)))
