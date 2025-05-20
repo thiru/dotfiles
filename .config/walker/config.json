@@ -1,4 +1,7 @@
 {
+  "applications": {
+    "cache": false
+  },
   "keys": {
     "accept_typeahead": ["tab"],
     "activation_modifiers": {
@@ -18,5 +21,35 @@
     "remove_from_history": ["shift backspace"],
     "resume_query": ["ctrl r"],
     "toggle_exact_search": ["ctrl m"]
-  }
+  },
+  "plugins": [
+    {
+      "name": "power",
+      "placeholder": "Power",
+      "keep_sort": false,
+      "show_icon_when_single": true,
+      "entries": [
+        {
+          "exec": "power.clj poweroff",
+          "icon": "system-shutdown",
+          "label": "Shutdown"
+        },
+        {
+          "exec": "power.clj reboot",
+          "icon": "system-reboot",
+          "label": "Reboot"
+        },
+        {
+          "exec": "power.clj suspend",
+          "icon": "system-suspend",
+          "label": "Sleep"
+        },
+        {
+          "exec": "power.clj logout",
+          "icon": "system-log-out",
+          "label": "Logout"
+        }
+      ]
+    }
+  ]
 }
