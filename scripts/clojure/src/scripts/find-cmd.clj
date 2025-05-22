@@ -217,7 +217,9 @@
         paths (or (rest args) ["."])]
     (case sub-cmd
       ("-h" "--help")
-      (r/r :success usage)
+      (do
+        (println usage)
+        (r/r :success ""))
 
       ("walker")
       (r/while-success-> (get-scripts paths)
@@ -241,7 +243,7 @@
         (System/exit 1))
 
       (do
-        (u/println-stderr "Unexpected input:" sub-cmd)
+        (u/println-stderr "Unexpected sub-command:" sub-cmd)
         (System/exit 1)))))
 
 (defn -main [& args]
