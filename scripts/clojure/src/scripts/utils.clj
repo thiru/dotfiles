@@ -18,6 +18,18 @@
      (pp/pprint evaled#)
      evaled#))
 
+(defmacro show-help
+  "Display help based on the current script's namespace and anything `extra`."
+  [extra]
+  `(let [extra-help# (str (-> *ns* meta :doc)
+                       (if (str/blank? ~extra)
+                         ""
+                         (str "\n\n" ~extra)))]
+     (println extra-help#)
+     (if (str/blank? extra-help#)
+       (r/r :error "No help provided")
+       (r/r :success "Help printed"))))
+
 (defn println-stderr
   "Just like `println` except prints to stderr."
   [& args]

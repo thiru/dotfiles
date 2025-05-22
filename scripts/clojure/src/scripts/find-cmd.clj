@@ -217,9 +217,7 @@
         paths (or (rest args) ["."])]
     (case sub-cmd
       ("-h" "--help")
-      (do
-        (println usage)
-        (r/r :success ""))
+      (u/show-help usage)
 
       ("walker")
       (r/while-success-> (get-scripts paths)
