@@ -1,6 +1,6 @@
 (ns scripts.utils
   "Generic utilities for the Clojure scripts in this folder."
-  (:require
+  (:require [babashka.process :as bp]
             [clojure.java.shell :refer [sh]]
             [clojure.java.io :as io]
             [clojure.string :as str]
@@ -30,11 +30,24 @@
        (r/r :error "No help provided")
        (r/r :success "Help printed"))))
 
+(defn surround
+  "Surround `text` with `pre` and `post`."
+  [pre post text]
+  (str pre text post))
+
 (defn println-stderr
   "Just like `println` except prints to stderr."
   [& args]
   (binding [*out* *err*]
     (apply println args)))
+
+(defn hostname
+  "Get the hostname of this machine."
+  []
+  (->> "hostname"
+       (bp/shell {:out :string})
+       :out
+       str/trim))
 
 (defn load-if-file
   "Load the file at the given path if it exists."
