@@ -1,8 +1,9 @@
+**/.clj-kondo/**
+!**/.clj-kondo/config.edn
 .config/hypr/env.sh
+.config/yazi/yazi.toml
 .cpcache/
 .~lock.*
 .lsp
 .nrepl-port
 .rebel_readline_history
-**/.clj-kondo/**
-!**/.clj-kondo/config.edn

@@ -1,0 +1,11 @@
+"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+
+[manager]
+linemode = "size"
+
+[preview]
+cache_dir = "~/.cache/yazi"
+max_height = 1500
+max_width = 1200
+ueberzug_offset = [20, 0, 0, 0]
+ueberzug_scale = 2
