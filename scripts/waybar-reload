@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Reload Waybar (without killing it)
+
+killall -SIGUSR2 waybar
