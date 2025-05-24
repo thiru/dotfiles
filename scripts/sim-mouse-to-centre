@@ -1,23 +1,9 @@
 #!/bin/sh
 
-# Move the mouse to the centre of the active screen (Hyprland)
+# Move the mouse to the centre of the active screen
+#
+# dotool is used instead of ydotool since it doesn't work well with monitor scaling.
+# I would've liked to have replaced ydotool with dotool but dotool has its own issues such slow
+# startup time and dotoold not working well.
 
-# Get resolution using hyprctl and jq
-width=$(hyprctl monitors -j | jq -r '.[0].width')
-height=$(hyprctl monitors -j | jq -r '.[0].height')
-scale=$(hyprctl monitors -j | jq -r '.[0].scale')
-
-echo "monitor = $width x $height (scale $scale)"
-
-# Calculate center
-center_x=$((width / 2))
-center_y=$((height / 2))
-
-# Account for scale
-center_x=$((center_x / 2))
-center_y=$((center_y / 2))
-
-echo "moving to $center_x x $center_y"
-
-# Move mouse
-hyprctl dispatch movecursor $center_x $center_y
+echo mouseto 0.5 0.5 | dotool

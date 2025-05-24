@@ -16,4 +16,5 @@ pacman --needed -S \
   ydotool
 
 yay --needed -S \
+  dotool \
   walker-bin

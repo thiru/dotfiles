@@ -1,5 +1,5 @@
 #!/bin/sh
 
-# Simulate mouse left click
+# Simulate mouse left-click
 
 ydotool click 0xC0
