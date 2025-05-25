@@ -2,9 +2,12 @@
 
 curr_shell=`ps -p $$ | tail -1 | awk '{print $NF}'`
 
+# Simple
 alias g='git'
 alias nv='neovide'
+alias sc='systemctl'
 
+# Directory listing
 if command -v exa &> /dev/null; then
   alias l='exa -l'
   alias lg='exa -l --git'
@@ -15,14 +18,14 @@ else
   alias ll='ls -la'
 fi
 
-alias sc='systemctl'
-
+# Vim/Neovim
 if command -v nvim &> /dev/null; then
   alias v='nvim'
 else
   alias v='vim'
 fi
 
+# Zsh-specific
 if [ $curr_shell = "zsh" ]; then
   compdef g=git
   compdef sc=systemctl
