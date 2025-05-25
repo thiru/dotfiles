@@ -6,6 +6,7 @@ curr_shell=`ps -p $$ | tail -1 | awk '{print $NF}'`
 alias g='git'
 alias nv='neovide'
 alias sc='systemctl'
+alias z='zathura'
 
 # Directory listing
 if command -v exa &> /dev/null; then
@@ -29,6 +30,7 @@ fi
 if [ $curr_shell = "zsh" ]; then
   compdef g=git
   compdef sc=systemctl
+  compdef z=zathura
   if command -v nvim &> /dev/null; then
     compdef v=nvim
   else
