@@ -35,6 +35,12 @@
   [pre post text]
   (str pre text post))
 
+(defn indent-line
+  "Ident the `line` by `indent` spaces."
+  [line indent]
+  (str (str/join "" (repeat indent " "))
+       line))
+
 (defn println-stderr
   "Just like `println` except prints to stderr."
   [& args]
