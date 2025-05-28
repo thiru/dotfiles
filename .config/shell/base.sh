@@ -29,6 +29,9 @@ export MOZ_ENABLE_WAYLAND=1
 # Cargo binaries
 PATH="$PATH:$HOME/.cargo/bin"
 
+# Golang binaries
+PATH="$PATH:$HOME/go/bin"
+
 # Zsh plugin for nix-shell
 if [ -d "/usr/share/zsh/plugins/zsh-nix-shell" ]; then
   source "/usr/share/zsh/plugins/zsh-nix-shell/nix-shell.plugin.zsh"
