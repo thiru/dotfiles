@@ -1,6 +1,6 @@
 **/.clj-kondo/**
 !**/.clj-kondo/config.edn
-.config/hypr/env.sh
+.config/hypr/hyprland.conf
 .config/yazi/yazi.toml
 .cpcache/
 .~lock.*
