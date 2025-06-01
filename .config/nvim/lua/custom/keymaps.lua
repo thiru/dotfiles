@@ -66,10 +66,13 @@ local function init()
   vim.keymap.set('c', '<C-j>', '<Down>', { desc = 'Next command (cmd-line mode)' })
   vim.keymap.set('c', '<C-k>', '<Up>', { desc = 'Previous command (cmd-line mode)' })
 
+  -- Execute current file
+  vim.keymap.set('n', '<leader>!', function() vim.cmd('!./%') end, {desc = 'Execute current script (shell)'})
+
   -- Execute/print current line or buffer
-  vim.keymap.set('n', '<leader>L', ':.lua<CR>', { desc = 'Execute current line' })
-  vim.keymap.set('v', '<leader>L', ':lua<CR>', { desc = 'Execute current line' })
-  vim.keymap.set('n', '<leader><leader>l', '<CMD>source %<CR>', { desc = 'Execute current buffer' })
+  vim.keymap.set('n', '<leader>L', ':.lua<CR>', { desc = 'Execute current line (Lua)' })
+  vim.keymap.set('v', '<leader>L', ':lua<CR>', { desc = 'Execute current line (Lua)' })
+  vim.keymap.set('n', '<leader><leader>l', '<CMD>source %<CR>', { desc = 'Execute/source current buffer' })
   vim.keymap.set({'n', 'v'}, '<leader>l',
     function()
       local to_execute = u.get_selected_text_or_current_line()
@@ -80,7 +83,7 @@ local function init()
         end
       end
     end,
-    { desc = 'Execute and print selected text or current line' })
+    { desc = 'Execute and print selected text or current line (lua)' })
 
   vim.keymap.set('t', '<LeftMouse>', '<Nop>', { desc = 'Disable mouse left-click' })
   vim.keymap.set('t', '<2-LeftMouse>', '<Nop>', { desc = 'Disable mouse double left-click' })
