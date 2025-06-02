@@ -38,5 +38,10 @@ if [ $curr_shell = "zsh" ]; then
   fi
 fi
 
+# musl-libc (for GraalVM)
+if [ -d "/data/musl-toolchain-for-graalvm" ]; then
+  export MUSL_HOME="/data/musl-toolchain-for-graalvm"
+fi
+
 # The following will allow sudo to find aliases
 alias sudo='sudo '
