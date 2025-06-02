@@ -21,7 +21,7 @@
   [env]
   [{:$schema "https://yazi-rs.github.io/schemas/yazi.json"}
 
-   {:manager
+   {:mgr
     {:linemode "size"}}
 
    {:preview
