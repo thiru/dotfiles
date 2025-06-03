@@ -191,6 +191,7 @@
    {bind [:SUPER :P :exec :printscreen-menu.sh]}
    {bind [:SUPER_CTRL :E :exec :screensaver-vid.sh]}
    {bind [:SUPER :PERIOD :exec "walker --modules script-search"]}
+   {bind [:SUPER_CTRL :C :exec "kitty --app-id launcher sh -c 'echo Calculator; qalc'"]}
    {bind [:SUPER_CTRL :W :exec (str neovide-terminal " --cmd \"lua vim.defer_fn(function() vim.api.nvim_chan_send(vim.b.terminal_job_id, 'curl wttr.in/toronto\\r\\n') end, 500)\"")]}
 
    ;;; Move focus with mainMod + vim keys
