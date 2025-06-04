@@ -3,6 +3,7 @@
 (ns hyprland
   "Generate hyprland configs."
   (:require [clojure.java.io :as io]
+            [clojure.string :as str]
             [scripts.cljcfg.hyprlang :refer [->hyprland-config
                                              bind
                                              env
@@ -18,7 +19,20 @@
 
 (def hostname (u/hostname))
 (def terminal "kitty")
-(def neovide-terminal "neovide -- --cmd 'lua vim.g.nvtmux_auto_start = true'")
+
+;;; Utilities
+;;; ----------
+
+(defn neovide-term
+ "Starts a terminal in Neovide."
+ [& {:keys [launcher? cmd]}]
+ (let [cmd ["neovide"
+            (when launcher? "--wayland_app_id launcher")
+            "--"
+            "--cmd 'lua vim.g.nvtmux_auto_start = true'"
+            (when cmd (format "--cmd 'lua vim.g.nvtmux_auto_start_cmd = \"%s\"'"
+                              cmd))]]
+  (str/join " " cmd)))
 
 ;;; Machine-Specific Configs
 ;;; -----------------------------
@@ -180,7 +194,7 @@
 
    ;;; Apps
    {bind [:SUPER :SPACE :exec "walker --modules applications"]}
-   {bind [:SUPER :RETURN :exec neovide-terminal]}
+   {bind [:SUPER :RETURN :exec (neovide-term)]}
    {bind [:SUPER_CTRL :RETURN :exec terminal]}
    {bind [:SUPER :V :exec :neovide]}
    {bind [:SUPER :O :exec "kitty --start-as fullscreen yazi $HOME"]}
@@ -191,8 +205,8 @@
    {bind [:SUPER :P :exec :printscreen-menu.sh]}
    {bind [:SUPER_CTRL :E :exec :screensaver-vid.sh]}
    {bind [:SUPER :PERIOD :exec "walker --modules script-search"]}
-   {bind [:SUPER :C :exec "kitty --app-id launcher sh -c 'echo Calculator; qalc'"]}
-   {bind [:SUPER_CTRL :W :exec (str neovide-terminal " --cmd \"lua vim.defer_fn(function() vim.api.nvim_chan_send(vim.b.terminal_job_id, 'curl wttr.in/toronto\\r\\n') end, 500)\"")]}
+   {bind [:SUPER :C :exec (neovide-term :launcher? true :cmd "echo Calculator && qalc")]}
+   {bind [:SUPER_CTRL :W :exec (neovide-term :cmd "curl wttr.in/toronto")]}
 
    ;;; Move focus with mainMod + vim keys
    {bind [:SUPER :H :exec "hyprnav l"]}
