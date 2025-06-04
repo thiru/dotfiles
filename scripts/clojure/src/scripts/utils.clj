@@ -146,11 +146,12 @@
          (println-stderr result#)
          (notify-send-error ~notify-title result#)
          (System/exit 1)))
-     (catch Exception ex
-       (println-stderr ex)
+     (System/exit 0)
+     (catch Exception ex#
+       (println-stderr ex#)
        (notify-send-error
          ~notify-title
-         (r/r :fatal "Exception!" {:details ex}))
+         (r/r :fatal "Exception!" {:details ex#}))
        (System/exit 1))))
 
 
