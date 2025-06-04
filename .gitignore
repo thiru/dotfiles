@@ -7,3 +7,5 @@
 .lsp
 .nrepl-port
 .rebel_readline_history
+scripts/clojure/classes/
+scripts/clojure/reports/
