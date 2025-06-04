@@ -45,6 +45,11 @@ if [ -d ~/graalvm ]; then
   export GRAALVM_HOME=$HOME/graalvm
 fi
 
+# musl-libc (for GraalVM)
+if [ -d "$HOME/musl-toolchain" ]; then
+  export MUSL_HOME="$HOME/musl-toolchain"
+fi
+
 # NVM
 if [ -f /usr/share/nvm/init-nvm.sh ]; then
   source /usr/share/nvm/init-nvm.sh
