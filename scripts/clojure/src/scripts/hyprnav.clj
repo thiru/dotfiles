@@ -1,12 +1,15 @@
 #!/usr/bin/env bb
 
-(ns scripts.hypr-win-lr
+(ns scripts.hyprnav
   "Navigate to the left or right window within or without a group."
   (:require [clojure.java.shell :refer [sh]]
             [clojure.string :as str]
             [cheshire.core :as json]
             [scripts.results :as r]
-            [scripts.utils :as u]))
+            [scripts.utils :as u])
+  (:gen-class)) ; for graalvm
+
+(set! *warn-on-reflection* true) ; for graalvm
 
 (def usage "Usage: hypr-win-lr.clj [l|r]")
 
@@ -63,7 +66,9 @@
 (defn do-sub-cmd [args]
   (case (first args)
     ("-h" "--help")
-    (r/r :success usage)
+    (do
+      (println usage)
+      (r/r :success usage))
 
     (nil "")
     (r/r :error "No direction provided. See help.")
