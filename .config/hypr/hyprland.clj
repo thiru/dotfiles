@@ -185,13 +185,13 @@
    {bind [:SUPER :V :exec :neovide]}
    {bind [:SUPER :O :exec "kitty --start-as fullscreen yazi $HOME"]}
    {bind [:SUPER_CTRL :P :exec "walker --modules power"]}
-   {bind [:SUPER :C :exec "neovide -- --cmd \"lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('/KEYBINDINGS<CR>', true, true, true), 'n', false)\" $HOME/.config/hypr/hyprland.conf"]}
+   {bind [:SUPER_CTRL :C :exec "neovide -- --cmd \"lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('/Key Bindings<CR>', true, true, true), 'n', false)\" $HOME/.config/hypr/hyprland.clj"]}
    {bind [:SUPER :A :exec :next-audio-sink.clj]}
    {bind [:SUPER :SLASH :exec :pass-menu.sh]}
    {bind [:SUPER :P :exec :printscreen-menu.sh]}
    {bind [:SUPER_CTRL :E :exec :screensaver-vid.sh]}
    {bind [:SUPER :PERIOD :exec "walker --modules script-search"]}
-   {bind [:SUPER_CTRL :C :exec "kitty --app-id launcher sh -c 'echo Calculator; qalc'"]}
+   {bind [:SUPER :C :exec "kitty --app-id launcher sh -c 'echo Calculator; qalc'"]}
    {bind [:SUPER_CTRL :W :exec (str neovide-terminal " --cmd \"lua vim.defer_fn(function() vim.api.nvim_chan_send(vim.b.terminal_job_id, 'curl wttr.in/toronto\\r\\n') end, 500)\"")]}
 
    ;;; Move focus with mainMod + vim keys
