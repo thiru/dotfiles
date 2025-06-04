@@ -5,8 +5,10 @@
   (:require
             [clojure.java.shell :refer [sh]]
             [scripts.results :as r]
-            [scripts.utils :as u]))
+            [scripts.utils :as u])
+  (:gen-class)) ; for graalvm
 
+(set! *warn-on-reflection* true) ; for graalvm
 
 (def usage "Usage: vol.clj <up [percentage]|down [percentage]|mute|unmute>")
 
@@ -119,7 +121,8 @@
                    :icon "error"
                    :replace-id (u/gen-replace-id)
                    :urgency "low")
-    (System/exit 1)))
+    (System/exit 1))
+  (System/exit 0))
 
 (defn -main [& args]
   (try
