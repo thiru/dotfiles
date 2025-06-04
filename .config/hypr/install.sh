@@ -6,6 +6,7 @@ pacman --needed -S \
   hypridle \
   hyprland \
   hyprsunset \
+  nwg-look \
   qt5-wayland \
   qt6-wayland \
   slurp \
