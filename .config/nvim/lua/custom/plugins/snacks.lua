@@ -39,7 +39,7 @@ return {
     { "<leader>sd", function() Snacks.picker.diagnostics_buffer() end, desc = "Search Buffer Diagnostics" },
     { "<leader>sD", function() Snacks.picker.diagnostics() end, desc = "Search All Diagnostics" },
     { "<leader>sf", function() Snacks.picker.files({follow = true, hidden = true}) end, desc = "Search Files" },
-    { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
+    { "<leader>sg", function() Snacks.picker.grep({follow = true, hidden = true}) end, desc = "Grep" },
     { "<leader>sh", function() Snacks.picker.help() end, desc = "Search Help" },
     { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Search Keymaps" },
     { "<leader>sm", function() Snacks.picker.marks() end, desc = "Search Marks" },
@@ -47,7 +47,7 @@ return {
     { "<leader>sr", function() Snacks.picker.recent() end, desc = "Search Recent Files" },
     { "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume Previous Search" },
     { "<leader>sv", function() Snacks.picker.files({cwd = vim.fn.stdpath("config")}) end, desc = "Search Config Files" },
-    { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Grep Word or Visual Selection" },
+    { "<leader>sw", function() Snacks.picker.grep_word({follow = true, hidden = true}) end, desc = "Grep Word or Visual Selection" },
     { "<leader>sx", function() Snacks.picker.command_history() end, desc = "Search Command History" },
     {
       "<leader>N",
