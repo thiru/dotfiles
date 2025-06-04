@@ -120,7 +120,7 @@
   []
   (-> *file*
       (hash)
-      (Math/abs)
+      (abs)
       ;; NOTE: seems like the number can't be too large otherwise it's not recognised
       (mod 100)))
 
