@@ -195,8 +195,8 @@
    {bind [:SUPER_CTRL :W :exec (str neovide-terminal " --cmd \"lua vim.defer_fn(function() vim.api.nvim_chan_send(vim.b.terminal_job_id, 'curl wttr.in/toronto\\r\\n') end, 500)\"")]}
 
    ;;; Move focus with mainMod + vim keys
-   {bind [:SUPER :H :exec "hypr-win-lr.clj l"]}
-   {bind [:SUPER :L :exec "hypr-win-lr.clj r"]}
+   {bind [:SUPER :H :exec "hyprnav l"]}
+   {bind [:SUPER :L :exec "hyprnav r"]}
    {bind [:SUPER :K :movefocus :u]}
    {bind [:SUPER :J :movefocus :d]}
 
