@@ -206,7 +206,7 @@
    {bind [:SUPER_CTRL :E :exec :screensaver-vid.sh]}
    {bind [:SUPER :PERIOD :exec "walker --modules script-search"]}
    {bind [:SUPER :C :exec (neovide-term :launcher? true :cmd "echo Calculator && qalc")]}
-   {bind [:SUPER_CTRL :W :exec (neovide-term :cmd "curl wttr.in/toronto")]}
+   {bind [:SUPER_CTRL :W :exec (neovide-term :cmd "confirm-quit curl wttr.in/toronto")]}
 
    ;;; Move focus with mainMod + vim keys
    {bind [:SUPER :H :exec "hyprnav l"]}
