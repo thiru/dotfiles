@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Run command given by args and confirm quitting.
+
+$*
+echo
+tput setaf 5 bold
+read -p 'Press any key to quit' -s -n 1 -r
