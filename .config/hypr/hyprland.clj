@@ -304,11 +304,19 @@
    {:binde [nil :L :exec "ydotool mousemove -- 100 0"]}
    {:binde [nil :K :exec "ydotool mousemove -- 0 -100"]}
    {:binde [nil :J :exec "ydotool mousemove -- 0 100"]}
+   {:binde [nil :LEFT :exec "ydotool mousemove -- -100 0"]}
+   {:binde [nil :RIGHT :exec "ydotool mousemove -- 100 0"]}
+   {:binde [nil :UP :exec "ydotool mousemove -- 0 -100"]}
+   {:binde [nil :DOWN :exec "ydotool mousemove -- 0 100"]}
    ;;; Mouse move (small)
    {:binde [:CTRL :H :exec "ydotool mousemove -- -10 0"]}
    {:binde [:CTRL :L :exec "ydotool mousemove -- 10 0"]}
    {:binde [:CTRL :K :exec "ydotool mousemove -- 0 -10"]}
    {:binde [:CTRL :J :exec "ydotool mousemove -- 0 10"]}
+   {:binde [:CTRL :LEFT :exec "ydotool mousemove -- -10 0"]}
+   {:binde [:CTRL :RIGHT :exec "ydotool mousemove -- 10 0"]}
+   {:binde [:CTRL :UP :exec "ydotool mousemove -- 0 -10"]}
+   {:binde [:CTRL :DOWN :exec "ydotool mousemove -- 0 10"]}
    ;;; Exit submap
    {bind [:SUPER :M :submap :reset]}
    {bind [nil :ESCAPE :submap :reset]}
