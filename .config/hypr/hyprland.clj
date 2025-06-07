@@ -146,6 +146,14 @@
      :disable_hyprland_logo false}} ; If true disables the random hyprland logo / anime girl background. :(
 
    ;;; ------------------------------------------
+   ;;; Animations
+   ;;; ------------------------------------------
+
+   {:animations
+    {:enabled true
+     :animation [:global 1 5 :default]}}
+
+   ;;; ------------------------------------------
    ;;; Key Bindings
    ;;; ------------------------------------------
 
