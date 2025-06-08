@@ -1,0 +1,3 @@
+[submodule ".local/share/icons/future-cyan-hyprcursor"]
+	path = .local/share/icons/future-cyan-hyprcursor
+	url = https://gitlab.com/Pummelfisch/future-cyan-hyprcursor.git
