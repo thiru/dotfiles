@@ -52,6 +52,10 @@
    {env [:XDG_SESSION_TYPE :wayland]}
    {env [:XDG_SESSION_DESKTOP :Hyprland]}
 
+   ;; Obtained theme from: https://gitlab.com/Pummelfisch/future-cyan-hyprcursor
+   {env [:HYPRCURSOR_THEME :Future-Cyan-Hyprcursor_Theme]}
+   {env [:HYPRCURSOR_SIZE 48]}
+
    ;;; ------------------------------------------
    ;;; Monitors
    ;;; ------------------------------------------
