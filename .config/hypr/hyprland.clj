@@ -218,7 +218,7 @@
    {bind [:SUPER_CTRL :E :exec :screensaver-vid.sh]}
    {bind [:SUPER :PERIOD :exec "walker --modules script-search"]}
    {bind [:SUPER :C :exec (neovide-term :launcher? true :cmd "echo Calculator && qalc")]}
-   {bind [:SUPER_CTRL :W :exec (neovide-term :cmd "confirm-quit curl wttr.in/toronto")]}
+   {bind [:SUPER_CTRL :W :exec "librewolf --new-window 'https://www.accuweather.com/en/ca/toronto/m5h/daily-weather-forecast/55488'"]}
 
    ;;; Move focus with mainMod + vim keys
    {bind [:SUPER :H :exec "hyprnav l"]}
