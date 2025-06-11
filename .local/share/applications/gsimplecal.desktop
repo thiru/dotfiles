@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=gsimplecal
+GenericName=Calendar
+Comment=A simple Calendar
+Exec=/usr/bin/gsimplecal
+Icon=calendar
+Terminal=false
+Type=Application
