@@ -6,6 +6,7 @@
             [clojure.string :as str]
             [scripts.cljcfg.hyprlang :refer [->hyprland-config
                                              bind
+                                             bindd
                                              env
                                              exec-once
                                              monitor
@@ -311,6 +312,7 @@
    {bind [nil :D :exec :sim-double-click]}
    {bind [nil :F :exec "sim-mouse-to-centre && sim-double-click # e.g. for fullscreening a youtube video"]}
    {bind [nil :F :submap :reset]}; it might be confusing to leave mouse mode on since we can't see the status bar anymore
+   {bindd [nil :X "Move mouse to bottom right" :exec "ydotool mousemove -a 12345 12345"]}
    ;;; Mouse move (big)
    {:binde [nil :H :exec "ydotool mousemove -- -100 0"]}
    {:binde [nil :L :exec "ydotool mousemove -- 100 0"]}
