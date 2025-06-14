@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Aliases for POSIX-compliant shells (not fish)
+
 curr_shell=`ps -p $$ | tail -1 | awk '{print $NF}'`
 
 # Simple

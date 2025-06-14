@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Functions for POSIX-compliant shells (not fish)
+
 # Creates a directory and changes to it
 # (forgot where I got this from)
 function mkcd

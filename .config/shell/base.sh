@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script contains shell-agnostic configs
+# Setup shell-agnostic configs such as environment variables, etc.
 
 if command -v nvim &> /dev/null; then
   export EDITOR="nvim"
