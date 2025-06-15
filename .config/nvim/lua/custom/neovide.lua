@@ -1,5 +1,4 @@
 local u = require('custom.utils')
-local options = require('custom.options')
 local doc = 'Neovide-specific configs'
 
 local opacity_default = 1.0
@@ -36,21 +35,6 @@ local function opacity_dec()
   opacity_print()
 end
 
-local function wayland_text_size_hack()
-  if os.getenv('XDG_SESSION_TYPE') == 'wayland' then
-    vim.schedule(function()
-      local timer = vim.uv.new_timer()
-      timer:start(250, 0, function()
-        timer:stop()
-        timer:close()
-        vim.schedule(function()
-          vim.cmd('GUIFontSizeSet ' .. options.font_size_default);
-        end)
-      end)
-    end)
-  end
-end
-
 local function init()
   if not vim.g.neovide then
     return
@@ -81,8 +65,6 @@ local function init()
   vim.keymap.set({'i', 'n', 't', 'v'}, '<A-=>', '<cmd>:NeovideOpacityInc<CR>')
   vim.keymap.set({'i', 'n', 't', 'v'}, '<A-->', '<cmd>:NeovideOpacityDec<CR>')
   vim.keymap.set({'i', 'n', 't', 'v'}, '<A-0>', '<cmd>:NeovideOpacityReset<CR>')
-
-  wayland_text_size_hack()
 end
 
 return {
