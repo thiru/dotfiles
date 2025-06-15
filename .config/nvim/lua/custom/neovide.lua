@@ -32,6 +32,14 @@ local function opacity_dec()
   opacity_print()
 end
 
+local function scale_factor_update(delta)
+  vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
+end
+
+local function scale_factor_reset()
+  vim.g.neovide_scale_factor = 1.0
+end
+
 local function init()
   if not vim.g.neovide then
     return
@@ -39,6 +47,7 @@ local function init()
 
   vim.cmd('silent exe "cd ~"')
   vim.g.neovide_hide_mouse_when_typing = true
+  vim.g.neovide_scale_factor = 1.0
   set_default_opacity()
 
   vim.api.nvim_create_user_command(
@@ -59,9 +68,15 @@ local function init()
     {bang = true, desc = 'Reset Neovide opacity to default setting'}
   )
 
-  vim.keymap.set({'i', 'n', 't', 'v'}, '<A-=>', '<cmd>:NeovideOpacityInc<CR>')
-  vim.keymap.set({'i', 'n', 't', 'v'}, '<A-->', '<cmd>:NeovideOpacityDec<CR>')
-  vim.keymap.set({'i', 'n', 't', 'v'}, '<A-0>', '<cmd>:NeovideOpacityReset<CR>')
+  -- Opacity
+  vim.keymap.set({'i', 'n', 't', 'v'}, '<A-=>', '<cmd>:NeovideOpacityInc<CR>', {desc='Increase opacity'})
+  vim.keymap.set({'i', 'n', 't', 'v'}, '<A-->', '<cmd>:NeovideOpacityDec<CR>', {desc='Decrease opacity'})
+  vim.keymap.set({'i', 'n', 't', 'v'}, '<A-0>', '<cmd>:NeovideOpacityReset<CR>', {desc='Reset opacity'})
+
+  -- Scale Factor
+  vim.keymap.set({'i', 'n', 't', 'v'}, '<C-=>', function() scale_factor_update(1.25) end, {desc='Increase scale factor'})
+  vim.keymap.set({'i', 'n', 't', 'v'}, '<C-->', function() scale_factor_update(1/1.25) end, {desc='Decrease scale factor'})
+  vim.keymap.set({'i', 'n', 't', 'v'}, '<C-0>', scale_factor_reset, {desc='Reset scale factor'})
 end
 
 return {
