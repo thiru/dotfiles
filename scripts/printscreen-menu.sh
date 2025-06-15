@@ -23,7 +23,7 @@ case "$1" in
     ;;
   "record-screen-file")
     DELAY=3s
-    notify-send "Recording in $DELAY..."
+    notify-send "Recording in $DELAY..." --expire-time 3000 --icon camera-video
     sleep $DELAY
     kitty --title 'Screen Recording' --app-id launcher wf-recorder --file=$SCREENRECORDS_DIR/screen-$(date +'%Y-%m-%dT%H-%M-%S').mp4 && notify-send "Recording saved to $SCREENRECORDS_DIR"
     ;;
