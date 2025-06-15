@@ -354,9 +354,6 @@
    ;;; Always start browser in a group
    {windowrule ["group set" "title:.*Brave|Chromium|LibreWolf$"]}
 
-   ;;; Always start Neovide in a group
-   {windowrule ["group set" "class:neovide"]}
-
    ;;; Make workspace 1 the default and always show it
    {workspace [1 "default:true" "persistent:true"]}])
 
