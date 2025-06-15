@@ -3,10 +3,7 @@ local doc = 'Neovide-specific configs'
 
 local opacity_default = 1.0
 local opacity_step = 0.05
-local term_trans_override = 0.95
-if u.is_windows() then
-  term_trans_override = 1.0
-end
+local terminal_opacity_override = u.is_windows() and 1.0 or 0.95
 
 local function opacity_print()
   print('Neovide opacity = ' .. vim.g.neovide_opacity)
@@ -14,7 +11,7 @@ end
 
 local function set_default_opacity()
   if u.nvtmux_auto_started() then
-    vim.g.neovide_opacity = term_trans_override
+    vim.g.neovide_opacity = terminal_opacity_override
   else
     vim.g.neovide_opacity = opacity_default
   end
