@@ -210,6 +210,7 @@
    {bind [:SUPER :RETURN :exec (neovide-term)]}
    {bind [:SUPER_CTRL :RETURN :exec terminal]}
    {bind [:SUPER :V :exec :neovide]}
+   {bindd [:SUPER :B "Toggle Waybar visibility" :exec "pkill -SIGUSR1 waybar"]}
    {bind [:SUPER :O :exec "kitty --start-as fullscreen yazi $HOME"]}
    {bind [:SUPER_CTRL :P :exec "walker --modules power"]}
    {bind [:SUPER_CTRL :C :exec "neovide -- --cmd \"lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('/Key Bindings<CR>', true, true, true), 'n', false)\" $HOME/.config/hypr/hyprland.clj"]}
