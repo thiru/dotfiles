@@ -91,7 +91,7 @@
    {exec-once :hyprsunset}
 
    ;; Status bar
-   {exec-once "waybar --config ~/.config/waybar/config.hypr.jsonc"}
+   {exec-once "waybar"}
 
    ;; Recommended for screen sharing
    {exec-once "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"}
