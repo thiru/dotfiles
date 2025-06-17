@@ -5,7 +5,7 @@
 
     "modules-left": ["hyprland/submap", "sway/mode", "niri/window", "hyprland/window", "sway/window"],
     // "modules-center": ["wlr/taskbar"],
-    "modules-right": ["idle_inhibitor", "custom/uptime", "cpu", "memory", "disk", "pulseaudio", "battery", "battery#bat2", "network", "tray", "custom/clock", "custom/power-menu"],
+    "modules-right": ["idle_inhibitor", "custom/uptime", "cpu", "memory", "disk", "pulseaudio#min", "battery", "battery#bat2", "network", "tray", "custom/clock", "custom/power-menu"],
 
     // Modules
     "sway/mode": {
@@ -83,6 +83,22 @@
         "tooltip-format-wifi": " {ifname} | {gwaddr} | {essid} @ {frequency}GHz | ↑ {bandwidthUpBytes} ↓ {bandwidthDownBytes}",
         "format-linked": " {ifname} (No IP)",
         "format-disconnected": "󰚦 "
+    },
+    "pulseaudio#min": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": " {icon} {volume}%",
+        "format-bluetooth-muted": "  {icon} 0",
+        "format-muted": " 0",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
