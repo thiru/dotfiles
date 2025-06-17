@@ -1,5 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-# Reload Waybar (without killing it)
+# Reload Waybar instances
 
-killall -SIGUSR2 waybar
+killall waybar 2>/dev/null
+waybar &
+# NOTE: We sleep for a second to ensure that the main bar has time to fill the entire width of the screen
+sleep 1s
+waybar -c ~/.config/waybar/sidebar.jsonc -s ~/.config/waybar/sidebar.css

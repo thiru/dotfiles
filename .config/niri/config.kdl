@@ -221,9 +221,7 @@ layout {
 spawn-at-startup "xwayland-satellite"
 
 // Bars
-spawn-at-startup "waybar"
-// NOTE: We sleep for a second to ensure that the main bar has time to fill the entire width of the screen
-spawn-at-startup "sh" "-c" "sleep 1s && waybar -c ~/.config/waybar/sidebar.jsonc -s ~/.config/waybar/sidebar.css"
+spawn-at-startup "waybar-reload"
 
 // Notification daemon
 spawn-at-startup "swaync"
@@ -343,6 +341,9 @@ binds {
 
     // Waybar visbility toggle
     Mod+B { spawn "pkill" "-SIGUSR1" "waybar"; }
+
+    // Waybar reload
+    Mod+Ctrl+B { spawn "waybar-reload"; }
 
     // Power Menu
     Mod+P { spawn "walker" "--modules" "power"; }
