@@ -90,8 +90,10 @@
    ;; Blue light filter
    {exec-once :hyprsunset}
 
-   ;; Status bar
+   ;; Bars
    {exec-once "waybar"}
+   ;; NOTE: We sleep for a second to ensure that the main bar has time to fill the entire width of the screen
+   {exec-once "sleep 1s && waybar -c ~/.config/waybar/sidebar.jsonc -s ~/.config/waybar/sidebar.css"}
 
    ;; Recommended for screen sharing
    {exec-once "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"}

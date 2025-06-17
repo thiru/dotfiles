@@ -220,8 +220,10 @@ layout {
 // xwayland support
 spawn-at-startup "xwayland-satellite"
 
-// Bar
+// Bars
 spawn-at-startup "waybar"
+// NOTE: We sleep for a second to ensure that the main bar has time to fill the entire width of the screen
+spawn-at-startup "sh" "-c" "sleep 1s && waybar -c ~/.config/waybar/sidebar.jsonc -s ~/.config/waybar/sidebar.css"
 
 // Notification daemon
 spawn-at-startup "swaync"
