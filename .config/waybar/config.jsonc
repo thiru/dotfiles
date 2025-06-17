@@ -3,7 +3,7 @@
     "position": "top", // Waybar position (top|bottom|left|right)
     "spacing": 4, // Gaps between modules (4px)
 
-    "modules-left": ["custom/launcher", "hyprland/submap", "sway/mode", "niri/window", "hyprland/window", "sway/window"],
+    "modules-left": ["hyprland/submap", "sway/mode", "niri/window", "hyprland/window", "sway/window"],
     // "modules-center": ["wlr/taskbar"],
     "modules-right": ["idle_inhibitor", "custom/uptime", "cpu", "temperature", "memory", "disk", "disk#data", "backlight", "pulseaudio", "battery", "battery#bat2", "network", "tray", "custom/clock", "custom/power-menu"],
 
