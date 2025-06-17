@@ -5,7 +5,7 @@
 
     "modules-left": ["hyprland/submap", "sway/mode", "niri/window", "hyprland/window", "sway/window"],
     // "modules-center": ["wlr/taskbar"],
-    "modules-right": ["idle_inhibitor", "custom/uptime", "cpu", "temperature", "memory", "disk", "disk#data", "backlight", "pulseaudio", "battery", "battery#bat2", "network", "tray", "custom/clock", "custom/power-menu"],
+    "modules-right": ["idle_inhibitor", "custom/uptime", "cpu", "memory", "disk", "pulseaudio", "battery", "battery#bat2", "network", "tray", "custom/clock", "custom/power-menu"],
 
     // Modules
     "sway/mode": {
