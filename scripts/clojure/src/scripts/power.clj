@@ -40,6 +40,11 @@
 
 (defn logout []
   (case (u/get-de)
+    :niri
+    (do
+      (u/notify-send "Logging out...")
+      (sh "niri" "msg" "action" "quit"))
+
     :hyprland
     (do
       (u/notify-send "Logging out...")

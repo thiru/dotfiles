@@ -81,17 +81,19 @@
   (= "wayland" (System/getenv "XDG_SESSION_TYPE")))
 
 (defn is-running? [proc]
-  (let [cmd-res (sh "ps" "-C" proc "-o" "command=")]
+  (let [cmd-res (spy (sh "ps" "-C" proc "-o" "command="))]
     (and (zero? (:exit cmd-res))
-         (= proc (str/trim (:out cmd-res))))))
+         (str/includes? (str/trim (:out cmd-res))
+                        proc))))
 
 (defn get-de
   "Try and determine the currently running desktop environment/window manager.
   This method seems pretty inefficient but there doesn't seem to be another reliable way."
   []
   (cond
-    (is-running? "sway") :sway
+    (is-running? "niri") :niri
     (is-running? "Hyprland") :hyprland
+    (is-running? "sway") :sway
     (is-running? "xfce4-session") :xfce
     :else :unknown))
 
