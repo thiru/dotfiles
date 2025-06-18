@@ -2,13 +2,13 @@
 // See also: https://kdl.dev
 
 // Environment Variables
-// ----------------------
+// -----------------------------------------------------------------------------
 environment {
     DISPLAY ":0" // required for xwayland
 }
 
 // Monitors
-// ---------
+// -----------------------------------------------------------------------------
 
 // See available outputs: `niri msg outputs`
 // See: https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
@@ -23,7 +23,7 @@ output "HDMI-A-1" {
 }
 
 // Input Devices
-// --------------
+// -----------------------------------------------------------------------------
 
 // See: https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 // See also: xkeyboard-config(7)
@@ -51,11 +51,11 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    focus-follows-mouse // max-scroll-amount="0%"
+    focus-follows-mouse max-scroll-amount="10%"
 }
 
 // Cursor
-// -------
+// -----------------------------------------------------------------------------
 
 cursor {
     xcursor-size 32
@@ -65,12 +65,12 @@ cursor {
 }
 
 // Layout
-// -------
+// -----------------------------------------------------------------------------
 
 // See: https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 12
+    gaps 10
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -84,9 +84,8 @@ layout {
     preset-column-widths {
         // Proportion sets the width as a fraction of the output width, taking gaps into account.
         // For example, you can perfectly fit four windows sized "proportion 0.25" on an output.
-        // The default preset widths are 1/3, 1/2 and 2/3 of the output.
-        proportion 0.33333
         proportion 0.5
+        proportion 0.33333
         proportion 0.66667
 
         // Fixed sets the width in logical pixels exactly.
@@ -215,7 +214,7 @@ layout {
 }
 
 // Startup Apps
-// -------------
+// -----------------------------------------------------------------------------
 
 // xwayland support
 spawn-at-startup "xwayland-satellite"
@@ -267,7 +266,7 @@ screenshot-path "~/Pictures/screen-shots/screen-shot-%Y-%m-%d %H-%M-%S.png"
 // screenshot-path null
 
 // Animations
-// -----------
+// -----------------------------------------------------------------------------
 
 // See: https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
 animations {
@@ -279,11 +278,13 @@ animations {
 }
 
 // Window Rules
-// -------------
+// -----------------------------------------------------------------------------
 
 // See: https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
 
 window-rule {
+    clip-to-geometry true
+    geometry-corner-radius 12
     open-maximized true
 }
 
@@ -297,6 +298,7 @@ window-rule {
     default-column-width {}
 }
 
+// Float & centre launcher-type windows
 window-rule {
     match app-id="launcher"
     open-floating true
@@ -304,14 +306,8 @@ window-rule {
     max-height 500
 }
 
-// Rounded corners for all windows
-window-rule {
-    geometry-corner-radius 12
-    clip-to-geometry true
-}
-
 // Keybinds
-// ---------
+// -----------------------------------------------------------------------------
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
@@ -331,44 +327,44 @@ binds {
     Mod+Space hotkey-overlay-title="App Launcher" { spawn "walker" "--modules" "applications"; }
 
     // Terminal (primary - Neovide)
-    Mod+Return hotkey-overlay-title="Open Neovide Terminal" { spawn "neovide" "--" "--cmd" "lua vim.g.nvtmux_auto_start = true"; }
+    Mod+Return hotkey-overlay-title="Terminal (Neovide)" { spawn "neovide" "--" "--cmd" "lua vim.g.nvtmux_auto_start = true"; }
 
     // Terminal (secondary - Kitty)
-    Mod+Ctrl+Return hotkey-overlay-title="Open Kitty Terminal" { spawn "kitty"; }
+    Mod+Ctrl+Return hotkey-overlay-title="Terminal (Kitty)" { spawn "kitty"; }
 
     // Neovide
-    Mod+V hotkey-overlay-title="Open Neovide" { spawn "neovide"; }
+    Mod+V hotkey-overlay-title="Neovide" { spawn "neovide"; }
 
     // Waybar visbility toggle
-    Mod+B { spawn "pkill" "-SIGUSR1" "waybar"; }
+    Mod+B hotkey-overlay-title="Bar Toggle" { spawn "pkill" "-SIGUSR1" "waybar"; }
 
     // Waybar reload
-    Mod+Ctrl+B { spawn "waybar-reload"; }
+    Mod+Ctrl+B hotkey-overlay-title="Bar Reload" { spawn "waybar-reload"; }
 
     // Power Menu
-    Mod+P { spawn "walker" "--modules" "power"; }
+    Mod+P hotkey-overlay-title="Power Menu" { spawn "walker" "--modules" "power"; }
 
     // Niri Config
-    Mod+Ctrl+C { spawn "neovide" ".config/niri/config.kdl"; }
+    Mod+Ctrl+C hotkey-overlay-title="Config" { spawn "neovide" ".config/niri/config.kdl"; }
 
     // Screenshot & Video Recording
-    Mod+S { spawn "printscreen-menu.sh"; }
+    Mod+S hotkey-overlay-title="Screenshot/Video Record" { spawn "printscreen-menu.sh"; }
 
     // Pass menu
-    Mod+Slash { spawn "pass-menu.sh"; }
+    Mod+Slash hotkey-overlay-title=null { spawn "pass-menu.sh"; }
 
     // Weather
-    Mod+W { spawn "librewolf" "--new-window" "https://www.accuweather.com/en/ca/toronto/m5h/daily-weather-forecast/55488"; }
+    Mod+W hotkey-overlay-title="Weather" { spawn "librewolf" "--new-window" "https://www.accuweather.com/en/ca/toronto/m5h/daily-weather-forecast/55488"; }
 
     // Lock Screen
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "swaylock"; }
 
     // Audio
     XF86AudioRaiseVolume allow-when-locked=true { spawn "vol.clj" "up"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "vol.clj" "down"; }
     XF86AudioMute        allow-when-locked=true { spawn "vol.clj" "mute"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-    Mod+A { spawn "next-audio-sink.clj";}
+    Mod+A hotkey-overlay-title="Audio Device Toggle" { spawn "next-audio-sink.clj";}
 
     // Brightness
     XF86MonBrightnessUp allow-when-locked=true { spawn "brightness.clj" "up"; }
@@ -379,15 +375,15 @@ binds {
 
     Mod+Q { close-window; }
 
-    Mod+Left      { focus-column-left-or-last; }
-    Mod+Down      { focus-window-down-or-top; }
-    Mod+Up        { focus-window-up-or-bottom; }
-    Mod+Right     { focus-column-right-or-first; }
-    Mod+H         { focus-column-left-or-last; }
+    Mod+Left      { focus-column-left; }
+    Mod+Down      { focus-window-or-workspace-down; }
+    Mod+Up        { focus-window-or-workspace-up; }
+    Mod+Right     { focus-column-right; }
+    Mod+H         { focus-column-left; }
     Mod+Shift+Tab { focus-column-left-or-last; }
-    Mod+J         { focus-window-down-or-top; }
-    Mod+K         { focus-window-up-or-bottom; }
-    Mod+L         { focus-column-right-or-first; }
+    Mod+Shift+J   { focus-window-or-workspace-down; }
+    Mod+Shift+K   { focus-window-or-workspace-up; }
+    Mod+L         { focus-column-right; }
     Mod+Tab       { focus-column-right-or-first; }
 
     Mod+Ctrl+Left    { move-column-left; }
@@ -411,23 +407,15 @@ binds {
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+End  { move-column-to-last; }
 
-    Mod+Shift+Left  { focus-monitor-left; }
-    Mod+Shift+Down  { focus-monitor-down; }
-    Mod+Shift+Up    { focus-monitor-up; }
-    Mod+Shift+Right { focus-monitor-right; }
-    Mod+Shift+H     { focus-monitor-left; }
-    Mod+Shift+J     { focus-monitor-down; }
-    Mod+Shift+K     { focus-monitor-up; }
-    Mod+Shift+L     { focus-monitor-right; }
+    Mod+BracketLeft  { focus-monitor-left; }
+    // Mod+Shift+Down  { focus-monitor-down; }
+    // Mod+Shift+Up    { focus-monitor-up; }
+    Mod+BracketRight { focus-monitor-right; }
 
-    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
-    // Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
-    // Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+    Mod+Ctrl+BracketLeft  { move-column-to-monitor-left; }
+    // Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    // Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Ctrl+BracketRight { move-column-to-monitor-right; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
@@ -437,10 +425,10 @@ binds {
     // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
     // ...
 
-    Mod+Ctrl+J       { focus-workspace-down; }
-    Mod+Ctrl+K       { focus-workspace-up; }
-    Mod+Ctrl+Shift+J { move-column-to-workspace-down; }
-    Mod+Ctrl+Shift+K { move-column-to-workspace-up; }
+    Mod+J      { focus-workspace-down; }
+    Mod+K      { focus-workspace-up; }
+    Mod+Ctrl+J { move-column-to-workspace-down; }
+    Mod+Ctrl+K { move-column-to-workspace-up; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
@@ -519,8 +507,8 @@ binds {
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
     // If the window is already in a column, they will expel it out.
-    Mod+BracketLeft  { consume-or-expel-window-left; }
-    Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+Shift+H  { consume-or-expel-window-left; }
+    Mod+Shift+L { consume-or-expel-window-right; }
 
     // Consume one window from the right to the bottom of the focused column.
     Mod+Comma  { consume-window-into-column; }
@@ -595,4 +583,6 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+
+    Mod+I { spawn "sh" "-c" "sleep 1s && ydotool key 56:0 103:1 103:0"; }
 }
