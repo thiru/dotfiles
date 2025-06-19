@@ -341,6 +341,9 @@ binds {
     // Waybar reload
     Mod+Ctrl+B hotkey-overlay-title="Bar Reload" { spawn "waybar-reload"; }
 
+    // Mouse simulation
+    Mod+M hotkey-overlay-title="Mouse Simulation" { spawn "wlr-which-key" "mouse-config"; }
+
     // Power Menu
     Mod+P hotkey-overlay-title="Power Menu" { spawn "walker" "--modules" "power"; }
 
@@ -583,6 +586,4 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
-
-    Mod+I { spawn "sh" "-c" "sleep 1s && ydotool key 56:0 103:1 103:0"; }
 }

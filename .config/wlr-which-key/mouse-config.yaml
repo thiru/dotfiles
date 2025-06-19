@@ -1,0 +1,74 @@
+# Theming
+font: Maple Mono NF 12
+background: "#282828d0"
+color: "#fbf1c7"
+border: "#8ec07c"
+separator: " ➜ "
+border_width: 2
+corner_r: 5
+padding: 10 # Defaults to corner_r
+# rows_per_column: 10 # No limit by default
+column_padding: 25 # Defaults to padding
+
+# Anchor and margin
+anchor: top-right # One of center, left, right, top, bottom, bottom-left, top-left, etc. Only relevant when anchor is not center
+margin_right: 10
+margin_bottom: 0
+margin_left: 0
+margin_top: 0
+
+# Permits key bindings that conflict with compositor key bindings.
+# # Default is `false`.
+# inhibit_compositor_keyboard_shortcuts: true
+
+menu:
+  - key: "space"
+    desc: Left-Click,
+    cmd: sim-left-click
+    keep_open: true
+  - key: "Return"
+    desc: Right-Click,
+    cmd: sim-right-click
+    keep_open: true
+  - key: ["h", "Left"]
+    desc: Move Left,
+    cmd: ydotool mousemove -- -100 0
+    keep_open: true
+  - key: ["j", "Down"]
+    desc: Move Down,
+    cmd: ydotool mousemove -- 0 100
+    keep_open: true
+  - key: ["k", "Up"]
+    desc: Move Up,
+    cmd: ydotool mousemove -- 0 -100
+    keep_open: true
+  - key: ["l", "Right"]
+    desc: Move Right,
+    cmd: ydotool mousemove -- 100 0
+    keep_open: true
+  - key: ["Ctrl+h", "Ctrl+Left"]
+    desc: Move Left (Small),
+    cmd: ydotool mousemove -- -10 0
+    keep_open: true
+  - key: ["Ctrl+j", "Ctrl+Down"]
+    desc: Move Down (Small),
+    cmd: ydotool mousemove -- 0 10
+    keep_open: true
+  - key: ["Ctrl+k", "Ctrl+Up"]
+    desc: Move Up (Small),
+    cmd: ydotool mousemove -- 0 -10
+    keep_open: true
+  - key: ["Ctrl+l", "Ctrl+Right"]
+    desc: Move Right (Small),
+    cmd: ydotool mousemove -- 10 0
+    keep_open: true
+  - key: "c"
+    desc: Centre,
+    cmd: sim-mouse-to-centre
+    keep_open: true
+  - key: "f"
+    desc: Fullscreen,
+    cmd: sim-mouse-to-centre && sim-double-click
+  - key: "x"
+    desc: Discard,
+    cmd: ydotool mousemove -a 12345 12345
