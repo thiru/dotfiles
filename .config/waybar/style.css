@@ -1,5 +1,4 @@
 * {
-    border-radius: 0.5em;
     font-family: "Maple Mono NF", FontAwesome6Free, "Roboto Mono Medium", Helvetica, Arial, sans-serif;
     font-size: 16px;
 }
@@ -57,10 +56,11 @@ button:hover {
 #mode,
 #idle_inhibitor,
 #scratchpad {
-  background-color: #dfe3e3;
-  padding: 0.2em 0.5em;
-  margin: 0.4em 0.2em;
-  color: #333;
+    background-color: #dfe3e3;
+    border-radius: 0.5em;
+    padding: 0.2em 0.5em;
+    margin: 0.4em 0.2em;
+    color: #333;
 }
 
 #window {
@@ -74,6 +74,35 @@ button:hover {
 #battery.charging, #battery.plugged {
     color: #ffffff;
     background-color: #26A65B;
+}
+
+#workspaces button {
+    padding: 0.3em;
+    background-color: transparent;
+    border-radius: 0;
+    color: #ffffff;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#workspaces button.focused {
+    background-color: #64727D;
+}
+
+#workspaces button.active {
+    background-color: #CCFF99;
+    color: black;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#workspaces {
+    background-color: rgba(43, 48, 59, 0.7);
+    margin: 0 4px 0 0;
 }
 
 @keyframes blink {
