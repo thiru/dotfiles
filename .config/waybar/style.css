@@ -63,9 +63,8 @@ button:hover {
   color: #333;
 }
 
-#window,
-#workspaces {
-    margin: 0 4px;
+#window {
+    margin: 0 10px;
 }
 
 #battery {
