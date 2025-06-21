@@ -37,13 +37,13 @@
     },
     "disk": {
         "interval": 30,
-        "format": " {free}",
+        "format": "{free}",
         "path": "/",
         "on-click": "thunar $HOME"
     },
     "disk#data": {
         "interval": 30,
-        "format": " {free}",
+        "format": "{free}",
         "path": "/data"
     },
     "temperature": {
@@ -133,12 +133,12 @@
         "tooltip": false
     },
     "custom/launcher": {
-        "format": "  ",
+        "format": "",
         "on-click": "walker --modules applications",
         "tooltip": false
     },
     "custom/power-menu": {
-        "format": "   ",
+        "format": "",
         "on-click": "walker --modules power",
         "tooltip": false
     }
