@@ -335,6 +335,9 @@ binds {
     // Neovide
     Mod+V hotkey-overlay-title="Neovide" { spawn "neovide"; }
 
+    // Calculator
+    Mod+C hotkey-overlay-title="Calculator" { spawn "sh" "-c" "neovide --wayland_app_id launcher -- --cmd 'lua vim.g.nvtmux_auto_start = true' --cmd 'lua vim.g.nvtmux_auto_start_cmd = \"echo Calculator && qalc\"'"; }
+
     // Waybar visbility toggle
     Mod+B hotkey-overlay-title="Bar Toggle" { spawn "pkill" "-SIGUSR1" "waybar"; }
 
@@ -528,7 +531,7 @@ binds {
     // Makes the column "fill the rest of the space".
     // Mod+Ctrl+F { expand-column-to-available-width; }
 
-    Mod+C { center-column; }
+    // Mod+C { center-column; }
 
     // Center all fully visible columns on screen.
     // Mod+Ctrl+C { center-visible-columns; }
