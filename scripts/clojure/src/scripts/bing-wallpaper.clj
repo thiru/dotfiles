@@ -1,7 +1,7 @@
 #!/usr/bin/env bb
 
 (ns scripts.bing-wallpaper
-  "Download latest Bing wallpaper and use it."
+  "Download latest Bing wallpaper."
   (:require [babashka.curl :as curl]
             [cheshire.core :as json]
             [clojure.java.io :as io]
