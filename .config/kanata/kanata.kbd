@@ -19,6 +19,6 @@
   tab (tap-hold-press 300 300 tab (layer-while-held vi)))
 
 (deflayer base 4   0    @tab w       u    @caps d    h    j    k  l     b      @lctl @rctl)
-(deflayer vi   end home _    C-right pgup _     pgdn left down up right C-left _     _)
+(deflayer vi   end home XX   C-right pgup XX    pgdn left down up right C-left XX    XX)
 
 ;; vim: ft=lisp
