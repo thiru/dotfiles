@@ -4,15 +4,21 @@
   4 0
   tab w u
   caps d h j k l
-  b)
+  b
+  lctl rctl)
 
 (defalias
   ;; CAPSLOCK as ESC and CTRL
   caps (tap-hold-press 100 100 esc ctl)
+
+  ;; ESC when CTRL is held
+  lctl (tap-hold-press 100 100 esc lctl)
+  rctl (tap-hold-press 100 100 esc rctl)
+
   ;; Vi Mode
   tab (tap-hold-press 300 300 tab (layer-while-held vi)))
 
-(deflayer base 4   0    @tab w       u    @caps d    h    j    k  l     b)
-(deflayer vi   end home _    C-right pgup _     pgdn left down up right C-left)
+(deflayer base 4   0    @tab w       u    @caps d    h    j    k  l     b      @lctl @rctl)
+(deflayer vi   end home _    C-right pgup _     pgdn left down up right C-left _     _)
 
 ;; vim: ft=lisp
