@@ -1,0 +1,10 @@
+(defcfg process-unmapped-keys yes)
+
+(defsrc caps)
+
+(defalias caps
+          (tap-hold-press 100 100 esc ctl))
+
+(deflayer base @caps)
+
+;; vim: ft=lisp
