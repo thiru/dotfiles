@@ -13,11 +13,11 @@
   l_vi    (layer-switch vi)
 
   ;; CAPSLOCK as ESC and CTRL
-  caps (tap-hold-press 100 100 esc ctl)
+  caps (tap-hold-press 200 200 esc ctl)
 
   ;; ESC when CTRL is held
-  lctl (tap-hold-press 100 100 esc lctl)
-  rctl (tap-hold-press 100 100 esc rctl)
+  lctl (tap-hold-press 200 200 esc lctl)
+  rctl (tap-hold-press 200 200 esc rctl)
 
   ;; Mouse Mode
   m_mouse (tap-hold-press 300 300 scln (layer-while-held mouse))
