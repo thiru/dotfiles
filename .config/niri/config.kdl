@@ -241,9 +241,6 @@ spawn-at-startup "nm-applet"
 spawn-at-startup "swayidle" "-w" "timeout" "300" "niri msg action power-off-monitors" "resume" "niri msg action power-on-monitors"
 spawn-at-startup "idle-mon.clj"
 
-// Mouse & keyboard simulation
-spawn-at-startup "ydotoold"
-
 // Wallpaper
 spawn-at-startup "sh" "-c" "bing-wallpaper.clj ~/Pictures/wallpaper/bing.jpg && waypaper --restore"
 
