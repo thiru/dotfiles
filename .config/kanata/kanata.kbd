@@ -3,13 +3,14 @@
 (defsrc
   4 0
   tab w u i
-  caps d h j k l
-  b
-  lctl rctl)
+  caps d h j k l scln ret
+  b n m , .
+  lctl spc rctl)
 
 (defalias
-  l_base (layer-switch base)
-  l_vi   (layer-switch vi)
+  l_base  (layer-switch base)
+  l_mouse (layer-switch mouse)
+  l_vi    (layer-switch vi)
 
   ;; CAPSLOCK as ESC and CTRL
   caps (tap-hold-press 100 100 esc ctl)
@@ -18,10 +19,22 @@
   lctl (tap-hold-press 100 100 esc lctl)
   rctl (tap-hold-press 100 100 esc rctl)
 
+  ;; Mouse Mode
+  m_mouse (tap-hold-press 300 300 scln (layer-while-held mouse))
+  mmk (movemouse-up    2 1)
+  mmh (movemouse-left  2 1)
+  mmj (movemouse-down  2 1)
+  mml (movemouse-right 2 1)
+  mmK (movemouse-up    5 1)
+  mmH (movemouse-left  5 1)
+  mmJ (movemouse-down  5 1)
+  mmL (movemouse-right 5 1)
+
   ;; Vi Mode
   tab (tap-hold-press 300 300 tab (layer-while-held vi)))
 
-(deflayer base 4   0    @tab    w       u    i     @caps d    h    j    k  l     b      @lctl @rctl)
-(deflayer vi   end home @l_base C-right pgup @l_vi XX    pgdn left down up right C-left XX    XX)
+(deflayer base  4   0    @tab    w       u    i        @caps d    h    j    k    l     @m_mouse ret  b      n    m    ,    .    @lctl spc  @rctl)
+(deflayer mouse XX  XX   XX      XX      XX   @l_mouse XX    XX   @mmh @mmj @mmk @mml  @l_base  mrtp XX     @mmH @mmJ @mmK @mmL XX    mltp XX)
+(deflayer vi    end home @l_base C-right pgup @l_vi    XX    pgdn left down up   right XX       XX   C-left XX   XX   XX   XX   XX    XX   XX)
 
 ;; vim: ft=lisp
