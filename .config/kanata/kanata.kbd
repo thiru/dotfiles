@@ -2,7 +2,7 @@
 
 (defsrc
   4 0
-  tab w u i
+  q w u i
   caps d h j k l scln ret
   b n m , .
   lctl spc rctl)
@@ -31,9 +31,9 @@
   mmL (movemouse-right 5 1)
 
   ;; Vi Mode
-  tab (tap-hold-press 300 300 tab (layer-while-held vi)))
+  m_vi (tap-hold-press 300 300 q (layer-while-held vi)))
 
-(deflayer base  4   0    @tab    w       u    i        @caps d    h    j    k    l     @m_mouse ret  b      n    m    ,    .    @lctl spc  @rctl)
+(deflayer base  4   0    @m_vi   w       u    i        @caps d    h    j    k    l     @m_mouse ret  b      n    m    ,    .    @lctl spc  @rctl)
 (deflayer mouse XX  XX   XX      XX      XX   @l_mouse XX    XX   @mmh @mmj @mmk @mml  @l_base  mrtp XX     @mmH @mmJ @mmK @mmL XX    mltp XX)
 (deflayer vi    end home @l_base C-right pgup @l_vi    XX    pgdn left down up   right XX       XX   C-left XX   XX   XX   XX   XX    XX   XX)
 
