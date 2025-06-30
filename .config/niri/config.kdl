@@ -274,6 +274,10 @@ animations {
     // slowdown 3.0
 }
 
+hotkey-overlay {
+    skip-at-startup
+}
+
 // Window Rules
 // -----------------------------------------------------------------------------
 
