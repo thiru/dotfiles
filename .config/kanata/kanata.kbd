@@ -2,7 +2,7 @@
 
 (defsrc
   4 0
-  q w u i
+  w e u i
   caps d h j k l scln ret
   b n m , .
   lctl spc rctl)
@@ -31,10 +31,10 @@
   mmL (movemouse-right 5 1)
 
   ;; Vi Mode
-  m_vi (tap-hold-press 300 300 q (layer-while-held vi)))
+  m_vi (tap-hold 200 200 e (layer-while-held vi)))
 
-(deflayer base  4   0    @m_vi   w       u    i        @caps d    h    j    k    l     @m_mouse ret  b      n    m    ,    .    @lctl spc  @rctl)
+(deflayer base  4   0    w       @m_vi   u    i        @caps d    h    j    k    l     @m_mouse ret  b      n    m    ,    .    @lctl spc  @rctl)
 (deflayer mouse XX  XX   XX      XX      XX   @l_mouse XX    XX   @mmh @mmj @mmk @mml  @l_base  mrtp XX     @mmH @mmJ @mmK @mmL XX    mltp XX)
-(deflayer vi    end home @l_base C-right pgup @l_vi    XX    pgdn left down up   right XX       XX   C-left XX   XX   XX   XX   XX    XX   XX)
+(deflayer vi    end home C-right @l_base pgup @l_vi    XX    pgdn left down up   right XX       XX   C-left XX   XX   XX   XX   XX    XX   XX)
 
 ;; vim: ft=lisp
