@@ -16,12 +16,12 @@
   ;; CAPSLOCK as ESC and CTRL
   caps (tap-hold-press 200 200 esc ctl)
 
-  ;; ESC when CTRL is held
+  ;; ESC when CTRL is tapped
   lctl (tap-hold-press 200 200 esc lctl)
   rctl (tap-hold-press 200 200 esc rctl)
 
   ;; Mouse Mode
-  m_mouse (tap-hold-press 300 300 1 (layer-while-held mouse))
+  m_mouse (tap-hold 300 300 1 (layer-while-held mouse))
   mmk (movemouse-up    2 1)
   mmh (movemouse-left  2 1)
   mmj (movemouse-down  2 1)
