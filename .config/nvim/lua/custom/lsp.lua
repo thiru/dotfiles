@@ -10,6 +10,12 @@ local function init()
       end
     end,
   })
+
+  vim.diagnostic.config({
+    virtual_lines = {
+      current_line = true
+    }
+  })
 end
 
 return {
