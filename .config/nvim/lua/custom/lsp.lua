@@ -4,6 +4,7 @@ local function init()
     return
   end
 
+  vim.lsp.enable('bashls', true)
   vim.lsp.enable('clojure_lsp', true)
   vim.lsp.enable('denols', true)
   vim.lsp.enable('lua_ls', true)
