@@ -12,6 +12,7 @@ local function init()
   vim.lsp.enable('jdtls', true)
   vim.lsp.enable('jsonls', true)
   vim.lsp.enable('lua_ls', true)
+  vim.lsp.enable('pyright', true)
 
   vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
