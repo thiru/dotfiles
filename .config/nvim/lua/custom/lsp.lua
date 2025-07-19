@@ -1,5 +1,6 @@
 local function init()
-  vim.lsp.enable('lua_ls')
+  vim.lsp.enable('denols', true)
+  vim.lsp.enable('lua_ls', true)
 
   vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
