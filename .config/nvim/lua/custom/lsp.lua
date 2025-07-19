@@ -1,4 +1,9 @@
 local function init()
+  -- Don't enable LSP when diffing
+  if vim.opt.diff:get() then
+    return
+  end
+
   vim.lsp.enable('clojure_lsp', true)
   vim.lsp.enable('denols', true)
   vim.lsp.enable('lua_ls', true)
