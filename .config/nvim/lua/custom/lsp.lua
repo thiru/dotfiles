@@ -20,7 +20,7 @@ local function init()
       if client and client:supports_method('textDocument/completion') then
         vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
         vim.keymap.set('i', '<C-space>', vim.lsp.completion.get, {desc='Trigger completion'})
-        local msg = 'LSP attached: ' .. client.name .. ' (' .. ev.data.client_id .. ')'
+        local msg = 'Attached LSP server **' .. client.name .. '**'
         vim.notify_once(msg, vim.log.levels.INFO)
       end
     end,
