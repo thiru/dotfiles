@@ -3,38 +3,34 @@ local u = require('custom.utils')
 return {
   'saghen/blink.cmp',
   cond = not vim.opt.diff:get() and not u.nvtmux_auto_started(),
-  lazy = false, -- lazy loading handled internally
+  -- optional: provides snippets for the snippet source
+  dependencies = { 'rafamadriz/friendly-snippets' },
   -- use a release tag to download pre-built binaries
-  version = 'v0.*',
+  version = '1.*',
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
+    -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+    -- 'super-tab' for mappings similar to vscode (tab to accept)
+    -- 'enter' for enter to accept
+    -- 'none' for no mappings
     keymap = {
-      preset = 'default',
+      preset = 'super-tab',
        ['<C-k>'] = { 'select_prev', 'fallback' },
        ['<C-j>'] = { 'select_next', 'fallback' },
     },
 
     appearance = {
-      use_nvim_cmp_as_default = false,
-      -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+      -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
       -- Adjusts spacing to ensure icons are aligned
       nerd_font_variant = 'mono'
     },
 
-    completion = {
-      accept = {
-        -- experimental auto-brackets support
-        auto_brackets = { enabled = true }
-      },
-      documentation = {
-        auto_show = true,
-        auto_show_delay_ms = 200,
-      }
-    },
+    -- (Default) Only show the documentation popup when manually triggered
+    completion = { documentation = { auto_show = false } },
 
-    -- default list of enabled providers defined so that you can extend it
-    -- elsewhere in your config, without redefining it, via `opts_extend`
+    -- Default list of enabled providers defined so that you can extend it
+    -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
       default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
       providers = {
@@ -45,11 +41,12 @@ return {
           score_offset = 100,
         },
       },
+
     },
 
-    signature = { enabled = true }
+    fuzzy = { implementation = "prefer_rust_with_warning" }
   },
-  -- allows extending the providers array elsewhere in your config
-  -- without having to redefine it
+
+  signature = { enabled = true },
   opts_extend = { "sources.default" }
 }
