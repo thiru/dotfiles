@@ -26,6 +26,9 @@ fi
 # Opt into Wayland support for Firefox (otherwise xwayland will be used)
 export MOZ_ENABLE_WAYLAND=1
 
+# Disable telemetry of .NET tools
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 # Cargo binaries
 PATH="$PATH:$HOME/.cargo/bin"
 
