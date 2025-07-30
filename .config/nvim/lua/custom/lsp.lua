@@ -7,12 +7,12 @@ local function init()
   vim.lsp.enable('bashls', true)
   vim.lsp.enable('clojure_lsp', true)
   vim.lsp.enable('cssls', true)
-  vim.lsp.enable('denols', true)
   vim.lsp.enable('html', true)
   vim.lsp.enable('jdtls', true)
   vim.lsp.enable('jsonls', true)
   vim.lsp.enable('lua_ls', true)
   vim.lsp.enable('pyright', true)
+  vim.lsp.enable('ts_ls', true)
 
   vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
