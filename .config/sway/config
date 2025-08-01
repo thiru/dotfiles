@@ -35,7 +35,7 @@ set $menu exec $term --title Launcher --app-id launcher sway-launcher-desktop
 ## Appearance
 ## ------------------------------------------------------------------------------------------------
 
-font pango:Maple Mono Normal NL NF CN 15
+font pango:Maple Mono NL NF CN 15
 
 gaps inner 10
 
