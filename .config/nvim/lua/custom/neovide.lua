@@ -42,14 +42,12 @@ local function scale_factor_reset()
 end
 
 local function init()
-  if not vim.g.neovide then
-    return
+  if vim.g.neovide then
+    vim.cmd('silent exe "cd ~"')
+    vim.g.neovide_hide_mouse_when_typing = true
+    vim.g.neovide_scale_factor = 1.0
+    set_default_opacity()
   end
-
-  vim.cmd('silent exe "cd ~"')
-  vim.g.neovide_hide_mouse_when_typing = true
-  vim.g.neovide_scale_factor = 1.0
-  set_default_opacity()
 
   vim.api.nvim_create_user_command(
     'NeovideOpacityDec',
