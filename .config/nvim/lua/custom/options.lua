@@ -58,9 +58,12 @@ local function init()
   vim.g.mapleader = ' '
   vim.g.maplocalleader = ','
 
-  -- Set font for GUI front-ends (like Neovide)
   -- Install: `yay -S maplemononl-nf-cn-unhinted`
-  vim.opt.guifont = {'Maple Mono NL NF CN', ':h' .. font_size_default}
+  local font_family = vim.env.NEOVIM_FONT_FAMILY or 'Maple Mono NL NF CN'
+  local font_size = vim.env.NEOVIM_FONT_SIZE or font_size_default
+
+  -- Set font for GUI front-ends (like Neovide)
+  vim.opt.guifont = font_family .. ':h' .. font_size
 
   -- Disable backup and recovery files
   vim.o.backup = false
