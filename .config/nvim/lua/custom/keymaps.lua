@@ -49,6 +49,9 @@ local function init()
   vim.keymap.set('n', '<leader>j', vim.diagnostic.goto_next)
   vim.keymap.set('n', '<leader>ed', function() vim.diagnostic.enable(false) end,
                  {desc = 'Disable diagnostics in current buffer'})
+  vim.keymap.set('n', '<leader>K',
+    function() vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines }) end,
+    {desc = 'Toggle diagnostic virtual_lines'})
 
   -- CWD
   vim.keymap.set('n', '<leader>cd', ':cd %:p:h<CR>:pwd<CR>',
