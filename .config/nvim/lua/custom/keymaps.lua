@@ -45,8 +45,8 @@ local function init()
   vim.keymap.set('n', '<leader>m', '<CMD>messages<CR>', {desc = 'Show messages'})
 
   -- Diagnostic keymaps
-  vim.keymap.set('n', '<leader>k', vim.diagnostic.goto_prev)
-  vim.keymap.set('n', '<leader>j', vim.diagnostic.goto_next)
+  vim.keymap.set('n', '<leader>k', function() vim.diagnostic.jump({count=1, float=true}) end)
+  vim.keymap.set('n', '<leader>j', function() vim.diagnostic.jump({count=-1, float=true}) end)
   vim.keymap.set('n', '<leader>ed', function() vim.diagnostic.enable(false) end,
                  {desc = 'Disable diagnostics in current buffer'})
   vim.keymap.set('n', '<leader>K',
