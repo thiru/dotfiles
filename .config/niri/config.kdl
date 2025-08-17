@@ -242,7 +242,7 @@ spawn-at-startup "swayidle" "-w" "timeout" "300" "niri msg action power-off-moni
 spawn-at-startup "idle-mon.clj"
 
 // Wallpaper
-spawn-at-startup "sh" "-c" "bing-wallpaper.clj ~/Pictures/wallpaper/bing.jpg && waypaper --restore"
+spawn-at-startup "sh" "-c" "wallpaper-update"
 
 // Redlight filter (Toronto, Canada)
 spawn-at-startup "wlsunset" "-l" "43.6" "-L" "-79.3" "-t" "5000"

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Update wallpaper
+
+bing-wallpaper.clj ~/Pictures/wallpaper/bing.jpg && waypaper --restore
