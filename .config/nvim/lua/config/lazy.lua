@@ -24,6 +24,7 @@ local function register_plugins()
     -- Auto-load plugins in the specified folder:
     { import = 'plugins' }},
     {
+      install = { colorscheme = { 'catppuccin-latte' } },
       dev = {
         path = '~/code',
         fallback = true
