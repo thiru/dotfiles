@@ -1,4 +1,4 @@
-local u = require('custom.utils')
+local u = require('config.utils')
 
 return {
   'lewis6991/gitsigns.nvim',

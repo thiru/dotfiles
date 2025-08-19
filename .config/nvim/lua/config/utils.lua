@@ -1,4 +1,4 @@
-local h = require('custom.utils_helpers')
+local h = require('config.utils_helpers')
 
 local M = {
   doc = 'Common utilities.'

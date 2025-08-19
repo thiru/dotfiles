@@ -1,4 +1,4 @@
-local u = require('custom.utils')
+local u = require('config.utils')
 
 local function replace_home_with_tilde(path)
   local home_dir = vim.uv.os_homedir() or ''

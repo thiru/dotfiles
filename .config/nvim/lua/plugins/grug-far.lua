@@ -1,4 +1,4 @@
-local u = require('custom.utils')
+local u = require('config.utils')
 
 return {
   'MagicDuck/grug-far.nvim',

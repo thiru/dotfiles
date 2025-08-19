@@ -1,4 +1,4 @@
-local u = require('custom.utils')
+local u = require('config.utils')
 local doc = 'Neovide-specific configs'
 
 local opacity_default = 1.0

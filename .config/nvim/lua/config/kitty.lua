@@ -3,7 +3,7 @@
 
 local M = {}
 
-local u = require('custom.utils')
+local u = require('config.utils')
 
 M.init = function()
   if u.is_kitty_scrollback() then

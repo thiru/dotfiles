@@ -2,7 +2,7 @@ local doc = 'Plugin manager install, setup and 3rd-party plugin registration.'
 
 
 -- [[ Install `lazy.nvim` plugin manager if not yet installed. ]]
-local function install_lazy_nvim()
+local function install()
   local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
   if not vim.uv.fs_stat(lazypath) then
     vim.fn.system {
@@ -22,7 +22,7 @@ end
 local function register_plugins()
   require('lazy').setup({
     -- Auto-load plugins in the specified folder:
-    { import = 'custom.plugins' }},
+    { import = 'plugins' }},
     {
       dev = {
         path = '~/code',
@@ -35,6 +35,6 @@ end
 
 return {
   doc = doc,
-  install_lazy_nvim = install_lazy_nvim,
+  install = install,
   register_plugins = register_plugins,
 }

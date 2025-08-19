@@ -1,4 +1,4 @@
-local u = require('custom.utils')
+local u = require('config.utils')
 local doc = 'Define key mappings.'
 
 local function go_to_tab(num)
