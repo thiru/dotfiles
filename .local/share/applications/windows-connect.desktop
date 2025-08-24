@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Connect -> Windows 11
+GenericName=Windows
+Comment=Connect to Windows 11 VM
+Exec=remmina -c ~/.local/share/remmina/group_rdp_windows-11_localhost.remmina
+Icon=windows
+Terminal=false
+Type=Application
