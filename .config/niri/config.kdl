@@ -226,7 +226,7 @@ spawn-at-startup "waybar-reload"
 spawn-at-startup "swaync"
 
 // App launcher
-spawn-at-startup "walker" "--gapplication-service"
+spawn-at-startup "kupfer" "--no-splash"
 
 // Authentication agent (e.g. to launch root GUI apps)
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
@@ -325,7 +325,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // App Launcher
-    Mod+Space hotkey-overlay-title="App Launcher" { spawn "walker" "--modules" "applications"; }
+    Mod+Space hotkey-overlay-title="App Launcher" { spawn "kupfer"; }
 
     // Terminal (primary - Neovide)
     Mod+Return hotkey-overlay-title="Terminal (Neovide)" { spawn "neovide" "--" "--cmd" "lua vim.g.nvtmux_auto_start = true"; }
