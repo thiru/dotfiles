@@ -2,4 +2,6 @@
 
 # Update wallpaper
 
-bing-wallpaper.clj ~/Pictures/wallpaper/bing.jpg && waypaper --restore
+WALLPAPER_PATH=~/Pictures/wallpaper/bing.jpg
+
+bing-wallpaper.clj "$WALLPAPER_PATH" && swaybg --image "$WALLPAPER_PATH"
