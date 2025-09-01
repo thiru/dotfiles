@@ -1,5 +1,6 @@
 **/.clj-kondo/**
 !**/.clj-kondo/config.edn
+.config/fish/fish_variables
 .config/hypr/hyprland.conf
 .config/yazi/yazi.toml
 .cpcache/
