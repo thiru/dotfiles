@@ -1,5 +1,8 @@
+local u = require('config.utils')
+
 return {
   'Bekaboo/dropbar.nvim',
+  cond = not vim.opt.diff:get() and not u.nvtmux_auto_started(),
   -- optional, but required for fuzzy finder support
   dependencies = {
     'nvim-telescope/telescope-fzf-native.nvim',
