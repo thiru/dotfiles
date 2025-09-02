@@ -349,7 +349,7 @@ binds {
     Mod+M hotkey-overlay-title="Mouse Simulation" { spawn "wlr-which-key" "mouse-config"; }
 
     // Power Menu
-    Mod+P hotkey-overlay-title="Power Menu" { spawn "walker" "--modules" "power"; }
+    Mod+P hotkey-overlay-title="Power Menu" { spawn "power-menu.sh"; }
 
     // Niri Config
     Mod+Ctrl+C hotkey-overlay-title="Config" { spawn "neovide" ".config/niri/config.kdl"; }
