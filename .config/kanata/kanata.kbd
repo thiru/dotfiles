@@ -2,9 +2,10 @@
         process-unmapped-keys yes)
 
 (defsrc
+  esc
   4 0
   w u i
-  caps d h j k l scln ret
+  caps d h j k l ret
   b n m , .
   lctl spc rctl)
 
@@ -20,9 +21,9 @@
   rctl (tap-hold-press 200 200 esc rctl)
 
   ;; Vi Mode
-  m_vi (tap-hold 200 200 scln (layer-while-held vi)))
+  m_vi (tap-hold 200 200 esc (layer-while-held vi)))
 
-(deflayer base  4   0    w       u    i        @caps d    h    j    k    l     @m_vi   ret  b      n    m    ,    .    @lctl spc  @rctl)
-(deflayer vi    end home C-right pgup @l_vi    XX    pgdn left down up   right @l_base XX   C-left XX   XX   XX   XX   XX    XX   XX)
+(deflayer base  @m_vi   4   0    w       u    i        @caps d    h    j    k    l     ret  b      n    m    ,    .    @lctl spc  @rctl)
+(deflayer vi    @l_base end home C-right pgup @l_vi    XX    pgdn left down up   right XX   C-left XX   XX   XX   XX   XX    XX   XX)
 
 ;; vim: ft=lisp
