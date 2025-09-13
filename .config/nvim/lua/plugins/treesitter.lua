@@ -28,6 +28,7 @@ return {
       'bash',
       'c',
       'clojure',
+      'commonlisp',
       'csv',
       'css',
       'dockerfile',
