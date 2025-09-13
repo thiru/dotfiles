@@ -44,7 +44,6 @@ return {
     { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Search Keymaps" },
     { "<leader>sm", function() Snacks.picker.marks() end, desc = "Search Marks" },
     { "<leader>sM", function() Snacks.picker.man() end, desc = "Search Man Pages" },
-    { "<leader>sr", function() Snacks.picker.recent() end, desc = "Search Recent Files" },
     { "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume Previous Search" },
     { "<leader>sv", function() Snacks.picker.files({cwd = vim.fn.stdpath("config")}) end, desc = "Search Config Files" },
     { "<leader>sw", function() Snacks.picker.grep_word({follow = true, hidden = true}) end, desc = "Grep Word or Visual Selection" },
