@@ -1,0 +1,37 @@
+modmap:
+  - name: CapsLock as Left CTRL/Esc
+    remap:
+      CapsLock:
+        held: Ctrl_L
+        alone: Esc
+        free_hold: true
+  - name: Left CTRL as CTRL/Esc
+    remap:
+      Ctrl_L:
+        held: Ctrl_L
+        alone: Esc
+        free_hold: true
+  - name: Right CTRL as CTRL/Esc
+    remap:
+      Ctrl_R:
+        held: Ctrl_R
+        alone: Esc
+        free_hold: true
+
+  - name: Vim_Mode
+    remap:
+      H: LEFT
+      J: DOWN
+      K: UP
+      L: RIGHT
+    mode: Vim_Mode
+
+keymap:
+  - name: Vim Mode - Enable
+    remap:
+      CTRL-I: { set_mode: Vim_Mode }
+    mode: default
+  - name: Vim Mode - Disable
+    remap:
+      CTRL-I: { set_mode: default }
+    mode: Vim_Mode
