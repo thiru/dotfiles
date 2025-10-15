@@ -14,8 +14,9 @@
   df = difftool
   dfb = "git-dfb"
   dfs = difftool --staged
-  l  = log --pretty=format:\"%Cgreen%h%Creset %s %Cgreen[%ar]\" -15 --graph
-  ll = log --pretty=format:\"%Cgreen%h%Creset %s %Cgreen[%ar]\" --graph
+  l  = log --pretty=format:\"%C(yellow)%h%Creset %s %C(green)[%ar] %C(red)[%an]\" -15 --graph
+  la = log --all --branches --remotes --pretty=format:\"%C(yellow)%h%Creset %s %C(green)[%ar] %C(red)[%an]\" --graph
+  ll = log --pretty=format:\"%C(yellow)%h%Creset %s %C(green)[%ar] %C(red)[%an]\" --graph
   ls = shortlog
   p = pull --rebase
   pa = pull --rebase --all
