@@ -25,6 +25,7 @@ local function init()
 
   -- Enter command-line mode
   vim.keymap.set('n', '<leader>;', ':', {desc='Enter command-linemode'})
+  vim.keymap.set({'n', 'v'}, 's', ':', {desc='Enter command-linemode'})
 
   -- Quit
   vim.keymap.set({ 'n', 'v' }, '<leader>q', '<CMD>qall<CR>', { desc = 'Exit Vim' })
