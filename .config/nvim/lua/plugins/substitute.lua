@@ -1,8 +1,5 @@
-local u = require('config.utils')
-
 return {
   'gbprod/substitute.nvim',
-  cond = not u.nvtmux_auto_started(),
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
     local substitute = require('substitute')

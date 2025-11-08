@@ -1,8 +1,6 @@
-local u = require('config.utils')
-
 return {
   'echasnovski/mini.files',
-  cond = not vim.opt.diff:get() and not u.nvtmux_auto_started(),
+  cond = not vim.opt.diff:get(),
   opts = {
     mappings = {
       go_in = '<C-l>',

@@ -1,8 +1,6 @@
-local u = require('config.utils')
-
 return {
   'sotte/presenting.nvim',
-  cond = not vim.opt.diff:get() and not u.nvtmux_auto_started(),
+  cond = not vim.opt.diff:get(),
   opts = {
     options = {
       width = 50,

@@ -1,8 +1,6 @@
-local u = require('config.utils')
-
 return {
   'stevearc/aerial.nvim',
-  cond = not vim.opt.diff:get() and not u.nvtmux_auto_started(),
+  cond = not vim.opt.diff:get(),
   dependencies = {
      'nvim-treesitter/nvim-treesitter',
   },

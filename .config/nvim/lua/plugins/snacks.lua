@@ -1,5 +1,3 @@
-local u = require('config.utils')
-
 ---@module "snacks"
 
 return {
@@ -8,15 +6,15 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    bigfile = { enabled = not u.nvtmux_auto_started() },
+    bigfile = {},
     image = {},
     notifier = {
       enabled = true,
       timeout = 2000,
     },
-    quickfile = { enabled = not u.nvtmux_auto_started() },
+    quickfile = {},
     picker = {},
-    statuscolumn = { enabled = not u.nvtmux_auto_started() },
+    statuscolumn = {},
   },
   keys = {
     { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },

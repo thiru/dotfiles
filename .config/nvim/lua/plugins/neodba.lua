@@ -1,8 +1,6 @@
-local u = require('config.utils')
-
 return {
   'thiru/neodba.nvim',
-  cond = not vim.opt.diff:get() and not u.nvtmux_auto_started(),
+  cond = not vim.opt.diff:get(),
   dev = true,
   ft = 'sql',
   opts = {

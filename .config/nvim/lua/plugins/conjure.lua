@@ -1,8 +1,6 @@
-local u = require('config.utils')
-
 return {
   'Olical/conjure',
-  cond = not vim.opt.diff:get() and not u.nvtmux_auto_started(),
+  cond = not vim.opt.diff:get(),
   branch = 'main',
   config = function()
     vim.g['conjure#mapping#doc_word'] = {'<localleader>k'}

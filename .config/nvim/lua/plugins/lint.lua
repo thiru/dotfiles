@@ -1,8 +1,6 @@
-local u = require('config.utils')
-
 return {
   'mfussenegger/nvim-lint',
-  cond = not vim.opt.diff:get() and not u.nvtmux_auto_started(),
+  cond = not vim.opt.diff:get(),
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
     local lint = require('lint')
