@@ -4,11 +4,57 @@ local M = {
   doc = 'Common utilities.'
 }
 
+-- Get path with home directory replaced with tilde.
+function M.replace_home_with_tilde(path)
+  local home_dir = vim.uv.os_homedir() or ''
+  if vim.startswith(path, home_dir) then
+    return '~' .. string.sub(path, #home_dir + 1)
+  else
+    return path
+  end
+end
+
+--- Get the current working directory (using tilde for home dir).
+function M.get_cwd()
+  return M.replace_home_with_tilde(vim.fn.getcwd())
+end
+
+-- Get name of file's parent dir.
+function M.get_file_parent()
+  local abs_path = vim.api.nvim_buf_get_name(0) or ''
+
+  if #abs_path == 0 then
+    return ''
+  end
+
+  local cwd = vim.fn.getcwd()
+  local final_path = ''
+
+  if not vim.startswith(abs_path, cwd) then
+    final_path = final_path .. abs_path
+  else
+    final_path = final_path .. string.sub(abs_path, #cwd + 2)
+  end
+
+  local parent_dir = ''
+  for dir in vim.fs.parents(final_path) do
+    parent_dir = dir
+    break
+  end
+
+  if #parent_dir == 0 or parent_dir == '.' then
+    return ''
+  end
+
+  parent_dir = M.replace_home_with_tilde(parent_dir) .. '/'
+
+  return parent_dir
+end
+
 --- Detect if we're running Windows.
 function M.is_windows()
   return vim.fn.has('win64') ~= 0
 end
-
 
 --- Check whether at least the given version of glibc is present.
 function M.has_glibc_version(min_major, min_minor)
