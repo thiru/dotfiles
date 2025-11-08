@@ -103,6 +103,9 @@ local function init()
   -- Enable mouse in normal & visual modes only
   vim.o.mouse = 'nv'
 
+  -- Use one global status line (not per window)
+  vim.o.laststatus = 3
+
   -- Don't show the mode since it's already in the status line
   vim.o.showmode = false
 
