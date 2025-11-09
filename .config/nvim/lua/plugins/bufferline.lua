@@ -2,7 +2,7 @@ local u = require('config.utils')
 
 return {
   'akinsho/bufferline.nvim',
-  cond = not u.nvtmux_auto_started() and not u.is_kitty_scrollback(),
+  cond = not u.is_kitty_scrollback(),
   dependencies = {
     'nvim-tree/nvim-web-devicons',
   },
@@ -19,7 +19,7 @@ return {
   },
   opts = {
     options = {
-      always_show_bufferline = true,
+      always_show_bufferline = false,
     }
   }
 }
