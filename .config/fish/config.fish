@@ -81,11 +81,12 @@ function set-keybinds
   bind -M insert \cp 'priv-mode-toggle'
 end
 
-function set-nvim-window-title --on-variable PWD --description "Set Neovim title to PWD"
+function set-nvim-title-and-cwd --on-variable PWD --description "Set Neovim title and CWD to PWD"
   set -l curr_dir (string replace -r "^$HOME" '~' (pwd))
 
   if set -q NVIM
     nvim --server $NVIM --remote-send "<cmd>lua vim.opt.titlestring='$curr_dir'<CR>"
+    nvim --server $NVIM --remote-send "<cmd>silent cd $curr_dir<CR>"
   end
 end
 
@@ -117,7 +118,7 @@ if status is-interactive
    # Suppress greeting
   set fish_greeting
 
-  set-nvim-window-title
+  set-nvim-title-and-cwd
 
   # Enable vi mode
   fish_vi_key_bindings
