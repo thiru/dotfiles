@@ -29,9 +29,9 @@ modmap:
 keymap:
   - name: Vim Mode - Enable
     remap:
-      CTRL-I: { set_mode: Vim_Mode }
+      ALT-I: { set_mode: Vim_Mode }
     mode: default
   - name: Vim Mode - Disable
     remap:
-      CTRL-I: { set_mode: default }
+      ALT-I: { set_mode: default }
     mode: Vim_Mode
