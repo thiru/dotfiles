@@ -4,19 +4,19 @@ modmap:
       CapsLock:
         held: Ctrl_L
         alone: Esc
-        free_hold: true
+        alone_timeout_millis: 500
   - name: Left CTRL as CTRL/Esc
     remap:
       Ctrl_L:
         held: Ctrl_L
         alone: Esc
-        free_hold: true
+        alone_timeout_millis: 500
   - name: Right CTRL as CTRL/Esc
     remap:
       Ctrl_R:
         held: Ctrl_R
         alone: Esc
-        free_hold: true
+        alone_timeout_millis: 500
 
   - name: Vim_Mode
     remap:
