@@ -76,22 +76,6 @@ local function init()
   -- Execute current file
   vim.keymap.set('n', '<leader>!', function() vim.cmd('!./%') end, {desc = 'Execute current script (shell)'})
 
-  -- Execute/print current line or buffer
-  vim.keymap.set('n', '<leader>L', ':.lua<CR>', { desc = 'Execute current line (Lua)' })
-  vim.keymap.set('v', '<leader>L', ':lua<CR>', { desc = 'Execute current line (Lua)' })
-  vim.keymap.set('n', '<leader><leader>l', '<CMD>source %<CR>', { desc = 'Execute/source current buffer' })
-  vim.keymap.set({'n', 'v'}, '<leader>l',
-    function()
-      local to_execute = u.get_selected_text_or_current_line()
-      if #to_execute > 0 then
-        local worked, ret = pcall(function() loadstring('vim.print(' .. to_execute .. ')')() end)
-        if not worked then
-          print(ret)
-        end
-      end
-    end,
-    { desc = 'Execute and print selected text or current line (lua)' })
-
   vim.keymap.set('t', '<LeftMouse>', '<Nop>', { desc = 'Disable mouse left-click' })
   vim.keymap.set('t', '<2-LeftMouse>', '<Nop>', { desc = 'Disable mouse double left-click' })
 
