@@ -31,6 +31,20 @@ local function init()
   vim.keymap.set({ 'n', 'v' }, '<leader>q', '<CMD>qall<CR>', { desc = 'Exit Vim' })
   vim.keymap.set({ 'n', 'v' }, '<leader>Q', '<CMD>qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
 
+  -- Buffer (prev/next)
+  vim.keymap.set({'n', 'v'}, '<C-j>', '<CMD>bp<CR>', { desc = 'Go to next buffer' })
+  vim.keymap.set({'n', 'v'}, '<C-k>', '<CMD>bn<CR>', { desc = 'Go to previous buffer' })
+
+  vim.keymap.set({'n', 'v'}, '<leader><leader>', '<CMD>b#<CR>', { desc = 'Go to alternate buffer' })
+
+  -- Buffer nav - go to index
+  for i=1,9 do
+    vim.keymap.set(
+      {'i', 'n', 't', 'v'},
+      '<A-' .. i .. '>', '<CMD>LualineBuffersJump! ' .. i .. '<CR>',
+      {desc = 'Go to buffer ' .. i, silent=true})
+  end
+
   -- Open init.lua
   vim.keymap.set('n', '<leader>ve', ':e $MYVIMRC<CR>:cd %:p:h<CR>:pwd<CR>',
     { desc = 'Open main Neovim config (init.lua)', silent = true })
