@@ -1,6 +1,0 @@
-suspend\034power-options\034  Sleep\n
-poweroff\034power-options\034  Power Off\n
-reboot\034power-options\034  Reboot\n
-logout\034power-options\034  Log Out\n
-lock\034power-options\034  Lock
-

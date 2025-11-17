@@ -3,18 +3,23 @@
 (ns scripts.power
   "System power options."
   (:require
+            [babashka.fs :as fs]
             [clojure.java.shell :refer [sh]]
             [clojure.string :as str]
             [scripts.utils :as u]))
 
 
-(def options ["suspend"
-              "poweroff"
-              "reboot"
-              "logout"
-              "lock"])
+(def power-options ["lock"
+                    "logout"
+                    "poweroff"
+                    "reboot"
+                    "suspend"])
 
-(def usage (format "Usage: power.clj [%s]" (str/join "|" options)))
+(def cli-options (conj power-options "menu"))
+
+(def usage (format "Usage: %s [%s]"
+                   (fs/file-name *file*)
+                   (str/join "|" cli-options)))
 
 (defn run-swaylock []
   (u/notify-send "Locking..." :icon "system-lock-screen")
@@ -64,6 +69,13 @@
       (u/notify-send "Unknown desktop environment")
       (System/exit 1))))
 
+(defn show-menu []
+  (let [cmd-res (sh "fzf" "--style" "full" "--prompt" "Power: " :in (str/join "\n" power-options))
+        selection (-> cmd-res :out str/trim)]
+    (when (and (zero? (:exit cmd-res))
+               (.contains power-options selection))
+      (sh *file* selection))))
+
 (defn poweroff []
   (u/notify-send "Shutting down...")
   (sh "systemctl" "poweroff"))
@@ -84,8 +96,11 @@
     "lock"
     (lock)
 
-    ("logout")
+    "logout"
     (logout)
+
+    "menu"
+    (show-menu)
 
     "poweroff"
     (poweroff)
