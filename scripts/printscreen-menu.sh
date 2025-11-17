@@ -1,12 +1,20 @@
 #!/bin/sh
 
-export TERMINAL=kitty
-export PROVIDERS_FILE=$HOME/.config/sway-launcher-desktop/printscreen-provider.conf
+# Take a screenshot or record screen
 
 SCREENSHOTS_DIR=~/Pictures/screen-shots
 SCREENRECORDS_DIR=~/Videos/screen-recordings
 
-case "$1" in
+OPTIONS="screenshot-screen-file
+screenshot-screen-clipboard
+screenshot-region-file
+screenshot-region-clipboard
+record-screen-file
+record-region-file"
+
+SELECTION=$(echo "$OPTIONS" | fzf)
+
+case "$SELECTION" in
   "screenshot-screen-file")
     sleep 1s
     grim $SCREENSHOTS_DIR/screen-$(date +'%Y-%m-%dT%H-%M-%S').png && notify-send "Screenshot saved to $SCREENSHOTS_DIR"
@@ -25,12 +33,9 @@ case "$1" in
     DELAY=3s
     notify-send "Recording in $DELAY..." --expire-time 3000 --icon camera-video
     sleep $DELAY
-    kitty --title 'Screen Recording' --app-id launcher wf-recorder --file=$SCREENRECORDS_DIR/screen-$(date +'%Y-%m-%dT%H-%M-%S').mp4 && notify-send "Recording saved to $SCREENRECORDS_DIR"
+    wf-recorder --file=$SCREENRECORDS_DIR/screen-$(date +'%Y-%m-%dT%H-%M-%S').mp4 && notify-send "Recording saved to $SCREENRECORDS_DIR"
     ;;
   "record-region-file")
-    kitty --title 'Screen Recording' --app-id launcher wf-recorder -g "$(slurp)" --file=$SCREENRECORDS_DIR/region-$(date +'%Y-%m-%dT%H-%M-%S').mp4 && notify-send "Recording saved to $SCREENRECORDS_DIR"
-    ;;
-  *)
-    kitty --title Launcher --app-id launcher --override font_size=20 sway-launcher-desktop
+    wf-recorder -g "$(slurp)" --file=$SCREENRECORDS_DIR/region-$(date +'%Y-%m-%dT%H-%M-%S').mp4 && notify-send "Recording saved to $SCREENRECORDS_DIR"
     ;;
 esac

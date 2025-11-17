@@ -1,7 +1,0 @@
-screenshot-screen-file\034printscreen-options\034󰄀  Picture (screen) -> File\n
-screenshot-screen-clipboard\034printscreen-options\034󰄀  Picture (screen) -> Clipboard\n
-screenshot-region-file\034printscreen-options\034󰄀  Picture (region) -> File\n
-screenshot-region-clipboard\034printscreen-options\034󰄀  Picture (region) -> Clipboard\n
-record-screen-file\034printscreen-options\034  Video (screen) -> File\n
-record-region-file\034printscreen-options\034  Video (region) -> File\n
-
