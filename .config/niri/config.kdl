@@ -358,7 +358,7 @@ binds {
     Mod+S hotkey-overlay-title="Screenshot/Video Record" { spawn "printscreen-menu.sh"; }
 
     // Pass menu
-    Mod+Slash hotkey-overlay-title=null { spawn "pass-menu.sh"; }
+    Mod+Slash hotkey-overlay-title=null { spawn "kitty-dialog.sh" "Pass Menu" "16" "pass-menu.sh"; }
 
     // Weather
     Mod+W hotkey-overlay-title="Weather" { spawn "librewolf" "--new-window" "https://www.accuweather.com/en/ca/toronto/m5h/daily-weather-forecast/55488"; }

@@ -1,6 +1,10 @@
 #!/bin/sh
 
-export TERMINAL=kitty
-export PROVIDERS_FILE=$HOME/.config/sway-launcher-desktop/pass-provider.conf
+PASS_DIR=~/.password-store
 
-kitty --title Launcher --app-id launcher sway-launcher-desktop
+SELECTION=$(fd .gpg "$PASS_DIR" | sed 's:.*/.password-store/\(.*\)\.gpg:\1:g' | fzf --style full)
+
+if [ -n "$SELECTION" ]; then
+  pass show "${SELECTION}" | nohup wl-copy > /dev/null 2>&1
+  notify-send "Copied ${SELECTION}" --expire-time 1500 --icon edit-copy
+fi
