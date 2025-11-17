@@ -354,9 +354,6 @@ binds {
     // Niri Config
     Mod+Ctrl+C hotkey-overlay-title="Config" { spawn "neovide" ".config/niri/config.kdl"; }
 
-    // Screenshot & Video Recording
-    Mod+S hotkey-overlay-title="Screenshot/Video Record" { spawn "printscreen-menu.sh"; }
-
     // Pass menu
     Mod+Slash hotkey-overlay-title=null { spawn "kitty-dialog.sh" "Pass Menu" "16" "pass-menu.sh"; }
 
@@ -566,8 +563,9 @@ binds {
     // Mod+Shift+Space { switch-layout "prev"; }
 
     Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Mod+S { screenshot; }
+    Mod+Ctrl+S { screenshot-screen; }
+    Mod+Alt+S { screenshot-window; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
