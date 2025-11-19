@@ -133,41 +133,16 @@ local function init()
   -- Toggle cursor column
   vim.keymap.set('n', '<leader>|', function() vim.o.cursorcolumn = not vim.o.cursorcolumn end, {desc = 'Toggle cursor column'})
 
-  if not u.nvtmux_auto_started() then -- nvtmux already has these bindings
-    -- Tab nav - new
-    vim.keymap.set('n', '<C-t>', '<CMD>tabnew<CR>', {desc = 'New tab'})
+  -- Tab - new
+  vim.keymap.set('n', '<C-S-t>', '<CMD>tabnew<CR>', {desc = 'New tab'})
+  vim.keymap.set('n', '<leader>tn', '<CMD>tabnew<CR>', {desc = 'New tab'})
 
-    -- Tab nav - close
-    vim.keymap.set('n', '<leader>td', '<CMD>tabclose<CR>', {desc = 'Close tab'})
+  -- Tab - close
+  vim.keymap.set('n', '<leader>td', '<CMD>tabclose<CR>', {desc = 'Close tab'})
 
-    -- Tab nav - next/previous
-    vim.keymap.set('n', '<leader>tj', '<CMD>tabNext<CR>', {desc = 'Next tab'})
-    vim.keymap.set('n', '<leader>tk', '<CMD>tabPrevious<CR>', {desc = 'Previous tab'})
-
-    -- Tab nav - last accessed
-    vim.keymap.set({'n', 'i'}, '<C-`>', '<CMD>:tabnext #<CR>', {desc = 'Go to last accessed tab', silent = true})
-
-    -- Tab nav - previous/next
-    vim.keymap.set({'n', 't'}, '<C-S-TAB>', '<CMD>tabprevious<CR>', {desc = 'Next tab', silent = true})
-    vim.keymap.set({'n', 't'}, '<C-TAB>', '<CMD>tabnext<CR>', {desc = 'Previous tab', silent = true})
-    vim.keymap.set({'n', 't'}, '<C-S-j>', '<CMD>tabprevious<CR>', {desc = 'Next tab', silent = true})
-    vim.keymap.set({'n', 't'}, '<C-S-k>', '<CMD>tabnext<CR>', {desc = 'Previous tab', silent = true})
-
-    -- Tab nav - go to index
-    for i=1,9 do
-      vim.keymap.set(
-        {'i', 'n', 't', 'v'},
-        '<C-' .. i .. '>',
-        function()
-          go_to_tab(i)
-        end,
-        {desc = 'Go to tab by index', silent=true})
-    end
-
-    -- Tab nav - move left/right
-    vim.keymap.set('n', '<C-,>', function() move_tab('left') end, {desc = 'Move tab to the left'})
-    vim.keymap.set('n', '<C-.>', function() move_tab('right') end, {desc = 'Move tab to the right'})
-  end
+  -- Tab - move left/right
+  vim.keymap.set('n', '<leader>th', '<CMD>-tabmove<CR>', {desc = 'Move tab left'})
+  vim.keymap.set('n', '<leader>tl', '<CMD>+tabmove<CR>', {desc = 'Move tab right'})
 
   -- Window nav - left/down/up/right
   vim.keymap.set({'i', 't'}, '<A-h>', '<C-\\><C-N><C-w>hi')
