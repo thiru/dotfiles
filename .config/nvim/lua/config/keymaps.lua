@@ -1,20 +1,4 @@
-local u = require('config.utils')
 local doc = 'Define key mappings.'
-
-local function go_to_tab(num)
-  local tab_handles = vim.api.nvim_list_tabpages()
-  if (#tab_handles > 1) and (num <= #tab_handles) then
-    vim.api.nvim_set_current_tabpage(tab_handles[num])
-  end
-end
-
-local function move_tab(dir)
-  if dir == 'left' then
-    vim.cmd('-tabmove')
-  else
-    vim.cmd('+tabmove')
-  end
-end
 
 local function init()
   -- Disable a single spacebar key-press since we use it as the leader key
