@@ -1,4 +1,5 @@
 return {
-  'gpanders/nvim-parinfer',
-  cond = not vim.opt.diff:get()
+  "eraserhd/parinfer-rust",
+  cond = not vim.opt.diff:get(),
+  build = "cargo build --release"
 }
