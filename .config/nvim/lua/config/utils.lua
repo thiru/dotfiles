@@ -1,7 +1,8 @@
 local h = require('config.utils_helpers')
 
 local M = {
-  doc = 'Common utilities.'
+  doc = 'Common utilities.',
+  found_rust = nil
 }
 
 -- Get path with home directory replaced with tilde.
@@ -79,6 +80,16 @@ function M.has_glibc_version(min_major, min_minor)
   end
 
   return true
+end
+
+--- Check if rust is installed (and cache check).
+function M.has_rust()
+  if M.found_rust ~= nil then
+    return M.found_rust
+  else
+    M.found_rust = vim.fn.executable("rustc") == 1
+    return M.found_rust
+  end
 end
 
 --- Get visually selected text (char-wise or line-wise)
