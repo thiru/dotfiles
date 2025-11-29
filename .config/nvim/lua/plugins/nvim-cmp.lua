@@ -18,6 +18,8 @@ return { -- Autocompletion
     'saadparwaiz1/cmp_luasnip',
 
     -- Adds other completion capabilities.
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-cmdline',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
   },
