@@ -1,4 +1,12 @@
--- Install: `pacman -S typescript-language-server`
+---@brief
+---
+--- https://github.com/typescript-language-server/typescript-language-server
+---
+--- `ts_ls`, aka `typescript-language-server`, is a Language Server Protocol implementation for TypeScript wrapping `tsserver`. Note that `ts_ls` is not `tsserver`.
+---
+--- Arch install: `pacman -S typescript-language-server`
+
+---@type vim.lsp.Config
 return {
   cmd = { 'typescript-language-server', '--stdio' },
   filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },

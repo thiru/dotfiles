@@ -1,4 +1,10 @@
--- Install: `pacman -S vscode-css-languageserver`
+---@brief
+---
+--- https://github.com/hrsh7th/vscode-langservers-extracted
+---
+--- Arch install: `pacman -S vscode-css-languageserver`
+
+---@type vim.lsp.Config
 return {
   cmd = { 'vscode-css-language-server', '--stdio' },
   filetypes = { 'css', 'scss', 'less' },

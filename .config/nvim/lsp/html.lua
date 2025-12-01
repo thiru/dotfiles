@@ -1,4 +1,10 @@
--- Install: `pacman -S vscode-html-languageserver`
+---@brief
+---
+--- https://github.com/hrsh7th/vscode-langservers-extracted
+---
+--- Arch install: `pacman -S vscode-html-languageserver`
+
+---@type vim.lsp.Config
 return {
   cmd = { 'vscode-html-language-server', '--stdio' },
   filetypes = { 'html', 'templ' },
