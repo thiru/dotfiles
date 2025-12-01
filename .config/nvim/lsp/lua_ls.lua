@@ -5,12 +5,13 @@ return {
   root_markers = { { '.luarc.json', '.luarc.jsonc' }, '.git' },
   settings = {
     Lua = {
+      hint = { enable = true },
+      diagnostics = {
+        globals = { 'vim' }
+      },
       runtime = {
         version = 'LuaJIT'
       },
-      diagnostics = {
-        globals = { 'vim' }
-      }
     }
   }
 }

@@ -43,6 +43,14 @@ local function init()
   -- Show messages
   vim.keymap.set('n', '<leader>m', '<CMD>messages<CR>', {desc = 'Show messages'})
 
+  -- LSP - inline hints toggle
+  vim.keymap.set('n', '<leader>li',
+    function()
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+      vim.notify(vim.lsp.inlay_hint.is_enabled() and 'Inlay hints enabled' or 'Inlay hints disabled')
+    end,
+    {desc = 'Toggle LSP inlay hints'})
+
   -- Diagnostic keymaps
   vim.keymap.set('n', '<leader>k', function() vim.diagnostic.jump({count=-1, float=true}) end)
   vim.keymap.set('n', '<leader>j', function() vim.diagnostic.jump({count=1, float=true}) end)
