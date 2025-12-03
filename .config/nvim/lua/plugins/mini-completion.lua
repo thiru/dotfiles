@@ -12,5 +12,12 @@ return {
     imap_expr('<C-j>',   [[pumvisible() ? "\<C-n>" : "\<C-j>"]])
     imap_expr('<C-k>', [[pumvisible() ? "\<C-p>" : "\<C-k>"]])
     imap_expr('<TAB>', [[pumvisible() ? "\<C-y>" : "\<TAB>"]])
+
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = { 'snacks_picker_input' },
+      callback = function()
+          vim.b.minicompletion_disable = true
+        end
+    })
   end
 }
