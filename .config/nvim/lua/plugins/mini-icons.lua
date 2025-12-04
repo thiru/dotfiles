@@ -1,4 +1,4 @@
 return {
   'echasnovski/mini.icons',
-  version = '*'
+  version = false,
 }

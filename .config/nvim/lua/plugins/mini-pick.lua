@@ -1,6 +1,6 @@
 return {
   'nvim-mini/mini.pick',
-  version = '*',
+  version = false,
   opts = {
     mappings = {
       choose_marked = '<C-CR>',

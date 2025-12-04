@@ -1,7 +1,7 @@
 return {
   'echasnovski/mini.surround',
   cond = not vim.opt.diff:get(),
-  version = '*',
+  version = false,
   opts = {
     mappings = {
       add = 'gsa', -- Add surrounding in Normal and Visual modes

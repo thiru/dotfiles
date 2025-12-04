@@ -1,7 +1,7 @@
 return {
   'nvim-mini/mini.completion',
   cond = not vim.opt.diff:get(),
-  version = '*',
+  version = false,
   config = function()
     require('mini.completion').setup({})
 

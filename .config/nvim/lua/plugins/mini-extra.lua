@@ -1,6 +1,6 @@
 return {
   'nvim-mini/mini.extra',
-  version = '*',
+  version = false,
   opts = {},
   keys = {
     { "<leader>sr", function() MiniExtra.pickers.oldfiles() end, desc = "Search Recent Files" },

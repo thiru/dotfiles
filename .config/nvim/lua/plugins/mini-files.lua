@@ -1,6 +1,7 @@
 return {
   'echasnovski/mini.files',
   cond = not vim.opt.diff:get(),
+  version = false,
   opts = {
     mappings = {
       go_in = '<C-l>',
