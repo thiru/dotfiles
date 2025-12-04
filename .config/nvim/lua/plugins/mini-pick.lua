@@ -1,5 +1,6 @@
 return {
   'nvim-mini/mini.pick',
+  cond = not vim.opt.diff:get(),
   version = false,
   opts = {
     mappings = {

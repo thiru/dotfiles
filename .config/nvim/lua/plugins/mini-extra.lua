@@ -1,5 +1,6 @@
 return {
   'nvim-mini/mini.extra',
+  cond = not vim.opt.diff:get(),
   version = false,
   opts = {},
   keys = {
