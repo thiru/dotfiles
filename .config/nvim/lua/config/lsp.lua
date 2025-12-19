@@ -13,9 +13,9 @@ local function init()
   vim.lsp.enable('jsonls', true)
   vim.lsp.enable('lua_ls', true)
 
-  if vim.fn.executable("pylyzer") then
+  if vim.fn.executable("pylyzer") == 1 then
     vim.lsp.enable('pylyzer', true)
-  elseif vim.fn.executable("pyright") then
+  elseif vim.fn.executable("pyright") == 1 then
     vim.lsp.enable('pyright', true)
   end
 
