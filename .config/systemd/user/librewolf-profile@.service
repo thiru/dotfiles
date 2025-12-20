@@ -1,0 +1,11 @@
+[Unit]
+Description=Librewolf profile memory cache
+
+[Install]
+WantedBy=default.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=%h/scripts/librewolf-sync.sh %i
+ExecStop=%h/scripts/librewolf-sync.sh %i
