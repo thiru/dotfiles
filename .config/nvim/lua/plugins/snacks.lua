@@ -26,7 +26,6 @@ return {
     { "<leader>fr", function() Snacks.rename.rename_file() end, desc = "Rename File" },
     { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
     { "<leader>gB", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
-    { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
     { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
     { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
     { "<leader>gr", function() Snacks.gitbrowse() end, desc = "Git Browse Repo" },
