@@ -7,6 +7,7 @@ return {
   'Olical/conjure',
   cond = not vim.opt.diff:get(),
   branch = 'main',
+  lazy = false,
   config = function()
     vim.g['conjure#mapping#doc_word'] = {'<localleader>k'}
     vim.g['conjure#log#botright'] = true
