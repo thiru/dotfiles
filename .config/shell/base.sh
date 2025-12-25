@@ -67,6 +67,8 @@ export FZF_DEFAULT_OPTS='--no-height --no-reverse'
 # Preview window (uses highlight package)
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always {}'"
 
+export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
+
 # Set a larger font for (non-virtual) TTYs
 if [ "$TERM" = "linux" ]; then
   setfont ter-124n
