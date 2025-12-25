@@ -1,3 +1,8 @@
+local function restart_python()
+  vim.cmd('ConjurePythonStop')
+  vim.cmd('ConjurePythonStart')
+end
+
 return {
   'Olical/conjure',
   cond = not vim.opt.diff:get(),
@@ -11,5 +16,8 @@ return {
 
     -- Don't auto-start Babashka REPL
     vim.g['conjure#client#clojure#nrepl#connection#auto_repl#enabled'] = false
-  end
+  end,
+  keys = {
+    {'<localleader>cr', restart_python, ft = 'python', desc = 'Restart Python REPL'}
+  }
 }
