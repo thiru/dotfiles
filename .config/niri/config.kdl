@@ -31,7 +31,7 @@ input {
     keyboard {
         xkb {
             layout "us"
-            options "altwin:swap_alt_win"
+            options "altwin:swap_lalt_lwin"
         }
         numlock
     }
