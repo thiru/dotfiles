@@ -307,6 +307,13 @@ window-rule {
     max-height 500
 }
 
+// Prevent Neovide from maximising to edges
+// Not sure why this is needed just for Neovide
+window-rule {
+    match app-id="neovide"
+    open-maximized-to-edges false
+}
+
 // Keybinds
 // -----------------------------------------------------------------------------
 
