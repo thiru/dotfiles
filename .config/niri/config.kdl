@@ -314,6 +314,12 @@ window-rule {
     open-maximized-to-edges false
 }
 
+// Maybe not needed but doesn't always seem to open properly
+window-rule {
+    match app-id="Kupfer.py"
+    open-floating true
+}
+
 // Keybinds
 // -----------------------------------------------------------------------------
 
