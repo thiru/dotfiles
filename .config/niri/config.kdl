@@ -238,7 +238,7 @@ spawn-at-startup "wl-paste" "-t" "text" "--watch" "clipman" "store" "--no-persis
 spawn-at-startup "nm-applet"
 
 // Idle configuration
-spawn-at-startup "swayidle" "-w" "timeout" "300" "niri msg action power-off-monitors" "resume" "niri msg action power-on-monitors"
+spawn-at-startup "hypridle"
 spawn-at-startup "idle-mon.clj"
 
 // Wallpaper
