@@ -134,12 +134,12 @@
     },
     "custom/launcher": {
         "format": "",
-        "on-click": "walker --modules applications",
+        "on-click": "kupfer",
         "tooltip": false
     },
     "custom/power-menu": {
         "format": "",
-        "on-click": "walker --modules power",
+        "on-click": "kitty-dialog.sh 'Power Menu' 23  power.clj menu",
         "tooltip": false
     }
 }
