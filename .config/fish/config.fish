@@ -85,8 +85,7 @@ function set-nvim-title-and-cwd --on-variable PWD --description "Set Neovim titl
   set -l curr_dir (string replace -r "^$HOME" '~' (pwd))
 
   if set -q NVIM
-    nvim --server $NVIM --remote-send "<cmd>lua vim.opt.titlestring='$curr_dir'<CR>"
-    nvim --server $NVIM --remote-send "<cmd>silent cd $curr_dir<CR>"
+    nvim --server $NVIM --remote-send "<CMD>lua vim.opt.titlestring='$curr_dir'<CR><CMD>silent cd $curr_dir<CR>"
   end
 end
 
