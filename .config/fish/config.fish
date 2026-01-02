@@ -111,12 +111,25 @@ function y --description "Go to directory with yazi"
   rm -f -- "$tmp"
 end
 
+function loadenv --description 'Load .env file'
+  if test -f $argv[1]
+    for line in (cat $argv[1] | grep -v '^#' | grep -v '^$')
+      set -gx (echo $line | cut -d= -f1) (echo $line | cut -d= -f2-)
+    end
+  end
+end
+
+# Usage
+loadenv .env
+
 # Startup
 # --------
 
 if status is-interactive
    # Suppress greeting
   set fish_greeting
+
+  loadenv ~/.env
 
   set-nvim-title-and-cwd
 
