@@ -118,6 +118,35 @@ function loadenv --description 'Load .env file'
   end
 end
 
+function fish_mode_prompt
+  # NOTE: this empty function is to simply hide the vi mode indicator in the prompt
+end
+
+function fish_prompt
+  # Exit status indicator
+  set -l last_status $status
+  if test $last_status -ne 0
+    set_color red
+    echo -n "[$last_status] "
+  end
+
+  # Current directory (truncated)
+  set_color cyan
+  echo -n (prompt_pwd)
+
+  # Git branch
+  set -l git_branch (git branch --show-current 2>/dev/null)
+  if test -n "$git_branch"
+    set_color magenta
+    echo -n " ($git_branch)"
+  end
+
+  # Prompt symbol
+  set_color normal
+  echo ''
+  echo -n '❯ '
+end
+
 # Usage
 loadenv .env
 
@@ -140,7 +169,4 @@ if status is-interactive
 
   set-abbreviations
   set-keybinds
-
-  # Starship prompt
-  starship init fish | source
 end
