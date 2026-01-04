@@ -3,7 +3,7 @@ local u = require('config.utils')
 local M = {
   opacity_default = 1.0,
   opacity_step = 0.05,
-  terminal_opacity_override = u.is_windows() and 1.0 or 0.95,
+  terminal_opacity_override = u.is_windows() and 1.0 or 0.85,
   scale_factor_delta_default = 1.1,
 }
 
