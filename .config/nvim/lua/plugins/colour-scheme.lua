@@ -7,9 +7,9 @@ return {
   priority = 1000, -- make sure to load this before all others
   config = function()
     require('catppuccin').setup({
-      flavour = u.is_kitty_scrollback() and 'mocha' or 'latte',
+      flavour = u.nvtmux_auto_started() and 'mocha' or 'latte',
       term_colors = true,
-      transparent_background = u.is_kitty_scrollback(),
+      transparent_background = u.nvtmux_auto_started(),
     })
     vim.cmd.colorscheme 'catppuccin'
   end
