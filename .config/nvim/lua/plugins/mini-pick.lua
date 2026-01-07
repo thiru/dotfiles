@@ -25,7 +25,6 @@ return {
   },
   keys = {
     { '<leader>sb', function() MiniPick.builtin.buffers() end, desc = 'Search Buffers' },
-    { '<leader>sf', function() MiniPick.builtin.cli({command=fd}) end, desc = 'Search Files' },
     { '<leader>sh', function() MiniPick.builtin.help() end, desc = 'Search Help' },
     { '<leader>sR', function() MiniPick.builtin.resume() end, desc = 'Resume latest picker' },
     { '<leader>st', function() MiniPick.builtin.grep_live() end, desc = 'Search Text (live)' },

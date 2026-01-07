@@ -16,7 +16,6 @@ return {
     { '<leader>sk', function() MiniExtra.pickers.keymaps() end, desc = 'Search Keymaps' },
     { '<leader>sm', function() MiniExtra.pickers.marks() end, desc = 'Search Marks' },
     { '<leader>so', function() MiniExtra.pickers.explorer({cwd=vim.uv.os_homedir()}) end, desc = 'Search/Open Path' },
-    { '<leader>sr', function() MiniExtra.pickers.oldfiles() end, desc = 'Search Recent Files' },
     { '<leader>sx', function() MiniExtra.pickers.history() end, desc = 'Search Command History' },
   }
 }
