@@ -12,8 +12,17 @@ local function init()
   vim.keymap.set({'n', 'v'}, 's', ':', {desc='Enter command-linemode'})
 
   -- Quit
-  vim.keymap.set({ 'n', 'v' }, '<leader>q', '<CMD>qall<CR>', { desc = 'Exit Vim' })
-  vim.keymap.set({ 'n', 'v' }, '<leader>Q', '<CMD>qall!<CR>', { desc = 'Exit Vim (ignore unsaved changes)' })
+  vim.keymap.set(
+    { 'n', 'v' }, '<leader>q',
+    function()
+      if #vim.api.nvim_list_tabpages() == 1 then
+        vim.cmd.quit()
+      else
+        vim.cmd.tabclose()
+      end
+    end,
+    { desc = 'Exit/Close Tab' })
+  vim.keymap.set({ 'n', 'v' }, '<leader>Q', '<CMD>qall!<CR>', { desc = 'Exit (ignore unsaved changes/tabs)' })
 
   -- Buffer (prev/next)
   vim.keymap.set({'n', 'v'}, '<C-j>', '<CMD>bp<CR>', { desc = 'Go to next buffer' })
