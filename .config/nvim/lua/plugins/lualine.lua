@@ -1,6 +1,9 @@
 local u = require('config.utils')
 
---- Check if current buffer is not a terminal.
+local function is_term()
+  return vim.bo.buftype == 'terminal'
+end
+
 local function is_not_term()
   return vim.bo.buftype ~= 'terminal'
 end
@@ -34,7 +37,7 @@ return {
   dependencies = {'nvim-tree/nvim-web-devicons'},
   opts = {
     options = {
-      always_show_tabline = false,
+      always_show_tabline = true,
       icons_enabled = true,
       component_separators = '|',
       globalstatus = true,
@@ -43,10 +46,10 @@ return {
     },
     tabline = {
       lualine_a = {
-        {'fileformat'},
+        {'mode', fmt=shortened_mode},
       },
       lualine_b = {
-        {'tabs', max_length=1000, mode=2, tab_max_length=10}
+        {'buffers', cond=is_not_term, separator={left='', right=''}, mode=2},
       },
       lualine_c = {
       },
@@ -55,31 +58,31 @@ return {
       lualine_y = {
       },
       lualine_z = {
+        {'tabs', separator={left='', right=''}, max_length=1000, mode=2, tab_max_length=10}
       },
     },
     sections = {
       lualine_a = {
+        {cwd_and_parent_dirs, cond=is_not_term},
+        {u.get_cwd, cond=is_term},
       },
       lualine_b = {
-        {'buffers', cond=is_not_term, mode=2}
+        {'branch', cond=is_not_term},
       },
       lualine_c = {
       },
       lualine_x = {
-        {cwd_and_parent_dirs, cond=is_not_term},
-        {'branch', cond=is_not_term, color='Todo'},
       },
       lualine_y = {
         {'diagnostics', cond=is_not_term},
         {'lsp_status', cond=is_not_term},
-        -- {'fileformat', cond=is_not_term},
-        -- {'encoding', cond=is_not_term},
-        -- {'filesize', cond=is_not_term},
-        {'location', cond=is_not_term},
-        {'progress', cond=is_not_term},
+        {'fileformat', cond=is_not_term},
+        {'encoding', cond=is_not_term},
+        {'filesize', cond=is_not_term},
       },
       lualine_z = {
-        {'mode', fmt=shortened_mode},
+        {'location', cond=is_not_term},
+        {'progress', cond=is_not_term},
       },
     },
   }
