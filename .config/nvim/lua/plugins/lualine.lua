@@ -13,24 +13,6 @@ local function shortened_mode(mode)
   return mode:sub(1,1)
 end
 
--- Show the CWD and the parent dirs as two segments.
-local function cwd_and_parent_dirs()
-  local parent_dir = u.get_file_parent()
-  local cwd = u.get_cwd()
-
-  local segments = {'🏠'}
-
-  if #cwd > 0 and cwd ~= '~' then
-    table.insert(segments, cwd)
-  end
-
-  if #parent_dir > 0 then
-    table.insert(segments, '➔ ' .. parent_dir)
-  end
-
-  return table.concat(segments, ' ')
-end
-
 return {
   'nvim-lualine/lualine.nvim',
   cond = not u.is_kitty_scrollback(),
@@ -39,7 +21,7 @@ return {
     options = {
       always_show_tabline = true,
       icons_enabled = true,
-      component_separators = '|',
+      component_separators = '',
       globalstatus = true,
       section_separators = '',
       theme = 'catppuccin',
@@ -63,21 +45,21 @@ return {
     },
     sections = {
       lualine_a = {
-        {cwd_and_parent_dirs, cond=is_not_term},
-        {u.get_cwd, cond=is_term},
       },
       lualine_b = {
-        {'branch', cond=is_not_term},
+        {u.get_cwd, icon='🏡'},
+        {u.get_file_parent, cond=is_not_term, icon='📂', padding={left=0, right=1}},
       },
       lualine_c = {
+        {'branch', cond=is_not_term},
       },
       lualine_x = {
       },
       lualine_y = {
         {'diagnostics', cond=is_not_term},
         {'lsp_status', cond=is_not_term},
-        {'fileformat', cond=is_not_term},
-        {'encoding', cond=is_not_term},
+        -- {'fileformat', cond=is_not_term},
+        -- {'encoding', cond=is_not_term},
         {'filesize', cond=is_not_term},
       },
       lualine_z = {
