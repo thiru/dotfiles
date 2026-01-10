@@ -8,21 +8,6 @@ local function is_not_term()
   return vim.bo.buftype ~= 'terminal'
 end
 
-local function term_branch()
-  local cmd = vim.system({'git', 'branch', '--show-current'}, { text = true }):wait()
-  local output = ''
-
-  if cmd.code == 0 then
-    local trimmed_output = vim.trim(cmd.stdout)
-
-    if #trimmed_output > 0 then
-      output = trimmed_output
-    end
-  end
-
-  return output
-end
-
 -- Only show first character of the mode to save screen real estate.
 local function shortened_mode(mode)
   return mode:sub(1,1)
@@ -53,9 +38,9 @@ return {
   opts = {
     options = {
       always_show_tabline = true,
+      icons_enabled = true,
       component_separators = '|',
       globalstatus = true,
-      icons_enabled = true,
       section_separators = '',
       theme = 'catppuccin',
     },
@@ -83,7 +68,6 @@ return {
       },
       lualine_b = {
         {'branch', cond=is_not_term},
-        {term_branch, cond=is_term, icon=''},
       },
       lualine_c = {
       },
