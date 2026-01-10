@@ -8,9 +8,15 @@ local function is_not_term()
   return vim.bo.buftype ~= 'terminal'
 end
 
--- Only show first character of the mode to save screen real estate.
+--- Only show first character of the mode to save screen real estate.
 local function shortened_mode(mode)
   return mode:sub(1,1)
+end
+
+--- Get git branch for terminal
+local function term_branch()
+  local tabdir_ok, tabdir = pcall(vim.api.nvim_tabpage_get_var, 0, 'tabbranch')
+  return tabdir_ok and tabdir or ''
 end
 
 return {
@@ -52,6 +58,7 @@ return {
       },
       lualine_c = {
         {'branch', cond=is_not_term},
+        {term_branch, cond=is_term, icon=''},
       },
       lualine_x = {
       },
