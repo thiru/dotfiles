@@ -123,27 +123,33 @@ function fish_mode_prompt
 end
 
 function fish_prompt
-  # Exit status indicator
+  # Show exit code if last command failed
   set -l last_status $status
   if test $last_status -ne 0
     set_color red
     echo -n "[$last_status] "
   end
 
-  # Current directory (truncated)
-  set_color cyan
-  echo -n (prompt_pwd)
+  # Don't show CWD if we're running inside a Neovim instance. In this case we assume that we're
+  # running inside a Neovim terminal and that the CWD will be shown elsewhere, e.g. as part of a
+  # lualine component.
+  if not string length -q -- "$NVIM"
+    # Current directory (truncated)
+    set_color cyan
+    echo -n (prompt_pwd)
+
+    echo ''
+  end
 
   # Git branch
   set -l git_branch (git branch --show-current 2>/dev/null)
   if test -n "$git_branch"
     set_color magenta
-    echo -n " ($git_branch)"
+    echo -n "$git_branch "
   end
 
   # Prompt symbol
   set_color normal
-  echo ''
   echo -n '❯ '
 end
 
