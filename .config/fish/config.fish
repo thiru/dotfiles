@@ -81,10 +81,21 @@ function set-keybinds
   bind -M insert \cp 'priv-mode-toggle'
 end
 
-function set-nvim-title-and-cwd --on-variable PWD --description "Set Neovim title and CWD to PWD"
-  set -l curr_dir (string replace -r "^$HOME" '~' (pwd))
+function my_postexec --on-event fish_postexec --description "Update git branch in Neovim"
+  if test $status -eq 0 && set -q NVIM
+    # Git branch
+    set -l git_branch (git branch --show-current 2>/dev/null)
+    if test -n "$git_branch"
+      nvim --server $NVIM --remote-send "<CMD>lua require('nvtmux').set_git_branch('$git_branch')<CR>"
+    else
+      nvim --server $NVIM --remote-send "<CMD>lua require('nvtmux').set_git_branch('')<CR>"
+    end
+  end
+end
 
+function set-nvim-title-and-cwd --on-variable PWD --description "Set Neovim title and CWD to PWD"
   if set -q NVIM
+    set -l curr_dir (string replace -r "^$HOME" '~' (pwd))
     nvim --server $NVIM --remote-send "<CMD>lua require('nvtmux').update_cwd('$curr_dir')<CR>"
   end
 end
@@ -130,22 +141,21 @@ function fish_prompt
     echo -n "[$last_status] "
   end
 
-  # Don't show CWD if we're running inside a Neovim instance. In this case we assume that we're
-  # running inside a Neovim terminal and that the CWD will be shown elsewhere, e.g. as part of a
-  # lualine component.
+  # Don't show CWD and branch if we're running inside a Neovim instance. In this case we assume
+  # that we're running inside a Neovim terminal and that the CWD will be shown elsewhere, e.g. as
+  # part of a lualine component.
   if not string length -q -- "$NVIM"
     # Current directory (truncated)
     set_color cyan
     echo -n (prompt_pwd)
 
-    echo ''
-  end
+    # Git branch set -l git_branch (git branch --show-current 2>/dev/null)
+    if test -n "$git_branch"
+      set_color magenta
+      echo -n "$git_branch "
+    end
 
-  # Git branch
-  set -l git_branch (git branch --show-current 2>/dev/null)
-  if test -n "$git_branch"
-    set_color magenta
-    echo -n "$git_branch "
+    echo ''
   end
 
   # Prompt symbol
