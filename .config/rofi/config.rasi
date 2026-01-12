@@ -1,0 +1,21 @@
+configuration {
+  disable-history: true;
+  font: "mono 18";
+  matching: "fuzzy";
+  kb-accept-entry: "Return,KP_Enter";
+  kb-cancel: "Escape,Control+c";
+  kb-clear-line: "Control+l";
+  kb-element-next: "";
+  kb-mode-complete: "";
+  kb-mode-next: "Tab";
+  kb-mode-previous: "Control+Tab";
+  kb-remove-to-eol: "";
+  kb-remove-word-back: "Control+w,Control+BackSpace";
+  kb-row-down: "Down,Control+j";
+  kb-row-up: "Up,Control+k";
+  kb-secondary-copy: "";
+  show-icons: true;
+  terminal: "kitty";
+}
+
+@theme "/usr/share/rofi/themes/Arc.rasi"
