@@ -10,6 +10,7 @@ local function init()
   -- Enter command-line mode
   vim.keymap.set('n', '<leader>;', ':', {desc='Enter command-linemode'})
   vim.keymap.set({'n', 'v'}, 's', ':', {desc='Enter command-linemode'})
+  vim.keymap.set({'n', 'v'}, '<leader><leader>', '<CMD>echo ""<CR>', {desc='Clear command line text', silent=true})
 
   -- Quit
   vim.keymap.set(
@@ -28,7 +29,7 @@ local function init()
   vim.keymap.set({'n', 'v'}, '<C-j>', '<CMD>bp<CR>', { desc = 'Go to next buffer' })
   vim.keymap.set({'n', 'v'}, '<C-k>', '<CMD>bn<CR>', { desc = 'Go to previous buffer' })
 
-  vim.keymap.set({'n', 'v'}, '<leader><leader>', '<CMD>b#<CR>', { desc = 'Go to alternate buffer' })
+  vim.keymap.set({'n', 'v'}, '<leader>a', '<CMD>b#<CR>', { desc = 'Go to alternate buffer' })
 
   -- Buffer nav - go to index
   for i=1,9 do
