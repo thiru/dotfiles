@@ -225,9 +225,6 @@ spawn-at-startup "waybar-reload"
 // Notification daemon
 spawn-at-startup "swaync"
 
-// App launcher
-spawn-at-startup "kupfer" "--no-splash"
-
 // Authentication agent (e.g. to launch root GUI apps)
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
@@ -314,12 +311,6 @@ window-rule {
     open-maximized-to-edges false
 }
 
-// Maybe not needed but doesn't always seem to open properly
-window-rule {
-    match app-id="Kupfer.py"
-    open-floating true
-}
-
 // Keybinds
 // -----------------------------------------------------------------------------
 
@@ -338,7 +329,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // App Launcher
-    Mod+Space hotkey-overlay-title="App Launcher" { spawn "kupfer"; }
+    Mod+Space hotkey-overlay-title="App Launcher" { spawn "rofi" "-show" "drun"; }
 
     // Terminal (primary - Neovide)
     Mod+Return hotkey-overlay-title="Terminal (Neovide)" { spawn "neovide" "--" "--cmd" "lua vim.g.nvtmux_auto_start = true"; }
