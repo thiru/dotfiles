@@ -70,7 +70,7 @@
       (System/exit 1))))
 
 (defn show-menu []
-  (let [cmd-res (sh "fzf" "--style" "full" "--prompt" "Power: " :in (str/join "\n" power-options))
+  (let [cmd-res (sh "rofi" "-dmenu" "-p" "Power" :in (str/join "\n" power-options))
         selection (-> cmd-res :out str/trim)]
     (when (and (zero? (:exit cmd-res))
                (.contains power-options selection))

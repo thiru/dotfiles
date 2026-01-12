@@ -353,13 +353,13 @@ binds {
     Mod+M hotkey-overlay-title="Mouse Simulation" { spawn "wlr-which-key" "mouse-config"; }
 
     // Power Menu
-    Mod+P hotkey-overlay-title="Power Menu" { spawn "kitty-dialog.sh" "Power Menu" "23" "power.clj" "menu"; }
+    Mod+P hotkey-overlay-title="Power Menu" { spawn "power.clj" "menu"; }
 
     // Niri Config
     Mod+Ctrl+C hotkey-overlay-title="Config" { spawn "neovide" ".config/niri/config.kdl"; }
 
     // Pass menu
-    Mod+Slash hotkey-overlay-title=null { spawn "kitty-dialog.sh" "Pass Menu" "16" "pass-menu.sh"; }
+    Mod+Slash hotkey-overlay-title=null { spawn "pass-menu.sh"; }
 
     // Weather
     Mod+W hotkey-overlay-title="Weather" { spawn "librewolf" "--new-window" "https://www.accuweather.com/en/ca/toronto/m5h/daily-weather-forecast/55488"; }
