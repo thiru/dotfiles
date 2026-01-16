@@ -21,7 +21,7 @@ setopt completealiases
 setopt HIST_IGNORE_DUPS
 setopt COMPLETE_ALIASES
 
-source ~/.config/shell/base.sh
+[[ "${MY_PROFILE_LOADED}" != "true" ]] && source ~/.config/shell/base.sh
 source ~/.config/shell/aliases.sh
 source ~/.config/shell/functions.sh
 [[ -f ~/.config/shell/extras.sh ]] && source ~/.config/shell/extras.sh
