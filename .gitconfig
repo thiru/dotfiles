@@ -48,7 +48,9 @@
   navigate = true
 [diff]
   colorMoved = default
-  tool = nvimdiff
+  tool = mygitdiff
+[difftool "mygitdiff"]
+  cmd = gitdiff "$LOCAL" "$REMOTE"
 [interactive]
   diffFilter = delta --color-only
 [merge]

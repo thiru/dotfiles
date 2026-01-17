@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# For viewing git diffs, use Neovide in a graphical environment otherwise Neovim
+
+LOCAL="$1"
+REMOTE="$2"
+
+if [ -n "$DISPLAY" ]; then
+  if command -v neovide &> /dev/null; then
+    neovide --no-tabs -- -d "$LOCAL" "$REMOTE"
+  else
+    nvim -d "$LOCAL" "$REMOTE"
+  fi
+else
+  nvim -d "$LOCAL" "$REMOTE"
+fi
