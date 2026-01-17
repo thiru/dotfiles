@@ -136,7 +136,7 @@ local function init()
   vim.keymap.set('n', '<leader>|', function() vim.o.cursorcolumn = not vim.o.cursorcolumn end, {desc = 'Toggle cursor column'})
 
   -- Tab - new
-  vim.keymap.set('n', '<C-t>', '<CMD>tabnew<CR>', {desc = 'New tab'})
+  vim.keymap.set({'n', 'v', 't'}, '<C-t>', '<CMD>tabnew<CR>', {desc = 'New tab'})
   vim.keymap.set('n', '<leader>tn', '<CMD>tabnew<CR>', {desc = 'New tab'})
 
   -- Tab - close
