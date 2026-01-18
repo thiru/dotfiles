@@ -13,7 +13,7 @@
                     "logout"
                     "poweroff"
                     "reboot"
-                    "suspend"])
+                    "sleep"])
 
 (def cli-options (conj power-options "menu"))
 
@@ -108,7 +108,7 @@
     ("reboot")
     (reboot)
 
-    ("suspend")
+    ("sleep")
     (suspend)
 
     (nil "")
