@@ -4,7 +4,8 @@ return {
   lazy = false,
   keys = {
     { '<leader>gdb', '<CMD>DiffviewFileHistory<CR>', desc = 'Git DiffView branch' },
-    { '<leader>gdf', '<CMD>DiffviewFileHistory %<CR>', desc = 'Git DiffView current file' },
     { '<leader>gdd', ':DiffviewOpen ', desc = 'Git DiffView open...' },
+    { '<leader>gdf', '<CMD>DiffviewFileHistory %<CR>', desc = 'Git DiffView current file' },
+    { '<leader>gds', ':DiffviewOpen HEAD<CR>', desc = 'Git DiffView status' },
   }
 }
