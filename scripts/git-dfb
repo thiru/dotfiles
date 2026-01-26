@@ -6,4 +6,4 @@ BASE=${1:-'0'}
 
 git log -1 HEAD~$BASE
 
-git difftool HEAD~$(($BASE+1)) HEAD~$BASE -t nvimdiff
+git difftool HEAD~$(($BASE+1)) HEAD~$BASE
