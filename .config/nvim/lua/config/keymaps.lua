@@ -25,9 +25,26 @@ local function init()
     { desc = 'Exit/Close Tab' })
   vim.keymap.set({ 'n', 'v' }, '<leader>Q', '<CMD>qall!<CR>', { desc = 'Exit (ignore unsaved changes/tabs)' })
 
-  -- Buffer (prev/next)
-  vim.keymap.set({'n', 'v'}, '<C-j>', '<CMD>bp<CR>', { desc = 'Go to next buffer' })
-  vim.keymap.set({'n', 'v'}, '<C-k>', '<CMD>bn<CR>', { desc = 'Go to previous buffer' })
+  -- Buffer (prev) / Diff (next)
+  vim.keymap.set({'n', 'v'}, '<C-j>',
+    function()
+      if vim.wo.diff then
+        vim.cmd('normal! ]czz')
+      else
+        vim.cmd('bp')
+      end
+    end,
+    { desc = 'Go to next buffer/diff' })
+  -- Buffer (next) / Diff (prev)
+  vim.keymap.set({'n', 'v'}, '<C-k>',
+    function()
+      if vim.wo.diff then
+        vim.cmd('normal! [czz')
+      else
+        vim.cmd('bn')
+      end
+    end,
+    { desc = 'Go to previous buffer/diff' })
 
   vim.keymap.set({'n', 'v'}, '<leader>a', '<CMD>b#<CR>', { desc = 'Go to alternate buffer' })
 
@@ -98,12 +115,6 @@ local function init()
   -- Centre screen on find next/previous
   vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Go to next match and centre screen' })
   vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Go to previous match and centre screen' })
-
-  -- Diff mode next/previous change
-  if vim.opt.diff:get() then
-    vim.keymap.set('n', '<S-J>', ']czz', { desc = 'Go to next change and centre (diff mode)' })
-    vim.keymap.set('n', '<S-K>', '[czz', { desc = 'Go to previous change and centre (diff mode)' })
-  end
 
   -- Matching bracket
   vim.keymap.set({'n', 'v'}, '<TAB>', '%', { desc = 'Go to matching bracket, etc.', remap = true })
