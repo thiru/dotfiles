@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# For viewing git diffs, use Neovide in a graphical environment otherwise Neovim
+# For viewing diffs, use Neovide in a graphical environment otherwise Neovim
 
 LOCAL="$1"
 REMOTE="$2"
