@@ -45,7 +45,6 @@ end
 function M.init()
   if vim.g.neovide then
     vim.cmd('silent exe "cd ~"')
-    vim.g.neovide_hide_mouse_when_typing = true
     vim.g.neovide_scale_factor = 1.0
     M.set_default_opacity()
   end
