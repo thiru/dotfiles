@@ -1,5 +1,21 @@
 local doc = 'Define key mappings.'
 
+local function goto_next_buff_or_diff()
+  if vim.wo.diff then
+    vim.cmd('normal! ]czz')
+  else
+    vim.cmd('bp')
+  end
+end
+
+local function goto_prev_buff_or_diff()
+  if vim.wo.diff then
+    vim.cmd('normal! [czz')
+  else
+    vim.cmd('bn')
+  end
+end
+
 local function init()
   -- Disable a single spacebar key-press since we use it as the leader key
   vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -26,25 +42,11 @@ local function init()
   vim.keymap.set({ 'n', 'v' }, '<leader>Q', '<CMD>qall!<CR>', { desc = 'Exit (ignore unsaved changes/tabs)' })
 
   -- Buffer (prev) / Diff (next)
-  vim.keymap.set({'n', 'v'}, '<C-j>',
-    function()
-      if vim.wo.diff then
-        vim.cmd('normal! ]czz')
-      else
-        vim.cmd('bp')
-      end
-    end,
-    { desc = 'Go to next buffer/diff' })
+  vim.keymap.set({'n', 'v'}, '<C-j>', goto_next_buff_or_diff, { desc = 'Go to next buffer/diff' })
+  vim.keymap.set({'n', 'v'}, '<Down>', goto_next_buff_or_diff, { desc = 'Go to next buffer/diff' })
   -- Buffer (next) / Diff (prev)
-  vim.keymap.set({'n', 'v'}, '<C-k>',
-    function()
-      if vim.wo.diff then
-        vim.cmd('normal! [czz')
-      else
-        vim.cmd('bn')
-      end
-    end,
-    { desc = 'Go to previous buffer/diff' })
+  vim.keymap.set({'n', 'v'}, '<C-k>', goto_prev_buff_or_diff, { desc = 'Go to previous buffer/diff' })
+  vim.keymap.set({'n', 'v'}, '<Up>', goto_prev_buff_or_diff, { desc = 'Go to previous buffer/diff' })
 
   vim.keymap.set({'n', 'v'}, '<leader>a', '<CMD>b#<CR>', { desc = 'Go to alternate buffer' })
 
