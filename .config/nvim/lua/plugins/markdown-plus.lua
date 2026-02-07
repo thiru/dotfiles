@@ -1,5 +1,16 @@
 return {
   'yousefhadder/markdown-plus.nvim',
   ft = 'markdown',
-  opts = {},
+  opts = {
+    list = {
+      keymaps = {
+        enabled = false
+      }
+    },
+    table = {
+      keymaps = {
+        prefix = '<leader>T'
+      }
+    }
+  }
 }
