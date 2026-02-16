@@ -3,9 +3,8 @@ return {
   cond = not vim.opt.diff:get(),
   lazy = false,
   keys = {
-    { '<leader>gb', '<CMD>DiffviewFileHistory<CR>', desc = 'Git DiffView branch' },
-    { '<leader>gdd', ':DiffviewOpen ', desc = 'Git DiffView open...' },
-    { '<leader>gdf', '<CMD>DiffviewFileHistory %<CR>', desc = 'Git DiffView current file' },
-    { '<leader>gs', ':DiffviewOpen HEAD<CR>', desc = 'Git DiffView status' },
+    { '<leader>gl', '<CMD>DiffviewFileHistory<CR>', desc = 'Git branch log diffs' },
+    { '<leader>gf', '<CMD>DiffviewFileHistory %<CR>', desc = 'Git file history' },
+    { '<leader>gs', '<CMD>DiffviewOpen HEAD<CR>', desc = 'Git status' },
   }
 }
