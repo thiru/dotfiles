@@ -1,5 +1,5 @@
 return {
-  'echasnovski/mini.files',
+  'nvim-mini/mini.files',
   cond = not vim.opt.diff:get(),
   version = false,
   opts = {

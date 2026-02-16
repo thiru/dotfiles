@@ -1,5 +1,5 @@
 return {
-  'echasnovski/mini.surround',
+  'nvim-mini/mini.surround',
   cond = not vim.opt.diff:get(),
   version = false,
   opts = {
