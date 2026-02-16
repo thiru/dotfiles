@@ -37,7 +37,7 @@ return {
         {'mode', fmt=shortened_mode},
       },
       lualine_b = {
-        {'buffers', cond=is_not_term, separator={left='', right=''}, mode=2},
+        {'buffers', cond=is_not_term, mode=2},
       },
       lualine_c = {
       },
@@ -46,7 +46,7 @@ return {
       lualine_y = {
       },
       lualine_z = {
-        {'tabs', separator={left='', right=''}, max_length=1000, mode=2, tab_max_length=10}
+        {'tabs', tabs_color={active='lualine_a_visual', inactive='lualine_b_visual'}, max_length=1000, mode=2, tab_max_length=10}
       },
     },
     sections = {
