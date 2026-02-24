@@ -41,11 +41,11 @@ end
 
 function set-abbreviations
   # Directory listings
-  if command -v exa &> /dev/null
-    abbr -a l 'exa -l'
-    abbr -a lg 'exa -l --git'
-    abbr -a ll 'exa -la'
-    abbr -a lt 'exa --tree'
+  if command -v eza &> /dev/null
+    abbr -a l 'eza -l'
+    abbr -a lg 'eza -l --git'
+    abbr -a ll 'eza -la'
+    abbr -a lt 'eza --tree'
   else
     abbr -a l 'ls -l'
     abbr -a ll 'ls -la'
