@@ -100,6 +100,9 @@ local function init()
   vim.wo.number = true
   vim.wo.relativenumber = true
 
+  -- Enable mouse in all modes
+  vim.o.mouse = 'a'
+
   -- Use one global status line (not per window)
   vim.o.laststatus = 3
 
