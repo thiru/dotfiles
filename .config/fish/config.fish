@@ -59,6 +59,7 @@ function set-abbreviations
   end
 
   # Other
+  abbr -a d 'cd'
   abbr -a g 'git'
   abbr -a nv 'neovide'
   abbr -a pm 'sudo pacman'
