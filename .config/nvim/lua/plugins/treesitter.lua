@@ -1,7 +1,7 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   cond = not vim.opt.diff:get(),
-  branch = 'main',
+  lazy = false,
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
     branch = 'main',
