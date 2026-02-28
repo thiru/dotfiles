@@ -14,9 +14,6 @@ return {
 
     -- Enable tree-sitter support:
     vim.g['conjure#extract#tree_sitter#enabled'] = true
-
-    -- Don't auto-start Babashka REPL
-    vim.g['conjure#client#clojure#nrepl#connection#auto_repl#enabled'] = false
   end,
   keys = {
     {'<localleader>cr', restart_python, ft = 'python', desc = 'Restart Python REPL'}
