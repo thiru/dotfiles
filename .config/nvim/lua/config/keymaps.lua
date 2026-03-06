@@ -115,8 +115,10 @@ local function init()
     {desc = 'Toggle diagnostic virtual_lines'})
 
   -- CWD
-  vim.keymap.set('n', '<leader>cd', ':cd %:p:h<CR>:pwd<CR>',
-         { desc = 'Change working directory to that of the current file', silent = true })
+  vim.keymap.set('n', '<leader>cd', ':cd %:p:h<CR>',
+         { desc = 'Change (global) working directory to that of the current file', silent = true })
+  vim.keymap.set('n', '<leader>cD', ':lcd %:p:h<CR>',
+         { desc = 'Change (window) working directory to that of the current file', silent = true })
 
   -- PWD
   vim.keymap.set('n', '<leader>wd', function() vim.notify(vim.fn.getcwd()) end, { desc = 'Print current working directory', silent = true })
