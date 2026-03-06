@@ -1,6 +1,7 @@
 return {
   'nickjvandyke/opencode.nvim',
   version = '*', -- Latest stable release
+  cond = not vim.opt.diff:get(),
   dependencies = {
     {
       -- `snacks.nvim` integration is recommended, but optional
