@@ -87,10 +87,6 @@ local function init()
       {desc = 'Go to buffer ' .. i, silent=true})
   end
 
-  -- Open init.lua
-  vim.keymap.set('n', '<leader>ve', ':e $MYVIMRC<CR>:cd %:p:h<CR>:pwd<CR>',
-    { desc = 'Open main Neovim config (init.lua)', silent = true })
-
   -- Remap for dealing with word wrap
   vim.keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', { expr = true, silent = true })
   vim.keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', { expr = true, silent = true })
