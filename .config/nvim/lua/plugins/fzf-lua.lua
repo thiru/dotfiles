@@ -13,7 +13,7 @@ return {
   end,
   keys = {
     { '<leader>sa', '<CMD>FzfLua manpages<CR>', desc = 'Search Manpages' },
-    { '<leader>sb', '<CMD>FzfLua buffers<CR>', desc = 'Search Buffers' },
+    { '<leader>sb', '<CMD>FzfLua lgrep_curbuf<CR>', desc = 'Search Current Buffer' },
     { '<leader>sc', '<CMD>FzfLua commands<CR>', desc = 'Search Commands' },
     { '<leader>sdd', '<CMD>FzfLua diagnostics_document<CR>', desc = 'Search Document Diagnostics' },
     { '<leader>sdw', '<CMD>FzfLua diagnostics_workspace<CR>', desc = 'Search Worspace Diagnostics' },
