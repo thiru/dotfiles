@@ -28,3 +28,5 @@ else
   rsync -av ./$static/ ./$link/
   touch $link/.unpacked
 fi
+
+echo "Synced profile on $(date)" >> sync-log.txt
