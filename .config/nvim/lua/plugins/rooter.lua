@@ -3,6 +3,6 @@ return {
   cond = not vim.opt.diff:get(),
   lazy = false,
   config = function()
-    vim.g.rooter_patterns = {'deps.edn', '.git', '.stfolder', '.forced-root'}
+    vim.g.rooter_patterns = {'deps.edn', 'package.json', '.git', '.stfolder', '.rooter'}
   end
 }
