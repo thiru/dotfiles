@@ -32,7 +32,11 @@ return {
     { '<leader>sr', '<CMD>FzfLua registers<CR>', desc = 'Search Registers' },
     { '<leader>sR', '<CMD>FzfLua resume<CR>', desc = 'Resume latest picker' },
     { '<leader>ss', '<CMD>FzfLua grep_visual<CR>', desc = 'Search visual selection', mode='v' },
-    { '<leader>sp', '<CMD>FzfLua live_grep_native<CR>', desc = 'Search Entire Project' },
+    {
+      '<leader>sp',
+      function() require('fzf-lua').live_grep_native({rg_opts="--hidden --glob '!.git' --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e"}) end,
+      desc = 'Search Entire Project'
+    },
     { '<leader>sv', function() require('fzf-lua').files({cwd=vim.fn.stdpath('config')}) end, desc = 'Search Vim Configs' },
     { '<leader>sw', '<CMD>FzfLua grep_cword<CR>', desc = 'Search word under cursor' },
     { '<leader>sW', '<CMD>FzfLua grep_cWORD<CR>', desc = 'Search WORD under cursor' },
