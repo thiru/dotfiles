@@ -6,7 +6,6 @@ return {
     local lint = require('lint')
     lint.linters_by_ft = {
       javascript = {'quick-lint-js'}, -- install: `yay -S quick-lint-js-git`
-      json = {'jsonlint'}, -- install: `yay -S nodejs-jsonlint`
     }
 
     -- Create autocommand which carries out the actual linting
