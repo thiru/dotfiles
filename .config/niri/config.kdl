@@ -223,7 +223,7 @@ spawn-at-startup "xwayland-satellite"
 spawn-at-startup "waybar-reload"
 
 // Notification daemon
-spawn-at-startup "swaync"
+spawn-at-startup "fnott"
 
 // Authentication agent (e.g. to launch root GUI apps)
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
