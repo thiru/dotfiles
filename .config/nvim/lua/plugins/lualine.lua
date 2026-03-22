@@ -8,6 +8,10 @@ local function is_not_term()
   return vim.bo.buftype ~= 'terminal'
 end
 
+local function show_winbar()
+  return is_not_term() and #vim.api.nvim_list_bufs() > 1
+end
+
 --- Only show first character of the mode to save screen real estate.
 local function shortened_mode(mode)
   return mode:sub(1,1)
@@ -25,7 +29,7 @@ return {
   dependencies = {'nvim-tree/nvim-web-devicons'},
   opts = {
     options = {
-      always_show_tabline = true,
+      always_show_tabline = false,
       icons_enabled = true,
       component_separators = '',
       globalstatus = true,
@@ -34,7 +38,6 @@ return {
     },
     tabline = {
       lualine_a = {
-        {'mode', fmt=shortened_mode},
       },
       lualine_b = {
       },
@@ -50,12 +53,12 @@ return {
     },
     winbar = {
       lualine_b = {
-        {'buffers', cond=is_not_term, mode=2},
+        {'buffers', cond=show_winbar, mode=2},
       },
     },
     inactive_winbar = {
       lualine_b = {
-        {'buffers', cond=is_not_term, mode=2},
+        {'buffers', cond=show_winbar, mode=2},
       },
     },
     sections = {
