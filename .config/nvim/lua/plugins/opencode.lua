@@ -22,7 +22,6 @@ return {
             },
           },
         },
-        terminal = {}, -- Enables the `snacks` provider
       },
     },
   },
@@ -30,12 +29,6 @@ return {
     ---@type opencode.Opts
     vim.g.opencode_opts = {
       -- Your configuration, if any; goto definition on the type or field for details
-      provider = {
-        enabled = "terminal",
-        terminal = {
-          -- ...
-        }
-      }
     }
 
     vim.o.autoread = true -- Required for `opts.events.reload`
