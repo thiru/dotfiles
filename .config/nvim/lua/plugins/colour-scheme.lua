@@ -11,6 +11,6 @@ return {
       term_colors = true,
       transparent_background = u.is_kitty_scrollback(),
     })
-    vim.cmd.colorscheme 'catppuccin'
+    vim.cmd.colorscheme 'catppuccin-nvim'
   end
 }

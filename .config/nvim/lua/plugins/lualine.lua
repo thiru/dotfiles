@@ -30,7 +30,7 @@ return {
       component_separators = '',
       globalstatus = true,
       section_separators = '',
-      theme = 'catppuccin',
+      theme = 'catppuccin-nvim',
     },
     tabline = {
       lualine_a = {
