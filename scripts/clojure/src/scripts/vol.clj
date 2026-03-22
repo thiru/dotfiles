@@ -19,12 +19,12 @@
 (defn notify-send
   [& {:keys [icon vol]
       :or {icon "audio-volume-medium" vol "???"}}]
-  (u/notify-send (format "Volume (%s)" vol)
-                 :expire-time 1500
+  (u/notify-send "Audio"
+                 :body (format "Volume (%s)" vol)
+                 :expire-time 2000
                  :icon icon
                  :hint (str "int:value:" vol)
-                 :replace-id (u/gen-replace-id)
-                 :urgency "low"))
+                 :replace-id (u/gen-replace-id)))
 
 (defn get-current-volume []
   (->> (sh "pactl" "get-sink-volume" "@DEFAULT_SINK@")
@@ -117,10 +117,9 @@
     (u/println-stderr (:message result))
     (u/notify-send "Volume Error"
                    :body (:message result)
-                   :expire-time 3000
+                   :expire-time 2000
                    :icon "error"
-                   :replace-id (u/gen-replace-id)
-                   :urgency "low")
+                   :replace-id (u/gen-replace-id))
     (System/exit 1))
   (System/exit 0))
 
