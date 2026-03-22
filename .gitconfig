@@ -7,8 +7,6 @@
   bra = branch -a
   ci = commit
   cia = commit --amend --reset-author
-  cif = commit --fixup
-  ciu = commit -m"updated"
   co = checkout
   cp = cherry-pick
   df = difftool
@@ -22,17 +20,10 @@
   pa = pull --rebase --all
   ps = push
   psf = push --force-with-lease
-  r = reset
   rbi = "!f() { git rebase --interactive HEAD~$1; }; f"
   rh = reset --hard
   rm-local-brs = !sh -c "git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d"
   st = status
-  sta = stash
-  su = submodule update --init --recursive
-  sync = !sh -c 'git add -A && git commit -m"updated" && git push'
-  wt = worktree
-  wta = "!f() { git worktree add ../$1 $1; }; f"
-  wtr = "!f() { git worktree remove $1; }; f"
 [init]
   defaultBranch = master
 [credential]
