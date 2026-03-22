@@ -340,6 +340,9 @@ binds {
     // Neovide
     Mod+V hotkey-overlay-title="Neovide" { spawn "neovide"; }
 
+    // Opencode
+    Mod+Ctrl+O repeat=false { spawn "neovide" "--" "--cmd" "lua vim.g.nvtmux_auto_start = true" "--cmd" "lua vim.g.nvtmux_auto_start_cmd = 'opencode ~/tmp'"; }
+
     // Calculator
     Mod+C hotkey-overlay-title="Calculator" { spawn "kitty" "--app-id" "launcher" "sh" "-c" "echo Calculator && qalc"; }
 
