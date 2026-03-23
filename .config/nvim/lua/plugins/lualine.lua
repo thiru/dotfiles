@@ -9,7 +9,7 @@ local function is_not_term()
 end
 
 local function show_winbar()
-  return is_not_term() and #vim.api.nvim_list_bufs() > 1
+  return is_not_term()
 end
 
 --- Only show first character of the mode to save screen real estate.
