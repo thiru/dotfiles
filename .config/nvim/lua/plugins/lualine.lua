@@ -33,6 +33,9 @@ return {
       icons_enabled = true,
       component_separators = '',
       globalstatus = true,
+      refresh = {
+        refresh_time = 100
+      },
       section_separators = '',
       theme = 'catppuccin-nvim',
     },
