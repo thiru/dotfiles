@@ -12,11 +12,6 @@ local function show_winbar()
   return is_not_term()
 end
 
---- Only show first character of the mode to save screen real estate.
-local function shortened_mode(mode)
-  return mode:sub(1,1)
-end
-
 --- Get git branch for terminal
 local function term_branch()
   local tabdir_ok, tabdir = pcall(vim.api.nvim_tabpage_get_var, 0, 'tabbranch')
@@ -30,6 +25,9 @@ return {
   opts = {
     options = {
       always_show_tabline = false,
+      disabled_filetypes = {
+        winbar = {'aerial', 'DiffviewFileHistory'}
+      },
       icons_enabled = true,
       component_separators = '',
       globalstatus = true,
@@ -61,7 +59,7 @@ return {
     },
     inactive_winbar = {
       lualine_b = {
-        {'buffers', cond=show_winbar, mode=2},
+        {'filename', cond=show_winbar, path=0},
       },
     },
     sections = {
