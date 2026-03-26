@@ -4,5 +4,6 @@ return {
   lazy = false,
   config = function()
     vim.g.rooter_patterns = {'deps.edn', 'package.json', '.git', '.stfolder', '.rooter'}
+    vim.g.rooter_silent_chdir = true
   end
 }
