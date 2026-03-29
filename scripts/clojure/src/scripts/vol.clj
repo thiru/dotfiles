@@ -14,7 +14,7 @@
 
 (def default-percentage
   "The default percentage to increase or decrease the volume by"
-  5)
+  2)
 
 (defn notify-send
   [& {:keys [icon vol]
