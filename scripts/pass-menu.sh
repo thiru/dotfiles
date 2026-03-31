@@ -2,7 +2,7 @@
 
 PASS_DIR=~/.password-store
 
-SELECTION=$(fd .gpg "$PASS_DIR" | sed 's:.*/.password-store/\(.*\)\.gpg:\1:g' | rofi -dmenu -p "(")
+SELECTION=$(fd .gpg "$PASS_DIR" | sed 's:.*/.password-store/\(.*\)\.gpg:\1:g' | fuzzel --dmenu)
 
 if [ -n "$SELECTION" ]; then
   pass show "${SELECTION}" | nohup wl-copy > /dev/null 2>&1
