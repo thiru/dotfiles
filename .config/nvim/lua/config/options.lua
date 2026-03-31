@@ -3,6 +3,12 @@ local doc = 'Set global options.'
 
 local font_size_default = 15
 
+local function enable_ui2()
+  require('vim._core.ui2').enable({
+    enable = true, -- Whether to enable or disable the UI.
+  })
+end
+
 
 -- [[ Make it easier to see exactly what was yanked. ]]
 local function highlight_on_yank()
@@ -153,6 +159,7 @@ local function init()
     vim.diagnostic.enable(false)
   end
 
+  enable_ui2()
   highlight_on_yank()
   maybe_show_listchars()
 end
