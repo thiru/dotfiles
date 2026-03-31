@@ -346,6 +346,9 @@ binds {
     // Calculator
     Mod+C hotkey-overlay-title="Calculator" { spawn "kitty" "--app-id" "launcher" "sh" "-c" "echo Calculator && qalc"; }
 
+    // Emoji Picker
+    Mod+E hotkey-overlay-title="Neovide" { spawn "bemoji" "-c" "-t"; }
+
     // Waybar visbility toggle
     Mod+B hotkey-overlay-title="Bar Toggle" { spawn "pkill" "-SIGUSR1" "waybar"; }
 
