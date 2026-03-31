@@ -109,6 +109,9 @@ local function init()
   -- Enable mouse in all modes
   vim.o.mouse = 'a'
 
+  -- Hide cmdline by default
+  vim.o.cmdheight = 0
+
   -- Use one global status line (not per window)
   vim.o.laststatus = 3
 
