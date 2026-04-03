@@ -1,16 +1,12 @@
-local doc = 'Set global options.'
-
-
 local font_size_default = 15
 
 local function enable_ui2()
   require('vim._core.ui2').enable({
-    enable = true, -- Whether to enable or disable the UI.
+    enable = true,
   })
 end
 
-
--- [[ Make it easier to see exactly what was yanked. ]]
+--- Make it easier to see exactly what was yanked.
 local function highlight_on_yank()
   local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
   vim.api.nvim_create_autocmd('TextYankPost', {
@@ -22,7 +18,7 @@ local function highlight_on_yank()
   })
 end
 
--- [[ Show/hide whitespace chars in certain situations. ]]
+--- Show/hide whitespace chars in certain situations.
 local function maybe_show_listchars()
   local group = vim.api.nvim_create_augroup('maybe-show-listchars', {clear = true})
 
@@ -57,7 +53,6 @@ local function maybe_show_listchars()
     callback = should_show_listchars
   })
 end
-
 
 local function init()
   -- NOTE: This must happen before plugins are required (otherwise the wrong leader will be used)
@@ -196,7 +191,6 @@ local function init()
 end
 
 return {
-  doc = doc,
   font_size_default = font_size_default,
   init = init,
 }
