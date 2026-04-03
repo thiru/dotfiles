@@ -64,12 +64,40 @@ local function init()
   vim.g.mapleader = ' '
   vim.g.maplocalleader = ','
 
+  -- avoid menu.vim (saves ~100ms)
+  vim.g.did_install_default_menus = true
+
   -- Install: `yay -S maplemononl-nf-cn-unhinted`
   local font_family = vim.env.NEOVIM_FONT_FAMILY or 'Maple Mono NL NF CN'
   local font_size = vim.env.NEOVIM_FONT_SIZE or font_size_default
 
   -- Set font for GUI front-ends (like Neovide)
   vim.opt.guifont = font_family .. ':h' .. font_size
+
+  -- disable netrw
+  vim.g.loaded_netrwPlugin = false
+
+  -- hide end-of-buffer chars, etc.
+  vim.o.fillchars = vim.o.fillchars .. 'msgsep:‾,eob: '
+
+  -- exclude some things from shada file
+  vim.opt.shada:prepend("r/tmp/,r/private/,rzipfile:,rterm:,rhealth:")
+
+  -- make jumplist remember scroll position and cursor column
+  vim.opt.jumpoptions:append("view")
+
+  -- limit syntax highlighting to this many columns
+  vim.o.synmaxcol = 200
+
+  -- wrap long lines at word boundaries
+  vim.o.linebreak = true
+
+  -- go to last used tab when closing current tab
+  vim.o.tabclose='uselast'
+
+  -- ro/ - auto-insert comment leader in various scenarios
+  -- 1 - Don't break line after single-letter word
+  vim.opt.formatoptions:append("ro/1")
 
   -- Disable backup and recovery files
   vim.o.backup = false
@@ -141,7 +169,7 @@ local function init()
   vim.o.timeoutlen = 300
 
   -- Set completeopt to have a better completion experience
-  vim.o.completeopt = 'menu,menuone,noinsert,fuzzy,popup'
+  vim.o.completeopt = 'menuone,noselect,noinsert,fuzzy,popup'
 
   -- NOTE: You should make sure your terminal supports this
   vim.o.termguicolors = true
