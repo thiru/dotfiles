@@ -14,12 +14,9 @@
   dfs = difftool --staged
   ft  = commit -m'fix: temp'
   l  = log --pretty=format:\"%C(yellow)%h%Creset %s %C(green)[%ar] %C(red)[%an]\" -15 --graph
-  l1 = log --oneline
   la = log --all --branches --remotes --pretty=format:\"%C(yellow)%h%Creset %s %C(green)[%ar] %C(red)[%an]\" --graph
   ll = log --pretty=format:\"%C(yellow)%h%Creset %s %C(green)[%ar] %C(red)[%an]\" --graph
-  ls = shortlog
   p = pull --rebase
-  pa = pull --rebase --all
   ps = push
   psf = push --force-with-lease
   rbi = "!f() { git rebase --interactive HEAD~$1; }; f"
