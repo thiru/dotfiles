@@ -3,8 +3,16 @@
 # Functions
 # ----------
 
-function cdfzf --description "Go to directory in $HOME via fzf and fd"
+function cdfzf-home --description "Go to directory via fzf and fd (starting from home dir)"
   set -l dir (fd --follow --type directory . $HOME | fzf --no-multi)
+  if test -n "$dir"
+    cd "$dir"
+    commandline -f repaint
+  end
+end
+
+function cdfzf-relative --description "Go to directory via fzf and fd (relative to cwd)"
+  set -l dir (fd --follow --type directory . | fzf --no-multi)
   if test -n "$dir"
     cd "$dir"
     commandline -f repaint
@@ -69,7 +77,8 @@ end
 
 function set-keybinds
   # Go to directory
-  bind -M insert \cg 'cdfzf'
+  bind -M insert \cg 'cdfzf-home'
+  bind -M insert \ch 'cdfzf-relative'
 
   # Previous/next command
   bind -M insert \ck 'up-or-search'
