@@ -13,9 +13,9 @@
   dfb = "git-dfb"
   dfs = difftool --staged
   ft  = commit -m'fix: temp'
-  l  = log --pretty=format:\"%C(yellow)%h%Creset %s %C(green)[%ar] %C(red)[%an]\" -15 --graph
-  la = log --all --branches --remotes --pretty=format:\"%C(yellow)%h%Creset %s %C(green)[%ar] %C(red)[%an]\" --graph
-  ll = log --pretty=format:\"%C(yellow)%h%Creset %s %C(green)[%ar] %C(red)[%an]\" --graph
+  l  = log --pretty=format:'%C(yellow)%h%Creset %s %C(green)[%ar] %C(red)[%an]' -15 --graph
+  la = log --all --branches --remotes --pretty=format:'%C(yellow)%h%Creset %s %C(green)[%ar] %C(red)[%an]' --graph
+  ll = log --pretty=format:'%C(yellow)%h%Creset %s %C(green)[%ar] %C(red)[%an]' --graph
   p = pull --rebase
   ps = push
   psf = push --force-with-lease
