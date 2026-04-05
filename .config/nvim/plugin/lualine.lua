@@ -56,7 +56,11 @@ p.add{
     },
     winbar = {
       lualine_b = {
-        {'buffers', cond=show_winbar, mode=2},
+        {
+          'buffers',
+          cond = show_winbar,
+          mode = 2,
+          symbols = {alternate_file = ''}},
       },
     },
     inactive_winbar = {
