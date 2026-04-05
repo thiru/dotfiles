@@ -5,12 +5,9 @@
 LOCAL="$1"
 REMOTE="$2"
 
-if [ -n "$DISPLAY" ]; then
-  if command -v neovide &> /dev/null; then
-    neovide --no-tabs -- -d "$LOCAL" "$REMOTE"
-  else
-    nvim -d "$LOCAL" "$REMOTE"
-  fi
-else
-  nvim -d "$LOCAL" "$REMOTE"
+if [ -n "$DISPLAY" ] && command -v neovide &> /dev/null; then
+  neovide --no-tabs -- -c "DiffTool $LOCAL $REMOTE"
+  exit 0
 fi
+
+nvim -c "DiffTool $LOCAL $REMOTE"
