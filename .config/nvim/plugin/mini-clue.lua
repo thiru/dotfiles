@@ -18,6 +18,7 @@ p.add{
         -- Leader triggers
         { mode = { 'n', 'x' }, keys = '<leader>' },
         { mode = { 'n', 'x' }, keys = '<localleader>' },
+        { mode = { 't' },      keys = '<C-;>' },
 
         -- `[` and `]` keys
         { mode = 'n', keys = '[' },
