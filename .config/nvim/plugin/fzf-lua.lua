@@ -46,7 +46,7 @@ p.add{
     vim.keymap.set('n', '<leader>sw', '<CMD>FzfLua grep_cword<CR>', {desc = 'Search word under cursor'})
     vim.keymap.set('n', '<leader>sW', '<CMD>FzfLua grep_cWORD<CR>', {desc = 'Search WORD under cursor'})
     vim.keymap.set('n', '<leader>sx', '<CMD>FzfLua command_history<CR>', {desc = 'Search Command History'})
-    vim.keymap.set('n', '<C-g>',
+    vim.keymap.set('n', '<C-h>',
       function()
         plugin.fzf_exec("fd --follow --type directory . $HOME", {
           prompt = "Goto -> ",
@@ -58,7 +58,7 @@ p.add{
         })
       end,
       {desc = 'Change directory (home)'})
-    vim.keymap.set('n', '<C-h>',
+    vim.keymap.set('n', '<C-g>',
       function()
         plugin.fzf_exec("fd --follow --type directory .", {
           prompt = "Goto -> ",
