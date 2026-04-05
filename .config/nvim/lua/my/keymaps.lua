@@ -3,7 +3,7 @@ local function setup()
   vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
   -- Escape insert mode
-  vim.keymap.set('i', '<C-;>', '<Esc>', {desc='Escape insert mode', silent=true})
+  vim.keymap.set({'i', 'v'}, '<C-space>', '<Esc>', {desc='Escape to normal mode', silent=true})
 
   -- Enter command-line mode
   vim.keymap.set('n', '<leader>;', ':', {desc='Enter command-linemode'})
