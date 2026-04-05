@@ -8,7 +8,14 @@ local function setup()
   -- Enter command-line mode
   vim.keymap.set('n', '<leader>;', ':', {desc='Enter command-linemode'})
   vim.keymap.set({'n', 'v'}, 's', ':', {desc='Enter command-linemode'})
-  vim.keymap.set({'n', 'v'}, '<leader><leader>', '<CMD>echo ""<CR>', {desc='Clear command line text', silent=true})
+
+  vim.keymap.set({'n', 'v'}, '<leader><leader>',
+    function()
+      vim.cmd('echo ""')
+      vim.cmd('nohlsearch')
+      require('mini.notify').clear()
+    end,
+    {desc='Clear stuff...', silent=true})
 
   -- Quit
   vim.keymap.set(
