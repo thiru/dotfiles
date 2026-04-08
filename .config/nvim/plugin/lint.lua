@@ -1,9 +1,10 @@
 local p = require('my.packin')
+local u = require('my.utils')
 
 p.add{
   src = 'https://github.com/mfussenegger/nvim-lint',
   name = 'lint',
-  cond = not vim.opt.diff:get(),
+  cond = not u.diff_mode(),
   after_load = function(plugin)
     plugin.linters_by_ft = {
       javascript = {'quick-lint-js'}, -- install: `yay -S quick-lint-js-git`

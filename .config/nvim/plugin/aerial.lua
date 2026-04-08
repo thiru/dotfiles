@@ -1,11 +1,12 @@
 local p = require('my.packin')
+local u = require('my.utils')
 
 -- deps: 'nvim-treesitter/nvim-treesitter',
 
 p.add{
   src = 'https://github.com/stevearc/aerial.nvim',
   name = 'aerial',
-  cond = not vim.opt.diff:get(),
+  cond = not u.diff_mode(),
   after_load = function()
     require('aerial').setup({
       on_attach = function(bufnr)

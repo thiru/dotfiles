@@ -1,11 +1,12 @@
 local p = require('my.packin')
+local u = require('my.utils')
 
 -- deps: { "nvim-mini/mini.icons" },
 
 p.add{
   src = 'https://github.com/ibhagwan/fzf-lua',
   name = 'fzf-lua',
-  cond = not vim.opt.diff:get(),
+  cond = not u.diff_mode(),
   lazy = false,
   after_load = function(plugin)
     local config = plugin.config

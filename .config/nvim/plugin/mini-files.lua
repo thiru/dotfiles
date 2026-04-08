@@ -1,8 +1,9 @@
 local p = require('my.packin')
+local u = require('my.utils')
 
 p.add{
   src = 'https://github.com/nvim-mini/mini.files',
-  cond = not vim.opt.diff:get(),
+  cond = not u.diff_mode(),
   opts = {
     mappings = {
       go_in = '<C-l>',

@@ -1,6 +1,8 @@
+local u = require('my.utils')
+
 local function setup()
   -- Don't enable LSP when diffing
-  if vim.opt.diff:get() then
+  if u.diff_mode() then
     return
   end
 

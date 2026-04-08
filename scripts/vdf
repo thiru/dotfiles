@@ -5,6 +5,8 @@
 LOCAL="$1"
 REMOTE="$2"
 
+export VIMDIFF_MODE=1
+
 if [ -n "$DISPLAY" ] && command -v neovide &> /dev/null; then
   neovide --no-tabs -- -c "DiffTool $LOCAL $REMOTE"
   exit 0

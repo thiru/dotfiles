@@ -1,4 +1,5 @@
 local p = require('my.packin')
+local u = require('my.utils')
 
 -- dependencies = {
 --   "nvim-lua/plenary.nvim", -- required
@@ -8,7 +9,7 @@ local p = require('my.packin')
 
 p.add{
   src = 'https://github.com/NeogitOrg/neogit',
-  cond = not vim.opt.diff:get(),
+  cond = not u.diff_mode(),
   after_load = function()
     vim.keymap.set('n', '<leader>gg', '<cmd>Neogit<cr>', {desc = 'Show Neogit'})
   end

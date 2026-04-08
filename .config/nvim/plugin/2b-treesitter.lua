@@ -1,10 +1,11 @@
 local p = require('my.packin')
+local u = require('my.utils')
 
 -- deps: 'nvim-treesitter/nvim-treesitter-textobjects',
 
 p.add{
   src = 'https://github.com/nvim-treesitter/nvim-treesitter',
-  cond = not vim.opt.diff:get(),
+  cond = not u.diff_mode(),
   --TODO: build = function() vim.cmd('TSUpdate') end -- but maybe this isn't necessary?
   after_load = function(plugin)
       -- ensure basic parser are installed

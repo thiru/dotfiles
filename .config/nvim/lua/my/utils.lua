@@ -5,6 +5,11 @@ local M = {
   found_rust = nil
 }
 
+--- Determine if running in diff mode.
+function M.diff_mode()
+  return vim.opt.diff:get() or vim.wo.diff or vim.env.VIMDIFF_MODE == '1'
+end
+
 -- Get path with home directory replaced with tilde.
 function M.replace_home_with_tilde(path)
   local home_dir = vim.uv.os_homedir() or ''

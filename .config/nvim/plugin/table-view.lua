@@ -1,9 +1,10 @@
 local p = require('my.packin')
+local u = require('my.utils')
 
 p.add{
   src = 'https://github.com/numEricL/table.vim',
   name = 'table_vim',
-  cond = not vim.opt.diff:get(),
+  cond = not u.diff_mode(),
   opts = {
     options = {
       multiline = true

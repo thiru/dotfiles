@@ -1,9 +1,10 @@
 local p = require('my.packin')
+local u = require('my.utils')
 
 p.add{
   src = 'https://github.com/nickjvandyke/opencode.nvim',
   name = 'opencode',
-  cond = not vim.opt.diff:get(),
+  cond = not u.diff_mode(),
   after_load = function(plugin)
     ---@type opencode.Opts
     vim.g.opencode_opts = {
