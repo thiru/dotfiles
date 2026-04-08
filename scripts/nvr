@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Start a headless neovim instance and connect to it with Neovide
+
+PORT=1234
+
+nvim --headless --listen 0.0.0.0:$PORT &
+echo "headless neovim server listening on port $PORT"
+
+if command -v neovide &> /dev/null; then
+  neovide --server localhost:$PORT
+elif command -v neovide.exe &> /dev/null; then
+  neovide.exe --server localhost:$PORT
+else
+  echo 'Neovide executable not found'
+  exit 1
+fi
