@@ -108,7 +108,7 @@ local function setup()
   vim.o.cursorline = true
 
   -- Minimal number of screen lines to keep above and below the cursor.
-  vim.o.scrolloff = 10
+  vim.o.scrolloff = 5
 
   -- Disable folding by default
   vim.o.foldenable = false
