@@ -12,6 +12,8 @@ p.add{
     local config = plugin.config
     local actions = plugin.actions
 
+    config.defaults.winopts.preview.layout = 'vertical'
+
     config.defaults.actions.files['enter'] = actions.file_edit
     config.defaults.actions.files['ctrl-q'] = actions.file_sel_to_qf
 
