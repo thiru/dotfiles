@@ -5,7 +5,7 @@
   ap = add -p
   br = branch
   bra = branch -a
-  ci = commit --message
+  ci = !sh -c 'git commit --message "$*"'
   cia = commit --amend --reset-author
   co = checkout
   cp = cherry-pick
