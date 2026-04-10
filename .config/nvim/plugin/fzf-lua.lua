@@ -12,6 +12,8 @@ p.add{
     local config = plugin.config
     local actions = plugin.actions
 
+    config.defaults.winopts.height = 0.90
+    config.defaults.winopts.width = 0.95
     config.defaults.winopts.preview.layout = 'vertical'
 
     config.defaults.actions.files['enter'] = actions.file_edit
