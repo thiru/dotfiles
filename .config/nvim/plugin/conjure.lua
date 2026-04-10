@@ -1,9 +1,11 @@
+local u = require('my.utils')
+
 local function restart_python()
   vim.cmd('ConjurePythonStop')
   vim.cmd('ConjurePythonStart')
 end
 
-if not vim.opt.diff:get() then
+if not u.diff_mode() then
   vim.g['conjure#mapping#doc_word'] = {'<localleader>k'}
   vim.g['conjure#log#botright'] = true
 
