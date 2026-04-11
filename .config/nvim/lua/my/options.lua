@@ -164,7 +164,7 @@ local function setup()
   vim.o.timeoutlen = 300
 
   -- Set completeopt to have a better completion experience
-  vim.o.completeopt = 'menuone,noselect,noinsert,fuzzy,popup'
+  vim.o.completeopt = 'menuone,noinsert,fuzzy,popup'
 
   -- NOTE: You should make sure your terminal supports this
   vim.o.termguicolors = true
