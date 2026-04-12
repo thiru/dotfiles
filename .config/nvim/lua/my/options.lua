@@ -110,6 +110,9 @@ local function setup()
   -- Minimal number of screen lines to keep above and below the cursor.
   vim.o.scrolloff = 5
 
+  -- Use maximimum scrollback for terminal buffers
+  vim.o.scrollback = 1000000
+
   -- Disable folding by default
   vim.o.foldenable = false
   vim.o.foldlevelstart = 99
