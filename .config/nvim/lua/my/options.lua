@@ -129,6 +129,9 @@ local function setup()
   vim.wo.number = true
   vim.wo.relativenumber = true
 
+  -- Inc/dec alphabetica chars and treat negative numbers better
+  vim.o.nrformats = 'alpha,blank'
+
   -- Enable mouse in all modes
   vim.o.mouse = 'a'
 
