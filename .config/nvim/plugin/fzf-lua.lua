@@ -39,6 +39,7 @@ p.add{
     vim.keymap.set('n', '<leader>sr', '<CMD>FzfLua registers<CR>', {desc = 'Search Registers' })
     vim.keymap.set('n', '<leader>sR', '<CMD>FzfLua resume<CR>', {desc = 'Resume latest picker' })
     vim.keymap.set('v', '<leader>ss', '<CMD>FzfLua grep_visual<CR>', {desc = 'Search visual selection'})
+    vim.keymap.set('n', '<leader>st', '<CMD>FzfLua tabs<CR>', {desc = 'Search tabs'})
     vim.keymap.set('n', '<leader>sp',
       function()
         plugin.live_grep_native({rg_opts="--hidden --glob '!.git' --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e"})
