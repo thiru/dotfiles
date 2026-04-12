@@ -1,12 +1,14 @@
 local p = require('my.packin')
 
+local tabpage_hl = 'TabLine'
+
 --- Make the highlight group for the tab pages section more visible.
 local function setup_tabpage_hl()
-  vim.api.nvim_set_hl(0, 'MiniTablineTabpagesection', { link = 'TabLineSel' })
+  vim.api.nvim_set_hl(0, 'MiniTablineTabpagesection', {link = tabpage_hl})
   vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = '*',
     callback = function()
-      vim.api.nvim_set_hl(0, 'MiniTablineTabpagesection', { link = 'TabLineSel' })
+      vim.api.nvim_set_hl(0, 'MiniTablineTabpagesection', {link = tabpage_hl})
     end,
   })
 end
