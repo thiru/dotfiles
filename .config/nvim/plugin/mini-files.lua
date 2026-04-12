@@ -8,7 +8,7 @@ local function setup_maintain_max_height_autocmd()
       local config = vim.api.nvim_win_get_config(args.data.win_id)
 
       -- Ensure fixed height
-      config.height = 1000
+      config.height = vim.o.lines - vim.o.cmdheight - 1
 
       vim.api.nvim_win_set_config(args.data.win_id, config)
     end,
@@ -23,7 +23,7 @@ local function setup_fsexplorer_user_cmd()
       local cfg = {
         windows = {
           preview = false,
-          width_focus = 1000,
+          width_focus = vim.o.columns,
         },
       }
       MiniFiles.open(nil, false, cfg)
