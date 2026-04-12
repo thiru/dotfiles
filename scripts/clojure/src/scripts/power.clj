@@ -70,7 +70,7 @@
       (System/exit 1))))
 
 (defn show-menu []
-  (let [cmd-res (sh "fuzzel" "--dmenu" "--prompt" "Power" :in (str/join "\n" power-options))
+  (let [cmd-res (sh "fuzzel" "--dmenu" :in (str/join "\n" power-options))
         selection (-> cmd-res :out str/trim)]
     (when (and (zero? (:exit cmd-res))
                (.contains power-options selection))
