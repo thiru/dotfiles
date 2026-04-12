@@ -84,14 +84,6 @@ local function setup()
 
   vim.keymap.set({'n', 'v'}, '<leader>a', '<CMD>b#<CR>', { desc = 'Go to alternate buffer' })
 
-  -- Buffer nav - go to index
-  for i=1,9 do
-    vim.keymap.set(
-      {'i', 'n', 't', 'v'},
-      '<A-' .. i .. '>', '<CMD>LualineBuffersJump! ' .. i .. '<CR>',
-      {desc = 'Go to buffer ' .. i, silent=true})
-  end
-
   -- Remap for dealing with word wrap
   vim.keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', { expr = true, silent = true })
   vim.keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', { expr = true, silent = true })
