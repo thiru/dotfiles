@@ -1,6 +1,37 @@
 local p = require('my.packin')
 local u = require('my.utils')
 
+local function setup_maintain_max_height_autocmd()
+  vim.api.nvim_create_autocmd('User', {
+    pattern = 'MiniFilesWindowUpdate',
+    callback = function(args)
+      local config = vim.api.nvim_win_get_config(args.data.win_id)
+
+      -- Ensure fixed height
+      config.height = 1000
+
+      vim.api.nvim_win_set_config(args.data.win_id, config)
+    end,
+  })
+end
+
+local function setup_fsexplorer_user_cmd()
+  vim.api.nvim_create_user_command(
+    'FSExplorer',
+    function()
+      setup_maintain_max_height_autocmd()
+      local cfg = {
+        windows = {
+          preview = false,
+          width_focus = 1000,
+        },
+      }
+      MiniFiles.open(nil, false, cfg)
+    end,
+    {bang = true, desc = 'Open mini.files in full screen'}
+  )
+end
+
 p.add{
   src = 'https://github.com/nvim-mini/mini.files',
   cond = not u.diff_mode(),
@@ -54,5 +85,7 @@ p.add{
         require('mini.files').open(vim.uv.cwd(), true)
       end,
       {desc = 'Open mini.files (cwd)'})
+
+    setup_fsexplorer_user_cmd()
   end
 }
