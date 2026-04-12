@@ -16,6 +16,14 @@ p.add{
     config.defaults.winopts.width = 0.95
     config.defaults.winopts.preview.layout = 'vertical'
 
+    config.defaults.tabs.tab_title = function(tab)
+      local ok, tabname = pcall(vim.api.nvim_tabpage_get_var, tab, 'tabname')
+      if ok then
+        return tabname
+      end
+      return 'Tab ' .. tab
+    end
+
     config.defaults.actions.files['enter'] = actions.file_edit
     config.defaults.actions.files['ctrl-q'] = actions.file_sel_to_qf
 
