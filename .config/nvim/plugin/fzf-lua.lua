@@ -62,7 +62,7 @@ p.add{
     vim.keymap.set('n', '<leader>sx', '<CMD>FzfLua command_history<CR>', {desc = 'Search Command History'})
     vim.keymap.set('n', '<C-h>',
       function()
-        plugin.fzf_exec("fd --follow --type directory --hidden . $HOME", {
+        plugin.fzf_exec("fd --follow --type directory --hidden --max-depth 4 . $HOME", {
           prompt = "Goto -> ",
           actions = {
             ['default'] = function(selected)
