@@ -5,7 +5,7 @@
 
     "modules-left": ["hyprland/submap", "sway/mode", "niri/workspaces", "hyprland/workspaces", "sway/workspaces", "niri/window", "hyprland/window", "sway/window"],
     // "modules-center": [],
-    "modules-right": ["idle_inhibitor", "custom/uptime", "cpu", "memory", "disk", "pulseaudio#min", "battery", "battery#bat2", "network", "tray", "custom/clock", "custom/power-menu"],
+    "modules-right": ["idle_inhibitor", "custom/uptime", "cpu", "memory", "disk", "pulseaudio#min", "battery", "battery#bat2", "network", "tray", "custom/weather", "custom/clock", "custom/power-menu"],
 
     // Modules
     "sway/mode": {
@@ -129,6 +129,12 @@
     "custom/uptime": {
         "exec": "uptime.clj",
         "format": "{}",
+        "interval": 3600,
+        "tooltip": false
+    },
+    "custom/weather": {
+        "exec": "curl -s wttr.in?format='%c%t'",
+        "on-click": "librewolf --new-window https://www.accuweather.com/en/ca/toronto/m5h/daily-weather-forecast/55488",
         "interval": 3600,
         "tooltip": false
     },
