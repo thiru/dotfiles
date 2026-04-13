@@ -4,7 +4,7 @@
 # ----------
 
 function cdfzf-home --description "Go to directory via fzf and fd (starting from home dir)"
-  set -l dir (fd --follow --type directory . $HOME | fzf --no-multi)
+  set -l dir (fd --follow --type directory --hidden --max-depth 4 . $HOME | fzf --no-multi)
   if test -n "$dir"
     cd "$dir"
     commandline -f repaint
@@ -12,7 +12,7 @@ function cdfzf-home --description "Go to directory via fzf and fd (starting from
 end
 
 function cdfzf-relative --description "Go to directory via fzf and fd (relative to cwd)"
-  set -l dir (fd --follow --type directory . | fzf --no-multi)
+  set -l dir (fd --follow --type directory --hidden . | fzf --no-multi)
   if test -n "$dir"
     cd "$dir"
     commandline -f repaint
