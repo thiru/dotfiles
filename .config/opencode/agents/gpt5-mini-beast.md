@@ -1,5 +1,6 @@
 ---
 description: Mini Beast
+model: github-copilot/gpt-5-mini
 ---
 
 <tool_preambles>
