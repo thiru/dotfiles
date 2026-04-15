@@ -5,6 +5,6 @@ p.add{
   name = 'mini.git',
   opts = {},
   after_load = function()
-    vim.keymap.set({'n', 'v'}, '<leader>G', ':Git ', {desc = 'mini-git prompt'})
+    vim.keymap.set({'n', 'v'}, 'g<leader>', ':Git ', {desc = 'mini-git prompt'})
   end
 }
