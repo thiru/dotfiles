@@ -4,7 +4,7 @@ local u = require('my.utils')
 p.add{
   src = 'https://github.com/thiru/neodba.nvim',
   name = 'neodba',
-  enabled = not u.diff_mode(),
+  enabled = false,--not u.diff_mode(),
   opts = {
     -- HACK: these hooks are used to work around the RenderMarkdown plugin failing to correctly
     -- render the output table after being updated.
