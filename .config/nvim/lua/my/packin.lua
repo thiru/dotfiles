@@ -5,7 +5,7 @@ local M = {}
 
 --- Make adding packages via `vim.pack` more ergonomic.
 ---@param spec table Essentially vim.pack.Spec with some additional fields:
---- - `cond` boolean|function: an optional field indicating whether to load this plugin at all
+--- - `enabled` boolean|function: an optional field indicating whether to load this plugin at all
 --- - `opts` table|function: optional configuration to pass to the plugin's `setup()` function
 ---   - can be a table or a function that receives the plugin module and returns a table
 --- - `before_load` function: an optional function to run before loading the plugin
@@ -16,11 +16,11 @@ function M.add(spec)
   -- 1. determine if we should skip loading the plugin
   local skip_load = false
 
-  if spec.cond ~= nil then
-    if type(spec.cond) == 'function' then
-      skip_load = not spec.cond()
+  if spec.enabled ~= nil then
+    if type(spec.enabled) == 'function' then
+      skip_load = not spec.enabled()
     else
-      skip_load = not spec.cond
+      skip_load = not spec.enabled
     end
   end
 

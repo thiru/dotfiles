@@ -6,7 +6,7 @@ local u = require('my.utils')
 p.add{
   src = 'https://github.com/ibhagwan/fzf-lua',
   name = 'fzf-lua',
-  cond = not u.diff_mode(),
+  enabled = not u.diff_mode(),
   lazy = false,
   after_load = function(plugin)
     local config = plugin.config

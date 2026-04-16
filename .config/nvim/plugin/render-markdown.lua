@@ -6,5 +6,5 @@ local u = require('my.utils')
 p.add{
   src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim',
   name = 'render-markdown',
-  cond = not u.diff_mode(),
+  enabled = not u.diff_mode(),
 }

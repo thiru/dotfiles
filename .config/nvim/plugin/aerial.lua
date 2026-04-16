@@ -6,7 +6,7 @@ local u = require('my.utils')
 p.add{
   src = 'https://github.com/stevearc/aerial.nvim',
   name = 'aerial',
-  cond = not u.diff_mode(),
+  enabled = not u.diff_mode(),
   after_load = function()
     require('aerial').setup({
       on_attach = function(bufnr)

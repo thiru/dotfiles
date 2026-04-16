@@ -5,7 +5,7 @@ local neovide = require('my.neovide')
 p.add{
   src = 'https://github.com/thiru/nvtmux.nvim',
   name = 'nvtmux',
-  cond = not u.diff_mode(),
+  enabled = not u.diff_mode(),
   opts = {
     auto_start = u.nvtmux_auto_started(),
     colorscheme = 'catppuccin-mocha',

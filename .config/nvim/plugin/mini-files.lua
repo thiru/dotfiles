@@ -34,7 +34,7 @@ end
 
 p.add{
   src = 'https://github.com/nvim-mini/mini.files',
-  cond = not u.diff_mode(),
+  enabled = not u.diff_mode(),
   opts = {
     mappings = {
       go_in = '<C-l>',

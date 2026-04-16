@@ -3,7 +3,7 @@ local u = require('my.utils')
 
 p.add{
   src = 'https://github.com/nvim-mini/mini.surround',
-  cond = not u.diff_mode(),
+  enabled = not u.diff_mode(),
   opts = {
     mappings = {
       add = 'gsa', -- Add surrounding in Normal and Visual modes

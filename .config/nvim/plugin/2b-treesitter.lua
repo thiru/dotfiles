@@ -5,7 +5,7 @@ local u = require('my.utils')
 
 p.add{
   src = 'https://github.com/nvim-treesitter/nvim-treesitter',
-  cond = not u.diff_mode(),
+  enabled = not u.diff_mode(),
   --TODO: build = function() vim.cmd('TSUpdate') end -- but maybe this isn't necessary?
   after_load = function(plugin)
       -- ensure basic parser are installed

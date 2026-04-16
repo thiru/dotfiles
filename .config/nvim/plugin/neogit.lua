@@ -9,7 +9,7 @@ local u = require('my.utils')
 
 p.add{
   src = 'https://github.com/NeogitOrg/neogit',
-  cond = not u.diff_mode(),
+  enabled = not u.diff_mode(),
   after_load = function()
     vim.keymap.set('n', '<leader>gg', '<cmd>Neogit<cr>', {desc = 'Show Neogit'})
   end

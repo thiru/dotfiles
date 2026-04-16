@@ -4,7 +4,7 @@ local u = require('my.utils')
 p.add{
   src = 'https://github.com/numEricL/table.vim',
   name = 'table_vim',
-  cond = not u.diff_mode(),
+  enabled = not u.diff_mode(),
   opts = {
     options = {
       multiline = true
