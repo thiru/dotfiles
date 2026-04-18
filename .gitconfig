@@ -9,6 +9,8 @@
   cia = commit --amend --reset-author
   co = checkout
   cp = cherry-pick
+  d = diff
+  ds = diff --staged
   df = difftool
   dfb = "git-dfb"
   dfs = difftool --staged
