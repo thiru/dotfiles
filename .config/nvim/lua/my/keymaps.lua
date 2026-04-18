@@ -158,9 +158,17 @@ local function setup()
   -- Copy everything to the clipboard
   vim.keymap.set('n', '<leader>ya', '<CMD>%y+<CR>', { desc = 'Copy everything to system clipboard' })
 
-  -- Copy current file path to clipboard
+  -- Copy file path to clipboard
   vim.keymap.set('n', '<leader>yf', ':let @+ = expand("%")<CR>',
-         { desc = 'Copy current file path to system clipboard' })
+         { desc = 'Copy relative file path to system clipboard' })
+  vim.keymap.set('n', '<leader>yF', ':let @+ = expand("%:p")<CR>',
+         { desc = 'Copy full file path to system clipboard' })
+
+  -- Copy directory to clipboard
+  vim.keymap.set('n', '<leader>yd', ':let @+ = expand("%:h")<CR>',
+         { desc = 'Copy relative directory path to system clipboard' })
+  vim.keymap.set('n', '<leader>yD', ':let @+ = expand("%:p:h")<CR>',
+         { desc = 'Copy full directory path to system clipboard' })
 
   -- Paste from clipboard
   vim.keymap.set({'c', 'i'}, '<C-v>', '<C-r>+', { desc = 'Paste from system clipboard (command/insert mode)' })
