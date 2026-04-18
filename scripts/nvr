@@ -2,16 +2,34 @@
 
 # Start a headless neovim instance and connect to it with Neovide
 
+HOST=0.0.0.0
 PORT=1234
 
-nvim --headless --listen 0.0.0.0:$PORT &
-echo "headless neovim server listening on port $PORT"
+START_PORT=$PORT
+MAX_ATTEMPTS=9
+
+for i in $(seq 1 $MAX_ATTEMPTS); do
+  if ss -tuln 2>/dev/null | grep -q ":$PORT "; then
+    echo "port $PORT already in use, trying $((PORT + 1))"
+    PORT=$((PORT + 1))
+  else
+    break
+  fi
+done
+
+if ss -tuln 2>/dev/null | grep -q ":$PORT "; then
+  echo "no free port found between $START_PORT and $PORT"
+  exit 1
+fi
+
+nvim --headless --listen $HOST:$PORT &
+echo "headless neovim server started at $HOST:$PORT"
 
 if command -v neovide &> /dev/null; then
   neovide --server localhost:$PORT
 elif command -v neovide.exe &> /dev/null; then
   neovide.exe --server localhost:$PORT
 else
-  echo 'Neovide executable not found'
+  echo 'neovide executable not found'
   exit 1
 fi
