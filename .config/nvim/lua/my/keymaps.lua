@@ -120,10 +120,6 @@ local function setup()
   -- PWD
   vim.keymap.set('n', '<leader>wd', function() vim.notify(vim.fn.getcwd()) end, { desc = 'Print current working directory', silent = true })
 
-  -- Open file in clipboard
-  vim.keymap.set('n', '<leader>fc', ':e <C-r>+<CR>',
-         { desc = 'Open file stored in system clipboard' })
-
   -- Save file
   vim.keymap.set('n', '<C-s>', '<CMD>w<CR>', { desc = 'Save current file', silent = true })
   vim.keymap.set('i', '<C-s>', '<cmd>write<CR>', { desc = 'Save current file', silent = true })

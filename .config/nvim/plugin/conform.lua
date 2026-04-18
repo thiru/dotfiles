@@ -35,7 +35,7 @@ p.add{
   },
   after_load = function()
     create_user_command()
-    vim.keymap.set('n', '<leader>ff', async_format, {desc='Format (Conform)'})
-    vim.keymap.set('v', '<leader>ff', '<CMD>ConformFormat<CR>', {desc='Format (Conform)'})
+    vim.keymap.set('n', '<leader>cf', async_format, {desc='Format (Conform)'})
+    vim.keymap.set('v', '<leader>cf', '<CMD>ConformFormat<CR>', {desc='Format (Conform)'})
   end,
 }

@@ -3,11 +3,14 @@ local u = require('my.utils')
 local neovide = require('my.neovide')
 
 p.add{
-  src = 'https://github.com/thiru/nvtmux.nvim',
+  -- src = 'https://github.com/thiru/nvtmux.nvim',
+  src = '~/code/nvtmux.nvim',
   name = 'nvtmux',
   enabled = not u.diff_mode(),
   opts = function(plugin)
     vim.keymap.set({'n', 'v', 't'}, '<C-CR>', plugin.new_tab, {desc = 'New terminal tab'})
+    vim.keymap.set('n', '<leader>f', plugin.new_float_term, {desc = 'New terminal float'})
+
     return {
       auto_start = u.nvtmux_auto_started(),
       colorscheme = 'catppuccin-mocha',
