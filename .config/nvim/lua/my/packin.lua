@@ -28,6 +28,14 @@ function M.add(spec)
     return
   end
 
+  -- 2. use local/dev source if applicable
+  if spec.dev_src ~= nil then
+    local expanded = vim.fs.normalize(vim.fn.expand(spec.dev_src))
+    if vim.uv.fs_stat(expanded) then
+      spec.src = expanded
+    end
+  end
+
   -- 2. load the plugin the simple way
   if spec.before_load == nil and spec.after_load == nil and spec.opts == nil then
     vim.pack.add({spec})
