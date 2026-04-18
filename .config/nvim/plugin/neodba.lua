@@ -3,6 +3,7 @@ local u = require('my.utils')
 
 p.add{
   src = 'https://github.com/thiru/neodba.nvim',
+  dev_src = '~/code/neodba.nvim',
   name = 'neodba',
   enabled = false,--not u.diff_mode(),
   opts = {

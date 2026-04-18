@@ -3,8 +3,8 @@ local u = require('my.utils')
 local neovide = require('my.neovide')
 
 p.add{
-  -- src = 'https://github.com/thiru/nvtmux.nvim',
-  src = '~/code/nvtmux.nvim',
+  src = 'https://github.com/thiru/nvtmux.nvim',
+  dev_src = '~/code/nvtmux.nvim',
   name = 'nvtmux',
   enabled = not u.diff_mode(),
   opts = function(plugin)
