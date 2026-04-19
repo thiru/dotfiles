@@ -63,7 +63,7 @@ function set-abbreviations
   if command -v nvim &> /dev/null
     abbr -a v 'nvim'
 
-    if command -v neovide && set -q DISPLAY
+    if command -v neovide &> /dev/null && set -q DISPLAY
       abbr -a vfs 'neovide --no-tabs -- +FSExplorer'
     else
       abbr -a vfs 'nvim +FSExplorer'
