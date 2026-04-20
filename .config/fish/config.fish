@@ -109,13 +109,6 @@ function my_postexec --on-event fish_postexec --description "Update git branch i
   end
 end
 
-function set-nvim-title-and-cwd --on-variable PWD --description "Set Neovim title and CWD to PWD"
-  if set -q NVIM
-    set -l curr_dir (string replace -r "^$HOME" '~' (pwd))
-    nvim --server $NVIM --remote-send "<CMD>lua require('nvtmux').update_cwd('$curr_dir')<CR>"
-  end
-end
-
 function up --description "Move up one or more directories"
   set ups ""
   for i in (seq 1 $argv[1])
@@ -190,8 +183,6 @@ if status is-interactive
   set fish_greeting
 
   loadenv ~/.env
-
-  set-nvim-title-and-cwd
 
   # Enable vi mode
   fish_vi_key_bindings
