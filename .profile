@@ -55,6 +55,11 @@ export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
 # PATH modifications
 # ------------------------------------------------------------------------------
 
+# Android (ADB, fastboot, etc)
+if [ -d "/opt/android-sdk/platform-tools" ]; then
+  PATH="$PATH:/opt/android-sdk/platform-tools"
+fi
+
 # Cargo - add binaries to PATH
 PATH="$PATH:$HOME/.cargo/bin"
 
