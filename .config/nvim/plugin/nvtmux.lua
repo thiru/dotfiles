@@ -4,7 +4,7 @@ local neovide = require('my.neovide')
 
 p.add{
   src = 'https://github.com/thiru/nvtmux.nvim',
-  dev_src = '~/code/nvtmux.nvim',
+  dev_src = 'file:///~/code/nvtmux.nvim',
   name = 'nvtmux',
   enabled = not u.diff_mode(),
   opts = function(plugin)
