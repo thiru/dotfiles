@@ -6,8 +6,7 @@ local function setup()
   vim.keymap.set({'i', 'v'}, '<C-space>', '<Esc>', {desc='Escape to normal mode', silent=true})
 
   -- Enter command-line mode
-  vim.keymap.set('n', '<leader>;', ':', {desc='Enter command-linemode'})
-  vim.keymap.set({'n', 'v'}, 's', ':', {desc='Enter command-linemode'})
+  vim.keymap.set({'n', 'x'}, '<leader>j', ':', {desc='Enter command-linemode'})
 
   vim.keymap.set({'n', 'v'}, '<leader><leader>',
     function()
@@ -103,9 +102,9 @@ local function setup()
     {desc = 'Toggle LSP inlay hints'})
 
   -- Diagnostic keymaps
-  vim.keymap.set('n', '<leader>k', function() vim.diagnostic.jump({count=-1, float=true}) end)
-  vim.keymap.set('n', '<leader>j', function() vim.diagnostic.jump({count=1, float=true}) end)
-  vim.keymap.set('n', '<leader>ed', function() vim.diagnostic.enable(false) end,
+  vim.keymap.set('n', '<localleader>k', function() vim.diagnostic.jump({count=-1, float=true}) end)
+  vim.keymap.set('n', '<localleader>j', function() vim.diagnostic.jump({count=1, float=true}) end)
+  vim.keymap.set('n', '<localleader>ed', function() vim.diagnostic.enable(false) end,
                  {desc = 'Disable diagnostics in current buffer'})
   vim.keymap.set('n', '<leader>K',
     function() vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines }) end,
@@ -204,8 +203,15 @@ local function setup()
   vim.keymap.set('n', '<C-Down>', '<CMD>resize +1<CR>', {desc = 'Increase window size horizontally', silent=true})
 
   -- vim.pack
-  vim.keymap.set('n', '<leader>Pi', function() vim.pack.update(nil, {offline=true}) end, {desc = 'Package info'})
-  vim.keymap.set('n', '<leader>Pu', vim.pack.update, {desc = 'Package update'})
+  vim.keymap.set('n', '<leader>pi', function() vim.pack.update(nil, {offline=true}) end, {desc = 'Package info'})
+  vim.keymap.set('n', '<leader>pd', ':lua vim.pack.del({"', {desc = 'Package delete'})
+  vim.keymap.set('x', '<leader>pd',
+    function()
+      vim.cmd('normal! y')
+      vim.pack.del({vim.fn.getreg('"')}, {force=true})
+    end,
+    {desc = 'Package delete'})
+  vim.keymap.set('n', '<leader>pu', vim.pack.update, {desc = 'Package update'})
 end
 
 return {

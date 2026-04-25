@@ -6,8 +6,10 @@ local function restart_python()
 end
 
 if not u.diff_mode() then
-  vim.g['conjure#mapping#doc_word'] = {'<localleader>k'}
   vim.g['conjure#log#botright'] = true
+
+  -- NOTE: without this Conjure will take over the 'K' key
+  vim.g['conjure#mapping#doc_word'] = {'<localleader>d'}
 
   -- Enable tree-sitter support:
   vim.g['conjure#extract#tree_sitter#enabled'] = true
