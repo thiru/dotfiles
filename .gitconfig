@@ -7,6 +7,17 @@
   bra = branch -a
   ci = "!f() { git commit -m \"$*\"; }; f"
   cia = commit --amend --reset-author
+  cibuild = "!f() { git commit -m \"build$*\"; }; f"
+  cichore = "!f() { git commit -m \"chore$*\"; }; f"
+  cici = "!f() { git commit -m \"ci$*\"; }; f"
+  cidocs = "!f() { git commit -m \"docs$*\"; }; f"
+  cifeat = "!f() { git commit -m \"feat$*\"; }; f"
+  cifix = "!f() { git commit -m \"fix$*\"; }; f"
+  ciperf = "!f() { git commit -m \"perf$*\"; }; f"
+  cirefactor = "!f() { git commit -m \"refactor$*\"; }; f"
+  cirevert = "!f() { git commit -m \"revert$*\"; }; f"
+  cistyle = "!f() { git commit -m \"style$*\"; }; f"
+  citest = "!f() { git commit -m \"test$*\"; }; f"
   co = checkout
   cp = cherry-pick
   d = diff
