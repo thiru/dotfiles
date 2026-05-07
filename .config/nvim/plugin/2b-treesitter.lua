@@ -43,9 +43,6 @@ p.add{
         if not vim.treesitter.language.add(language) then return end
         -- enables syntax highlighting and other treesitter features
         vim.treesitter.start(buf, language)
-
-        -- enables treesitter based indentation
-        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
       end
 
       local available_parsers = plugin.get_available()
