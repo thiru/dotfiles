@@ -73,7 +73,7 @@ local function setup()
   vim.g.loaded_netrwPlugin = false
 
   -- hide end-of-buffer chars, etc.
-  vim.o.fillchars = vim.o.fillchars .. 'msgsep:‾,eob: '
+  vim.opt.fillchars:append('msgsep:‾,eob: ')
 
   -- exclude some things from shada file
   vim.opt.shada:prepend("r/tmp/,r/private/,rzipfile:,rterm:,rhealth:")
@@ -82,109 +82,109 @@ local function setup()
   vim.opt.jumpoptions:append("view")
 
   -- limit syntax highlighting to this many columns
-  vim.o.synmaxcol = 200
+  vim.opt.synmaxcol = 200
 
   -- wrap long lines at word boundaries
-  vim.o.linebreak = true
+  vim.opt.linebreak = true
 
   -- go to last used tab when closing current tab
-  vim.o.tabclose='uselast'
+  vim.opt.tabclose='uselast'
 
   -- ro/ - auto-insert comment leader in various scenarios
   -- 1 - Don't break line after single-letter word
   vim.opt.formatoptions:append("ro/1")
 
   -- Disable backup and recovery files
-  vim.o.backup = false
-  vim.o.writebackup = false
-  vim.o.swapfile = false
+  vim.opt.backup = false
+  vim.opt.writebackup = false
+  vim.opt.swapfile = false
 
   -- Default to creating vertical splits to the right
-  vim.o.splitright = true
+  vim.opt.splitright = true
   -- Default to creating horizontal splits below
-  vim.o.splitbelow = true
+  vim.opt.splitbelow = true
 
   -- Highlight current line
-  vim.o.cursorline = true
+  vim.opt.cursorline = true
 
   -- Minimal number of screen lines to keep above and below the cursor.
-  vim.o.scrolloff = 5
+  vim.opt.scrolloff = 5
 
   -- Use maximimum scrollback for terminal buffers
-  vim.o.scrollback = 1000000
+  vim.opt.scrollback = 1000000
 
   -- Disable folding by default
-  vim.o.foldenable = false
-  vim.o.foldlevelstart = 99
-  vim.o.foldlevel = 99
+  vim.opt.foldenable = false
+  vim.opt.foldlevelstart = 99
+  vim.opt.foldlevel = 99
 
   -- Characters to show in place of whitespace characters
-  vim.o.listchars = 'tab:-→,trail:█,extends:>,precedes:<'
+  vim.opt.listchars = 'tab:-→,trail:█,extends:>,precedes:<'
 
   -- Highlight search terms and immediately while typing
-  vim.o.hlsearch = true
-  vim.o.incsearch = true
+  vim.opt.hlsearch = true
+  vim.opt.incsearch = true
 
   -- Wrap to top/bottom when search reaches end/beginning of file
-  vim.o.wrapscan = true
+  vim.opt.wrapscan = true
 
   -- Show relative line numbers, except on the current line show absolute
   vim.wo.number = true
   vim.wo.relativenumber = true
 
   -- Inc/dec alphabetica chars and treat negative numbers better
-  vim.o.nrformats = 'alpha,blank'
+  vim.opt.nrformats = 'alpha,blank'
 
   -- Enable mouse in all modes
-  vim.o.mouse = 'a'
+  vim.opt.mouse = 'a'
 
   -- Hide cmdline by default
-  vim.o.cmdheight = 0
+  vim.opt.cmdheight = 0
 
   -- Use one global status line (not per window)
-  vim.o.laststatus = 3
+  vim.opt.laststatus = 3
 
   -- Don't show the mode since it's already in the status line
-  vim.o.showmode = false
+  vim.opt.showmode = false
 
   -- Sync clipboard between OS and Neovim.
-  vim.o.clipboard = 'unnamedplus'
+  vim.opt.clipboard = 'unnamedplus'
 
   -- Preserve indentation even when line is wrapped
-  vim.o.breakindent = true
+  vim.opt.breakindent = true
 
   -- Don't save undo history to a file
-  vim.o.undofile = false
+  vim.opt.undofile = false
 
   -- Case-insensitive searching UNLESS \C or capital in search
-  vim.o.ignorecase = true
-  vim.o.smartcase = true
+  vim.opt.ignorecase = true
+  vim.opt.smartcase = true
 
   -- Ignore case when completing file paths
-  vim.o.wildignorecase = true
+  vim.opt.wildignorecase = true
 
   -- Always show the sign column (to prevent horizontal jumping)
   vim.wo.signcolumn = 'yes'
 
   -- Decrease mapped command timeout
-  vim.o.timeoutlen = 300
+  vim.opt.timeoutlen = 300
 
   -- Set completeopt to have a better completion experience
-  vim.o.completeopt = 'menuone,noinsert,fuzzy,popup'
+  vim.opt.completeopt = 'menuone,noinsert,fuzzy,popup'
 
   -- NOTE: You should make sure your terminal supports this
-  vim.o.termguicolors = true
+  vim.opt.termguicolors = true
 
   -- Use 2 spaces as TAB
-  vim.o.expandtab = true
-  vim.o.shiftwidth = 2
-  vim.o.tabstop = 2
+  vim.opt.expandtab = true
+  vim.opt.shiftwidth = 2
+  vim.opt.tabstop = 2
 
   -- NOTE: Needed in order so Markdown files respect tab width
   vim.g.markdown_recommended_style = 0
 
   -- Allow changing the window title
-  vim.o.title = true
+  vim.opt.title = true
 
   -- Disable diagnostics when viewing diffs
   if vim.opt.diff:get() then
