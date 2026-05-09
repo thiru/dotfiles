@@ -52,6 +52,11 @@ export FZF_CTRL_T_OPTS="--preview 'bat --color=always {}'"
 # Ripgrep - specify config location
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
 
+# Pi
+export PI_OFFLINE=1
+export PI_SKIP_VERSION_CHECK=1
+export PI_TELEMETRY=0
+
 # PATH modifications
 # ------------------------------------------------------------------------------
 
