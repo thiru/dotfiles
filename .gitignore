@@ -9,6 +9,7 @@
 .nrepl-port
 .pi/agent/auth.json
 .pi/agent/sessions/
+.pi/agent/settings.json
 .rebel_readline_history
 scripts/clojure/classes/
 scripts/clojure/reports/
