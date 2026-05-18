@@ -191,6 +191,11 @@ local function setup()
     vim.diagnostic.enable(false)
   end
 
+  -- Diable missing provider warnings
+  vim.g.loaded_node_provider = false
+  vim.g.loaded_perl_provider = false
+  vim.g.loaded_ruby_provider = false
+
   enable_ui2()
   highlight_on_yank()
   maybe_show_listchars()
