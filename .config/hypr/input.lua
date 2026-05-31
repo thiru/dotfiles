@@ -14,6 +14,10 @@ hl.config({
       natural_scroll = false,
     },
   },
+  cursor = {
+    hide_on_key_press = true,
+    inactive_timeout = 3,
+  },
 })
 
 hl.gesture({
