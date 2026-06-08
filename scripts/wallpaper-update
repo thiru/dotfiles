@@ -6,5 +6,9 @@ set -eu
 
 WALLPAPER_PATH=~/Pictures/wallpaper/bing.jpg
 
-bing-wallpaper.clj "$WALLPAPER_PATH"
-swaybg --image "$WALLPAPER_PATH"
+if [ -f $WALLPAPER_PATH ]; then
+  swaybg --image $WALLPAPER_PATH
+fi
+
+bing-wallpaper.clj $WALLPAPER_PATH
+swaybg --image $WALLPAPER_PATH
