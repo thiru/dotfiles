@@ -12,7 +12,6 @@ p.add{
     vim.keymap.set('n', '<leader>f', plugin.new_float_term, {desc = 'New terminal float'})
 
     return {
-      auto_start = u.nvtmux_auto_started(),
       colorscheme = 'catppuccin-mocha',
       -- HACK: terminal colours aren't set correctly without this
       on_before_term_created = function()

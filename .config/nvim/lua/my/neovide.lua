@@ -12,7 +12,7 @@ function M.opacity_print()
 end
 
 function M.set_default_opacity()
-  if u.nvtmux_auto_started() then
+  if vim.tbl_contains(vim.v.argv, '+NvtmuxStart') then
     vim.g.neovide_opacity = M.terminal_opacity_override
   else
     vim.g.neovide_opacity = M.opacity_default
