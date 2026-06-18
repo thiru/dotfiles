@@ -4,7 +4,7 @@ local M = {
   opacity_default = 1.0,
   opacity_step = 0.05,
   terminal_opacity_override = vim.env.NEOVIM_TERM_OPACITY or 0.95,
-  scale_factor_delta_default = 1.1,
+  scale_factor_delta_default = 1.025,
 }
 
 function M.opacity_print()
