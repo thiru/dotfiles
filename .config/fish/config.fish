@@ -81,6 +81,12 @@ function set-abbreviations
   abbr -a z 'zathura'
 end
 
+function scroll-up --description "Exit terminal mode and scroll up half a page (only in Neovim terminal)"
+  if set -q NVIM
+    nvim --server $NVIM --remote-send '<C-space><C-u>' >/dev/null 2>&1
+  end
+end
+
 function set-keybinds
   # Go to directory
   bind -M insert \ch 'cdfzf-home'
@@ -89,6 +95,8 @@ function set-keybinds
   # Previous/next command
   bind -M insert \ck 'up-or-search'
   bind -M insert \cj 'down-or-search'
+
+  bind -M insert \cu 'scroll-up'
 
   # Accept complete fish suggestion
   bind -M insert \co forward-char
