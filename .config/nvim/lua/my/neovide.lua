@@ -1,5 +1,3 @@
-local u = require('my.utils')
-
 local M = {
   opacity_default = 1.0,
   opacity_step = 0.05,

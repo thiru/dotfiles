@@ -6,8 +6,9 @@ local function setup()
   vim.keymap.set({'i', 'v'}, '<C-space>', '<Esc>', {desc='Escape to normal mode', silent=true})
 
   -- Enter command-line mode
-  vim.keymap.set({'n', 'x'}, '<leader>j', ':', {desc='Enter command-linemode'})
+  vim.keymap.set({'n', 'x'}, '<leader>;', ':', {desc='Enter command-linemode'})
 
+  -- Clear notifications, etc.
   vim.keymap.set({'n', 'v'}, '<leader><leader>',
     function()
       vim.cmd('echo ""')
@@ -29,10 +30,13 @@ local function setup()
     { desc = 'Exit/Close Tab' })
   vim.keymap.set({ 'n', 'v' }, '<leader>Q', '<CMD>qall!<CR>', { desc = 'Exit (ignore unsaved changes/tabs)' })
 
+  -- Join lines
+  vim.keymap.set({'n', 'v'}, '<leader>j', '<S-j>', {desc='Join lines'})
+
   -- Buffer (prev) / Diff (next)
   vim.keymap.set(
     {'n', 'v'},
-    '<C-j>',
+    '<S-j>',
     function()
       if vim.wo.diff then
         vim.cmd('normal! ]czz')
@@ -45,7 +49,7 @@ local function setup()
   -- Buffer (next) / Diff (prev)
   vim.keymap.set(
     {'n', 'v'},
-    '<C-k>',
+    '<S-k>',
     function()
       if vim.wo.diff then
         vim.cmd('normal! [czz')
@@ -82,6 +86,7 @@ local function setup()
     { desc = 'Go to previous buffer/diff' })
 
   vim.keymap.set({'n', 'v'}, '<leader>a', '<CMD>b#<CR>', { desc = 'Go to alternate buffer' })
+  vim.keymap.set({'n', 'v'}, '<S-TAB>', '<CMD>b#<CR>', { desc = 'Go to alternate buffer' })
 
   -- Remap for dealing with word wrap
   vim.keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', { expr = true, silent = true })
@@ -124,8 +129,8 @@ local function setup()
   vim.keymap.set('i', '<C-s>', '<cmd>write<CR>', { desc = 'Save current file', silent = true })
 
   -- Command-line up/down
-  vim.keymap.set('c', '<C-j>', '<Down>', { desc = 'Next command (cmd-line mode)' })
-  vim.keymap.set('c', '<C-k>', '<Up>', { desc = 'Previous command (cmd-line mode)' })
+  vim.keymap.set('c', '<C-n>', '<Down>', { desc = 'Next command (cmd-line mode)' })
+  vim.keymap.set('c', '<C-p>', '<Up>', { desc = 'Previous command (cmd-line mode)' })
 
   -- Execute current file
   vim.keymap.set('n', '<leader>!', function() vim.cmd('!./%') end, {desc = 'Execute current script (shell)'})
@@ -176,7 +181,7 @@ local function setup()
   vim.keymap.set('n', '<leader>|', function() vim.o.cursorcolumn = not vim.o.cursorcolumn end, {desc = 'Toggle cursor column'})
 
   -- Tab - new
-  vim.keymap.set({'n', 'v', 't'}, '<C-t>', '<CMD>tabnew<CR>', {desc = 'New tab'})
+  vim.keymap.set({'n', 'v', 't'}, '<C-S-t>', '<CMD>tabnew<CR>', {desc = 'New tab'})
   vim.keymap.set('n', '<leader>tn', '<CMD>tabnew<CR>', {desc = 'New tab'})
 
   -- Tab - close
