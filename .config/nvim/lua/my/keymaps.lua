@@ -38,10 +38,11 @@ local function setup()
     {'n', 'v'},
     '<S-j>',
     function()
+      local count = vim.v.count > 0 and vim.v.count or 1
       if vim.wo.diff then
-        vim.cmd('normal! ]czz')
+        vim.cmd('normal! ' .. count .. ']czz')
       else
-        vim.cmd('bp')
+        vim.cmd('bp ' .. count)
       end
     end,
     { desc = 'Go to next buffer/diff' })
@@ -51,10 +52,11 @@ local function setup()
     {'n', 'v'},
     '<S-k>',
     function()
+      local count = vim.v.count > 0 and vim.v.count or 1
       if vim.wo.diff then
-        vim.cmd('normal! [czz')
+        vim.cmd('normal! ' .. count .. '[czz')
       else
-        vim.cmd('bn')
+        vim.cmd('bn ' .. count)
       end
     end,
     { desc = 'Go to previous buffer/diff' })
