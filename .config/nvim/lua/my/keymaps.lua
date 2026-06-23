@@ -33,10 +33,13 @@ local function setup()
   -- Join lines
   vim.keymap.set({'n', 'v'}, '<leader>j', '<S-j>', {desc='Join lines'})
 
+  -- Docs
+  vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, {desc='LSP hover doc', noremap=true})
+
   -- Buffer (prev) / Diff (next)
   vim.keymap.set(
     {'n', 'v'},
-    '<S-j>',
+    'J',
     function()
       local count = vim.v.count > 0 and vim.v.count or 1
       if vim.wo.diff then
@@ -50,7 +53,7 @@ local function setup()
   -- Buffer (next) / Diff (prev)
   vim.keymap.set(
     {'n', 'v'},
-    '<S-k>',
+    'K',
     function()
       local count = vim.v.count > 0 and vim.v.count or 1
       if vim.wo.diff then
