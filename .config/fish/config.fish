@@ -89,8 +89,8 @@ end
 
 function set-keybinds
   # Go to directory
-  bind -M insert \ch 'cdfzf-home'
-  bind -M insert \cg 'cdfzf-relative'
+  bind -M insert \cg 'cdfzf-home'
+  bind -M insert \ch 'cdfzf-relative'
 
   # Previous/next command
   bind -M insert \ck 'up-or-search'
