@@ -340,7 +340,7 @@ binds {
     Mod+Space hotkey-overlay-title="App Launcher" { spawn "fuzzel"; }
 
     // Terminal (primary - Neovide)
-    Mod+Return hotkey-overlay-title="Terminal (Neovide)" { spawn "neovide" "--" "--cmd" "lua vim.g.nvtmux_auto_start = true"; }
+    Mod+Return hotkey-overlay-title="Terminal (Neovide)" { spawn "neovide" "--" "--cmd" "lua vim.g.tabnv_auto_start = true"; }
 
     // Terminal (secondary - Kitty)
     Mod+Ctrl+Return hotkey-overlay-title="Terminal (Kitty)" { spawn "kitty"; }
@@ -349,7 +349,7 @@ binds {
     Mod+V hotkey-overlay-title="Neovide" { spawn "neovide"; }
 
     // Opencode
-    Mod+Ctrl+O repeat=false { spawn "neovide" "--" "--cmd" "lua vim.g.nvtmux_auto_start = true" "--cmd" "lua vim.g.nvtmux_auto_start_cmd = 'opencode ~/tmp'"; }
+    Mod+Ctrl+O repeat=false { spawn "neovide" "--" "--cmd" "lua vim.g.tabnv_auto_start = true" "--cmd" "lua vim.g.tabnv_auto_start_cmd = 'opencode ~/tmp'"; }
 
     // Calculator
     Mod+C hotkey-overlay-title="Calculator" { spawn "kitty" "--app-id" "launcher" "sh" "-c" "echo Calculator && qalc"; }

@@ -134,7 +134,7 @@ input type:touchpad {
 bindsym $mod+Ctrl+Return exec $term
 
 # Launch a Neovim terminal (in Neovide)
-bindsym $mod+Return exec neovide --no-tabs "$@" -- --cmd 'lua vim.g.nvtmux_auto_start = true'
+bindsym $mod+Return exec neovide --no-tabs "$@" -- --cmd 'lua vim.g.tabnv_auto_start = true'
 
 # Launch Neovim in Neovim
 bindsym $mod+v exec neovide

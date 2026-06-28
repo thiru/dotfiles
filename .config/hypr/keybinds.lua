@@ -6,7 +6,7 @@ local editor = 'neovide'
 local fileManager = 'thunar'
 local launcher = 'fuzzel'
 local terminal = 'kitty'
-local nvterm = 'neovide -- +NvtmuxStart'
+local nvterm = 'neovide -- +TabnvStart'
 local curr_zoom = 1.0
 
 local function zoom(diff)
@@ -36,7 +36,7 @@ hl.bind(mod .. ' + V', hl.dsp.exec_cmd(editor))
 hl.bind(mod .. ' + E', hl.dsp.exec_cmd(fileManager))
 
 -- Calculator
-hl.bind(mod .. ' + C', hl.dsp.exec_cmd('neovide --wayland_app_id launcher -- +NvtmuxStart --cmd "lua vim.g.nvtmux_auto_start_cmd = \'qalc\'"'))
+hl.bind(mod .. ' + C', hl.dsp.exec_cmd('neovide --wayland_app_id launcher -- +TabnvStart --cmd "lua vim.g.tabnv_auto_start_cmd = \'qalc\'"'))
 
 -- Emoji Picker
 hl.bind(mod .. ' + CTRL + E', hl.dsp.exec_cmd('bemoji -c -t'))

@@ -3,9 +3,9 @@ local u = require('my.utils')
 local neovide = require('my.neovide')
 
 p.add{
-  src = 'https://github.com/thiru/nvtmux.nvim',
-  dev_src = 'file:///~/code/nvtmux.nvim',
-  name = 'nvtmux',
+  src = 'https://github.com/thiru/tabnv.nvim',
+  dev_src = 'file:///~/code/tabnv.nvim',
+  name = 'tabnv',
   enabled = not u.diff_mode(),
   opts = {
     colorscheme = 'catppuccin-mocha',

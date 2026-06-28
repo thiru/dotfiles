@@ -16,7 +16,7 @@
 
 (def usage "Usage: find-cmd.clj <fzf|walker> [PATHS]")
 
-(def terminal-cmd "neovide -- --cmd 'lua vim.g.nvtmux_auto_start = true' --cmd 'lua vim.g.nvtmux_auto_start_cmd = \"confirm-quit %s\"'")
+(def terminal-cmd "neovide -- --cmd 'lua vim.g.tabnv_auto_start = true' --cmd 'lua vim.g.tabnv_auto_start_cmd = \"confirm-quit %s\"'")
 ; (def terminal-cmd "kitty --hold %s") ; A simpler alternative
 
 (s/def ::java-file #(instance? java.io.File %))

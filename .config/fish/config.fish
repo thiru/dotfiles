@@ -110,9 +110,9 @@ function my_postexec --on-event fish_postexec --description "Update git branch i
     # Git branch
     set -l git_branch (git branch --show-current 2>/dev/null)
     if test -n "$git_branch"
-      nvim --server $NVIM --remote-send "<CMD>lua require('nvtmux').set_git_branch('$git_branch')<CR>"
+      nvim --server $NVIM --remote-send "<CMD>lua require('tabnv').set_git_branch('$git_branch')<CR>"
     else
-      nvim --server $NVIM --remote-send "<CMD>lua require('nvtmux').set_git_branch('')<CR>"
+      nvim --server $NVIM --remote-send "<CMD>lua require('tabnv').set_git_branch('')<CR>"
     end
   end
 end
