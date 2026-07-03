@@ -71,6 +71,11 @@ PATH="$PATH:$HOME/.cargo/bin"
 # Golang - add binaries to PATH
 PATH="$PATH:$HOME/go/bin"
 
+# Guix
+if [ -d "$HOME/.guix-profile/bin" ]; then
+  PATH="$PATH:$HOME/.guix-profile/bin"
+fi
+
 # Add my custom scripts to PATH
 PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/scripts:$HOME/scripts/clojure/src/scripts"
 
