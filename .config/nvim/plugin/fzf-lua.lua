@@ -28,7 +28,7 @@ p.add{
     config.defaults.actions.files['ctrl-q'] = actions.file_sel_to_qf
 
     vim.keymap.set('n', '<leader>sa', '<CMD>FzfLua manpages<CR>', {desc = 'Search Manpages'})
-    vim.keymap.set('n', '<leader>sb', '<CMD>FzfLua lgrep_curbuf<CR>', {desc = 'Search Current Buffer'})
+    vim.keymap.set('n', '<leader>sb', '<CMD>FzfLua grep_curbuf<CR>', {desc = 'Search Current Buffer'})
     vim.keymap.set('n', '<leader>sc', '<CMD>FzfLua commands<CR>', {desc = 'Search Commands'})
     vim.keymap.set('n', '<leader>sdd', '<CMD>FzfLua diagnostics_document<CR>', {desc = 'Search Document Diagnostics'})
     vim.keymap.set('n', '<leader>sdw', '<CMD>FzfLua diagnostics_workspace<CR>', {desc = 'Search Worspace Diagnostics'})
@@ -50,7 +50,7 @@ p.add{
     vim.keymap.set('n', '<leader>st', '<CMD>FzfLua tabs<CR>', {desc = 'Search tabs'})
     vim.keymap.set('n', '<leader>sp',
       function()
-        plugin.live_grep_native({rg_opts="--hidden --glob '!.git' --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e"})
+        plugin.grep_project({rg_opts="--hidden --glob '!.git' --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e"})
       end,
       {desc = 'Search Entire Project'})
     vim.keymap.set('n', '<leader>sv',
