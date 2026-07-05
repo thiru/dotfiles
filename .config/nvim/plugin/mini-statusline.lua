@@ -16,20 +16,20 @@ p.add{
     return {
       content = {
         active = function()
-          local mode, mode_hl = plugin.section_mode({ trunc_width = 120 })
-          local mode_fmt      = mode:sub(1,1)
-          local cwd           = u.get_cwd()
-          local parent_dir    = vim.bo.buftype == 'terminal' and '' or u.get_file_parent()
-          local git           = vim.bo.buftype == 'terminal' and term_branch() or plugin.section_git({ trunc_width = 40 })
-          local diff          = plugin.section_diff({ trunc_width = 75 })
-          local diagnostics   = plugin.section_diagnostics({ trunc_width = 75 })
-          local lsp           = plugin.section_lsp({ trunc_width = 75 })
-          local fileinfo      = plugin.section_fileinfo({ trunc_width = 120 })
-          local location      = plugin.section_location({ trunc_width = 75 })
-          local search        = plugin.section_searchcount({ trunc_width = 75 })
+          local tab_info    = tostring(vim.api.nvim_tabpage_get_number(0)) .. '/' .. tostring(vim.fn.tabpagenr('$'))
+          local _, mode_hl  = plugin.section_mode({ trunc_width = 120 })
+          local cwd         = u.get_cwd()
+          local parent_dir  = vim.bo.buftype == 'terminal' and '' or u.get_file_parent()
+          local git         = vim.bo.buftype == 'terminal' and term_branch() or plugin.section_git({ trunc_width = 40 })
+          local diff        = plugin.section_diff({ trunc_width = 75 })
+          local diagnostics = plugin.section_diagnostics({ trunc_width = 75 })
+          local lsp         = plugin.section_lsp({ trunc_width = 75 })
+          local fileinfo    = plugin.section_fileinfo({ trunc_width = 120 })
+          local location    = plugin.section_location({ trunc_width = 75 })
+          local search      = plugin.section_searchcount({ trunc_width = 75 })
 
           return plugin.combine_groups({
-            { hl = mode_hl,                  strings = {mode_fmt} },
+            { hl = mode_hl,  strings = {tab_info} },
             { hl = 'MiniStatuslineFilename', strings = {cwd} },
             { hl = 'MiniStatuslineFilename', strings = {parent_dir} },
             '%<', -- Mark general truncate point
