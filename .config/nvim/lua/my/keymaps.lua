@@ -172,6 +172,14 @@ local function setup()
   vim.keymap.set('n', '<leader>yD', ':let @+ = expand("%:p:h")<CR>',
          { desc = 'Copy full directory path to system clipboard' })
 
+  -- Copy statusline output to clipboard
+  vim.keymap.set('n', '<leader>ys',
+         function ()
+           local sl = vim.api.nvim_eval_statusline(vim.o.statusline, {}).str
+           vim.fn.setreg('+', sl)
+         end,
+         { desc = 'Copy statusline output to system clipboard' })
+
   -- Paste from clipboard
   vim.keymap.set({'c', 'i'}, '<C-v>', '<C-r>+', { desc = 'Paste from system clipboard (command/insert mode)' })
   vim.keymap.set('n', '<C-v>', 'p', { desc = 'Paste from system clipboard (normal mode)' })
