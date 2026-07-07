@@ -24,7 +24,6 @@ p.add{
           local diff        = plugin.section_diff({ trunc_width = 75 })
           local diagnostics = plugin.section_diagnostics({ trunc_width = 75 })
           local lsp         = plugin.section_lsp({ trunc_width = 75 })
-          local fileinfo    = plugin.section_fileinfo({ trunc_width = 120 })
           local location    = plugin.section_location({ trunc_width = 75 })
           local search      = plugin.section_searchcount({ trunc_width = 75 })
 
@@ -33,9 +32,9 @@ p.add{
             { hl = 'MiniStatuslineFilename', strings = {cwd} },
             { hl = 'MiniStatuslineFilename', strings = {parent_dir} },
             '%<', -- Mark general truncate point
-            { hl = 'FloatBorder',            strings = {git, diff, diagnostics, lsp} },
+            { hl = 'FloatBorder',            strings = {diagnostics, lsp, diff} },
             '%=', -- End left alignment
-            { hl = 'MiniStatuslineFileinfo', strings = {fileinfo} },
+            { hl = mode_hl,                  strings = {git} },
             { hl = 'FloatBorder',            strings = {search, location} },
           })
         end
