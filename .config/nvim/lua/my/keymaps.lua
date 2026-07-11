@@ -30,16 +30,10 @@ local function setup()
     { desc = 'Exit/Close Tab' })
   vim.keymap.set({ 'n', 'v' }, '<leader>Q', '<CMD>qall!<CR>', { desc = 'Exit (ignore unsaved changes/tabs)' })
 
-  -- Join lines
-  vim.keymap.set({'n', 'v'}, '<leader>j', '<S-j>', {desc='Join lines'})
-
-  -- Docs
-  vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, {desc='LSP hover doc', noremap=true})
-
   -- Buffer (prev) / Diff (next)
   vim.keymap.set(
     {'n', 'v'},
-    'J',
+    '<C-j>',
     function()
       local count = vim.v.count > 0 and vim.v.count or 1
       if vim.wo.diff then
@@ -53,7 +47,7 @@ local function setup()
   -- Buffer (next) / Diff (prev)
   vim.keymap.set(
     {'n', 'v'},
-    'K',
+    '<C-k>',
     function()
       local count = vim.v.count > 0 and vim.v.count or 1
       if vim.wo.diff then
