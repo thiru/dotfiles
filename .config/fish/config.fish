@@ -3,6 +3,11 @@
 # Functions
 # ----------
 
+function go-to-a-prev-dir --description "Go to previously visited directory"
+   set -l dir (printf '%s\n' $dirprev | grep -v '^$' | tac | awk '!seen[$0]++' | fzf)
+   and cd $dir
+end
+
 function mkcd --description "Create a directory and cd into it"
   switch "$argv[1]"
     case '*/..' '*/../'
@@ -74,6 +79,7 @@ end
 function set-keybinds
   # Go to directory
   bind -M insert \cg 'fzf-cd-widget'
+  bind -M insert \cf 'go-to-a-prev-dir'
 
   # Previous/next command
   bind -M insert \ck 'up-or-search'
