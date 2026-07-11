@@ -3,22 +3,6 @@
 # Functions
 # ----------
 
-function cdfzf-home --description "Go to directory via fzf and fd (starting from home dir)"
-  set -l dir (fd --follow --type directory --hidden --max-depth 4 . $HOME | fzf --no-multi)
-  if test -n "$dir"
-    cd "$dir"
-    commandline -f repaint
-  end
-end
-
-function cdfzf-relative --description "Go to directory via fzf and fd (relative to cwd)"
-  set -l dir (fd --follow --type directory --hidden . | fzf --no-multi)
-  if test -n "$dir"
-    cd "$dir"
-    commandline -f repaint
-  end
-end
-
 function mkcd --description "Create a directory and cd into it"
   switch "$argv[1]"
     case '*/..' '*/../'
@@ -89,8 +73,7 @@ end
 
 function set-keybinds
   # Go to directory
-  bind -M insert \cg 'cdfzf-home'
-  bind -M insert \cf 'cdfzf-relative'
+  bind -M insert \cg 'fzf-cd-widget'
 
   # Previous/next command
   bind -M insert \ck 'up-or-search'
