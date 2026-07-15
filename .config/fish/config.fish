@@ -8,6 +8,14 @@ function go-to-a-prev-dir --description "Go to previously visited directory"
    and cd $dir
 end
 
+function fzf-cd --description "Go to directory via fzf and fd (relative to cwd)"
+  set -l dir (fd --follow --type directory --hidden --max-depth 7 . | fzf --no-multi)
+  if test -n "$dir"
+    cd "$dir"
+    commandline -f repaint
+  end
+end
+
 function mkcd --description "Create a directory and cd into it"
   switch "$argv[1]"
     case '*/..' '*/../'
@@ -78,7 +86,7 @@ end
 
 function set-keybinds
   # Go to directory
-  bind -M insert \cg 'fzf-cd-widget'
+  bind -M insert \cg 'fzf-cd'
   bind -M insert \cf 'go-to-a-prev-dir'
 
   # Previous/next command
