@@ -5,6 +5,8 @@
   ap = add -p
   br = branch
   bra = branch -a
+  brd = "!f() { git branch -d $1; git push origin :$1; }; f"
+  brD = "!f() { git branch -D $1; git push origin :$1; }; f"
   ci = "!f() { git commit -m \"$*\"; }; f"
   cia = commit --amend --reset-author
   cibuild = "!f() { git commit -m \"build$*\"; }; f"
