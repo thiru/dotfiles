@@ -78,6 +78,12 @@ function set-abbreviations
   abbr -a z 'zathura'
 end
 
+function move-up --description "Exit terminal mode and move up one line (only in Neovim terminal)"
+  if set -q NVIM
+    nvim --server $NVIM --remote-send '<C-space><C-y>' >/dev/null 2>&1
+  end
+end
+
 function scroll-up --description "Exit terminal mode and scroll up half a page (only in Neovim terminal)"
   if set -q NVIM
     nvim --server $NVIM --remote-send '<C-space><C-u>' >/dev/null 2>&1
@@ -93,6 +99,7 @@ function set-keybinds
   bind -M insert \ck 'up-or-search'
   bind -M insert \cj 'down-or-search'
 
+  bind -M insert \cy 'move-up'
   bind -M insert \cu 'scroll-up'
 
   # Accept complete fish suggestion
