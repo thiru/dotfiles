@@ -33,6 +33,8 @@
   p = pull --rebase
   ps = push
   psf = push --force-with-lease
+  rba = rebase --abort
+  rbc = rebase --continue
   rbi = "!f() { git rebase --interactive HEAD~$1; }; f"
   re = "!git branch --sort=-committerdate | head -n 10 ; git branch --sort=-committerdate -a | grep -E 'origin' | grep -v 'HEAD' | sed 's,remotes/,,' | head -n 10"
   rh = reset --hard
