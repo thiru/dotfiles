@@ -27,7 +27,7 @@
   dfb = "git-dfb"
   dfs = difftool --staged
   fw = commit -m'feat: wip'
-  l = log --pretty=format:'%C(yellow)%h%Creset %s %C(green)[%ar] %C(red)[%an]' -15 --graph
+  l = log --pretty=format:'%C(yellow)%h%Creset %s %C(green)[%ar] %C(red)[%an]' -20 --graph
   ll = log --pretty=format:'%C(yellow)%h%Creset %s %C(green)[%ar] %C(red)[%an]' --graph
   p = pull --rebase
   ps = push
