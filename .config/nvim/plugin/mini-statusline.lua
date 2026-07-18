@@ -1,5 +1,6 @@
 local p = require('my.packin')
 local u = require('my.utils')
+local tnvws = require('tabnv.workspace')
 
 --- Get git branch for terminal.
 --- This is set externally (currently from a fish trigger)
@@ -16,8 +17,9 @@ p.add{
     return {
       content = {
         active = function()
-          local tab_info    = tostring(vim.api.nvim_tabpage_get_number(0)) .. '/' .. tostring(vim.fn.tabpagenr('$'))
           local _, mode_hl  = plugin.section_mode({ trunc_width = 120 })
+          local workspaces  = tnvws.print_workspaces()
+          local tabs        = tnvws.print_tabs()
           local cwd         = u.get_cwd()
           local parent_dir  = vim.bo.buftype == 'terminal' and '' or u.get_file_parent()
           local git         = vim.bo.buftype == 'terminal' and term_branch() or plugin.section_git({ trunc_width = 40 })
@@ -28,14 +30,13 @@ p.add{
           local search      = plugin.section_searchcount({ trunc_width = 75 })
 
           return plugin.combine_groups({
-            { hl = mode_hl,  strings = {tab_info} },
-            { hl = 'MiniStatuslineFilename', strings = {cwd} },
-            { hl = 'MiniStatuslineFilename', strings = {parent_dir} },
+            { hl = mode_hl,                  strings = {workspaces} },
+            { hl = 'FloatBorder',            strings = {tabs} },
+            { hl = 'MiniStatuslineFilename', strings = {cwd, parent_dir} },
             '%<', -- Mark general truncate point
-            { hl = 'FloatBorder',            strings = {diagnostics, lsp, diff} },
             '%=', -- End left alignment
+            { hl = 'FloatBorder',            strings = {diagnostics, lsp, diff, search, location} },
             { hl = mode_hl,                  strings = {git} },
-            { hl = 'FloatBorder',            strings = {search, location} },
           })
         end
       }
