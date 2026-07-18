@@ -1,7 +1,6 @@
 [alias]
-  a = add
+  a = add -A
   a3 = !sh -c 'git add -A && git commit --amend --reset-author'
-  aa = add -A
   ap = add -p
   br = branch
   bra = branch -a
