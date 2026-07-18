@@ -6,21 +6,22 @@
   bra = branch -a
   brd = "!f() { git branch -d $1; git push origin :$1; }; f"
   brD = "!f() { git branch -D $1; git push origin :$1; }; f"
-  ci = "!f() { git commit -m \"$*\"; }; f"
-  cia = commit --amend --reset-author
-  cibuild = "!f() { git commit -m \"build: $*\"; }; f"
-  cichore = "!f() { git commit -m \"chore: $*\"; }; f"
-  cici = "!f() { git commit -m \"ci: $*\"; }; f"
-  cidocs = "!f() { git commit -m \"docs: $*\"; }; f"
-  cifeat = "!f() { git commit -m \"feat: $*\"; }; f"
-  cifix = "!f() { git commit -m \"fix: $*\"; }; f"
-  ciperf = "!f() { git commit -m \"perf: $*\"; }; f"
-  cirefactor = "!f() { git commit -m \"refactor: $*\"; }; f"
-  cirevert = "!f() { git commit -m \"revert: $*\"; }; f"
-  cistyle = "!f() { git commit -m \"style: $*\"; }; f"
-  citest = "!f() { git commit -m \"test: $*\"; }; f"
+  c = "!f() { git commit -m \"$*\"; }; f"
+  ca = commit --amend --reset-author
+  ci = commit
   co = checkout
   cp = cherry-pick
+  cbuild = "!f() { git commit -m \"build: $*\"; }; f"
+  cchore = "!f() { git commit -m \"chore: $*\"; }; f"
+  cci = "!f() { git commit -m \"ci: $*\"; }; f"
+  cdocs = "!f() { git commit -m \"docs: $*\"; }; f"
+  cfeat = "!f() { git commit -m \"feat: $*\"; }; f"
+  cfix = "!f() { git commit -m \"fix: $*\"; }; f"
+  cperf = "!f() { git commit -m \"perf: $*\"; }; f"
+  crefactor = "!f() { git commit -m \"refactor: $*\"; }; f"
+  crevert = "!f() { git commit -m \"revert: $*\"; }; f"
+  cstyle = "!f() { git commit -m \"style: $*\"; }; f"
+  ctest = "!f() { git commit -m \"test: $*\"; }; f"
   d = diff
   ds = diff --staged
   df = difftool
@@ -38,7 +39,7 @@
   re = "!git branch --sort=-committerdate | head -n 10 ; git branch --sort=-committerdate -a | grep -E 'origin' | grep -v 'HEAD' | sed 's,remotes/,,' | head -n 10"
   rh = reset --hard
   rs = reset --soft HEAD~
-  st = status
+  s = status
 [init]
   defaultBranch = master
 [credential]
