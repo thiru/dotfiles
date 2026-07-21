@@ -9,7 +9,7 @@ function go-to-a-prev-dir --description "Go to previously visited directory"
 end
 
 function fzf-cd --description "Go to directory via fzf and fd (relative to cwd)"
-  set -l dir (fd --follow --type directory --hidden --max-depth 7 . | fzf --no-multi)
+  set -l dir (fd --follow --type directory --hidden --max-depth 5 . | fzf --no-multi)
   if test -n "$dir"
     cd "$dir"
     commandline -f repaint
