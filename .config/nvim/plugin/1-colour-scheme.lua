@@ -4,6 +4,7 @@ p.add{
   src = 'https://github.com/catppuccin/nvim',
   name = 'catppuccin',
   opts = {
+    auto_integrations = true,
     flavour = 'latte',
     term_colors = true,
   },
