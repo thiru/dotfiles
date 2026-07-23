@@ -5,6 +5,27 @@ local M = {
   found_rust = nil
 }
 
+function M.pretty_print(obj, indent)
+  if indent == nil then indent = 0 end
+  local pad = string.rep("  ", indent)
+
+  if type(obj) ~= "table" then
+    return pad .. tostring(obj) .. "\n"
+  end
+
+  local str = pad .. "{\n"
+  for k, v in pairs(obj) do
+    local key_str = type(k) == "string" and k or "[" .. tostring(k) .. "]"
+    if type(v) == "table" then
+      str = str .. pad .. "  " .. key_str .. " =\n"
+      str = str .. M.pretty_print(v, indent + 1)
+    else
+      str = str .. pad .. "  " .. key_str .. " = " .. tostring(v) .. "\n"
+    end
+  end
+  return str .. pad .. "}\n"
+end
+
 --- Determine if running in diff mode.
 function M.diff_mode()
   return vim.opt.diff:get() or vim.wo.diff or vim.env.VIMDIFF_MODE == '1'
