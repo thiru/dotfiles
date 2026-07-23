@@ -17,19 +17,6 @@ local function setup()
     end,
     {desc='Clear stuff...', silent=true})
 
-  -- Quit
-  vim.keymap.set(
-    { 'n', 'v' }, '<leader>q',
-    function()
-      if #vim.api.nvim_list_tabpages() <= 1 then
-        vim.cmd.quitall()
-      else
-        vim.cmd.tabclose()
-      end
-    end,
-    { desc = 'Exit/Close Tab' })
-  vim.keymap.set({ 'n', 'v' }, '<leader>Q', '<CMD>qall!<CR>', { desc = 'Exit (ignore unsaved changes/tabs)' })
-
   -- Buffer (prev) / Diff (next)
   vim.keymap.set(
     {'n', 'v'},
@@ -183,17 +170,6 @@ local function setup()
 
   -- Toggle cursor column
   vim.keymap.set('n', '<leader>|', function() vim.o.cursorcolumn = not vim.o.cursorcolumn end, {desc = 'Toggle cursor column'})
-
-  -- Tab - new
-  vim.keymap.set({'n', 'v', 't'}, '<C-S-t>', '<CMD>tabnew<CR>', {desc = 'New tab'})
-  vim.keymap.set('n', '<leader>tn', '<CMD>tabnew<CR>', {desc = 'New tab'})
-
-  -- Tab - close
-  vim.keymap.set('n', '<leader>td', '<CMD>tabclose<CR>', {desc = 'Close tab'})
-
-  -- Tab - move left/right
-  vim.keymap.set('n', '<leader>th', '<CMD>-tabmove<CR>', {desc = 'Move tab left'})
-  vim.keymap.set('n', '<leader>tl', '<CMD>+tabmove<CR>', {desc = 'Move tab right'})
 
   -- Window nav - left/down/up/right
   vim.keymap.set({'i', 't'}, '<A-h>', '<C-\\><C-N><C-w>hi')
