@@ -43,7 +43,15 @@ p.add{
     vim.keymap.set('n', '<leader>sk', '<CMD>FzfLua keymaps<CR>', {desc = 'Search Keymaps'})
     vim.keymap.set('n', '<leader>sl', '<CMD>FzfLua lsp_references<CR>', {desc = 'Search LSP references'})
     vim.keymap.set('n', '<leader>sm', '<CMD>FzfLua marks<CR>', {desc = 'Search Marks'})
-    vim.keymap.set('n', '<leader>so', '<CMD>FzfLua oldfiles<CR>', {desc = 'Search Recent Files'})
+    vim.keymap.set('n', '<leader>so',
+      function()
+        plugin.oldfiles({stat_file = function(filename)
+          return filename ~= '/dev/null'
+            and plugin.utils.file_is_readable(filename)
+            and (filename:sub(-#'COMMIT_EDITMSG') ~= 'COMMIT_EDITMSG')
+        end})
+      end,
+      {desc = 'Search Recent Files'})
     vim.keymap.set('n', '<leader>sr', '<CMD>FzfLua registers<CR>', {desc = 'Search Registers' })
     vim.keymap.set('n', '<leader>sR', '<CMD>FzfLua resume<CR>', {desc = 'Resume latest picker' })
     vim.keymap.set('v', '<leader>ss', '<CMD>FzfLua grep_visual<CR>', {desc = 'Search visual selection'})
