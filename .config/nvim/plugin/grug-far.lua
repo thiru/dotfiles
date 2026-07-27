@@ -1,12 +1,10 @@
-local p = require('my.packin')
-local u = require('my.utils')
+if require('my.utils').diff_mode() then return end
 
-p.add{
-  src = 'https://github.com/MagicDuck/grug-far.nvim',
+vim.pack.add({{
   name = 'grug-far',
-  enabled = not u.diff_mode(),
-  opts = {},
-  after_load = function()
-    vim.keymap.set('n',  '<leader>S', '<CMD>GrugFar<CR>', {desc = 'Search and Replace'})
-  end
-}
+  src = 'https://github.com/MagicDuck/grug-far.nvim',
+}})
+
+require('grug-far').setup()
+
+vim.keymap.set('n',  '<leader>S', '<CMD>GrugFar<CR>', {desc = 'Search and Replace'})

@@ -1,5 +1,3 @@
-local p = require('my.packin')
-
 --- Disable tabline if there is only one tabpage and its buffer is a terminal.
 local function toggle_tabline()
   if vim.fn.tabpagenr('$') == 1 and vim.bo.buftype == 'terminal' then
@@ -11,20 +9,15 @@ local function toggle_tabline()
   end
 end
 
-local function setup_tabline_toggle_autocmd()
-  vim.api.nvim_create_autocmd('TabEnter', {
-    pattern = '*',
-    callback = toggle_tabline
-  })
-end
+vim.pack.add({'https://github.com/nvim-mini/mini.tabline'})
 
-p.add{
-  src = 'https://github.com/nvim-mini/mini.tabline',
-  opts = {
-    tabpage_section = 'none',
-  },
-  after_load = function()
-    setup_tabline_toggle_autocmd()
-    vim.schedule(toggle_tabline)
-  end
-}
+require('mini.tabline').setup({
+  tabpage_section = 'none',
+})
+
+vim.api.nvim_create_autocmd('TabEnter', {
+  pattern = '*',
+  callback = toggle_tabline
+})
+
+vim.schedule(toggle_tabline)

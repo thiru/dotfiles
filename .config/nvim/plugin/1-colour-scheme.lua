@@ -1,14 +1,12 @@
-local p = require('my.packin')
-
-p.add{
-  src = 'https://github.com/catppuccin/nvim',
+vim.pack.add({{
   name = 'catppuccin',
-  opts = {
-    auto_integrations = true,
-    flavour = 'latte',
-    term_colors = true,
-  },
-  after_load = function()
-    vim.cmd.colorscheme('catppuccin-nvim')
-  end
-}
+  src = 'https://github.com/catppuccin/nvim',
+}})
+
+require('catppuccin').setup({
+  auto_integrations = true,
+  flavour = 'latte',
+  term_colors = true,
+})
+
+vim.cmd.colorscheme('catppuccin-nvim')

@@ -1,10 +1,5 @@
-local p = require('my.packin')
+vim.pack.add({'https://github.com/nvim-mini/mini-git'})
 
-p.add{
-  src = 'https://github.com/nvim-mini/mini-git',
-  name = 'mini.git',
-  opts = {},
-  after_load = function()
-    vim.keymap.set({'n', 'v'}, 'g<leader>', ':Git ', {desc = 'mini-git prompt'})
-  end
-}
+require('mini.git').setup()
+
+vim.keymap.set({'n', 'v'}, 'g<leader>', ':Git ', {desc = 'mini-git prompt'})

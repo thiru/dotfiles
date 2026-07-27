@@ -1,15 +1,14 @@
-local p = require('my.packin')
-local u = require('my.utils')
+if require('my.utils').diff_mode() then return end
 
-p.add{
+vim.pack.add({{
   src = 'https://github.com/folke/lazydev.nvim',
   name = 'lazydev',
-  enabled = not u.diff_mode(),
-  opts = {
-    library = {
-      -- See the configuration section for more details
-      -- Load luvit types when the `vim.uv` word is found
-      { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-    },
+}})
+
+require('lazydev').setup({
+  library = {
+    -- See the configuration section for more details
+    -- Load luvit types when the `vim.uv` word is found
+    { path = "${3rd}/luv/library", words = { "vim%.uv" } },
   },
-}
+})

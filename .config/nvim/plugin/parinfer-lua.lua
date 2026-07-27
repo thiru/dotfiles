@@ -1,7 +1,4 @@
-local p = require('my.packin')
 local u = require('my.utils')
+if u.diff_mode() or u.has_rust() then return end
 
-p.add{
-  src = 'https://github.com/gpanders/nvim-parinfer',
-  enabled = not u.diff_mode() and not u.has_rust(),
-}
+vim.pack.add({'https://github.com/gpanders/nvim-parinfer'})

@@ -1,11 +1,10 @@
-local p = require('my.packin')
-local u = require('my.utils')
+if require('my.utils').diff_mode() then return end
 
-p.add{
-  src = 'https://github.com/wsdjeg/rooter.nvim',
+vim.pack.add({{
   name = 'rooter',
-  enabled = not u.diff_mode(),
-  opts = {
-    root_patterns = { '.git/' },
-  }
-}
+  src = 'https://github.com/wsdjeg/rooter.nvim',
+}})
+
+require('rooter').setup({
+  root_patterns = { '.git/' },
+})

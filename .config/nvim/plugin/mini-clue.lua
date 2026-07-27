@@ -1,51 +1,48 @@
-local p = require('my.packin')
+vim.pack.add({'https://github.com/nvim-mini/mini.clue'})
 
-p.add{
-  src = 'https://github.com/nvim-mini/mini.clue',
-  opts = function(plugin)
-    return {
-      clues = {
-        -- Enhance this by adding descriptions for <Leader> mapping groups
-        plugin.gen_clues.square_brackets(),
-        plugin.gen_clues.builtin_completion(),
-        plugin.gen_clues.g(),
-        plugin.gen_clues.marks(),
-        plugin.gen_clues.registers(),
-        plugin.gen_clues.windows(),
-        plugin.gen_clues.z(),
-      },
-      triggers = {
-        -- Leader triggers
-        { mode = { 'n', 'x' }, keys = '<leader>' },
-        { mode = { 'n', 'x' }, keys = '<localleader>' },
+local plugin = require('mini.clue')
 
-        -- `[` and `]` keys
-        { mode = 'n', keys = '[' },
-        { mode = 'n', keys = ']' },
+plugin.setup({
+  clues = {
+    -- Enhance this by adding descriptions for <Leader> mapping groups
+    plugin.gen_clues.square_brackets(),
+    plugin.gen_clues.builtin_completion(),
+    plugin.gen_clues.g(),
+    plugin.gen_clues.marks(),
+    plugin.gen_clues.registers(),
+    plugin.gen_clues.windows(),
+    plugin.gen_clues.z(),
+  },
+  triggers = {
+    -- Leader triggers
+    { mode = { 'n', 'x' }, keys = '<leader>' },
+    { mode = { 'n', 'x' }, keys = '<localleader>' },
 
-        -- Built-in completion
-        { mode = 'i', keys = '<C-x>' },
+    -- `[` and `]` keys
+    { mode = 'n', keys = '[' },
+    { mode = 'n', keys = ']' },
 
-        -- `g` key
-        { mode = { 'n', 'x' }, keys = 'g' },
+    -- Built-in completion
+    { mode = 'i', keys = '<C-x>' },
 
-        -- Marks
-        { mode = { 'n', 'x' }, keys = "'" },
-        { mode = { 'n', 'x' }, keys = '`' },
+    -- `g` key
+    { mode = { 'n', 'x' }, keys = 'g' },
 
-        -- Registers
-        { mode = { 'n', 'x' }, keys = '"' },
-        { mode = { 'i', 'c' }, keys = '<C-r>' },
+    -- Marks
+    { mode = { 'n', 'x' }, keys = "'" },
+    { mode = { 'n', 'x' }, keys = '`' },
 
-        -- Window commands
-        { mode = 'n', keys = '<C-w>' },
+    -- Registers
+    { mode = { 'n', 'x' }, keys = '"' },
+    { mode = { 'i', 'c' }, keys = '<C-r>' },
 
-        -- `z` key
-        { mode = { 'n', 'x' }, keys = 'z' },
-      },
-      window = {
-        delay = 500,
-      },
-    }
-  end
-}
+    -- Window commands
+    { mode = 'n', keys = '<C-w>' },
+
+    -- `z` key
+    { mode = { 'n', 'x' }, keys = 'z' },
+  },
+  window = {
+    delay = 500,
+  },
+})

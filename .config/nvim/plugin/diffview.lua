@@ -1,13 +1,10 @@
-local p = require('my.packin')
-local u = require('my.utils')
+if require('my.utils').diff_mode() then return end
 
-p.add{
-  src = 'https://github.com/sindrets/diffview.nvim',
+vim.pack.add({{
   name = 'diffview',
-  enabled = not u.diff_mode(),
-  after_load = function()
-    vim.keymap.set('n', '<leader>gl', '<CMD>DiffviewFileHistory<CR>', {desc = 'Git branch log diffs'})
-    vim.keymap.set('n', '<leader>gf', '<CMD>DiffviewFileHistory %<CR>', {desc = 'Git file history'})
-    vim.keymap.set('n', '<leader>gs', '<CMD>DiffviewOpen HEAD<CR>', {desc = 'Git status'})
-  end
-}
+  src = 'https://github.com/sindrets/diffview.nvim',
+}})
+
+vim.keymap.set('n', '<leader>gl', '<CMD>DiffviewFileHistory<CR>', {desc = 'Git branch log diffs'})
+vim.keymap.set('n', '<leader>gf', '<CMD>DiffviewFileHistory %<CR>', {desc = 'Git file history'})
+vim.keymap.set('n', '<leader>gs', '<CMD>DiffviewOpen HEAD<CR>', {desc = 'Git status'})

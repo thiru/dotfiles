@@ -1,8 +1,14 @@
-local p = require('my.packin')
 local u = require('my.utils')
+if u.diff_mode() and not u.has_rust() then return end
 
-p.add{
-  src = 'https://github.com/eraserhd/parinfer-rust',
-  enabled = not u.diff_mode() and u.has_rust(),
-  --TODO: build = 'cargo build --release',
-}
+vim.api.nvim_create_autocmd('PackChanged', {
+  callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if name == 'parinfer-rust' and kind == 'update' then
+      if not ev.data.active then vim.cmd.packadd('parinfer-rust') end
+      vim.system({ 'cargo', 'build', '--release' }, { cwd = ev.data.path })
+    end
+  end
+})
+
+vim.pack.add({'https://github.com/eraserhd/parinfer-rust'})

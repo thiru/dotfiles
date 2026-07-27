@@ -1,12 +1,13 @@
-local p = require('my.packin')
-local u = require('my.utils')
+if require('my.utils').diff_mode() then return end
 
-p.add{
-  src = 'https://github.com/oysandvik94/curl.nvim',
+vim.pack.add({'https://github.com/nvim-lua/plenary.nvim'})
+
+vim.pack.add({{
   name = 'curl',
-  enabled = not u.diff_mode(),
-  opts = {
-    default_flags = {'--insecure'},
-    show_request_duration_limit = 0.5,
-  },
-}
+  src = 'https://github.com/oysandvik94/curl.nvim',
+}})
+
+require('curl').setup({
+  default_flags = {'--insecure'},
+  show_request_duration_limit = 0.5,
+})

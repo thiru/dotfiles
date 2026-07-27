@@ -1,10 +1,8 @@
-local p = require('my.packin')
-local u = require('my.utils')
+if require('my.utils').diff_mode() then return end
 
--- deps: {'nvim-treesitter/nvim-treesitter'}, -- if you prefer nvim-web-devicons
+-- NOTE deps: 'nvim-treesitter/nvim-treesitter' (if you prefer nvim-web-devicons)
 
-p.add{
-  src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim',
+vim.pack.add({{
   name = 'render-markdown',
-  enabled = not u.diff_mode(),
-}
+  src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim',
+}})

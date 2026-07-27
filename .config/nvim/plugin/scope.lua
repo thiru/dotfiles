@@ -1,8 +1,8 @@
--- vim.pack.add{'https://github.com/tiagovla/scope.nvim'}
-local p = require('my.packin')
+if require('my.utils').diff_mode() then return end
 
-p.add{
-  src = 'https://github.com/tiagovla/scope.nvim',
+vim.pack.add({{
   name = 'scope',
-  opts = {},
-}
+  src = 'https://github.com/tiagovla/scope.nvim',
+}})
+
+require('scope').setup()
