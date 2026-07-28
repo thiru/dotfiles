@@ -4,7 +4,6 @@ vim.pack.add({{
 }})
 
 require('catppuccin').setup({
-  auto_integrations = true,
   flavour = 'latte',
   term_colors = true,
 })
