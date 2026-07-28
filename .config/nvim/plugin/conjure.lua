@@ -1,4 +1,6 @@
-if require('my.utils').diff_mode() then return end
+local u = require('my.utils')
+
+if u.is_windows() or u.diff_mode() then return end
 
 local function restart_python()
   vim.cmd('ConjurePythonStop')

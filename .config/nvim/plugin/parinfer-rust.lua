@@ -1,5 +1,6 @@
 local u = require('my.utils')
-if u.diff_mode() and not u.has_rust() then return end
+
+if u.is_windows() or u.diff_mode() or not u.has_rust() then return end
 
 vim.api.nvim_create_autocmd('PackChanged', {
   callback = function(ev)
