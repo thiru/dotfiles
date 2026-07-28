@@ -2,6 +2,7 @@
 !**/.clj-kondo/config.edn
 .config/fish/fish_variables
 .config/nvim/pack
+.config/opencode/package-lock.json
 .config/yazi/yazi.toml
 .cpcache/
 .~lock.*
