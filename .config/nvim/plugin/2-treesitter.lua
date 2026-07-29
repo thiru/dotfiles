@@ -22,7 +22,6 @@ local parsers = {
   'c',
   'clojure',
   'commonlisp',
-  'csv',
   'css',
   'diff',
   'dockerfile',
