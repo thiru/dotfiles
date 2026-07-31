@@ -37,8 +37,8 @@ label.module, box.module {
     background-color: rgba(43, 48, 59, 0.7);
     color: #ffffff;
     border-radius: 0.5em;
-    padding: 0.3em 0.7em;
-    margin: 0.3em 0.1em 0 0.1em;
+    padding: 0.1em 0.7em;
+    margin: 0.1em;
 }
 label:focus {
     background-color: #000000;
@@ -131,4 +131,8 @@ label:focus {
 
 #idle_inhibitor.activated {
     background-color: orangered;
+}
+
+#custom-clock, #custom-uptime, #custom-weather {
+  padding: 0;
 }
