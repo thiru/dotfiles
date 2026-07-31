@@ -1,8 +1,10 @@
 if require('my.utils').diff_mode() then return end
 
-local local_add_ok, _ = pcall(vim.cmd.packadd, 'neodba.nvim')
+local local_dir = vim.fn.stdpath("config") .. '/pack/mine/opt/neodba.nvim'
 
-if not local_add_ok then
+if vim.fn.isdirectory(local_dir) == 1 then
+  vim.cmd.packadd('neodba.nvim')
+else
   vim.pack.add({{
     name = 'neodba',
     src = 'https://github.com/thiru/neodba.nvim',

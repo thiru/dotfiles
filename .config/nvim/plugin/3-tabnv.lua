@@ -1,8 +1,10 @@
 local neovide = require('my.neovide')
 
-local local_add_ok, _ = pcall(vim.cmd.packadd, 'tabnv.nvim')
+local local_dir = vim.fn.stdpath("config") .. '/pack/mine/opt/tabnv.nvim'
 
-if not local_add_ok then
+if vim.fn.isdirectory(local_dir) == 1 then
+  vim.cmd.packadd('tabnv.nvim')
+else
   vim.pack.add({{
     name = 'tabnv',
     src = 'https://github.com/thiru/tabnv.nvim',
