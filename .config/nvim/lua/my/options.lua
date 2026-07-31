@@ -144,9 +144,6 @@ local function setup()
   -- Don't show the mode since it's already in the status line
   vim.opt.showmode = false
 
-  -- Sync clipboard between OS and Neovim.
-  vim.opt.clipboard = 'unnamedplus'
-
   -- Preserve indentation even when line is wrapped
   vim.opt.breakindent = true
 

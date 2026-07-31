@@ -138,22 +138,27 @@ local function setup()
   -- Toggle word wrap
   vim.keymap.set('n', '<leader>ww', '<CMD>set wrap!<CR>', { desc = 'Toggle word wrap' })
 
-  -- Copy everything to the clipboard
+  -- Copy text to system clipboard
+  vim.keymap.set('x', '<leader>yy', '"+y', { desc = 'Copy to system clipboard' })
+  vim.keymap.set('n', '<leader>yy', '"+yy', { desc = 'Copy line to system clipboard' })
+  vim.keymap.set('n', '<leader>Y', '"+Y', { desc = 'Copy to EOL to system clipboard' })
+
+  -- Copy everything to system clipboard
   vim.keymap.set('n', '<leader>ya', '<CMD>%y+<CR>', { desc = 'Copy everything to system clipboard' })
 
-  -- Copy file path to clipboard
+  -- Copy file path to system clipboard
   vim.keymap.set('n', '<leader>yf', ':let @+ = expand("%")<CR>',
          { desc = 'Copy relative file path to system clipboard' })
   vim.keymap.set('n', '<leader>yF', ':let @+ = expand("%:p")<CR>',
          { desc = 'Copy full file path to system clipboard' })
 
-  -- Copy directory to clipboard
+  -- Copy directory to system clipboard
   vim.keymap.set('n', '<leader>yd', ':let @+ = expand("%:h")<CR>',
          { desc = 'Copy relative directory path to system clipboard' })
   vim.keymap.set('n', '<leader>yD', ':let @+ = expand("%:p:h")<CR>',
          { desc = 'Copy full directory path to system clipboard' })
 
-  -- Copy statusline output to clipboard
+  -- Copy statusline output to system clipboard
   vim.keymap.set('n', '<leader>ys',
          function ()
            local sl = vim.api.nvim_eval_statusline(vim.o.statusline, {}).str
@@ -161,9 +166,10 @@ local function setup()
          end,
          { desc = 'Copy statusline output to system clipboard' })
 
-  -- Paste from clipboard
-  vim.keymap.set({'c', 'i'}, '<C-v>', '<C-r>+', { desc = 'Paste from system clipboard (command/insert mode)' })
-  vim.keymap.set('n', '<C-v>', 'p', { desc = 'Paste from system clipboard (normal mode)' })
+  -- Paste from system clipboard
+  vim.keymap.set('i', '<C-v>', '<C-o>"+P', { desc = 'Paste from system clipboard' })
+  vim.keymap.set('c', '<C-v>', '<C-r>+', { desc = 'Paste from system clipboard' })
+  vim.keymap.set({'n', 'x'}, '<C-v>', '"+p', { desc = 'Paste from system clipboard' })
 
   -- Enter visual block mode (need this in nested vim where ctrl-q doesn't work)
   vim.keymap.set({'n', 't'}, '<C-S-v>', '<C-v>', {desc = 'Enter visual block mode', noremap = true})
