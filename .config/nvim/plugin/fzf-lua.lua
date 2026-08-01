@@ -28,7 +28,7 @@ vim.keymap.set('n', '<leader>sb', '<CMD>FzfLua grep_curbuf<CR>', {desc = 'Search
 vim.keymap.set('n', '<leader>sc', '<CMD>FzfLua commands<CR>', {desc = 'Search Commands'})
 vim.keymap.set('n', '<leader>sdd', '<CMD>FzfLua diagnostics_document<CR>', {desc = 'Search Document Diagnostics'})
 vim.keymap.set('n', '<leader>sdw', '<CMD>FzfLua diagnostics_workspace<CR>', {desc = 'Search Worspace Diagnostics'})
-vim.keymap.set('n', '<leader>sf', '<CMD>FzfLua files<CR>', {desc = 'Search Files'})
+vim.keymap.set('n', '<leader>s.f', '<CMD>FzfLua files<CR>', {desc = 'Search Files'})
 vim.keymap.set('n', '<leader>sgb', '<CMD>FzfLua git_branches<CR>', {desc = 'Search Git Branches'})
 vim.keymap.set('n', '<leader>sgc', '<CMD>FzfLua git_bcommits<CR>', {desc = 'Search Git Commits (Buffer)'})
 vim.keymap.set('n', '<leader>sgf', '<CMD>FzfLua git_files<CR>', {desc = 'Search Git Files'})
@@ -52,17 +52,17 @@ vim.keymap.set('n', '<leader>sr', '<CMD>FzfLua registers<CR>', {desc = 'Search R
 vim.keymap.set('n', '<leader>sR', '<CMD>FzfLua resume<CR>', {desc = 'Resume latest picker' })
 vim.keymap.set('v', '<leader>ss', '<CMD>FzfLua grep_visual<CR>', {desc = 'Search visual selection'})
 vim.keymap.set('n', '<leader>st', '<CMD>FzfLua tabs<CR>', {desc = 'Search tabs'})
-vim.keymap.set('n', '<leader>sp',
+vim.keymap.set('n', '<leader>s.p',
 function()
   plugin.grep_project({rg_opts="--hidden --glob '!.git' --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e"})
 end,
 {desc = 'Search Entire Project'})
-vim.keymap.set('n', '<leader>sv',
+vim.keymap.set('n', '<leader>s.v',
 function()
   plugin.files({cwd=vim.fn.stdpath('config')})
 end, {desc = 'Search Vim Configs'})
-vim.keymap.set('n', '<leader>sw', '<CMD>FzfLua grep_cword<CR>', {desc = 'Search word under cursor'})
-vim.keymap.set('n', '<leader>sW', '<CMD>FzfLua grep_cWORD<CR>', {desc = 'Search WORD under cursor'})
+vim.keymap.set('n', '<leader>s.w', '<CMD>FzfLua grep_cword<CR>', {desc = 'Search word under cursor'})
+vim.keymap.set('n', '<leader>s.W', '<CMD>FzfLua grep_cWORD<CR>', {desc = 'Search WORD under cursor'})
 vim.keymap.set('n', '<leader>sx', '<CMD>FzfLua command_history<CR>', {desc = 'Search Command History'})
 vim.keymap.set('n', '<C-g>',
 function()
