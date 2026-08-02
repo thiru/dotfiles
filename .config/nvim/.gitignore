@@ -1,4 +1,5 @@
 .luarc.json
 nvim-pack-lock.json
-pack
+pack/mine/opt/**
+!pack/mine/opt/.gitkeep
 tags
