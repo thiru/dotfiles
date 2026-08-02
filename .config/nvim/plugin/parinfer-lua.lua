@@ -1,4 +1,4 @@
-local u = require('my.utils')
+local u = require('mine.utils')
 
 if u.is_windows() or u.diff_mode() or u.has_rust() then return end
 

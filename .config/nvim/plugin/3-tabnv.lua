@@ -1,4 +1,4 @@
-local neovide = require('my.neovide')
+local u = require('mine.utils')
 
 local local_dir = vim.fn.stdpath("config") .. '/pack/mine/opt/tabnv.nvim'
 
@@ -13,5 +13,5 @@ end
 
 require('tabnv').setup({
   colorscheme = 'catppuccin-mocha',
-  neovide_opacity = neovide.terminal_opacity_override,
+  neovide_opacity = u.terminal_opacity_override,
 })

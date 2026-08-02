@@ -1,4 +1,6 @@
-if require('my.utils').diff_mode() then return end
+local u = require('mine.utils')
+
+if u.diff_mode() then return end
 
 local local_dir = vim.fn.stdpath("config") .. '/pack/mine/opt/neodba.nvim'
 

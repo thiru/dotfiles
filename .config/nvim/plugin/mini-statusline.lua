@@ -1,4 +1,4 @@
-local u = require('my.utils')
+local u = require('mine.utils')
 local tnvws = require('tabnv.workspace')
 
 --- Get git branch for terminal.

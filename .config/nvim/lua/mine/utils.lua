@@ -1,8 +1,9 @@
-local h = require('my.utils_helpers')
+local h = require('mine.utils_helpers')
 
 local M = {
-  doc = 'Common utilities.',
-  found_rust = nil
+  found_rust = nil,
+  opacity_default = 1.0,
+  terminal_opacity_override = vim.env.NEOVIM_TERM_OPACITY or 0.95,
 }
 
 function M.pretty_print(obj, indent)

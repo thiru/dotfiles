@@ -1,4 +1,6 @@
-if require('my.utils').diff_mode() then return end
+local u = require('mine.utils')
+
+if u.diff_mode() then return end
 
 local function setup_maintain_max_height_autocmd()
   vim.api.nvim_create_autocmd('User', {
