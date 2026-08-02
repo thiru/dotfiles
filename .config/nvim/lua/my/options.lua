@@ -186,10 +186,10 @@ local function setup()
   end
 
   -- Diable missing provider warnings and speedup startup
-  vim.g.loaded_node_provider = false
-  vim.g.loaded_perl_provider = false
-  vim.g.loaded_ruby_provider = false
-  vim.g.loaded_python3_provider = false
+  vim.g.loaded_node_provider = 0
+  vim.g.loaded_perl_provider = 0
+  vim.g.loaded_ruby_provider = 0
+  vim.g.loaded_python3_provider = 0
 
   enable_ui2()
   highlight_on_yank()
