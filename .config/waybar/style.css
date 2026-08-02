@@ -44,19 +44,8 @@ label:focus {
     background-color: #000000;
 }
 
-#workspaces,
-#window {
-    background-color: rgba(43, 48, 59, 0.6);
-    border-radius: 0.5em;
-    margin: 0.3em 0.1em 0 0.1em;
-}
-
-#window {
-    font-weight: bold;
-}
-
 #workspaces {
-    margin-left: 0.4em;
+    margin-left: 1em;
     padding: 0;
 }
 #workspaces button {
@@ -133,6 +122,10 @@ label:focus {
     background-color: orangered;
 }
 
-#custom-clock, #custom-uptime, #custom-weather {
+#custom-power-menu {
+  margin-right: 1em;
+}
+
+#custom-clock, #custom-uptime, #custom-weather, #custom-power-menu {
   padding: 0;
 }
