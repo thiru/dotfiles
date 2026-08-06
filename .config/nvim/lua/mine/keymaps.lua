@@ -139,8 +139,9 @@ vim.keymap.set('n', '<leader>ww', '<CMD>set wrap!<CR>', { desc = 'Toggle word wr
 
 -- Copy text to system clipboard
 vim.keymap.set('x', '<C-c>', '"+y', { desc = 'Copy to system clipboard' })
-vim.keymap.set('n', '<leader>yy', '"+yy', { desc = 'Copy line to system clipboard' })
+vim.keymap.set('n', '<leader>yl', '"+yy', { desc = 'Copy line to system clipboard' })
 vim.keymap.set('n', '<leader>Y', '"+y$', { desc = 'Copy to EOL to system clipboard' })
+vim.keymap.set('n', '<leader>yy', ':let @+ = @"<CR>', { desc = 'Copy default register to system clipboard' })
 
 -- Copy everything to system clipboard
 vim.keymap.set('n', '<leader>ya', '<CMD>%y+<CR>', { desc = 'Copy everything to system clipboard' })
