@@ -12,6 +12,5 @@ else
 end
 
 require('tabnv').setup({
-  colorscheme = 'catppuccin-mocha',
   neovide_opacity = u.terminal_opacity_override,
 })
