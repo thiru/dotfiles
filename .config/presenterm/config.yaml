@@ -1,0 +1,21 @@
+options:
+  implicit_slide_ends: true
+  incremental_lists: true
+  list_item_newlines: 2
+
+snippet:
+  exec:
+    enable: true
+    custom:
+      clojure:
+        filename: snippet.clj
+        hidden_line_prefix: "()"
+        commands:
+          # Run it
+          - ["bb", "--prn", "--file", "$pwd/snippet.clj"]
+
+transition:
+  duration_millis: 450
+  frames: 45
+  animation:
+    style: slide_horizontal
