@@ -1,0 +1,21 @@
+options:
+  incremental_lists: true
+  list_item_newlines: 2
+
+snippet:
+  exec:
+    enable: true
+    custom:
+      # The keys should be the language identifier you'd use in a code block.
+      clojure:
+        # The name of the file that will be created with your snippet's contents.
+        filename: snippet.clj
+
+        # A prefix that indicates a line that starts with it should not be visible but should be executed if the
+        # snippet is marked with `+exec`.
+        hidden_line_prefix: "()"
+
+        # A list of commands that will be ran one by one in the same directory as the snippet is in.
+        commands:
+          # Run it
+          - ["bb", "$pwd/snippet.clj"]
