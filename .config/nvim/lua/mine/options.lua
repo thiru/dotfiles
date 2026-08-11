@@ -132,6 +132,9 @@ vim.opt.nrformats = 'alpha,blank'
 -- Enable mouse in all modes
 vim.opt.mouse = 'a'
 
+-- Hide cmdline by default
+vim.opt.cmdheight = 0
+
 -- Use one global status line (not per window)
 vim.opt.laststatus = 3
 
