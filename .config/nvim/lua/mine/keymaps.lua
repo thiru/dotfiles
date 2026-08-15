@@ -10,8 +10,8 @@ vim.keymap.set({'n', 'x'}, '<leader>;', ':', {desc='Enter command-linemode'})
 -- Clear notifications, cmdline message, highlight
 vim.keymap.set({'n', 'v'}, '<leader><leader>',
   function()
-    vim.cmd('echo ""')
-    vim.cmd('nohlsearch')
+    vim.cmd('silent echo ""')
+    vim.cmd('silent nohlsearch')
     require('mini.notify').clear()
   end,
   {desc='Clear stuff...', silent=true})
@@ -98,17 +98,17 @@ vim.keymap.set('n', '<leader>K',
   {desc = 'Toggle diagnostic virtual_lines'})
 
 -- CWD
-vim.keymap.set('n', '<leader>cd', ':cd %:p:h<CR>',
+vim.keymap.set('n', '<leader>cd', ':silent cd %:p:h<CR>',
        { desc = 'Change (global) working directory to that of the current file', silent = true })
-vim.keymap.set('n', '<leader>cD', ':lcd %:p:h<CR>',
+vim.keymap.set('n', '<leader>cD', ':silent lcd %:p:h<CR>',
        { desc = 'Change (window) working directory to that of the current file', silent = true })
 
 -- PWD
 vim.keymap.set('n', '<leader>wd', function() vim.notify(vim.fn.getcwd()) end, { desc = 'Print current working directory', silent = true })
 
 -- Save file
-vim.keymap.set('n', '<C-s>', '<CMD>w<CR>', { desc = 'Save current file', silent = true })
-vim.keymap.set('i', '<C-s>', '<cmd>write<CR>', { desc = 'Save current file', silent = true })
+vim.keymap.set('n', '<C-s>', '<CMD>silent w<CR>', { desc = 'Save current file', silent = true })
+vim.keymap.set('i', '<C-s>', '<cmd>silent write<CR>', { desc = 'Save current file', silent = true })
 
 -- Command-line up/down
 vim.keymap.set('c', '<C-n>', '<Down>', { desc = 'Next command (cmd-line mode)' })
@@ -132,7 +132,7 @@ vim.keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', { expr = true, silent = tr
 vim.keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', { expr = true, silent = true })
 
 -- Search highlight off
-vim.keymap.set('n', '<leader>ho', '<CMD>nohlsearch<CR>', { desc = 'Search highlight off', silent = true })
+vim.keymap.set('n', '<leader>ho', '<CMD>silent nohlsearch<CR>', { desc = 'Search highlight off', silent = true })
 
 -- Toggle word wrap
 vim.keymap.set('n', '<leader>ww', '<CMD>set wrap!<CR>', { desc = 'Toggle word wrap' })
