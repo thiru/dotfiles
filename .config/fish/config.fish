@@ -73,7 +73,7 @@ function set-abbreviations
   abbr -a d 'cd'
   abbr -a g 'git'
   abbr -a nv 'neovide'
-  abbr -a pm 'sudo pacman'
+  abbr -a o 'opencode'
   abbr -a sc 'systemctl'
   abbr -a z 'zathura'
 end
