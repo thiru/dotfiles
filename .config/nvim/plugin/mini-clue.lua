@@ -43,6 +43,9 @@ plugin.setup({
     { mode = { 'n', 'x' }, keys = 'z' },
   },
   window = {
+    config = {
+      width = 50,
+    },
     delay = 500,
   },
 })
