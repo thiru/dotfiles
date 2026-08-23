@@ -13,3 +13,10 @@ hl.monitor({
   position = 'auto',
   scale    = 2,
 })
+
+hl.monitor({
+  output   = 'DP-1',
+  mode     = 'preferred',
+  position = 'auto-center-left',
+  scale    = 1,
+})
