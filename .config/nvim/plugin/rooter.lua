@@ -19,7 +19,7 @@ plugin.disable()
 -- NOTE: disabling this plugin by default due to some undesired behaviour
 -- around new tabs and switching dirs.
 
-vim.keymap.set('n', '<leader>c<leader>',
+vim.keymap.set('n', '<leader>cd',
   function()
     plugin.enable()
     plugin.current_root()

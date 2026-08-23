@@ -98,9 +98,7 @@ vim.keymap.set('n', '<leader>K',
   {desc = 'Toggle diagnostic virtual_lines'})
 
 -- CWD
-vim.keymap.set('n', '<leader>cd', ':silent cd %:p:h<CR>',
-       { desc = 'Change (global) working directory to that of the current file', silent = true })
-vim.keymap.set('n', '<leader>cD', ':silent lcd %:p:h<CR>',
+vim.keymap.set('n', '<leader>lcd', ':silent lcd %:p:h<CR>',
        { desc = 'Change (window) working directory to that of the current file', silent = true })
 
 -- PWD
