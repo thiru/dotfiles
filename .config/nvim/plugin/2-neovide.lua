@@ -44,7 +44,6 @@ local function scale_factor_reset()
 end
 
 if vim.g.neovide then
-  vim.cmd('silent exe "cd ~"')
   vim.g.neovide_scale_factor = 1.0
   set_default_opacity()
 end
