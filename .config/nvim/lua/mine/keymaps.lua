@@ -158,7 +158,7 @@ vim.keymap.set('n', '<leader>yd', ':let @+ = expand("%:h")<CR>',
 vim.keymap.set('n', '<leader>yD', ':let @+ = expand("%:p:h")<CR>',
        { desc = 'Copy full directory path to system clipboard' })
 
--- Copy statusline output to system clipboard
+-- Copy statusline to system clipboard
 vim.keymap.set('n', '<leader>ys',
        function ()
          local sl = vim.api.nvim_eval_statusline(vim.o.statusline, {}).str
@@ -171,8 +171,12 @@ vim.keymap.set('i', '<C-v>', '<C-o>"+P', { desc = 'Paste from system clipboard' 
 vim.keymap.set('c', '<C-v>', '<C-r>+', { desc = 'Paste from system clipboard' })
 vim.keymap.set({'n', 'x'}, '<C-v>', '"+p', { desc = 'Paste from system clipboard' })
 
+-- Paste from default register
+vim.keymap.set('i', '<C-S-v>', '<C-o>p', { desc = 'Paste from default register' })
+vim.keymap.set('c', '<C-S-v>', '<C-r>"', { desc = 'Paste from default register' })
+
 -- Enter visual block mode (need this in nested vim where ctrl-q doesn't work)
-vim.keymap.set({'n', 't'}, '<C-S-v>', '<C-v>', {desc = 'Enter visual block mode', noremap = true})
+vim.keymap.set('n', '<leader><C-v>', '<C-v>', {desc = 'Enter visual block mode'})
 
 -- Toggle cursor column
 vim.keymap.set('n', '<leader>|', function() vim.o.cursorcolumn = not vim.o.cursorcolumn end, {desc = 'Toggle cursor column'})
