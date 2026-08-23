@@ -29,7 +29,7 @@ vim.keymap.set('n', '<C-g>', function()
       end,
       name = 'Goto -> ',
       choose = function(item)
-        vim.cmd('cd ' .. vim.fn.fnameescape(item))
+        vim.cmd('tcd ' .. vim.fn.fnameescape(item))
       end,
     },
   })
@@ -43,7 +43,7 @@ vim.keymap.set('n', '<leader><C-g>', function()
       end,
       name = 'Goto -> ',
       choose = function(item)
-        vim.cmd('cd ' .. vim.fn.fnameescape(item))
+        vim.cmd('tcd ' .. vim.fn.fnameescape(item))
       end,
     },
   })
