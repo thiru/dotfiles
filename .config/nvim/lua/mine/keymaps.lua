@@ -205,3 +205,6 @@ vim.keymap.set('x', '<leader>pd',
   end,
   {desc = 'Package delete'})
 vim.keymap.set('n', '<leader>pu', vim.pack.update, {desc = 'Package update'})
+
+vim.keymap.set({ 'n', 'v' }, '<leader>q', '<CMD>qa<CR>', { desc = 'Exit' })
+vim.keymap.set({ 'n', 'v' }, '<leader>Q', '<CMD>qa!<CR>', { desc = 'Exit (ignore unsaved changes)' })
