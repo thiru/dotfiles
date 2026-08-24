@@ -47,6 +47,6 @@ plugin.setup({
     config = {
       width = 50,
     },
-    delay = 500,
+    delay = 250,
   },
 })
