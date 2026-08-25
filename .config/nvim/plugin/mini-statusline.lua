@@ -28,8 +28,8 @@ plugin.setup({
       return plugin.combine_groups({
         { hl = mode_hl, strings = {workspaces} },
         '%<', -- Mark general truncate point
-        { hl = 'TermCursor', strings = {cwd} },
-        { hl = 'MiniStatuslineFileinfo', strings = {parent_dir} },
+        { hl = 'Title', strings = {cwd} },
+        { hl = 'FloatBorder', strings = {parent_dir} },
         '%=', -- End left alignment
         { hl = 'Search', strings = {search} },
         { hl = 'FloatBorder', strings = {location} },

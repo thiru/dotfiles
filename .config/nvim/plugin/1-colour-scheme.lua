@@ -1,12 +1,12 @@
 vim.pack.add({{
-  name = 'rose-pine',
-  src = 'https://github.com/rose-pine/neovim',
+  name = 'catppuccin',
+  src = 'https://github.com/catppuccin/nvim',
 }})
 
-local plugin = require('rose-pine')
-plugin.setup({
-  dark_variant = 'moon',
+require('catppuccin').setup({
+  flavour = 'latte',
+  term_colors = true,
 })
 
-vim.cmd.colorscheme('rose-pine')
+vim.cmd.colorscheme('catppuccin-nvim')
 vim.o.background = 'light'
