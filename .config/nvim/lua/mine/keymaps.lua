@@ -206,5 +206,17 @@ vim.keymap.set('x', '<leader>pd',
   {desc = 'Package delete'})
 vim.keymap.set('n', '<leader>pu', vim.pack.update, {desc = 'Package update'})
 
-vim.keymap.set({ 'n', 'v' }, '<leader>q', '<CMD>qa<CR>', { desc = 'Exit' })
-vim.keymap.set({ 'n', 'v' }, '<leader>Q', '<CMD>qa!<CR>', { desc = 'Exit (ignore unsaved changes)' })
+vim.keymap.set('n', '<leader>q',
+  function()
+    local num_tabs = #vim.api.nvim_list_tabpages()
+    if num_tabs <= 1 then
+      vim.cmd.quitall()
+    else
+      if vim.fn.confirm(num_tabs .. ' tabs are open. Exit Neovim?', '&Yes\n&No') == 1 then
+        vim.cmd.quitall()
+      end
+    end
+  end,
+  { desc = 'Exit' })
+
+vim.keymap.set('n', '<leader>Q', '<CMD>qa!<CR>', { desc = 'Exit (ignore unsaved changes)' })
