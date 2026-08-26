@@ -206,6 +206,17 @@ vim.keymap.set('x', '<leader>pd',
   {desc = 'Package delete'})
 vim.keymap.set('n', '<leader>pu', vim.pack.update, {desc = 'Package update'})
 
+-- Tab close
+vim.keymap.set('n', '<leader>x',
+  function()
+    if #vim.api.nvim_list_tabpages() <= 1 then
+      vim.cmd.quitall()
+    else
+      vim.cmd.tabclose()
+    end
+  end,
+  {desc = 'Tab close'})
+
 vim.keymap.set('n', '<leader>q',
   function()
     local num_tabs = #vim.api.nvim_list_tabpages()
