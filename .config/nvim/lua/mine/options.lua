@@ -189,7 +189,12 @@ vim.g.loaded_ruby_provider = 0
 vim.g.loaded_python3_provider = 0
 
 -- enable (experimental) UI features like reducing the 'press enter' prompts
-require('vim._core.ui2').enable({ enable = true })
+require('vim._core.ui2').enable({
+  enable = true,
+  -- show messages in a separate ephemeral window rather than in cmdline
+  -- this avoids press-enter situations even more
+  msg = { targets = 'msg' },
+})
 
 highlight_on_yank()
 maybe_show_listchars()
