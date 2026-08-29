@@ -17,7 +17,7 @@ plugin.setup({
     -- Leader triggers
     { mode = { 'n', 'x' }, keys = '<leader>' },
     { mode = { 'n', 'x' }, keys = '<localleader>' },
-    { mode = { 'n', 't', 'x' }, keys = '<C-space>' },
+    { mode = { 'n', 't', 'x' }, keys = '<C-;>' },
 
     -- `[` and `]` keys
     { mode = 'n', keys = '[' },
