@@ -6,13 +6,12 @@ set -eu
 
 WALLPAPER_PATH=~/Pictures/wallpaper/bing.jpg
 
-# Replace any swaybg already holding the old image (e.g. on compositor restarts)
-pkill -x swaybg 2>/dev/null || true
-
 # Download latest Bing wallpaper; tolerate failure if network isn't up yet
 bing-wallpaper.clj "$WALLPAPER_PATH" || true
 
 # Apply (falls back to the cached image if the download failed)
 if [ -f "$WALLPAPER_PATH" ]; then
+  # Replace any swaybg already holding the old image (e.g. on compositor restarts)
+  pkill -x swaybg 2>/dev/null || true
   swaybg --mode fill --image "$WALLPAPER_PATH" &
 fi
