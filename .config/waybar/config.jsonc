@@ -8,6 +8,12 @@
     "modules-right": ["idle_inhibitor", "custom/uptime", "cpu", "memory", "disk", "pulseaudio#min", "battery", "battery#bat2", "network", "tray", "custom/weather", "custom/clock", "custom/power-menu"],
 
     // Modules
+    "hyprland/window": {
+      "tooltip": false
+    },
+    "hyprland/workspaces": {
+      "tooltip": false
+    },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
