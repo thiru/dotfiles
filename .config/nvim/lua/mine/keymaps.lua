@@ -207,7 +207,7 @@ vim.keymap.set('x', '<leader>pd',
 vim.keymap.set('n', '<leader>pu', vim.pack.update, {desc = 'Package update'})
 
 -- Tab close
-vim.keymap.set('n', '<leader>x',
+vim.keymap.set('n', '<leader>q',
   function()
     if #vim.api.nvim_list_tabpages() <= 1 then
       vim.cmd.quitall()
@@ -217,7 +217,18 @@ vim.keymap.set('n', '<leader>x',
   end,
   {desc = 'Tab close'})
 
-vim.keymap.set('n', '<leader>q',
+-- Tab close (ignore unsaved changes)
+vim.keymap.set('n', '<leader>Q',
+  function()
+    if #vim.api.nvim_list_tabpages() <= 1 then
+      vim.cmd('quitall!')
+    else
+      vim.cmd('tabclose!')
+    end
+  end,
+  {desc = 'Tab close (ignore unsaved changes)'})
+
+vim.keymap.set('n', '<leader><leader>q',
   function()
     local num_tabs = #vim.api.nvim_list_tabpages()
     if num_tabs <= 1 then
@@ -230,4 +241,4 @@ vim.keymap.set('n', '<leader>q',
   end,
   { desc = 'Exit' })
 
-vim.keymap.set('n', '<leader>Q', '<CMD>qa!<CR>', { desc = 'Exit (ignore unsaved changes)' })
+vim.keymap.set('n', '<leader><leader>Q', '<CMD>qa!<CR>', { desc = 'Exit (ignore unsaved changes)' })
