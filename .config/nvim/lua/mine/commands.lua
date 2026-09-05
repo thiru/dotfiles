@@ -1,5 +1,22 @@
 --- Generic functions around dealing with whitespace characters.
 
+--- Quickly enter text and copy to clipboard on exit
+local function quick_edit()
+  vim.g.neovide_opacity = 0.8
+
+  vim.schedule(function()
+    vim.cmd.startinsert()
+  end)
+
+  local yank_quit = function()
+    vim.cmd('%y+')
+    vim.cmd('quitall!')
+  end
+
+  vim.keymap.set({'n', 'v'}, '<leader>q', yank_quit, {desc = 'Copy everything to clipboard and quit'})
+  vim.keymap.set({'i', 'n', 'v'}, '<C-cr>', yank_quit, {desc = 'Copy everything to clipboard and quit'})
+end
+
 local function line_endings_as_dos()
   vim.cmd([[
     edit ++ff=dos
@@ -19,6 +36,11 @@ local function strip_trailing_whitespace()
   vim.cmd(':%s/\\s\\+$//e')
 end
 
+vim.api.nvim_create_user_command(
+  'QuickEdit',
+  quick_edit,
+  {bang = true,
+   desc = 'Quickly enter text and copy to clipboard on exit'})
 vim.api.nvim_create_user_command(
   'ConvertLineEndingsToDos',
   line_endings_as_dos,
