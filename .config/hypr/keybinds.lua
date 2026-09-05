@@ -3,7 +3,6 @@
 local mod = 'SUPER'
 
 local editor = 'neovide'
-local fileManager = 'thunar'
 local launcher = 'fuzzel'
 local terminal = 'kitty'
 local nvterm = 'neovide -- +TabnvStart'
@@ -32,8 +31,8 @@ hl.bind(mod .. ' + CTRL + RETURN', hl.dsp.exec_cmd(terminal))
 -- Editor
 hl.bind(mod .. ' + V', hl.dsp.exec_cmd(editor))
 
--- File Manager
-hl.bind(mod .. ' + E', hl.dsp.exec_cmd(fileManager))
+-- Quick edit, copy/paste
+hl.bind(mod .. ' + E', hl.dsp.exec_cmd('neovide --wayland_app_id launcher -- +QuickEdit && ydotool key 29:1 47:1 47:0 29:0'))
 
 -- Calculator
 hl.bind(mod .. ' + C', hl.dsp.exec_cmd('neovide --wayland_app_id launcher -- +TabnvStart --cmd "lua vim.g.tabnv_auto_start_cmd = \'qalc\'"'))
