@@ -7,6 +7,9 @@ hl.on('hyprland.start', function()
   -- Notification daemon
   hl.exec_cmd('fnott')
 
+  -- Keyboard/mouse simulation via CLI
+  hl.exec_cmd('ydotoold')
+
   -- Bars
   hl.exec_cmd('waybar-reload')
 
