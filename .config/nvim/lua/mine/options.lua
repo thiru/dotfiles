@@ -1,3 +1,5 @@
+local u = require('mine.utils')
+
 local font_size_default = 15
 
 --- Make it easier to see exactly what was yanked by highlighting the yanked text briefly
@@ -131,6 +133,11 @@ vim.opt.nrformats = 'alpha,blank'
 
 -- Enable mouse in all modes
 vim.opt.mouse = 'a'
+
+-- Synchronise with the OS clipboard
+if not u.is_windows() then
+  vim.opt.clipboard = 'unnamedplus'
+end
 
 -- Hide cmdline by default
 vim.opt.cmdheight = 0

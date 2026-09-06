@@ -1,3 +1,5 @@
+local u = require('mine.utils')
+
 -- Disable a single spacebar key-press since we use it as the leader key
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
@@ -136,10 +138,12 @@ vim.keymap.set('n', '<leader>ho', '<CMD>silent nohlsearch<CR>', { desc = 'Search
 vim.keymap.set('n', '<leader>ww', '<CMD>set wrap!<CR>', { desc = 'Toggle word wrap' })
 
 -- Copy text to system clipboard
-vim.keymap.set('x', '<C-c>', '"+y', { desc = 'Copy to system clipboard' })
-vim.keymap.set('n', '<leader>yl', '"+yy', { desc = 'Copy line to system clipboard' })
-vim.keymap.set('n', '<leader>Y', '"+y$', { desc = 'Copy to EOL to system clipboard' })
-vim.keymap.set('n', '<leader>yy', ':let @+ = @"<CR>', { desc = 'Copy default register to system clipboard' })
+if u.is_windows() then
+  vim.keymap.set('x', '<C-c>', '"+y', { desc = 'Copy to system clipboard' })
+  vim.keymap.set('n', '<leader>yl', '"+yy', { desc = 'Copy line to system clipboard' })
+  vim.keymap.set('n', '<leader>Y', '"+y$', { desc = 'Copy to EOL to system clipboard' })
+  vim.keymap.set('n', '<leader>yy', ':let @+ = @"<CR>', { desc = 'Copy default register to system clipboard' })
+end
 
 -- Copy everything to system clipboard
 vim.keymap.set('n', '<leader>ya', '<CMD>%y+<CR>', { desc = 'Copy everything to system clipboard' })
