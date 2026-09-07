@@ -9,7 +9,15 @@ local function quick_edit()
   end)
 
   local yank_quit = function()
-    vim.cmd('%y+')
+    local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+    local content = table.concat(lines, '\n')
+
+    -- trim whitespace
+    content = content:gsub('%s+$', '')
+
+    -- copy to system clipboard
+    vim.fn.setreg('+', content)
+
     vim.cmd('quitall!')
   end
 
