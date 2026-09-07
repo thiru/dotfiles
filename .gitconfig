@@ -33,6 +33,7 @@
   p = pull --rebase
   ps = push
   psf = push --force-with-lease
+  r = reset
   rba = rebase --abort
   rbc = rebase --continue
   rbi = "!f() { git rebase --interactive HEAD~${1-5}; }; f"
