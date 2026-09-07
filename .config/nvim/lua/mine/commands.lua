@@ -2,6 +2,7 @@
 
 --- Quickly enter text and copy to clipboard on exit
 local function quick_edit()
+  vim.o.titlestring = 'quick-edit'
   vim.g.neovide_opacity = 0.8
 
   vim.schedule(function()
