@@ -12,5 +12,6 @@ else
 end
 
 require('tabnv').setup({
-  neovide_opacity = u.terminal_opacity_override,
+  neovide_term_opacity = u.terminal_opacity_override,
+  neovide_non_term_opacity = u.opacity_default,
 })
