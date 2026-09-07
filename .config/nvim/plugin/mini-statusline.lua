@@ -1,6 +1,11 @@
 local u = require('mine.utils')
 local tnvws = require('tabnv.workspace')
 
+local function tab_workspace_text()
+  local text = tnvws.statusline_text()
+  return (text ~= '¹1¹') and text or nil
+end
+
 --- Get git branch for terminal.
 --- This is set externally (currently from a fish trigger)
 local function term_branch()
@@ -18,7 +23,7 @@ plugin.setup({
   content = {
     active = function()
       local _, mode_hl = plugin.section_mode({ trunc_width = 120 })
-      local workspaces = tnvws.statusline_text()
+      local tab_and_ws = tab_workspace_text()
       local cwd        = u.get_cwd()
       local parent_dir = vim.bo.buftype == 'terminal' and '' or u.get_file_parent()
       local git        = vim.bo.buftype == 'terminal' and term_branch() or plugin.section_git({ trunc_width = 40 })
@@ -26,7 +31,7 @@ plugin.setup({
       local search     = plugin.section_searchcount({ trunc_width = 75 })
 
       return plugin.combine_groups({
-        { hl = mode_hl, strings = {workspaces} },
+        { hl = mode_hl, strings = {tab_and_ws} },
         '%<', -- Mark general truncate point
         { hl = 'Directory', strings = {cwd} },
         { hl = 'Normal', strings = {parent_dir} },
