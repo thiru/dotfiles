@@ -3,7 +3,7 @@ hl.config({
     kb_layout  = 'us',
     kb_variant = '',
     kb_model   = '',
-    kb_options = 'altwin:swap_lalt_lwin,altwin:swap_ralt_rwin',
+    kb_options = 'altwin:swap_lalt_lwin',
     kb_rules   = '',
 
     follow_mouse = 1,
