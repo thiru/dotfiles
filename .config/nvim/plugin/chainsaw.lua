@@ -7,4 +7,4 @@ vim.pack.add({'https://github.com/chrisgrieser/nvim-chainsaw'})
 local plugin = require('chainsaw')
 plugin.setup({})
 
-vim.keymap.set('n', '<leader>ll', plugin.variableLog, {desc = 'Load Conjure'})
+vim.keymap.set('n', '<leader>ll', plugin.variableLog, {desc = 'Log variable'})
