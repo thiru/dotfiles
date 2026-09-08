@@ -1,0 +1,27 @@
+position = "Top"
+
+[appearance]
+font_name = "Maple Mono NL NF CN"
+scale_factor = 1.5
+
+[modules]
+left = [ "Workspaces" ]
+center = [ "WindowTitle" ]
+right = [ "SystemInfo", [ "Privacy", "Settings", "Tempo" ], "Tray" ]
+
+[tempo]
+clock_format = "%a %b %_d %_I:%M %p"
+weather_location = { City = "Toronto" }
+weather_indicator = "Icon"
+
+[system_info]
+indicators = [ "Cpu", "Memory", "DownloadSpeed", "UploadSpeed" ]
+
+[system_info.disk]
+mounts = ["/", "/home"]
+warn_threshold = 80
+alert_threshold = 90
+format = "Percentage"
+
+[tray]
+right_click = "Menu"
