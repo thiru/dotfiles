@@ -22,7 +22,7 @@ vim.pack.add({'https://github.com/dmtrKovalenko/fff.nvim'})
 local plugin = require('fff')
 plugin.setup({
   keymaps = {
-    close = { '<C-c>' },
+    close = { '<C-c>', '<ESC>' },
     move_up = { '<Up>', '<C-p>', '<C-k>' },
     move_down = { '<Down>', '<C-n>', '<C-j>' },
   },
