@@ -11,6 +11,12 @@ local scale_factor_delta_default = 1.025
 -- just need this in macos
 vim.g.neovide_hide_mouse_when_typing = true
 
+-- make the progress bar animation finish faster (higher => faster)
+vim.g.neovide_progress_bar_animation_speed = 400.0
+
+-- make the progress bar disappear faster
+vim.g.neovide_progress_bar_hide_delay = 0.1
+
 local function print_opacity()
   print('Neovide opacity = ' .. vim.g.neovide_opacity)
 end
