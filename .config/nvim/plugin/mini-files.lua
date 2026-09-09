@@ -56,6 +56,7 @@ vim.api.nvim_create_autocmd('User', {
     vim.keymap.set('n', 'g.', toggle_dotfiles, { buffer = buf_id, desc = 'Toggle Hidden Files' })
     vim.keymap.set('n', '<TAB>', plugin.go_in, { buffer = buf_id, desc = 'Go in/open' })
     vim.keymap.set('n', '<C-c>', plugin.close, { buffer = buf_id, desc = 'Close' })
+    vim.keymap.set('n', '<ESC>', plugin.close, { buffer = buf_id, desc = 'Close' })
     vim.keymap.set('n', '<C-n>', 'j', { buffer = buf_id, desc = 'Move down' })
     vim.keymap.set('n', '<C-p>', 'k', { buffer = buf_id, desc = 'Move up' })
   end,
