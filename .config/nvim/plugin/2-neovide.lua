@@ -8,6 +8,9 @@ local u = require('mine.utils')
 local opacity_step = 0.05
 local scale_factor_delta_default = 1.025
 
+-- just need this in macos
+vim.g.neovide_hide_mouse_when_typing = true
+
 local function print_opacity()
   print('Neovide opacity = ' .. vim.g.neovide_opacity)
 end
