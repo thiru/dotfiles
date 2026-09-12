@@ -15,6 +15,14 @@ local function term_branch()
   end
 end
 
+local function buffer_location()
+  if vim.fn.mode():find("t") then
+    return ''
+  else
+    return '%{printf("%d:%d|%d%%", line("."), col("."), float2nr(100.0 * line(".") / line("$")))}'
+  end
+end
+
 vim.pack.add({'https://github.com/nvim-mini/mini.statusline'})
 
 local plugin = require('mini.statusline')
@@ -27,7 +35,6 @@ plugin.setup({
       local cwd        = u.get_cwd()
       local parent_dir = vim.bo.buftype == 'terminal' and '' or u.get_file_parent()
       local git        = vim.bo.buftype == 'terminal' and term_branch() or plugin.section_git({ trunc_width = 40 })
-      local location   = '%{printf("%d:%d|%d%%", line("."), col("."), float2nr(100.0 * line(".") / line("$")))}'
       local search     = plugin.section_searchcount({ trunc_width = 75 })
 
       return plugin.combine_groups({
@@ -37,7 +44,7 @@ plugin.setup({
         { hl = 'Normal', strings = {parent_dir} },
         '%=', -- End left alignment
         { hl = 'Search', strings = {search} },
-        { hl = 'FloatBorder', strings = {location} },
+        { hl = 'FloatBorder', strings = {buffer_location()} },
         { hl = mode_hl, strings = {git} },
       })
     end
