@@ -72,6 +72,9 @@ vim.keymap.set(
   end,
   { desc = 'Go to previous buffer/diff' })
 
+-- Reload file
+vim.keymap.set('n', '<leader>e', '<CMD>edit!<CR>', { desc = 'Reload file (forcefully)' })
+
 vim.keymap.set({'n', 'v'}, '<leader>a', '<CMD>b#<CR>', { desc = 'Go to alternate buffer' })
 vim.keymap.set({'n', 'v'}, '<S-TAB>', '<CMD>b#<CR>', { desc = 'Go to alternate buffer' })
 
