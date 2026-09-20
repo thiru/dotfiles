@@ -13,11 +13,6 @@ local function show_winbar()
   return is_non_terminal_buffer()
 end
 
-local function tab_workspace_text()
-  local text = tnvws.statusline_text()
-  return text ~= '¹1¹' and text or ''
-end
-
 --- Get git branch for terminal.
 --- This is set externally (currently from a fish trigger)
 local function term_branch()
@@ -61,8 +56,11 @@ plugin.setup({
 
   -- Tabline
   tabline = {
-    lualine_b = {
-      tab_workspace_text,
+    lualine_a = {
+      tnvws.tabline_workspaces,
+    },
+    lualine_z = {
+      { tnvws.tabline_tabs, padding = { left = 0, right = 0 } }
     },
   },
 
