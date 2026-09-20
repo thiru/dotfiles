@@ -224,28 +224,16 @@ vim.keymap.set('n', '<leader>q',
   end,
   {desc = 'Tab close'})
 
--- Tab close (ignore unsaved changes)
+-- Exit (close all tabs with confirmation if more than 1)
 vim.keymap.set('n', '<leader>Q',
-  function()
-    if #vim.api.nvim_list_tabpages() <= 1 then
-      vim.cmd('quitall!')
-    else
-      vim.cmd('tabclose!')
-    end
-  end,
-  {desc = 'Tab close (ignore unsaved changes)'})
-
-vim.keymap.set('n', '<leader>x',
   function()
     local num_tabs = #vim.api.nvim_list_tabpages()
     if num_tabs <= 1 then
       vim.cmd.quitall()
     else
       if vim.fn.confirm(num_tabs .. ' tabs are open. Exit Neovim?', '&Yes\n&No') == 1 then
-        vim.cmd.quitall()
+        vim.cmd('quitall!')
       end
     end
   end,
   { desc = 'Exit' })
-
-vim.keymap.set('n', '<leader>X', '<CMD>qa!<CR>', { desc = 'Exit (ignore unsaved changes)' })
