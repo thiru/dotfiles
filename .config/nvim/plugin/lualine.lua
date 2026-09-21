@@ -48,9 +48,6 @@ plugin.setup({
     icons_enabled = true,
     component_separators = '',
     globalstatus = true,
-    refresh = {
-      refresh_time = 150
-    },
     section_separators = '',
   },
 
