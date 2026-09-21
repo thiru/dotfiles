@@ -13,7 +13,7 @@ Row {
       width: workspace.implicitWidth + Style.componentHorizontalPadding
       height: workspace.implicitHeight + Style.componentVerticalPadding
       radius: Style.componentRadius
-      color: modelData.focused ? "#CCFFFFFF" : "#66000000"
+      color: modelData.focused ?  "#89B4FA" : Style.componentBackground
 
       Text {
         id: workspace

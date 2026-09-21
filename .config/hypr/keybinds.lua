@@ -40,11 +40,8 @@ hl.bind(mod .. ' + C', hl.dsp.exec_cmd('neovide --wayland_app_id launcher -- +Ta
 -- Emoji Picker
 hl.bind(mod .. ' + CTRL + E', hl.dsp.exec_cmd('bemoji -c -t'))
 
--- Waybar Visbility Toggle
-hl.bind(mod .. ' + B', hl.dsp.exec_cmd('pkill -SIGUSR1 waybar'))
-
--- Waybar Reload
-hl.bind(mod .. ' + CTRL + B', hl.dsp.exec_cmd('waybar-reload'))
+-- Quickshell Visibility Toggle
+hl.bind(mod .. ' + B', hl.dsp.exec_cmd('qs ipc call bar toggle'))
 
 -- Power Menu
 hl.bind(mod .. ' + P', hl.dsp.exec_cmd('power.clj menu'))

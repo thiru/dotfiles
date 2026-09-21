@@ -2,6 +2,8 @@ import QtQuick
 import Quickshell.Hyprland
 
 Rectangle {
+  readonly property int maxTitleLength: 100
+
   color: Style.componentBackground
   radius: Style.componentRadius
   implicitWidth: title.implicitWidth + Style.componentHorizontalPadding
@@ -10,7 +12,10 @@ Rectangle {
 
   Text {
     id: title
-    text: Hyprland.activeToplevel ? Hyprland.activeToplevel.title : ""
+    text: {
+      const activeTitle = Hyprland.activeToplevel ? Hyprland.activeToplevel.title : "";
+      return activeTitle.length > maxTitleLength ? activeTitle.slice(0, maxTitleLength) + "…" : activeTitle;
+    }
     color: "white"
     font.family: Style.fontFamily
     font.pixelSize: Style.fontSize

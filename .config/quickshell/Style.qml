@@ -11,5 +11,5 @@ QtObject {
   readonly property int componentVerticalPadding: 8
   readonly property int componentHeight: 30
   readonly property int componentRadius: 8
-  readonly property color componentBackground: "#AA000000"
+  readonly property color componentBackground: "#99000000"
 }

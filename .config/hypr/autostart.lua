@@ -11,7 +11,7 @@ hl.on('hyprland.start', function()
   hl.exec_cmd('ydotoold')
 
   -- Bars
-  hl.exec_cmd('waybar-reload')
+  hl.exec_cmd('quickshell')
 
   -- Network manager applet (tray icon)
   hl.exec_cmd('nm-applet')
