@@ -7,7 +7,7 @@ import Quickshell.Services.SystemTray
 Row {
   id: root
 
-  spacing: 4
+  spacing: Style.componentHorizontalMargin
 
   property string uptime: "--"
   property int cpuUsage: 0
