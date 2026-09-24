@@ -49,6 +49,7 @@ Scope {
       }
 
       SystemWidgets {
+        panelWindow: barWindow
         idleInhibited: idleInhibitor.enabled
         onToggleIdleInhibited: idleInhibitor.enabled = !idleInhibitor.enabled
         anchors.right: clockWidget.left

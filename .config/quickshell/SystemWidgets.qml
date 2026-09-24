@@ -9,6 +9,7 @@ Row {
 
   spacing: Style.componentHorizontalMargin
 
+  property var panelWindow
   property string uptime: "--"
   property int cpuUsage: 0
   property int ramUsage: 0
@@ -339,6 +340,7 @@ Row {
         model: SystemTray.items
 
         delegate: Item {
+          id: trayItem
           required property var modelData
 
           width: 18
@@ -354,12 +356,20 @@ Row {
 
           MouseArea {
             anchors.fill: parent
-            acceptedButtons: Qt.LeftButton | Qt.RightButton
+            acceptedButtons: Qt.LeftButton | Qt.MiddleButton | Qt.RightButton
             onClicked: mouse => {
-              if (mouse.button === Qt.LeftButton && !modelData.onlyMenu)
-                modelData.activate()
-              else if (mouse.button === Qt.RightButton)
+              const position = trayItem.mapToItem(null, mouse.x, mouse.y)
+
+              if (mouse.button === Qt.LeftButton) {
+                if (modelData.onlyMenu)
+                  modelData.display(root.panelWindow, position.x, position.y)
+                else
+                  modelData.activate()
+              } else if (mouse.button === Qt.MiddleButton) {
                 modelData.secondaryActivate()
+              } else if (mouse.button === Qt.RightButton && modelData.hasMenu) {
+                modelData.display(root.panelWindow, position.x, position.y)
+              }
             }
           }
         }
