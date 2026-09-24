@@ -2,7 +2,7 @@ import QtQuick
 import Quickshell.Hyprland
 
 Rectangle {
-  readonly property int maxTitleLength: 100
+  readonly property int maxTitleLength: 90
 
   color: Style.componentBackground
   radius: Style.componentRadius

@@ -13,13 +13,14 @@ Row {
       width: workspace.implicitWidth + Style.componentHorizontalPadding
       height: workspace.implicitHeight + Style.componentVerticalPadding
       radius: Style.componentRadius
-      color: modelData.focused ?  "#89B4FA" : Style.componentBackground
+      color: modelData.focused ?  "#F9E2AF" : Style.componentBackground
 
       Text {
         id: workspace
         anchors.centerIn: parent
         text: modelData.name
         color: modelData.focused ? "black" : "white"
+        font.bold: modelData.focused
         font.pixelSize: Style.fontSize
       }
 

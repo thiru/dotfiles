@@ -181,7 +181,7 @@ Row {
     Text {
       id: uptimeText
       anchors.centerIn: parent
-      text: "󰅐 " + root.uptime
+      text: root.uptime
       color: "white"
       font.family: Style.fontFamily
       font.pixelSize: Style.fontSize
