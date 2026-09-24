@@ -1,5 +1,8 @@
 local u = require('mine.utils')
 
+-- NOTE: only using this plugin in Windows
+if not u.is_windows() then return end
+
 if u.diff_mode() then return end
 
 vim.api.nvim_create_autocmd('PackChanged', {

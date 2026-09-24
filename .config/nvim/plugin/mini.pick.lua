@@ -21,6 +21,28 @@ plugin.setup({
 vim.keymap.set('n', '<leader>sb', plugin.builtin.buffers, {desc = 'Search buffers'})
 vim.keymap.set('n', '<leader>sh', plugin.builtin.help, {desc = 'Search help'})
 
+-- NOTE: we use fff in Windows
+if not u.is_windows() then
+  vim.keymap.set('n', '<leader>sf', plugin.builtin.files, { desc = 'Search files' })
+  vim.keymap.set('n', '<leader>sp', plugin.builtin.grep_live, { desc = 'Search project' })
+  vim.keymap.set('n', '<leader>sr', plugin.builtin.resume, { desc = 'Search resume' })
+  vim.keymap.set('n', '<leader>sw',
+    function()
+      plugin.builtin.grep({ pattern = vim.fn.expand('<cword>'), method = 'plain' })
+    end,
+    { desc = 'Search word/selection' })
+  vim.keymap.set('x', '<leader>sw',
+    function()
+      plugin.builtin.grep({ pattern = u.selected_text(), method = 'plain' })
+    end,
+    { desc = 'Search word/selection' })
+  vim.keymap.set('n', '<leader>sv',
+    function()
+      plugin.builtin.files({}, { source = { cwd = vim.fn.stdpath('config') } })
+    end,
+    { desc = 'Search Neovim configs' })
+end
+
 vim.keymap.set('n', '<C-g>', function()
   plugin.start({
     source = {
