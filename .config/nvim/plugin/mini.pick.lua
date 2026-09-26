@@ -47,7 +47,13 @@ vim.keymap.set('n', '<C-g>', function()
   plugin.start({
     source = {
       items = function()
-        return vim.fn.systemlist("fd --follow --type directory --hidden --max-depth 4 . $HOME")
+        local dirs = vim.fn.systemlist("fd --follow --type directory --hidden --max-depth 4 . $HOME")
+        -- Prefer git repositories (directories containing a .git subdirectory)
+        local repos, rest = {}, {}
+        for _, dir in ipairs(dirs) do
+          table.insert(vim.uv.fs_stat(dir .. '/.git') and repos or rest, dir)
+        end
+        return vim.list_extend(repos, rest)
       end,
       name = 'Goto -> ',
       choose = function(item)
