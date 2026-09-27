@@ -2,13 +2,12 @@
   a = add -A
   a3 = !sh -c 'git add -A && git commit --amend --reset-author'
   ap = add -p
-  br = branch
-  bra = branch -a
-  brd = "!f() { git branch -d $1; git push origin :$1; }; f"
-  brD = "!f() { git branch -D $1; git push origin :$1; }; f"
+  b = branch
+  ba = branch -a
+  bd = "!f() { git branch -d $1; git push origin :$1; }; f"
+  bD = "!f() { git branch -D $1; git push origin :$1; }; f"
   c = "!f() { git commit -m \"$*\"; }; f"
   ca = commit --amend --reset-author
-  ci = commit
   co = checkout
   cp = cherry-pick
   cw = commit -m'wip'
@@ -17,7 +16,6 @@
   df = difftool
   dfb = "git-dfb"
   dfs = difftool --staged
-  fw = commit -m'feat: wip'
   l = log --pretty=format:'%C(yellow)%h%Creset %s %C(green)[%ar] %C(red)[%an]' -20 --graph
   ll = log --pretty=format:'%C(yellow)%h%Creset %s %C(green)[%ar] %C(red)[%an]' --graph
   p = pull --rebase
