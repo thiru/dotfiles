@@ -3,6 +3,7 @@ import Quickshell
 import Quickshell.Io
 import Quickshell.Services.Pipewire
 import Quickshell.Services.SystemTray
+import Quickshell.Services.UPower
 
 Row {
   id: root
@@ -25,6 +26,22 @@ Row {
   readonly property bool audioReady: sink !== null && sink.ready && sink.audio !== null
   readonly property bool muted: audioReady ? sink.audio.muted : false
   readonly property int volume: audioReady ? Math.round(sink.audio.volume * 100) : 0
+  readonly property var battery: UPower.displayDevice
+  readonly property bool batteryVisible: battery !== null && battery.ready && battery.isPresent && battery.isLaptopBattery
+  readonly property int batteryPercentage: batteryVisible ? Math.round(battery.percentage * 100) : 0
+  readonly property bool batteryCharging: batteryVisible && (battery.state === UPowerDeviceState.Charging || battery.state === UPowerDeviceState.PendingCharge)
+
+  function batteryIcon() {
+    if (root.batteryPercentage >= 90)
+      return ""
+    if (root.batteryPercentage >= 70)
+      return ""
+    if (root.batteryPercentage >= 40)
+      return ""
+    if (root.batteryPercentage >= 15)
+      return ""
+    return ""
+  }
 
   function refreshStats() {
     statsProcess.running = false
@@ -319,6 +336,45 @@ Row {
           Quickshell.execDetached(["pavucontrol"])
         else if (mouse.button === Qt.RightButton)
           root.sink.audio.muted = !root.sink.audio.muted
+      }
+    }
+  }
+
+  Rectangle {
+    visible: root.batteryVisible
+    color: Style.componentBackground
+    radius: Style.componentRadius
+    implicitWidth: visible ? batteryContent.implicitWidth + Style.componentHorizontalPadding : 0
+    implicitHeight: visible ? batteryContent.implicitHeight + Style.componentVerticalPadding : 0
+
+    Row {
+      id: batteryContent
+      anchors.centerIn: parent
+      spacing: 8
+
+      Text {
+        anchors.baseline: batteryText.baseline
+        text: root.batteryIcon()
+        color: "white"
+        font.family: Style.iconFontFamily
+        font.pixelSize: Style.fontSize
+      }
+
+      Text {
+        id: batteryText
+        text: root.batteryPercentage + "%"
+        color: "white"
+        font.family: Style.fontFamily
+        font.pixelSize: Style.fontSize
+      }
+
+      Text {
+        visible: root.batteryCharging
+        anchors.baseline: batteryText.baseline
+        text: ""
+        color: "white"
+        font.family: Style.iconFontFamily
+        font.pixelSize: Style.fontSize
       }
     }
   }
