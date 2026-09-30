@@ -37,6 +37,7 @@ Scope {
 
       WorkspaceSwitcher {
         id: workspaceSwitcher
+        screen: modelData
         anchors.left: parent.left
         anchors.leftMargin: Style.componentHorizontalMargin
         anchors.verticalCenter: parent.verticalCenter

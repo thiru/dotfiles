@@ -1,11 +1,20 @@
 import QtQuick
+import Quickshell
 import Quickshell.Hyprland
 
 Row {
+  id: root
+
   spacing: 4
+  property var screen
+  readonly property var monitor: Hyprland.monitorFor(root.screen)
 
   Repeater {
-    model: Hyprland.workspaces
+    model: ScriptModel {
+      values: root.monitor === null
+        ? []
+        : Hyprland.workspaces.values.filter(workspace => workspace.monitor === root.monitor)
+    }
 
     delegate: Rectangle {
       required property var modelData
