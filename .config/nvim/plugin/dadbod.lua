@@ -2,39 +2,36 @@ local u = require('mine.utils')
 
 if u.diff_mode() then return end
 
+vim.g.db_ui_execute_on_save = 0
+
 vim.pack.add({'https://github.com/tpope/vim-dadbod'})
 vim.pack.add({'https://github.com/kristijanhusak/vim-dadbod-ui'})
 vim.pack.add({'https://github.com/kristijanhusak/vim-dadbod-completion'})
 
+local dbui_execute_key = vim.api.nvim_replace_termcodes('<Plug>(DBUI_ExecuteQuery)', true, false, true)
+
+local function execute_dbui_selection(win, view)
+  local ok, err = pcall(vim.api.nvim_feedkeys, dbui_execute_key, 'mx', false)
+
+  if vim.api.nvim_win_is_valid(win) then
+    vim.api.nvim_set_current_win(win)
+    vim.fn.winrestview(view)
+  end
+
+  if not ok then error(err, 0) end
+end
+
 local function exec_sql_visual()
-  -- We need to escape visual mode as the '< and '> marks apply to the *last* visual mode selection
-  vim.cmd('normal! \27') -- ESC
-
-  local start_pos = vim.fn.getpos("'<")
-  local end_pos = vim.fn.getpos("'>")
-
-  local start_line = start_pos[2]
-  local end_line = end_pos[2]
-
-  local cmd = ('%d,%dDB'):format(math.min(start_line, end_line), math.max(start_line, end_line))
-
-  vim.cmd(cmd)
+  local win = vim.api.nvim_get_current_win()
+  local view = vim.fn.winsaveview()
+  execute_dbui_selection(win, view)
 end
 
 local function exec_sql_normal()
-  local orig_cur_pos = vim.fn.getpos('.')
-
+  local win = vim.api.nvim_get_current_win()
+  local view = vim.fn.winsaveview()
   vim.cmd('normal! vip')
-  vim.cmd('normal! \27') -- ESC
-
-  vim.fn.setpos('.', orig_cur_pos)
-
-  local start_line = vim.fn.line("'<")
-  local end_line = vim.fn.line("'>")
-
-  local cmd = ('%d,%dDB'):format(math.min(start_line, end_line), math.max(start_line, end_line))
-
-  vim.cmd(cmd)
+  execute_dbui_selection(win, view)
 end
 
 local group = vim.api.nvim_create_augroup('dadbod_keybinds', {clear = true})
