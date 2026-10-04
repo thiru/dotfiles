@@ -10,28 +10,22 @@ vim.pack.add({'https://github.com/kristijanhusak/vim-dadbod-completion'})
 
 local dbui_execute_key = vim.api.nvim_replace_termcodes('<Plug>(DBUI_ExecuteQuery)', true, false, true)
 
-local function execute_dbui_selection(win, view)
+local function execute_dbui_selection(orig_cur_pos)
   local ok, err = pcall(vim.api.nvim_feedkeys, dbui_execute_key, 'mx', false)
-
-  if vim.api.nvim_win_is_valid(win) then
-    vim.api.nvim_set_current_win(win)
-    vim.fn.winrestview(view)
-  end
+  vim.fn.setpos('.', orig_cur_pos)
 
   if not ok then error(err, 0) end
 end
 
 local function exec_sql_visual()
-  local win = vim.api.nvim_get_current_win()
-  local view = vim.fn.winsaveview()
-  execute_dbui_selection(win, view)
+  local orig_cur_pos = vim.fn.getpos('.')
+  execute_dbui_selection(orig_cur_pos)
 end
 
 local function exec_sql_normal()
-  local win = vim.api.nvim_get_current_win()
-  local view = vim.fn.winsaveview()
+  local orig_cur_pos = vim.fn.getpos('.')
   vim.cmd('normal! vip')
-  execute_dbui_selection(win, view)
+  execute_dbui_selection(orig_cur_pos)
 end
 
 local group = vim.api.nvim_create_augroup('dadbod_keybinds', {clear = true})
