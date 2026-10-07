@@ -56,6 +56,9 @@ plugin.setup({
     lualine_a = {
       tnvws.tabline_workspaces,
     },
+    lualine_b = {
+      tnvws.get_active_workspace_name,
+    },
     lualine_c = {
       '%=',
       { tnvws.tabline_tabs, padding = { left = 0, right = 0 } }
