@@ -57,10 +57,9 @@ plugin.setup({
       tnvws.tabline_workspaces,
     },
     lualine_b = {
-      tnvws.get_active_workspace_name,
+      { tnvws.get_active_workspace_name, separator = { right = '' } },
     },
     lualine_c = {
-      '%=',
       { tnvws.tabline_tabs, padding = { left = 0, right = 0 } }
     },
   },
