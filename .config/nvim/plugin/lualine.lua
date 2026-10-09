@@ -59,7 +59,7 @@ plugin.setup({
     lualine_b = {
       { tnvws.get_active_workspace_name, separator = { right = '' } },
     },
-    lualine_c = {
+    lualine_z = {
       { tnvws.tabline_tabs, padding = { left = 0, right = 0 } }
     },
   },
