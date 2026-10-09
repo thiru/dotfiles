@@ -1,10 +1,6 @@
 local u = require('mine.utils')
 local tnvws = require('tabnv.workspace')
 
-local function is_terminal_buffer()
-  return vim.bo.buftype == 'terminal'
-end
-
 local function is_non_terminal_buffer()
   return vim.bo.buftype ~= 'terminal'
 end
@@ -13,14 +9,52 @@ local function show_winbar()
   return is_non_terminal_buffer()
 end
 
---- Get git branch for terminal.
---- This is set externally (currently from a fish trigger)
-local function term_branch()
-  local tabdir_ok, tabdir = pcall(vim.api.nvim_tabpage_get_var, 0, 'tabbranch')
-  if tabdir_ok and tabdir and #tabdir > 0 then
-    return ' ' .. tabdir
+--- Update a terminal buffer's term:// name when its shell reports a new cwd via OSC 7.
+--- This is used to keep the git branch lualine component up-to-date.
+local function update_terminal_name_from_osc7(ev)
+  local buf = ev.buf
+  if vim.bo[buf].buftype ~= 'terminal' then
+    return
   end
-  return ''
+
+  local uri = ev.data.sequence:match('\027%]7;(.*)')
+  if not uri then
+    return
+  end
+  uri = uri:gsub('\007$', ''):gsub('\027\\$', '')
+
+  local path = uri:match('^file://[^/]*(/.*)$')
+  if not path then
+    return
+  end
+
+  local ok, cwd = pcall(vim.uri_to_fname, 'file://' .. path)
+  if not ok or vim.fn.isdirectory(cwd) ~= 1 then
+    return
+  end
+
+  local name = vim.api.nvim_buf_get_name(buf)
+  local suffix = name:match('^term://.-(//.*)$')
+  if not suffix then
+    return
+  end
+
+  local new_name = 'term://' .. cwd .. suffix
+  if new_name == name then
+    return
+  end
+
+  vim.api.nvim_buf_set_name(buf, new_name)
+
+  -- Lualine normally re-detects the Git directory on BufEnter. Re-detect now
+  -- as well when this terminal is already active.
+  if vim.api.nvim_get_current_buf() == buf then
+    local ok, branch = pcall(require, 'lualine.components.branch.git_branch')
+    if ok then
+      branch.find_git_dir()
+    end
+    require('lualine').refresh()
+  end
 end
 
 --- Get the location in the buffer.
@@ -100,8 +134,13 @@ plugin.setup({
       {buffer_location, color='Directory'},
     },
     lualine_z = {
-      {'branch', cond=is_non_terminal_buffer},
-      {term_branch, cond=is_terminal_buffer},
+      {'branch'},
     },
   }
+})
+
+vim.api.nvim_create_autocmd('TermRequest', {
+  group = vim.api.nvim_create_augroup('lualine_termrequest_osc7', { clear = true }),
+  desc = 'Update terminal buffer name from OSC 7 cwd',
+  callback = update_terminal_name_from_osc7,
 })
