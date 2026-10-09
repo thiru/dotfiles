@@ -85,24 +85,23 @@ plugin.setup({
   -- Statusline
   sections = {
     lualine_a = {
-      {'branch', cond=is_non_terminal_buffer},
-      {term_branch, cond=is_terminal_buffer},
+      {u.get_cwd, color='ErrorMsg'},
+      {u.get_file_parent, cond=is_non_terminal_buffer, color='Directory'},
     },
     lualine_b = {
     },
     lualine_c = {
-      '%=',
-      {u.get_cwd, color='ErrorMsg'},
-      {u.get_file_parent, cond=is_non_terminal_buffer, color='Directory'},
     },
     lualine_x = {
-    },
-    lualine_y = {
       'selectioncount',
       'searchcount',
     },
-    lualine_z = {
+    lualine_y = {
       {buffer_location, color='Directory'},
+    },
+    lualine_z = {
+      {'branch', cond=is_non_terminal_buffer},
+      {term_branch, cond=is_terminal_buffer},
     },
   }
 })
