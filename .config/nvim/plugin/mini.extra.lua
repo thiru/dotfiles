@@ -13,6 +13,7 @@ vim.keymap.set('n', '<leader>sc', plugin.pickers.commands, { desc = 'Search comm
 vim.keymap.set('n', '<leader>sd', plugin.pickers.diagnostic, { desc = 'Search diagnostics' })
 vim.keymap.set('n', '<leader>se', plugin.pickers.explorer, { desc = 'Search explorer' })
 vim.keymap.set('n', '<leader>sk', plugin.pickers.keymaps, { desc = 'Search keymaps' })
+vim.keymap.set('n', '<leader>sg', plugin.pickers.git_files, { desc = 'Search git files' })
 vim.keymap.set('n', '<leader>sm', plugin.pickers.marks, { desc = 'Search marks' })
 vim.keymap.set('n', '<leader>so', function()
   local mini_pick = require('mini.pick')
