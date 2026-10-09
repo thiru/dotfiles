@@ -119,7 +119,7 @@ plugin.setup({
   -- Statusline
   sections = {
     lualine_a = {
-      {u.get_cwd, color='ErrorMsg'},
+      {u.get_cwd},
       {u.get_file_parent, cond=is_non_terminal_buffer, color='Directory'},
     },
     lualine_b = {
@@ -134,7 +134,7 @@ plugin.setup({
       {buffer_location, color='Directory'},
     },
     lualine_z = {
-      {'branch'},
+      {'branch', color='ErrorMsg'},
     },
   }
 })
