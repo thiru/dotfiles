@@ -79,6 +79,16 @@ function M.get_file_parent()
   return parent_dir
 end
 
+--- Detect if we're running Linux.
+function M.is_linux()
+  return vim.uv.os_uname().sysname == 'Linux'
+end
+
+--- Detect if we're running macOS.
+function M.is_macos()
+  return vim.uv.os_uname().sysname == 'Darwin'
+end
+
 --- Detect if we're running Windows.
 function M.is_windows()
   return vim.fn.has('win64') ~= 0
