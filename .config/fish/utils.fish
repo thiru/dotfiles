@@ -42,9 +42,6 @@ function keybinds-setup
   bind -M insert ctrl-k 'up-or-search'
   bind -M insert ctrl-j 'down-or-search'
 
-  bind -M insert ctrl-y 'move-up'
-  bind -M insert ctrl-u 'scroll-up'
-
   # Accept complete fish suggestion
   bind -M insert ctrl-o forward-char
 
@@ -93,30 +90,6 @@ function private-mode
   else
     set --global fish_private_mode 1
     echo 'Private mode on'
-  end
-end
-
-function move-up --description "Exit terminal mode and move up one line (only in Neovim terminal)"
-  if set -q NVIM
-    nvim --server $NVIM --remote-send '<C-space><C-y>' >/dev/null 2>&1
-  end
-end
-
-function scroll-up --description "Exit terminal mode and scroll up half a page (only in Neovim terminal)"
-  if set -q NVIM
-    nvim --server $NVIM --remote-send '<C-space><C-u>' >/dev/null 2>&1
-  end
-end
-
-function my_postexec --on-event fish_postexec --description "Update git branch in Neovim"
-  if test $status -eq 0 && set -q NVIM
-    # Git branch
-    set -l git_branch (git branch --show-current 2>/dev/null)
-    if test -n "$git_branch"
-      nvim --server $NVIM --remote-send "<CMD>lua require('tabnv').set_git_branch('$git_branch')<CR>"
-    else
-      nvim --server $NVIM --remote-send "<CMD>lua require('tabnv').set_git_branch('')<CR>"
-    end
   end
 end
 
