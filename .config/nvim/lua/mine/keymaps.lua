@@ -10,7 +10,7 @@ vim.keymap.set({'i', 'v'}, '<C-space>', '<Esc>', {desc='Escape to normal mode', 
 vim.keymap.set({'n', 'x'}, '<leader>;', ':', {desc='Enter command-linemode'})
 
 -- Clear notifications, cmdline message, highlight
-vim.keymap.set({'n', 'v'}, '<leader><leader>',
+vim.keymap.set({'n', 'v'}, '<leader>/',
   function()
     vim.cmd('silent echo ""')
     vim.cmd('silent nohlsearch')
