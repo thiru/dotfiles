@@ -91,6 +91,7 @@ function private-mode
     set --global fish_private_mode 1
     echo 'Private mode on'
   end
+  commandline -f repaint
 end
 
 function up --description "Move up one or more directories"
