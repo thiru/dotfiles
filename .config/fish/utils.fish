@@ -87,10 +87,13 @@ function private-mode
   if test -n "$fish_private_mode"
     set --erase fish_private_mode
     echo "Private mode off"
+    sleep 0.2
   else
     set --global fish_private_mode 1
     echo 'Private mode on'
+    sleep 0.2
   end
+  commandline -f repaint
 end
 
 function up --description "Move up one or more directories"
