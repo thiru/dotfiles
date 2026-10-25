@@ -35,16 +35,22 @@ set incsearch true
 # ## Custom Commands
 # {{{ -------------------------------------------------------------------------
 
-# bulk rename
-cmd vidir $vidir "$f"
-
-# delete file/folder (permanently)
-cmd delete ${{
+# delete file/folder (with confirmation prompt)
+cmd delete-confirm ${{
     set -f
     printf "$fx\n"
-    printf "delete?[y/n]"
+    printf "delete? [y/n]"
     read -n1 ans
     [ $ans = "y" ] && rm -rf $fx
+}}
+
+# launch neovim in cwd with mini.files
+cmd edit-paths ${{
+  if command -v neovide >/dev/null 2>&1 && [ "${DISPLAY+x}" ]; then
+    neovide --no-tabs -- +FSExplorer
+  else
+    nvim +FSExplorer
+  fi
 }}
 
 # extract the current file with the right command
@@ -75,17 +81,14 @@ cmd open ${{
     esac
 }}
 
-# rename file/folder without prompt for overwrite
-cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
-
 # shred paths
-cmd shred $bleachbit --shred "$f"
+cmd shred $bleachbit --shred $fx
 
 # compress file as tar.gz
 cmd targz %tar cvzf "$f.tar.gz" "$f"
 
 # permanently delete file
-cmd fdelete %set -f; rm -rf $fx; echo "deleted $(basename $fx)"
+cmd delete-permanently %set -f; rm -rf $fx; echo "deleted $(basename $fx)"
 
 # compress current file or selected files with zip
 cmd zip %zip -r "$f" "$f"
@@ -106,8 +109,7 @@ map . set hidden!
 # use enter for shell commands
 map <enter> shell
 
-# bulk rename
-map b vidir
+map E edit-paths "$f"
 
 # execute current file (must be executable)
 map x $$f
@@ -117,12 +119,9 @@ map X !$f
 map o &mimeopen $f
 map O $mimeopen --ask $f
 
-# rename file/folder
-map r push :rename<space>
-
 # deleting
-map T fdelete
-map t delete
+map T delete-permanently
+map t delete-confirm
 
 # archiving/unarchiving
 map az zip
