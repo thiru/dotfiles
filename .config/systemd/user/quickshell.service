@@ -1,0 +1,10 @@
+[Unit]
+Description=Quickshell
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/quickshell
+Restart=always
+RestartSec=5s
+StandardOutput=journal
+StandardError=journal

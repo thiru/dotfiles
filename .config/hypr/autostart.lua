@@ -11,7 +11,7 @@ hl.on('hyprland.start', function()
   hl.exec_cmd('ydotoold')
 
   -- Bars
-  hl.exec_cmd('quickshell')
+  hl.exec_cmd('systemctl --user import-environment WAYLAND_DISPLAY HYPRLAND_INSTANCE_SIGNATURE XDG_CURRENT_DESKTOP && systemctl --user start quickshell.service')
 
   -- Network manager applet (tray icon)
   hl.exec_cmd('nm-applet')
