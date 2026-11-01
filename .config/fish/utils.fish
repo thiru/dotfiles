@@ -104,19 +104,6 @@ function up --description "Move up one or more directories"
   cd $ups
 end
 
-function y --description "Go to directory with yazi"
-  set -l tmp (mktemp -t "yazi-cwd.XXXXXX")
-  yazi $argv --cwd-file="$tmp"
-
-  if set -l cwd (cat "$tmp")
-    if test -n "$cwd" && test "$cwd" != "$PWD"
-      cd -- "$cwd"
-    end
-  end
-
-  rm -f -- "$tmp"
-end
-
 function loadenv --description 'Load .env file'
   if test -f $argv[1]
     for line in (cat $argv[1] | grep -v '^#' | grep -v '^$')
