@@ -8,6 +8,7 @@
 .lsp
 .nrepl-port
 .pi/agent/auth.json
+.pi/agent/models-store.json
 .pi/agent/sessions/
 .pi/agent/settings.json
 .rebel_readline_history
