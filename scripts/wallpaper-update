@@ -6,8 +6,19 @@ set -eu
 
 WALLPAPER_PATH=~/Pictures/wallpaper/bing.jpg
 
-# Download latest Bing wallpaper; tolerate failure if network isn't up yet
-bing-wallpaper.clj "$WALLPAPER_PATH" || true
+# Download unless we're only restoring the cached wallpaper (e.g. after DPMS).
+case "$#:${1:-}" in
+  0:)
+    # Tolerate failure if the network isn't up yet; the cached image is used.
+    bing-wallpaper.clj "$WALLPAPER_PATH" || true
+    ;;
+  1:--apply-only)
+    ;;
+  *)
+    echo "Usage: wallpaper-update [--apply-only]" >&2
+    exit 2
+    ;;
+esac
 
 # Apply (falls back to the cached image if the download failed)
 if [ -f "$WALLPAPER_PATH" ]; then
