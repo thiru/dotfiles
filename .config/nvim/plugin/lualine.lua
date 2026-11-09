@@ -82,6 +82,9 @@ plugin.setup({
     icons_enabled = true,
     component_separators = '',
     globalstatus = true,
+    refresh = {
+      tabline = 60,
+    },
     section_separators = '',
   },
 
