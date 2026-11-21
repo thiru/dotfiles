@@ -6,13 +6,25 @@ set -eu
 
 WALLPAPER_PATH=~/Pictures/wallpaper/bing.jpg
 
+apply() {
+  # Replace any swaybg already holding the old image (e.g. on compositor restarts)
+  pkill -x swaybg 2>/dev/null || true
+  swaybg --mode fill --image "$WALLPAPER_PATH" &
+}
+
+# Immediately apply the cached image so the screen isn't blank while fetching.
+if [ -f "$WALLPAPER_PATH" ]; then
+  apply
+fi
+
 # Download unless we're only restoring the cached wallpaper (e.g. after DPMS).
 case "$#:${1:-}" in
   0:)
-    # Tolerate failure if the network isn't up yet; the cached image is used.
+    # Tolerate failure if the network isn't up yet; the cached image stays in place.
     bing-wallpaper.clj "$WALLPAPER_PATH" || true
     ;;
   1:--apply-only)
+    exit 0
     ;;
   *)
     echo "Usage: wallpaper-update [--apply-only]" >&2
@@ -20,9 +32,5 @@ case "$#:${1:-}" in
     ;;
 esac
 
-# Apply (falls back to the cached image if the download failed)
-if [ -f "$WALLPAPER_PATH" ]; then
-  # Replace any swaybg already holding the old image (e.g. on compositor restarts)
-  pkill -x swaybg 2>/dev/null || true
-  swaybg --mode fill --image "$WALLPAPER_PATH" &
-fi
+# Apply again in case the download brought a new image.
+apply
