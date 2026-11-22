@@ -17,13 +17,6 @@ local function zoom(diff)
   end
 end
 
-local function screenshot()
-  local dir = '~/Pictures/screen-shots'
-  local grim_cmd = 'grim -g "$(slurp)" ' .. dir .. '/$(date \'+%Y-%m-%dT%H-%M-%S\').png'
-  local notify_cmd = 'notify-send "Screenshot saved to ' .. dir .. '"'
-  return grim_cmd .. ' && ' .. notify_cmd
-end
-
 -- Terminals
 hl.bind(mod .. ' + RETURN', hl.dsp.exec_cmd(nvterm))
 hl.bind(mod .. ' + CTRL + RETURN', hl.dsp.exec_cmd(terminal))
@@ -53,7 +46,7 @@ hl.bind(mod .. ' + SLASH', hl.dsp.exec_cmd('pass-menu.sh'))
 hl.bind(mod .. ' + W', hl.dsp.exec_cmd('librewolf --new-window https://www.accuweather.com/en/ca/toronto/m5h/daily-weather-forecast/55488'))
 
 -- Screenshot (select region)
-hl.bind(mod .. ' + S', hl.dsp.exec_cmd(screenshot()))
+hl.bind(mod .. ' + S', hl.dsp.exec_cmd('omasnap'))
 
 hl.bind(mod .. ' + M', hl.dsp.exec_cmd('command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch "hl.dsp.exit()"'))
 hl.bind(mod .. ' + F', hl.dsp.window.fullscreen())
