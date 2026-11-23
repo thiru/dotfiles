@@ -23,8 +23,7 @@ hl.on('hyprland.start', function()
   hl.exec_cmd('systemctl --user start --now hypridle.service')
 
   -- Authentication agent
-  -- TODO: consider replacing with hyprland's polkit
-  hl.exec_cmd('/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1')
+  hl.exec_cmd('/usr/lib/hyprpolkitagent/hyprpolkitagent')
 
   -- Sane OS clipboard behaviour
   hl.exec_cmd('wl-paste -t text --watch clipman store --no-persist')
