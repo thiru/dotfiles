@@ -102,15 +102,17 @@ vim.keymap.set('n', '<leader>li',
 -- Diagnostic keymaps
 vim.keymap.set('n', '<localleader>k', function() vim.diagnostic.jump({count=-1, float=true}) end)
 vim.keymap.set('n', '<localleader>j', function() vim.diagnostic.jump({count=1, float=true}) end)
-vim.keymap.set('n', '<localleader>ed', function() vim.diagnostic.enable(false) end,
-               {desc = 'Disable diagnostics in current buffer'})
-vim.keymap.set('n', '<leader>K',
+vim.keymap.set('n', '<leader>ud', function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+end, { desc = 'Toggle diagnostics in current buffer' })
+vim.keymap.set('n', '<leader>uv',
   function() vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines }) end,
-  {desc = 'Toggle diagnostic virtual_lines'})
+  { desc = 'Toggle diagnostic virtual lines' })
 
 -- CWD
 vim.keymap.set('n', '<leader>lcd', ':silent lcd %:p:h<CR>',
-       { desc = 'Change (window) working directory to that of the current file', silent = true })
+               { desc = 'Change (window) working directory to that of the current file', silent = true })
 
 -- PWD
 vim.keymap.set('n', '<leader>wd', function() vim.notify(vim.fn.getcwd()) end, { desc = 'Print current working directory', silent = true })
@@ -143,8 +145,16 @@ vim.keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', { expr = true, silent = tr
 -- Search highlight off
 vim.keymap.set('n', '<leader>ho', '<CMD>silent nohlsearch<CR>', { desc = 'Search highlight off', silent = true })
 
--- Toggle word wrap
-vim.keymap.set('n', '<leader>ww', '<CMD>set wrap!<CR>', { desc = 'Toggle word wrap' })
+-- UI toggles
+vim.keymap.set('n', '<leader>uw', '<CMD>setlocal wrap!<CR>', { desc = 'Toggle word wrap' })
+vim.keymap.set('n', '<leader>un', function()
+  local enabled = not (vim.wo.number or vim.wo.relativenumber)
+  vim.wo.number = enabled
+  vim.wo.relativenumber = enabled
+end, { desc = 'Toggle line numbers' })
+vim.keymap.set('n', '<leader>us', function()
+  vim.wo.signcolumn = vim.wo.signcolumn == 'no' and 'yes' or 'no'
+end, { desc = 'Toggle sign column' })
 
 -- Copy text to system clipboard
 if u.is_windows() then

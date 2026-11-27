@@ -4,7 +4,7 @@ local plugin = require('mini.clue')
 
 plugin.setup({
   clues = {
-    -- Enhance this by adding descriptions for <Leader> mapping groups
+    { mode = 'n', keys = '<leader>u', desc = '+UI / toggles' },
     plugin.gen_clues.square_brackets(),
     plugin.gen_clues.builtin_completion(),
     plugin.gen_clues.g(),

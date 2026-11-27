@@ -12,3 +12,5 @@ local plugin = require('render-markdown')
 plugin.setup({
   anti_conceal = { enabled = false },
 })
+
+vim.keymap.set('n', '<leader>um', '<CMD>RenderMarkdown toggle<CR>', { desc = 'Toggle Markdown rendering' })
