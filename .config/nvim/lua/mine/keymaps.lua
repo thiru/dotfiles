@@ -82,6 +82,12 @@ vim.keymap.set({'n', 'v'}, '<S-TAB>', '<CMD>b#<CR>', { desc = 'Go to alternate b
 vim.keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', { expr = true, silent = true })
 vim.keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', { expr = true, silent = true })
 
+-- Open link
+vim.keymap.set('n', '<C-space>', function()
+  local link = u.link_at_cursor()
+  if link and link ~= '' then vim.ui.open(link) end
+end, { desc = 'Open link under cursor' })
+
 -- Show messages
 vim.keymap.set('n', '<leader>m', '<CMD>messages<CR>', {desc = 'Show messages'})
 

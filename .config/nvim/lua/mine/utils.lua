@@ -6,6 +6,59 @@ local M = {
   terminal_opacity_override = vim.env.NEOVIM_TERM_OPACITY or 0.95,
 }
 
+local function find_link_destination(node)
+  local node_type = node:type()
+  if node_type == 'link_destination' or node_type == 'uri_autolink' then
+    return node
+  end
+
+  for child in node:iter_children() do
+    local destination = find_link_destination(child)
+    if destination then return destination end
+  end
+end
+
+local function link_node_text(node)
+  local text = vim.treesitter.get_node_text(node, 0)
+  if text:sub(1, 1) == '<' and text:sub(-1) == '>' then
+    return text:sub(2, -2)
+  end
+  return text
+end
+
+--- Get the Markdown link destination under the cursor, or the cfile as a fallback.
+function M.link_at_cursor()
+  local ok, node
+  if vim.bo.filetype == 'markdown' then
+    -- Markdown's inline links live in the markdown_inline parser, not markdown.
+    local parser_ok, parser = pcall(vim.treesitter.get_parser, 0, 'markdown_inline')
+    if parser_ok then
+      pcall(function() parser:parse() end)
+      ok, node = pcall(vim.treesitter.get_node, { lang = 'markdown_inline' })
+    else
+      ok, node = false, nil
+    end
+  else
+    ok, node = pcall(vim.treesitter.get_node)
+  end
+  if ok then
+    while node do
+      local node_type = node:type()
+      if node_type == 'link_destination' or node_type == 'uri_autolink' then
+        return link_node_text(node)
+      elseif node_type == 'link' or node_type == 'inline_link' or node_type == 'image' then
+        local destination = find_link_destination(node)
+        if destination then
+          return link_node_text(destination)
+        end
+      end
+      node = node:parent()
+    end
+  end
+
+  return vim.fn.expand('<cfile>')
+end
+
 function M.pretty_print(obj, indent)
   if indent == nil then indent = 0 end
   local pad = string.rep("  ", indent)
