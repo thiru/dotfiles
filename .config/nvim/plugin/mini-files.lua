@@ -84,6 +84,8 @@ vim.api.nvim_create_autocmd('User', {
         end)
       end)
     end, { buffer = buf_id, desc = 'Run command in selected directory' })
+
+    require('mini.clue').ensure_buf_triggers(buf_id)
   end,
 })
 
