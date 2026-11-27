@@ -49,6 +49,21 @@ local toggle_dotfiles = function()
   plugin.refresh({ content = { filter = new_filter } })
 end
 
+local run_system_command = function(command, cwd, success_message, failure_message)
+  vim.system(command, { cwd = cwd, text = true }, function(result)
+    vim.schedule(function()
+      plugin.refresh({ content = { filter = show_dotfiles and filter_show or filter_hide } })
+
+      local output = (result.stdout or '') .. (result.stderr or '')
+      local succeeded = result.code == 0
+      if output:match('^%s*$') then
+        output = succeeded and success_message or failure_message
+      end
+      vim.notify(output, succeeded and vim.log.levels.INFO or vim.log.levels.ERROR)
+    end)
+  end)
+end
+
 vim.api.nvim_create_autocmd('User', {
   pattern = 'MiniFilesBufferCreate',
   callback = function(args)
@@ -62,7 +77,7 @@ vim.api.nvim_create_autocmd('User', {
     vim.keymap.set('n', '<C-space>', function()
       local entry = plugin.get_fs_entry()
       if entry then vim.ui.open(entry.path) end
-    end, { buffer = buf_id, desc = 'Open with OS default' })
+    end, { buffer = buf_id, desc = 'Open with OS default app' })
     vim.keymap.set('n', '!', function()
       local entry = plugin.get_fs_entry()
       if not entry then
@@ -74,16 +89,63 @@ vim.api.nvim_create_autocmd('User', {
       vim.ui.input({ prompt = '❯ ', completion = 'shellcmdline' }, function(cmd)
         if not cmd or cmd == '' then return end
 
-        vim.system({ vim.o.shell, vim.o.shellcmdflag, cmd }, {
-          cwd = cwd,
-          text = true,
-        }, function(result)
-          vim.schedule(function()
-            vim.notify((result.stdout or '') .. (result.stderr or ''))
-          end)
-        end)
+        run_system_command(
+          { vim.o.shell, vim.o.shellcmdflag, cmd },
+          cwd,
+          'Command completed',
+          'Command failed'
+        )
       end)
     end, { buffer = buf_id, desc = 'Run command in selected directory' })
+    vim.keymap.set('n', 'ge', function()
+      local entry = plugin.get_fs_entry()
+      if not entry then
+        vim.notify('No filesystem entry under cursor')
+        return
+      end
+
+      local commands = {
+        ['.tar.bz'] = { 'tar', 'xjvf' },
+        ['.tar.bz2'] = { 'tar', 'xjvf' },
+        ['.tbz'] = { 'tar', 'xjvf' },
+        ['.tbz2'] = { 'tar', 'xjvf' },
+        ['.tar.gz'] = { 'tar', 'xzvf' },
+        ['.tgz'] = { 'tar', 'xzvf' },
+        ['.tar.xz'] = { 'tar', 'xJvf' },
+        ['.txz'] = { 'tar', 'xJvf' },
+        ['.tar.zst'] = { 'tar', '--zstd', '-xvf' },
+        ['.tzst'] = { 'tar', '--zstd', '-xvf' },
+        ['.tar'] = { 'tar', 'xvf' },
+        ['.zip'] = { 'unzip' },
+        ['.rar'] = { 'unrar', 'x' },
+        ['.7z'] = { '7z', 'x' },
+        ['.gz'] = { 'gunzip' },
+        ['.bz2'] = { 'bunzip2' },
+        ['.xz'] = { 'unxz' },
+        ['.zst'] = { 'zstd', '-d' },
+      }
+      local extensions = vim.tbl_keys(commands)
+      table.sort(extensions, function(a, b) return #a > #b end)
+
+      local command
+      for _, extension in ipairs(extensions) do
+        if vim.endswith(entry.name, extension) then
+          command = vim.list_extend(vim.deepcopy(commands[extension]), { entry.name })
+          break
+        end
+      end
+      if not command then
+        vim.notify('Unsupported archive: ' .. entry.name, vim.log.levels.WARN)
+        return
+      end
+
+      run_system_command(
+        command,
+        vim.fs.dirname(entry.path),
+        'Extracted ' .. entry.name,
+        'Failed to extract ' .. entry.name
+      )
+    end, { buffer = buf_id, desc = 'Extract selected archive' })
 
     require('mini.clue').ensure_buf_triggers(buf_id)
   end,
