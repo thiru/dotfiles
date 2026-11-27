@@ -59,6 +59,10 @@ vim.api.nvim_create_autocmd('User', {
     vim.keymap.set('n', '<ESC>', plugin.close, { buffer = buf_id, desc = 'Close' })
     vim.keymap.set('n', '<C-n>', 'j', { buffer = buf_id, desc = 'Move down' })
     vim.keymap.set('n', '<C-p>', 'k', { buffer = buf_id, desc = 'Move up' })
+    vim.keymap.set('n', '<C-space>', function()
+      local entry = plugin.get_fs_entry()
+      if entry then vim.ui.open(entry.path) end
+    end, { buffer = buf_id, desc = 'Open with OS default' })
   end,
 })
 
