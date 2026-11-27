@@ -63,6 +63,27 @@ vim.api.nvim_create_autocmd('User', {
       local entry = plugin.get_fs_entry()
       if entry then vim.ui.open(entry.path) end
     end, { buffer = buf_id, desc = 'Open with OS default' })
+    vim.keymap.set('n', '!', function()
+      local entry = plugin.get_fs_entry()
+      if not entry then
+        vim.notify('No filesystem entry under cursor')
+        return
+      end
+      local cwd = entry.fs_type == 'directory' and entry.path or vim.fs.dirname(entry.path)
+
+      vim.ui.input({ prompt = '❯ ', completion = 'shellcmdline' }, function(cmd)
+        if not cmd or cmd == '' then return end
+
+        vim.system({ vim.o.shell, vim.o.shellcmdflag, cmd }, {
+          cwd = cwd,
+          text = true,
+        }, function(result)
+          vim.schedule(function()
+            vim.notify((result.stdout or '') .. (result.stderr or ''))
+          end)
+        end)
+      end)
+    end, { buffer = buf_id, desc = 'Run command in selected directory' })
   end,
 })
 
