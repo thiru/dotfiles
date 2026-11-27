@@ -4,7 +4,10 @@ if u.diff_mode() then return end
 
 vim.pack.add({'https://github.com/nvim-mini/mini.completion'})
 
-require('mini.completion').setup()
+local plugin = require('mini.completion')
+plugin.setup({
+  delay = { completion = 500, info = 100, signature = 50 },
+})
 
 -- Additional custom mappings:
 local imap_expr = function(lhs, rhs)
